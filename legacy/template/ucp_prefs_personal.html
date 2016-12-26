@@ -50,11 +50,11 @@
 <tr>
 	<td class="row1" width="50%"><b class="genmed">{L_BOARD_DATE_FORMAT}{L_COLON}</b><br /><span class="gensmall">{L_BOARD_DATE_FORMAT_EXPLAIN}</span></td>
 	<td class="row2">
-		<select name="dateoptions" id="dateoptions" onchange="if (document.getElementById) { if (this.value=='custom'){document.getElementById('custom_date').style.display='';	document.getElementById('dateformat').value = '<!-- IF S_CUSTOM_DATEFORMAT -->{DATE_FORMAT}<!-- ELSE -->{A_DEFAULT_DATEFORMAT}<!-- ENDIF -->';}else{document.getElementById('custom_date').style.display='none';	document.getElementById('dateformat').value = this.value;}} else { if (this.value=='custom'){document.all('custom_date').style.display='';	document.all('dateformat').value = '<!-- IF S_CUSTOM_DATEFORMAT -->{DATE_FORMAT}<!-- ELSE -->{A_DEFAULT_DATEFORMAT}<!-- ENDIF -->';}else{document.all('custom_date').style.display='none';	document.all('dateformat').value = this.value;}}" style="display:none">
+		<select name="dateoptions" id="dateoptions" onchange="if (document.getElementById) { if (this.value=='custom'){document.getElementById('custom_date').style.display='';	document.getElementById('dateformat').value = '<!-- IF S_CUSTOM_DATEFORMAT -->{DATE_FORMAT}<!-- ELSE -->{A_DEFAULT_DATEFORMAT}<!-- ENDIF -->';}else{document.getElementById('custom_date').style.display='none';	document.getElementById('dateformat').value = this.value;}} else if (document.all) { if (this.value=='custom'){document.all('custom_date').style.display='';	document.all('dateformat').value = '<!-- IF S_CUSTOM_DATEFORMAT -->{DATE_FORMAT}<!-- ELSE -->{A_DEFAULT_DATEFORMAT}<!-- ENDIF -->';}else{document.all('custom_date').style.display='none';	document.all('dateformat').value = this.value;}}" style="display:none">
 			{S_DATEFORMAT_OPTIONS}
 		</select>
 		<div id="custom_date"><input type="text" name="dateformat" id="dateformat" value="{DATE_FORMAT}" maxlength="64" class="post" style="margin-top: 3px;" /></div>
-  <script>if (document.getElementById) {document.getElementById('dateoptions').style.display=""} else {document.all('dateoptions').style.display=""}<!-- IF not S_CUSTOM_DATEFORMAT --> if (document.getElementById) {document.getElementById('custom_date').style.display="none"} else {document.all('custom_date').style.display="none"}<!-- ENDIF --></script>	</td>
+  <script>if (document.getElementById) {document.getElementById('dateoptions').style.display=""} else if (document.all) {document.all('dateoptions').style.display=""}<!-- IF not S_CUSTOM_DATEFORMAT --> if (document.getElementById) {document.getElementById('custom_date').style.display="none"} else if (document.all) {document.all('custom_date').style.display="none"}<!-- ENDIF --></script>	</td>
 </tr>
 <!-- EVENT ucp_prefs_personal_append -->
 <tr>

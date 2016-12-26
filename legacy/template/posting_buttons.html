@@ -37,7 +37,7 @@
 
 <!-- IF S_BBCODE_ALLOWED -->
 	<!-- EVENT posting_editor_buttons_before -->
-	<div id="core-bbcode-buttons">
+	<div id="bbcode-buttons">
 		<input type="button" class="btnbbcode" accesskey="b" name="addbbcode0" value=" B " style="font-weight:bold; width: 30px;" onclick="bbstyle(0)" onmouseover="helpline('b')" onmouseout="helpline('tip')" />
 		<input type="button" class="btnbbcode" accesskey="i" name="addbbcode2" value=" i " style="font-style:italic; width: 30px;" onclick="bbstyle(2)" onmouseover="helpline('i')" onmouseout="helpline('tip')" />
 		<input type="button" class="btnbbcode" accesskey="u" name="addbbcode4" value=" u " style="text-decoration: underline; width: 30px;" onclick="bbstyle(4)" onmouseover="helpline('u')" onmouseout="helpline('tip')" />
@@ -68,21 +68,18 @@
 				<!-- ENDIF -->
 			<!-- ENDIF -->
 		</select>
-	</div>
 	<!-- EVENT posting_editor_buttons_custom_tags_before -->
-	<!-- IF .custom_tags -->
-		<div id="custom-bbcode-buttons">
 			<!-- BEGIN custom_tags -->
 		<input type="button" class="btnbbcode" name="addbbcode{custom_tags.BBCODE_ID}" value="{custom_tags.BBCODE_TAG}" onclick="bbstyle({custom_tags.BBCODE_ID})"<!-- IF custom_tags.BBCODE_HELPLINE !== '' --> onmouseover="helpline('cb_{custom_tags.BBCODE_ID}')" onmouseout="helpline('tip')"<!-- ENDIF --> />
 			<!-- END custom_tags -->
-		</div>
-	<!-- ENDIF -->
+	</div>
 	<!-- EVENT posting_editor_buttons_after -->
 <!-- ENDIF -->
 	</td>
 </tr>
 <!-- IF S_BBCODE_ALLOWED -->
 <tr>
-	<td><noscript><input type="text" readonly="readonly" style="color:red; width:100%;" class="helpline" value="JavaScript{L_COLON} {L_DISABLED}" /></noscript><input type="text" readonly="readonly" id="helpbox" name="helpbox" style="display:none; width:100%;" class="helpline" value="" /><script>if (document.getElementById)	{ document.getElementById("helpbox").style.display=""; }	else	{ document.all("helpbox").style.display=""; }</script></td>	<td class="gensmall" align="center">{L_FONT_COLOR}</td>
+	<td><noscript><div class="nav" style="color:red">JavaScript{L_COLON} {L_DISABLED}</div></noscript><input type="text" readonly="readonly" id="helpbox" name="helpbox" style="width:100%" class="helpline" value="" /></td>
+	<td class="gensmall" align="center">{L_FONT_COLOR}</td>
 	</tr>
 <!-- ENDIF -->

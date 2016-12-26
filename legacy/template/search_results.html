@@ -78,14 +78,14 @@
 				</p>
 			</td>
 		</tr>
-	<!-- IF searchresults.S_NUM_ROWS < 6 --><!-- DEFINE $DISPLAYOPTIONS = 1 --><!-- ENDIF -->	<!-- EVENT search_results_topic_after -->
+		<!-- EVENT search_results_topic_after -->
 	<!-- BEGINELSE -->
 		<tr valign="middle">
 			<td colspan="7" class="row3" align="center"><span class="normal">{L_NO_SEARCH_RESULTS}</span></td>
 		</tr>
 	<!-- END searchresults -->
 	<!-- IF .searchresults and (S_SELECT_SORT_DAYS or S_SELECT_SORT_KEY) --><tr style="text-align:center">
-		<td class="cat" colspan="7"<!-- IF $DISPLAYOPTIONS eq 1 --> id="displayoptions"<!-- ENDIF --> valign="middle"><span class="genmed">{L_DISPLAY_POSTS}{L_COLON}</span> {S_SELECT_SORT_DAYS}<!-- IF S_SELECT_SORT_KEY -->&nbsp;<span class="genmed">{L_SORT_BY}{L_COLON}</span> {S_SELECT_SORT_KEY} {S_SELECT_SORT_DIR}<!-- ENDIF -->&nbsp;<input class="btnlite" type="submit" value="{L_GO}" name="sort" /></td>
+		<td class="cat" colspan="7" valign="middle"><span class="genmed">{L_DISPLAY_POSTS}{L_COLON}</span> {S_SELECT_SORT_DAYS}<!-- IF S_SELECT_SORT_KEY -->&nbsp;<span class="genmed">{L_SORT_BY}{L_COLON}</span> {S_SELECT_SORT_KEY} {S_SELECT_SORT_DIR}<!-- ENDIF -->&nbsp;<input class="btnlite" type="submit" value="{L_GO}" name="sort" /></td>
 	</tr><!-- ENDIF -->
 	</table>
 
@@ -111,14 +111,14 @@
 					<table width="100%" cellspacing="0" cellpadding="0" border="0">
 					<tr>
 						<td>
-							<table cellspacing="0" width="100%"><tr><td align="left" class="gensmall">
+							<table cellspacing="0" width="100%"><tr><td align="{S_CONTENT_FLOW_BEGIN}" class="gensmall">
 							<!-- IF searchresults.POST_SUBJECT neq "" -->
 								&nbsp;<b>{L_POST_SUBJECT}{L_COLON}</b> <a href="{searchresults.U_VIEW_POST}">{searchresults.POST_SUBJECT}</a>
 							<!-- ELSE -->
 								[ <a href="{searchresults.U_VIEW_POST}">{L_JUMP_TO_POST}</a> ]
 							<!-- ENDIF -->
 							</td>
-							<td align="right" class="gensmall"><b>{L_POSTED}{L_COLON}</b> {searchresults.POST_DATE}&nbsp;</td></tr></table>
+							<td align="{S_CONTENT_FLOW_END}" class="gensmall"><b>{L_POSTED}{L_COLON}</b> {searchresults.POST_DATE}&nbsp;</td></tr></table>
 						</td>
 					</tr>
 					</table>
@@ -138,7 +138,7 @@
 		<!-- ENDIF -->
 	<!-- EVENT search_results_post_after -->
 	<!-- IF searchresults.S_LAST_ROW -->	<!-- IF S_SELECT_SORT_KEY --><tr style="text-align:center">
-	<td class="cat" colspan="2"<!-- IF searchresults.S_NUM_ROWS < 2 --> id="displayoptions"<!-- ENDIF -->><span class="genmed">{L_SORT_BY}{L_COLON}</span> {S_SELECT_SORT_KEY} {S_SELECT_SORT_DIR}&nbsp;<input class="btnlite" type="submit" name="sort" value="{L_GO}" /></td>
+	<td class="cat" colspan="2"><span class="genmed">{L_SORT_BY}{L_COLON}</span> {S_SELECT_SORT_KEY} {S_SELECT_SORT_DIR}&nbsp;<input class="btnlite" type="submit" name="sort" value="{L_GO}" /></td>
 	</tr><!-- ENDIF -->	</table></td><td width="19"></td></tr></table><table width="100%" cellspacing="0"><tr><td width="19"></td><td></td><td width="19"></td></tr><tr><td width="19"></td><td>	<!-- ELSE -->	</table></td><td width="19"></td></tr></table>	<!-- ENDIF -->	<!-- BEGINELSE -->
 	<table class="tablebg" width="100%" cellspacing="1">
 	<tr>
@@ -151,9 +151,8 @@
 		</tr>
 	</table>	<!-- END searchresults -->
  	
-<!-- ENDIF --><table width="100%"><tr><td align="{S_CONTENT_FLOW_BEGIN}" class="gensmall"><strong>{PAGE_NUMBER}</strong> [ {SEARCH_MATCHES} ]</td>
+<!-- ENDIF --></form>	<table width="100%"><tr><td align="{S_CONTENT_FLOW_BEGIN}" class="gensmall"><strong>{PAGE_NUMBER}</strong> [ {SEARCH_MATCHES} ]</td>
 <td align="{S_CONTENT_FLOW_END}"><span class="nav"><!-- INCLUDE pagination.html --></span></td></tr></table>
-</form>
 <br clear="all" /><br />
 
 <!-- INCLUDE breadcrumbs.html -->

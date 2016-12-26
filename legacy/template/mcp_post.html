@@ -49,9 +49,9 @@
 	<td class="row1"><b class="gen"><!-- IF S_PM -->{L_PM_SUBJECT}<!-- ELSE -->{L_POST_SUBJECT}<!-- ENDIF -->{L_COLON} </b></td>
 	<td class="row2">
 		<span class="gen">{POST_SUBJECT}</span>
-		<span class="normal"><!-- IF S_POST_UNAPPROVED --> - <a href="{U_MCP_APPROVE}">{L_POST_UNAPPROVED}</a> <!-- ENDIF -->
-		<!-- IF S_POST_DELETED --> - <a href="{U_MCP_APPROVE}">{L_POST_DELETED}</a> <!-- ENDIF -->
-		<!-- IF S_POST_REPORTED and not S_MCP_REPORT --> - <a href="{U_MCP_REPORT}">{L_POST_REPORTED}</a><!-- ENDIF --></span>
+		<span class="normal"><!-- IF S_POST_UNAPPROVED --> - <a href="{U_MCP_APPROVE}" class="postapprove">{L_POST_UNAPPROVED}</a> <!-- ENDIF -->
+		<!-- IF S_POST_DELETED --> - <a href="{U_MCP_APPROVE}" class="postapprove">{L_POST_DELETED}</a> <!-- ENDIF -->
+		<!-- IF S_POST_REPORTED and not S_MCP_REPORT --> - <a href="{U_MCP_REPORT}" class="postreported">{L_POST_REPORTED}</a><!-- ENDIF --></span>
 	</td>
 </tr>
 <tr>

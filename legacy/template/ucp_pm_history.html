@@ -7,7 +7,7 @@
 
 <table class="tablebg" width="100%" cellspacing="1">
 <tr>
-	<th style="text-align: left;"> &nbsp; {L_MESSAGE_HISTORY}</th>
+	<th style="padding: 7px 14px; text-align: {S_CONTENT_FLOW_BEGIN}">{L_MESSAGE_HISTORY}</th>
 </tr>
 <tr>
 	<td class="row1"><div style="overflow: auto; width: 100%; height: 300px;">
@@ -61,7 +61,7 @@
 			<td class="gensmall"><a href="{history_row.U_VIEW_MESSAGE}">{L_VIEW_PM}</a></td>
 			<td align="{S_CONTENT_FLOW_END}" class="gensmall">
 					<!-- EVENT ucp_pm_history_post_buttons_before -->
-					<!-- IF history_row.U_QUOTE or history_row.MESSAGE_AUTHOR_QUOTE -->	<a title="{L_QUOTE} {history_row.MESSAGE_AUTHOR}" <!-- IF history_row.U_QUOTE -->href="{history_row.U_QUOTE}"<!-- ELSE -->href="javascript:;" onclick="addquote({history_row.MSG_ID}, '{history_row.MESSAGE_AUTHOR_QUOTE}', '{LA_WROTE}'); return false;"<!-- ENDIF -->><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_post_quote.gif" alt="[{L_QUOTE} {history_row.MESSAGE_AUTHOR}]" title="{L_QUOTE} {history_row.MESSAGE_AUTHOR}"></a> <!-- ENDIF --> 
+					<!-- IF history_row.U_QUOTE or history_row.MESSAGE_AUTHOR_QUOTE -->	<a title="{L_QUOTE} {history_row.MESSAGE_AUTHOR}" <!-- IF history_row.U_QUOTE -->href="{history_row.U_QUOTE}"<!-- ELSE -->href="#" onclick="addquote({history_row.MSG_ID}, '{history_row.MESSAGE_AUTHOR_QUOTE}', '{LA_WROTE}'); return false;"<!-- ENDIF -->><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_post_quote.gif" alt="[{L_QUOTE} {history_row.MESSAGE_AUTHOR}]" title="{L_QUOTE} {history_row.MESSAGE_AUTHOR}"></a> <!-- ENDIF --> 
 					<!-- IF history_row.U_POST_REPLY_PM --><a title="{L_POST_REPLY_PM}" href="{history_row.U_POST_REPLY_PM}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/button_pm_reply.gif" alt="[{L_POST_REPLY_PM}]" title="{L_POST_REPLY_PM}"></a><!-- ENDIF -->&nbsp;
 					<!-- EVENT ucp_pm_history_post_buttons_after -->
 				</td>

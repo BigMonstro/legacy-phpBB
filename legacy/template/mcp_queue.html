@@ -4,7 +4,7 @@
 
 <table width="100%" class="tablebg" cellspacing="1" cellpadding="4" border="0">
 <tr>
-	<td colspan="4" class="cat" id="displayoptions" style="line-height:125%;"><span class="nowrap"><span class="gensmall">{L_DISPLAY_ITEMS}{L_COLON}</span> {S_SELECT_SORT_DAYS}</span>&nbsp;<span class="nowrap"><span class="gensmall">{L_SORT_BY}</span> {S_SELECT_SORT_KEY} {S_SELECT_SORT_DIR}</span>&nbsp;<span class="nowrap"><span class="gensmall">{L_FORUM}</span> <select name="f">{S_FORUM_OPTIONS}</select></span> &nbsp; <!-- IF TOPIC_ID --><input type="checkbox" class="radio" name="t" value="{TOPIC_ID}" checked="checked" />&nbsp; <b class="normal">{L_ONLY_TOPIC}</b> &nbsp; <!-- ENDIF --><input class="btnlite" type="submit" name="sort" value="{L_GO}" /></td>
+	<td colspan="4" class="cat" style="line-height:125%;"><span class="nowrap"><span class="gensmall">{L_DISPLAY_ITEMS}{L_COLON}</span> {S_SELECT_SORT_DAYS}</span>&nbsp;<span class="nowrap"><span class="gensmall">{L_SORT_BY}</span> {S_SELECT_SORT_KEY} {S_SELECT_SORT_DIR}</span>&nbsp;<span class="nowrap"><span class="gensmall">{L_FORUM}</span> <select name="f">{S_FORUM_OPTIONS}</select></span> &nbsp; <!-- IF TOPIC_ID --><input type="checkbox" class="radio" name="t" value="{TOPIC_ID}" checked="checked" />&nbsp; <b class="normal">{L_ONLY_TOPIC}</b> &nbsp; <!-- ENDIF --><input class="btnlite" type="submit" name="sort" value="{L_GO}" /></td>
 </tr>
 <tr> 
 	<th>&nbsp;<!-- IF S_TOPICS -->{L_TOPIC}<!-- ELSE -->{L_POST}<!-- ENDIF -->&nbsp;</th>
@@ -61,9 +61,9 @@
 	<td align="{S_CONTENT_FLOW_END}" valign="top" nowrap="nowrap">
 		<b class="gensmall">
 			<!-- IF S_TOPICS -->
-				<a href="javascript:;" onclick="marklist('mcp', 'topic_id_list', true); return false;">{L_MARK_ALL}</a> :: <a href="javascript:;" onclick="marklist('mcp', 'topic_id_list', false); return false;">{L_UNMARK_ALL}</a>
+				<a href="#" onclick="marklist('mcp', 'topic_id_list', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('mcp', 'topic_id_list', false); return false;">{L_UNMARK_ALL}</a>
 			<!-- ELSE -->
-				<a href="javascript:;" onclick="marklist('mcp', 'post_id_list', true); return false;">{L_MARK_ALL}</a> :: <a href="javascript:;" onclick="marklist('mcp', 'post_id_list', false); return false;">{L_UNMARK_ALL}</a>
+				<a href="#" onclick="marklist('mcp', 'post_id_list', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('mcp', 'post_id_list', false); return false;">{L_UNMARK_ALL}</a>
 			<!-- ENDIF -->
 		</b>
 	</td>

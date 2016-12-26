@@ -24,7 +24,7 @@
 	{
  if (document.getElementById) { document.getElementById('mcp_ban').unbanlength.value = ban_length[option];
 		document.getElementById('mcp_ban').unbanreason.value = ban_reason[option];
-	document.getElementById('mcp_ban').unbangivereason.value = ban_give_reason[option]; } else { document.all('mcp_ban').unbanlength.value = ban_length[option];
+	document.getElementById('mcp_ban').unbangivereason.value = ban_give_reason[option]; } else if (document.all) { document.all('mcp_ban').unbanlength.value = ban_length[option];
 		document.all('mcp_ban').unbanreason.value = ban_reason[option];
 	document.all('mcp_ban').unbangivereason.value = ban_give_reason[option]; }}
 
@@ -62,7 +62,7 @@
 </tr>
 <tr>
 	<td class="row1" valign="top"><b class="normal">{L_BAN_LENGTH}{L_COLON}</b></td>
-	<td class="row2"><select name="banlength" onchange="if (document.getElementById) {if(this.value==-1){document.getElementById('banlengthuntil').style.display = 'block';}else{document.getElementById('banlengthuntil').style.display='none';}} else {if(this.value==-1){document.all('banlengthuntil').style.display = 'block';}else{document.all('banlengthuntil').style.display='none';}}">{S_BAN_END_OPTIONS}</select><div id="banlengthuntil" style="display:none"><input type="text" name="banlengthother" class="post" /> <span class="normal">{L_YEAR_MONTH_DAY}</span></div></td>
+	<td class="row2"><select name="banlength" onchange="if (document.getElementById) {if(this.value==-1){document.getElementById('banlengthuntil').style.display = 'block';}else{document.getElementById('banlengthuntil').style.display='none';}} else if (document.all) {if(this.value==-1){document.all('banlengthuntil').style.display = 'block';}else{document.all('banlengthuntil').style.display='none';}}">{S_BAN_END_OPTIONS}</select><div id="banlengthuntil" style="display:none"><input type="text" name="banlengthother" class="post" /> <span class="normal">{L_YEAR_MONTH_DAY}</span></div></td>
 </tr>
 <!-- EVENT mcp_ban_fields_after -->
 <tr>

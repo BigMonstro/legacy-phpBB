@@ -6,7 +6,7 @@
 
 <table class="tablebg" width="100%" cellspacing="1">
 <tr>
-	<th style="text-align: left;"> &nbsp; {L_TOPIC_REVIEW} - {TOPIC_TITLE}</th>
+	<th style="padding: 7px 14px; text-align: {S_CONTENT_FLOW_BEGIN}">{L_TOPIC_REVIEW} - {TOPIC_TITLE}</th>
 </tr>
 <tr>
 	<td class="row1"><div style="overflow: auto; width: 100%; height: 300px;">
@@ -37,7 +37,7 @@
 						<td>&nbsp;</td>
 						<td class="gensmall" valign="middle" nowrap="nowrap"><b>{L_POST_SUBJECT}{L_COLON}</b>&nbsp;</td>
 						<td class="gensmall" width="100%" valign="middle">{topic_review_row.POST_SUBJECT}</td>
-						<td valign="top" nowrap="nowrap">&nbsp;<!-- IF topic_review_row.POSTER_QUOTE and topic_review_row.DECODED_MESSAGE --><a title="{L_QUOTE} {topic_review_row.POST_AUTHOR}" href="javascript:;" onclick="addquote({topic_review_row.POST_ID},'{topic_review_row.POSTER_QUOTE}', '{LA_WROTE}'); return false;"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_post_quote.gif" alt="{L_QUOTE} {topic_review_row.POST_AUTHOR}" class="normal"></a><!-- ENDIF --></td>
+						<td valign="top" nowrap="nowrap">&nbsp;<!-- IF topic_review_row.POSTER_QUOTE and topic_review_row.DECODED_MESSAGE --><a title="{L_QUOTE} {topic_review_row.POST_AUTHOR}" href="#" onclick="addquote({topic_review_row.POST_ID},'{topic_review_row.POSTER_QUOTE}', '{LA_WROTE}'); return false;"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_post_quote.gif" alt="{L_QUOTE} {topic_review_row.POST_AUTHOR}" class="normal"></a><!-- ENDIF --></td>
 					</tr>
 					</table>
 				</td>

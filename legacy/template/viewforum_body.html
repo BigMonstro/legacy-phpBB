@@ -9,7 +9,6 @@
 	<!-- ENDIF -->
 	</div>
 
-
 <!-- ENDIF -->
 
 <!-- IF S_DISPLAY_ACTIVE -->
@@ -101,30 +100,20 @@
 	<br clear="all" />
 <!-- ENDIF -->
 
-<!-- IF S_HAS_SUBFORUM -->
-	<!-- INCLUDE forumlist_body.html -->
-	<br clear="all" />
-<!-- ENDIF -->
-
-<!-- IF S_IS_POSTABLE or S_NO_READ_ACCESS -->
-	<div id="pageheader" style="margin-bottom:24px;">
+<div id="pageheader" style="margin-bottom:3px; *margin-bottom:auto;">
 		<!-- EVENT viewforum_forum_title_before -->
-		<h2<!-- IF not S_HAS_SUBFORUM --> style="margin-top: 4px"<!-- ENDIF -->
-
-><!-- EVENT viewforum_forum_name_prepend --><a class="titles" href="{U_VIEW_FORUM}">{FORUM_NAME}</a><!-- EVENT viewforum_forum_name_append --></h2>
+		<h2 style="margin-top: 10px;<!-- IF not MODERATORS --> *margin-bottom: 4px;<!-- ENDIF -->"><!-- EVENT viewforum_forum_name_prepend --><a class="titles" href="{U_VIEW_FORUM}">{FORUM_NAME}</a><!-- EVENT viewforum_forum_name_append --></h2>
 		<!-- EVENT viewforum_forum_title_after -->
 		<!-- IF MODERATORS -->
 			<p class="moderators"><!-- IF S_SINGLE_MODERATOR -->{L_MODERATOR}<!-- ELSE -->{L_MODERATORS}<!-- ENDIF -->{L_COLON} {MODERATORS}</p>
 		<!-- ENDIF -->
-		<!-- IF U_MCP -->
-			<p class="linkmcp">[&nbsp;<!-- IF U_ACP --><a href="{U_ACP}">{L_ACP}</a><!-- IF U_MCP -->&nbsp;|&nbsp;<!-- ENDIF --><!-- ENDIF --><!-- IF U_MCP --><a href="{U_MCP}">{L_MCP}</a><!-- ENDIF -->&nbsp;]</p>
-		<!-- ENDIF -->
-	</div>
-
-
-	
-
+		
+<!-- IF S_HAS_SUBFORUM -->
+	<!-- IF not S_IS_BOT and U_MARK_FORUMS --><div class="nav" align="{S_CONTENT_FLOW_END}" style="margin-bottom: 12px"><a href="{U_MARK_FORUMS}">{L_MARK_SUBFORUMS_READ}</a></div><!-- ENDIF -->
+	<!-- INCLUDE forumlist_body.html -->
+	<br clear="all" />
 <!-- ENDIF -->
+	</div>
 
 <div id="pagecontent">
 
@@ -157,41 +146,35 @@
 	<br clear="all" />
 <!-- ENDIF -->
 
-	<!-- IF S_DISPLAY_POST_INFO or TOTAL_TOPICS -->
+	<!-- IF (S_DISPLAY_POST_INFO and not S_IS_BOT) or .pagination or TOTAL_TOPICS or (U_WATCH_FORUM_LINK and not S_IS_BOT) -->
 		<table width="100%" cellspacing="1">
 		<tr>
-			<td align="{S_CONTENT_FLOW_BEGIN}" valign="middle" nowrap="nowrap">
-			<!-- EVENT viewforum_buttons_top_before -->
-
+			<td align="{S_CONTENT_FLOW_BEGIN}" class="gensmall" nowrap="nowrap" valign="bottom">
 			<!-- IF S_DISPLAY_POST_INFO and not S_IS_BOT -->
-				<a title="<!-- IF S_IS_LOCKED -->{L_POST_FORUM_LOCKED}<!-- ELSE -->{L_POST_NEW_TOPIC}<!-- ENDIF -->" href="{U_POST_NEW_TOPIC}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/button_topic_<!-- IF S_IS_LOCKED -->locked<!-- ELSE -->new<!-- ENDIF -->.gif" alt="[<!-- IF S_IS_LOCKED -->{L_POST_FORUM_LOCKED}<!-- ELSE -->{L_POST_NEW_TOPIC}<!-- ENDIF -->]" title="<!-- IF S_IS_LOCKED -->{L_POST_FORUM_LOCKED}<!-- ELSE -->{L_POST_NEW_TOPIC}<!-- ENDIF -->" class="normal"></a>
-			<!-- ENDIF -->
+
+			<!-- EVENT viewforum_buttons_top_before -->
+			
+			<a title="<!-- IF S_IS_LOCKED -->{L_POST_FORUM_LOCKED}<!-- ELSE -->{L_POST_NEW_TOPIC}<!-- ENDIF -->" href="{U_POST_NEW_TOPIC}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/button_topic_<!-- IF S_IS_LOCKED -->locked<!-- ELSE -->new<!-- ENDIF -->.gif" alt="[<!-- IF S_IS_LOCKED -->{L_POST_FORUM_LOCKED}<!-- ELSE -->{L_POST_NEW_TOPIC}<!-- ENDIF -->]" title="<!-- IF S_IS_LOCKED -->{L_POST_FORUM_LOCKED}<!-- ELSE -->{L_POST_NEW_TOPIC}<!-- ENDIF -->"></a>
 
 			<!-- EVENT viewforum_buttons_top_after -->
-			</td>
 
-			<!-- IF TOTAL_TOPICS -->
-				<td class="nav" valign="middle" nowrap="nowrap">&nbsp;{PAGE_NUMBER}<br /></td>
-				<td class="gensmall" nowrap="nowrap">&nbsp;[ {TOTAL_TOPICS} ]&nbsp;</td>
-				<td class="gensmall" width="100%" align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><!-- INCLUDE pagination.html --></td>
 			<!-- ENDIF -->
+
+			<!-- IF U_WATCH_FORUM_LINK and not S_IS_BOT -->
+				<a href="{U_WATCH_FORUM_LINK}" title="{S_WATCH_FORUM_TITLE}"><img src="{T_THEME_PATH}/images/button_forum_<!-- IF S_WATCHING_FORUM -->unsubscribe<!-- ELSE -->subscribe<!-- ENDIF -->.gif" alt="[{S_WATCH_FORUM_TITLE}]" title="{S_WATCH_FORUM_TITLE}"></a>
+			<!-- ENDIF -->
+
+			</td>
+			<td class="gensmall" nowrap="nowrap" valign="middle"><!-- IF TOTAL_TOPICS --><b>&nbsp;{PAGE_NUMBER}<br /></b><!-- ENDIF --></td>
+			<td class="gensmall" nowrap="nowrap" valign="middle"><!-- IF TOTAL_TOPICS -->&nbsp;[ {TOTAL_TOPICS} ]&nbsp;<!-- ENDIF --></td>
+			<td align="{S_CONTENT_FLOW_END}" class="gensmall" style="line-height: 220%" valign="bottom" width="100%"><!-- IF U_MARK_TOPICS and .topicrow and not S_IS_BOT --><b><a href="{U_MARK_TOPICS}" class="nowrap">{L_MARK_TOPICS_READ}</a></b><!-- IF .pagination --> | <!-- ENDIF --><!-- ENDIF --><!-- INCLUDE pagination.html --></td>
 		</tr>
 		</table>
+		<div style="padding: 2px;"></div>
 	<!-- ENDIF -->
 
 	<!-- IF not S_DISPLAY_ACTIVE and (S_IS_POSTABLE or .topicrow) -->
 		<table class="tablebg" width="100%" cellspacing="1">
-		<tr>
-			<td class="cat" colspan="<!-- IF S_TOPIC_ICONS -->7<!-- ELSE -->6<!-- ENDIF -->">
-				<table width="100%" cellspacing="0">
-				<tr class="nav">
-					<td><!-- IF S_DISPLAY_SEARCHBOX --><!-- INCLUDE searchbox.html --><!-- ENDIF --></td>
-					<td align="{S_CONTENT_FLOW_END}" valign="middle"><!-- IF U_WATCH_FORUM_LINK and not S_IS_BOT --><a href="{U_WATCH_FORUM_LINK}">{S_WATCH_FORUM_TITLE}</a><!-- ENDIF --><!-- IF not S_IS_BOT and U_MARK_TOPICS and .topicrow --> | <a href="{U_MARK_TOPICS}">{L_MARK_TOPICS_READ}</a><!-- ENDIF -->&nbsp;</td>
-				</tr>
-				</table>
-			</td>
-		</tr>
-
 		<tr>
 			<!-- IF S_TOPIC_ICONS -->
 				<th colspan="3">&nbsp;{L_TOPICS}&nbsp;</th>
@@ -261,7 +244,7 @@
 				</td>
 			</tr>
 
-	<!-- IF topicrow.S_NUM_ROWS < 4 --><!-- DEFINE $DISPLAYOPTIONS = 1 --><!-- ENDIF -->	<!-- BEGINELSE -->
+		<!-- BEGINELSE -->
 			<!-- IF S_IS_POSTABLE -->
 			<tr>
 				<!-- IF S_TOPIC_ICONS -->
@@ -275,7 +258,7 @@
 
 		<!-- IF not S_IS_BOT -->
 		<tr>
-			<td class="cat" colspan="<!-- IF S_TOPIC_ICONS -->7<!-- ELSE -->6<!-- ENDIF -->"<!-- IF $DISPLAYOPTIONS eq 1 and not S_HAS_SUBFORUM --> id="displayoptions"<!-- ENDIF -->>
+			<td class="cat" colspan="<!-- IF S_TOPIC_ICONS -->7<!-- ELSE -->6<!-- ENDIF -->">
 					<form method="post" action="{S_FORUM_ACTION}" style="text-align:center"><span class="genmed">{L_DISPLAY_TOPICS}{L_COLON}</span>&nbsp;{S_SELECT_SORT_DAYS}&nbsp;<span class="genmed">{L_SORT_BY}</span> {S_SELECT_SORT_KEY} {S_SELECT_SORT_DIR}&nbsp;<input class="btnlite" type="submit" name="sort" value="{L_GO}" /></form>
 				</td>
 		</tr>
@@ -283,35 +266,38 @@
 		</table>
 	<!-- ENDIF -->
 
-	<!-- IF S_DISPLAY_POST_INFO or TOTAL_TOPICS -->
+	<!-- IF (S_DISPLAY_POST_INFO and not S_IS_BOT) or .pagination or TOTAL_TOPICS -->
+		<div style="padding: 4px;"></div>
 		<table width="100%" cellspacing="1">
 		<tr>
-			<td align="{S_CONTENT_FLOW_BEGIN}" valign="middle" nowrap="nowrap">
-			<!-- EVENT viewforum_buttons_bottom_before -->
-
+			<td align="{S_CONTENT_FLOW_BEGIN}" class="gensmall" nowrap="nowrap" valign="top">
 			<!-- IF S_DISPLAY_POST_INFO and not S_IS_BOT -->
-				<a title="<!-- IF S_IS_LOCKED -->{L_POST_FORUM_LOCKED}<!-- ELSE -->{L_POST_NEW_TOPIC}<!-- ENDIF -->" href="{U_POST_NEW_TOPIC}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/button_topic_<!-- IF S_IS_LOCKED -->locked<!-- ELSE -->new<!-- ENDIF -->.gif" alt="[<!-- IF S_IS_LOCKED -->{L_POST_FORUM_LOCKED}<!-- ELSE -->{L_POST_NEW_TOPIC}<!-- ENDIF -->]" title="<!-- IF S_IS_LOCKED -->{L_POST_FORUM_LOCKED}<!-- ELSE -->{L_POST_NEW_TOPIC}<!-- ENDIF -->" class="normal"></a>
-			<!-- ENDIF -->
+
+			<!-- EVENT viewforum_buttons_bottom_before -->
+			
+			<a title="<!-- IF S_IS_LOCKED -->{L_POST_FORUM_LOCKED}<!-- ELSE -->{L_POST_NEW_TOPIC}<!-- ENDIF -->" href="{U_POST_NEW_TOPIC}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/button_topic_<!-- IF S_IS_LOCKED -->locked<!-- ELSE -->new<!-- ENDIF -->.gif" alt="[<!-- IF S_IS_LOCKED -->{L_POST_FORUM_LOCKED}<!-- ELSE -->{L_POST_NEW_TOPIC}<!-- ENDIF -->]" title="<!-- IF S_IS_LOCKED -->{L_POST_FORUM_LOCKED}<!-- ELSE -->{L_POST_NEW_TOPIC}<!-- ENDIF -->"></a>
 
 			<!-- EVENT viewforum_buttons_bottom_after -->
-			</td>
 
-			<!-- IF TOTAL_TOPICS -->
-				<td class="nav" valign="middle" nowrap="nowrap">&nbsp;{PAGE_NUMBER}<br /></td>
-				<td class="gensmall" nowrap="nowrap">&nbsp;[ {TOTAL_TOPICS} ]&nbsp;</td>
-				<td class="gensmall" width="100%" align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><!-- INCLUDE pagination.html --></td>
 			<!-- ENDIF -->
+			</td>
+			<td class="gensmall" nowrap="nowrap" valign="middle"><!-- IF TOTAL_TOPICS --><b>&nbsp;{PAGE_NUMBER}<br /></b><!-- ENDIF --></td>
+			<td class="gensmall" nowrap="nowrap" valign="middle"><!-- IF TOTAL_TOPICS -->&nbsp;[ {TOTAL_TOPICS} ]&nbsp;<!-- ENDIF --></td>
+			<td align="{S_CONTENT_FLOW_END}" class="gensmall" style="line-height: 220%" valign="top" width="100%"><b><a href="{U_INDEX}" class="nowrap">{L_RETURN_TO_INDEX}</a></b><!-- IF .pagination --> | <!-- ENDIF --><!-- INCLUDE pagination.html --></td>
 		</tr>
 		</table>
 	<!-- ENDIF -->
 
-		<br clear="all" />
 </div>
 
-<!-- INCLUDE breadcrumbs.html -->
+<table width="100%" cellspacing="0">
+<tr>
+	<td valign="middle"><!-- IF S_DISPLAY_SEARCHBOX --><!-- INCLUDE searchbox.html --><br><!-- ENDIF --></td>
+	<td align="{S_CONTENT_FLOW_END}" valign="top"><!-- IF S_DISPLAY_POST_INFO --><span class="gensmall"><!-- BEGIN rules -->{rules.RULE}<br /><!-- END rules --></span><!-- ENDIF --><!-- INCLUDE jumpbox.html --></td>
+</tr>
+</table>
 
 <!-- IF S_DISPLAY_ONLINE_LIST -->
-	<br clear="all" />
 
 	<table class="tablebg" width="100%" cellspacing="1">
 	<tr>
@@ -321,14 +307,10 @@
 		<td class="row1"><p class="gensmall">{LOGGED_IN_USER_LIST}</p></td>
 	</tr>
 	</table>
-<!-- ENDIF --><!-- IF S_DISPLAY_POST_INFO -->
-	<br clear="all" />	<h4>{L_FORUM_PERMISSIONS}</h4> <span class="gensmall"><!-- BEGIN rules -->{rules.RULE}<br /><!-- END rules --></span><!-- ENDIF -->
+<!-- ENDIF -->
 
-<br clear="all" />
+	<br clear="all" />
 
-<table width="100%" cellspacing="0">
-<tr>	<td align="{S_CONTENT_FLOW_END}"><!-- INCLUDE jumpbox.html --></td>
-</tr>
-</table>
+<!-- INCLUDE breadcrumbs.html -->
 
 <!-- INCLUDE overall_footer.html -->

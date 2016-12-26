@@ -1,9 +1,6 @@
 <table class="tablebg" cellspacing="1" style="margin-top:4px" width="100%">
 <tr>
-	<td class="cat" colspan="5" align="{S_CONTENT_FLOW_END}"><!-- IF not S_IS_BOT and U_MARK_FORUMS --><b><a class="normal" href="{U_MARK_FORUMS}">{L_MARK_FORUMS_READ}</a></b><!-- ENDIF -->&nbsp;</td>
-</tr>
-<tr>
-	<th colspan="2">&nbsp;{L_FORUM}&nbsp;</th>
+	<th colspan="2">&nbsp;<!-- IF S_INDEX -->{L_FORUMS}<!-- ELSE -->{L_SUBFORUMS}<!-- ENDIF -->&nbsp;</th>
 	<th width="50">{L_TOPICS}</th>
 	<th width="50">{L_POSTS}</th>
 	<th nowrap="nowrap">&nbsp;{L_LAST_POST}&nbsp;</th>

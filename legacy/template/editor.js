@@ -355,7 +355,7 @@ function colorPalette() {
 			{
 				color = String(numberList[r]) + String(numberList[g]) + String(numberList[b]);
 				document.write('<td style="background-color: #' + color + '; padding:0" height="10" width="11">');
-				document.write('<a style="height:100%;width:100%;display:block" href="javascript:;" onclick="bbfontstyle(\'[color=#' + color + ']\', \'[/color]\'); return false;" title="#' + color + '"><div style="height:100%;width:100%"></div></a>');
+				document.write('<a style="height:100%;width:100%;display:block" href="#" onclick="bbfontstyle(\'[color=#' + color + ']\', \'[/color]\'); return false;" title="#' + color + '"><div style="height:100%;width:100%"></div></a>');
 				document.writeln('</td>');
 			}
 				document.writeln('</tr>');

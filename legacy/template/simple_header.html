@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 {META}
-<title>{SITENAME} &bull; <!-- IF S_IN_MCP -->{L_MCP} &bull; <!-- ELSEIF S_IN_UCP -->{L_UCP} &bull; <!-- ENDIF -->{PAGE_TITLE}</title>
+<title>{SITENAME} - <!-- IF S_IN_MCP -->{L_MCP} - <!-- ELSEIF S_IN_UCP -->{L_UCP} - <!-- ENDIF -->{PAGE_TITLE}</title>
 
 <link rel="stylesheet" href="{T_STYLESHEET_LINK}" type="text/css" />
 
@@ -14,8 +14,9 @@
 
 <!-- EVENT simple_header_stylesheets_after -->
 
-</head>
+<script type="text/javascript" src="{T_TEMPLATE_PATH}/forum_fn.js?assets_version={T_ASSETS_VERSION}"></script>
 
+</head>
 
 <body class="{S_CONTENT_DIRECTION}">
 <!-- EVENT simple_header_body_before -->

@@ -3,7 +3,7 @@
 	Style name:			Legacy
 	Based on style: 	subSilver (the default phpBB 2.0.x style)
 	Original author:	Tom Beddard ( http://www.subblue.com/ )
-	Modified by:		Big Monstro (thanks to LiveKiller44)
+	Modified by:		Big Monstro (initial CSS by LiveKiller44)
     --------------------------------------------------------------
 */
 
@@ -83,7 +83,7 @@ body {
 div.forumrules {
 	padding: 4px;
 	font-weight: normal;
-	font-size: 0.70em;
+	font-size: 0.7em;
 	font-family: "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
 	margin-bottom:12px;
 }
@@ -150,31 +150,22 @@ p.moderators {
 	float: right;
 }
 
-p.linkmcp {
-	margin: 2px 0 0;
-	float: right;
-	white-space: nowrap;
-}
-
-.rtl p.linkmcp {
-	float: left;
-}
-
 p.breadcrumbs {
 	margin: 0;
 	color: #000000;
 	font-weight: bold;
 	white-space: normal;
 	font-size: 0.6em;
+	text-align: left;
 }
 
 .rtl p.breadcrumbs {
-	float: right;
+	text-align: right;
 }
 
 p.datetime {
 	margin: 0;
-	white-space: nowrap;
+	white-space: normal;
 	font-size: 0.6em;
 }
 
@@ -206,18 +197,18 @@ p.topicdetails {
 }
 
 p.topictitle {
-	font-size: 0.70em;
+	font-size: 0.7em;
 
 }
 
 .postreported, .postreported a:link, .postreported a:visited, .postreported a:hover, .postreported a:active {
 	margin: 1px 0;
-	color: red;
+	color: red !important;
 	font-weight: bold;
 }
 
 .postapprove, .postapprove a:link, .postapprove a:visited, .postapprove a:hover, .postapprove a:active {
-	color: green;
+	color: green !important;
 	font-weight: bold;
 }
 
@@ -340,9 +331,6 @@ td.profile {
 
 .tablebg {
 	background-color: #C0C0C0;
-	box-shadow: 1px 1px 6px #808080; /* Shadow effect on IE9+ */
-	-moz-box-shadow: 1px 1px 6px #808080; /* Firefox 3.5+ */
-	-webkit-box-shadow: 1px 1px 6px #808080; /* Chrome */
 }
 
 .catdiv {
@@ -378,6 +366,12 @@ td.profile {
 
 .row3 {
 	background-color: #C0C0C0;
+	padding: 4px;
+}
+
+.row4 {
+	background-color: #FFFFFF;
+	font-size: 140%;
 	padding: 4px;
 }
 
@@ -679,6 +673,11 @@ img {
 	border: none;
 }
 
+.block {
+	display: block;
+	white-space: nowrap;
+}
+
 .sep {
 	color: #000000;
 }
@@ -696,13 +695,31 @@ pre {
 	font-family: Monaco, 'Courier New', monospace;
 }
 
-.nowrap {
-	white-space: nowrap;
+.notification_time {
+	font-size: 90%;
+	text-align: right;
 }
 
-.notif_time {
-	font-size:90%;
-	text-align:right;
+.rtl .notification_time {
+	text-align: left;
+}
+
+#notification_list iframe, #quick_links_list iframe, #topictools_bottom_list iframe, #topictools_top_list iframe, #user_list iframe{
+	position: absolute;
+	left: -2px;
+	right: auto;
+	top: -2px;
+	z-index: -1;
+	filter: mask();
+}
+
+.rtl #notification_list iframe, #quick_links_list iframe, #user_list iframe{
+	left: auto;
+	right: -2px;
+}
+
+.nowrap {
+	white-space: nowrap;
 }
 
 .username-coloured {

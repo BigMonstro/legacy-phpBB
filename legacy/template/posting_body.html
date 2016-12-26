@@ -19,9 +19,7 @@
 
 <!-- IF not S_PRIVMSGS -->
 	<div id="pageheader" style="margin-bottom:24px; *margin-bottom:auto;">
-		<h2 style="margin-top: 4px;
-
- margin-bottom: -15px; *margin-bottom: 10px;"><!-- IF TOPIC_TITLE --><!-- EVENT posting_topic_title_before --><a class="titles" href="{U_VIEW_TOPIC}">{TOPIC_TITLE}</a><!-- EVENT posting_topic_title_after --><!-- ELSE --><a class="titles" href="{U_VIEW_FORUM}">{FORUM_NAME}</a><!-- ENDIF --></h2>
+		<h2 style="margin-top: 10px; margin-bottom: -15px; *margin-bottom: 10px;"><!-- IF TOPIC_TITLE --><!-- EVENT posting_topic_title_before --><a class="titles" href="{U_VIEW_TOPIC}">{TOPIC_TITLE}</a><!-- EVENT posting_topic_title_after --><!-- ELSE --><a class="titles" href="{U_VIEW_FORUM}">{FORUM_NAME}</a><!-- ENDIF --></h2>
 
 		</div>
 
@@ -157,23 +155,21 @@
 	<!-- EVENT posting_editor_smilies_before -->
 	<!-- IF S_SMILIES_ALLOWED -->
 		<table width="100%" cellspacing="5" cellpadding="0" border="0" align="center">
-		<tr>
-			<td class="gensmall" align="center"><b>{L_SMILIES}</b></td>
-		</tr>
-		<tr>
-			<td class="genmed" align="center">
+			<tr>
+				<td class="gensmall" align="center"><b>{L_SMILIES}</b></td>
+			</tr>
+			<tr>
+				<td class="genmed" align="center">
 				<!-- BEGIN smiley -->
-					<a title="{smiley.SMILEY_DESC}" href="javascript:;" onclick="insert_text('{smiley.A_SMILEY_CODE}', true); return false;" style="line-height: 20px;"><img src="{smiley.SMILEY_IMG}" alt="{smiley.SMILEY_CODE}" title="{smiley.SMILEY_DESC}" hspace="2" vspace="2" /></a>
+					<a title="{smiley.SMILEY_DESC}" href="#" onclick="insert_text('{smiley.A_SMILEY_CODE}', true); return false;" style="line-height: 20px;"><img src="{smiley.SMILEY_IMG}" alt="{smiley.SMILEY_CODE}" title="{smiley.SMILEY_DESC}" hspace="2" vspace="2" /></a>
 				<!-- END smiley -->
-		</td>
-		</tr>
-
-		<!-- IF S_SHOW_SMILEY_LINK -->
+				</td>
+			</tr>
+			<!-- IF S_SHOW_SMILEY_LINK -->
 			<tr>
 				<td align="center"><a class="nav" href="{U_MORE_SMILIES}" onclick="popup(this.href, 300, 350, '_phpbbsmilies'); return false;">{L_MORE_SMILIES}</a></td>
 			</tr>
-		<!-- ENDIF -->
-
+			<!-- ENDIF -->
 		</table>
 	<!-- ENDIF -->
 	<!-- EVENT posting_editor_smilies_after -->
@@ -190,7 +186,7 @@
 		<!-- INCLUDE posting_buttons.html -->
 		<!-- EVENT posting_editor_message_before -->
 		<tr>
-			<td valign="top" style="width: 100%;"><textarea name="message" rows="15" cols="76" tabindex="3" onselect="storeCaret(this);" onclick="storeCaret(this);" onkeyup="storeCaret(this);" onfocus="initInsertions();" style="width: 99%; height: 270px;">{MESSAGE}</textarea><script>var textarea = document.forms[form_name].elements[text_name]; textarea.onkeydown = function(e) { if ((event.keyCode==9 || event.which==9) && inCodeTag() && !event.altKey && !event.ctrlKey && !event.shiftKey && !event.metaKey) { event.preventDefault ? event.preventDefault() : (event.returnValue = false); bbfontstyle("\t","");}}; if (!document.all) {	textarea.onkeypress = function(event) { if ((event.keyCode==9 || event.which==9) && inCodeTag() && !event.altKey && !event.ctrlKey && !event.shiftKey && !event.metaKey) { event.preventDefault ? event.preventDefault() : (event.returnValue = false); bbfontstyle("\t","");}}}</script><!--[if lte IE 7]><script>var wwidth=document.body.offsetWidth; if (!document.compatMode) {wwidth=wwidth-20}; var msg=<!-- IF S_BBCODE_ALLOWED -->380<!-- ELSE -->445<!-- ENDIF -->+0.725*(wwidth-620);<!-- IF S_PRIVMSGS --> msg=msg*0.8;<!-- ENDIF --> document.all("message").style.width=msg;</script><![endif]--></td>
+			<td valign="top" style="width: 100%;"><textarea name="message" rows="15" cols="76" tabindex="3" onselect="storeCaret(this);" onclick="storeCaret(this);" onkeyup="storeCaret(this);" onfocus="initInsertions();" style="width: 99%; height: 270px;">{MESSAGE}</textarea><script>var textarea = document.forms[form_name].elements[text_name]; textarea.onkeydown = function(e) { if ((event.keyCode==9 || event.which==9) && inCodeTag() && !event.altKey && !event.ctrlKey && !event.shiftKey && !event.metaKey) { event.preventDefault ? event.preventDefault() : (event.returnValue = false); bbfontstyle("\t","");}}; if (!document.all) {	textarea.onkeypress = function(event) { if ((event.keyCode==9 || event.which==9) && inCodeTag() && !event.altKey && !event.ctrlKey && !event.shiftKey && !event.metaKey) { event.preventDefault ? event.preventDefault() : (event.returnValue = false); bbfontstyle("\t","");}}}; if (typeof TextareaFix !== 'undefined') {	var wwidth=document.documentElement.offsetWidth; var msg=<!-- IF S_BBCODE_ALLOWED -->380<!-- ELSE -->445<!-- ENDIF -->+0.725*(wwidth-620);<!-- IF S_IN_UCP --> msg=msg*0.8;<!-- ENDIF --> textarea.style.width=msg;};</script></td>
 			<!-- IF S_BBCODE_ALLOWED -->
 	<td class="row2" valign="top"><script>colorPalette();</script></td>	<!-- ENDIF -->
 	 	</tr>
@@ -227,7 +223,7 @@
 		<tr>
 			<td class="gensmall">{SMILIES_STATUS}</td>
 		</tr>
-		<tr><td><a href="{U_FAQ}?mode=bbcode" class="normal"><img src="{T_THEME_PATH}/images/icon_mini_faq.gif" alt=""> {L_BBCODE_GUIDE}</a></td></tr>	</table>
+		<tr><td>&raquo; <a href="{U_FAQ}?mode=bbcode" class="nav">{L_BBCODE_GUIDE}</a></td></tr>	</table>
 	</td>
 	<!-- EVENT posting_editor_bbcode_status_after -->
 	<td class="row2">

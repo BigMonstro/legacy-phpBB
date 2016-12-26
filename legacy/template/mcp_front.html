@@ -39,7 +39,7 @@
 	
 	<!-- IF .unapproved --><table width="100%" cellspacing="2" cellpadding="2" border="0" align="center">
 	<tr>
-		<td align="{S_CONTENT_FLOW_END}" valign="top" nowrap="nowrap"><b class="gensmall"><a href="javascript:;" onclick="marklist('mcp_queue', '', true); return false;">{L_MARK_ALL}</a> :: <a href="javascript:;" onclick="marklist('mcp_queue', '', false); return false;">{L_UNMARK_ALL}</a></b></td>
+		<td align="{S_CONTENT_FLOW_END}" valign="top" nowrap="nowrap"><b class="gensmall"><a href="#" onclick="marklist('mcp_queue', '', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('mcp_queue', '', false); return false;">{L_UNMARK_ALL}</a></b></td>
 	</tr>
 	</table><!-- ENDIF -->
 
@@ -120,16 +120,14 @@
 	<tr>
 		<th width="15%" nowrap="nowrap">{L_USERNAME}</th>
 		<th width="12%" nowrap="nowrap">{L_IP}</th>
-		<th width="45%" nowrap="nowrap">{L_ACTION}</th>
-		<th nowrap="nowrap"></th>
+		<th nowrap="nowrap">{L_ACTION}</th>
 		<th width="18%" nowrap="nowrap">{L_TIME}</th>
 	</tr>
 	<!-- BEGIN log -->
 		<tr>
 			<td class="row1" nowrap="nowrap"><span class="gen">{log.USERNAME}</span></td>
 			<td class="row1" align="center" nowrap="nowrap"><span class="gen">{log.IP}</span></td>
-			<td class="row1"><span class="genmed">{log.ACTION}</span></td>
-			<td class="row1" align="center" nowrap="nowrap"><span class="gensmall"><!-- IF log.U_VIEW_TOPIC --><a href="{log.U_VIEW_TOPIC}">{L_VIEW_TOPIC}</a><!-- IF log.U_VIEWLOGS --> | <!-- ENDIF --><!-- ENDIF --><!-- IF log.U_VIEWLOGS --><a href="{log.U_VIEWLOGS}">{L_VIEW_TOPIC_LOGS}</a><!-- ENDIF --></span></td>
+			<td class="row1"><span class="genmed">{log.ACTION}<br /><!-- IF log.U_VIEW_TOPIC --><a href="{log.U_VIEW_TOPIC}">{L_VIEW_TOPIC}</a><!-- IF log.U_VIEWLOGS --> | <!-- ENDIF --><!-- ENDIF --><!-- IF log.U_VIEWLOGS --><a href="{log.U_VIEWLOGS}">{L_VIEW_TOPIC_LOGS}</a><!-- ENDIF --></span></td>
 			<td class="row1" align="center" nowrap="nowrap"><span class="gensmall">{log.TIME}</span></td>
 		</tr>
 	<!-- BEGINELSE -->

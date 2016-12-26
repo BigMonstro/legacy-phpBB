@@ -10,45 +10,84 @@
 	<!-- ENDIF -->
 	</div>
 
-	
 <!-- ENDIF -->
 
-<div id="pageheader" style="margin-bottom:24px; *margin-bottom:auto;">
-	<h2 style="margin-top: 4px;
-
-<!-- IF not MODERATORS and not U_MCP --> *margin-bottom: 25px;<!-- ENDIF -->"><!-- EVENT viewtopic_topic_title_prepend --><a class="titles" href="{U_VIEW_TOPIC}">{TOPIC_TITLE}</a><!-- EVENT viewtopic_topic_title_append --></h2>
+<div id="pageheader" style="margin-bottom:3px; *margin-bottom:auto;">
+	<h2 style="margin-top: 10px;<!-- IF not MODERATORS --> *margin-bottom: 4px;<!-- ENDIF -->"><!-- EVENT viewtopic_topic_title_prepend --><a class="titles" href="{U_VIEW_TOPIC}">{TOPIC_TITLE}</a><!-- EVENT viewtopic_topic_title_append --></h2>
 	<!-- EVENT viewtopic_topic_title_after -->
 
 <!-- IF MODERATORS -->
 	<p class="moderators"><!-- IF S_SINGLE_MODERATOR -->{L_MODERATOR}<!-- ELSE -->{L_MODERATORS}<!-- ENDIF -->{L_COLON} {MODERATORS}</p>
-<!-- ENDIF -->
-<!-- IF U_MCP -->
-	<p class="linkmcp">[&nbsp;<!-- IF U_ACP --><a href="{U_ACP}">{L_ACP}</a><!-- IF U_MCP -->&nbsp;|&nbsp;<!-- ENDIF --><!-- ENDIF --><!-- IF U_MCP --><a href="{U_MCP}">{L_MCP}</a><!-- ENDIF -->&nbsp;]</p>
-<!-- ENDIF -->
-</div>
-
-
+<!-- ENDIF --></div>
 
 <div id="pagecontent">
 
 	<table width="100%" cellspacing="1">
 	<tr>
-		<td align="{S_CONTENT_FLOW_BEGIN}" valign="middle" nowrap="nowrap">
+		<td class="genmed" id="buttons_top_side" nowrap="nowrap" valign="bottom">
+
+		<!-- IF (U_WATCH_TOPIC or U_BOOKMARK_TOPIC or U_BUMP_TOPIC or U_EMAIL_TOPIC or U_PRINT_TOPIC or S_DISPLAY_TOPIC_TOOLS) and not S_IS_BOT -->
+			<div id="topictools_top_list" style="background-color: #FFFFFF; border: 2px solid #808080; display: none; line-height: 180%; margin-top: 27px; padding: 0 4px; position: absolute; z-index: 1">
+				<!-- EVENT viewtopic_topic_tools_before -->
+					<!-- IF U_WATCH_TOPIC --><a href="{U_WATCH_TOPIC}" class="block">{S_WATCH_TOPIC_TITLE}</a><!-- ENDIF -->
+					<!-- IF U_BOOKMARK_TOPIC --><a href="{U_BOOKMARK_TOPIC}" class="block">{S_BOOKMARK_TOPIC}</a><!-- ENDIF -->
+					<!-- IF U_PRINT_TOPIC --><a href="{U_PRINT_TOPIC}" class="block">{L_PRINT_TOPIC}</a><!-- ENDIF -->
+					<!-- IF U_EMAIL_TOPIC --><a href="{U_EMAIL_TOPIC}" class="block">{L_EMAIL_TOPIC}</a><!-- ENDIF -->
+					<!-- IF U_BUMP_TOPIC --><a href="{U_BUMP_TOPIC}" class="block">{L_BUMP_TOPIC}</a><!-- ENDIF -->
+				<!-- EVENT viewtopic_topic_tools_after -->
+			</div>
+		<!-- ENDIF -->
+
 		<!-- EVENT viewtopic_buttons_top_before -->
 
-		<!-- IF not S_IS_BOT -->
-			<!-- IF S_DISPLAY_POST_INFO and not S_IS_LOCKED --><a title="{L_POST_NEW_TOPIC}" href="{U_POST_NEW_TOPIC}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/button_topic_new.gif" alt="[{L_POST_NEW_TOPIC}]" title="{L_POST_NEW_TOPIC}" class="normal"></a><!-- ENDIF -->
-			<!-- IF S_DISPLAY_REPLY_INFO --><a title="<!-- IF S_IS_LOCKED -->{L_TOPIC_LOCKED}<!-- ELSE -->{L_POST_REPLY}<!-- ENDIF -->" href="{U_POST_REPLY_TOPIC}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/button_topic_<!-- IF S_IS_LOCKED -->locked<!-- ELSE -->reply<!-- ENDIF -->.gif" alt="[<!-- IF S_IS_LOCKED -->{L_TOPIC_LOCKED_SHORT}<!-- ELSE -->{L_POST_REPLY}<!-- ENDIF -->]" title="<!-- IF S_IS_LOCKED -->{L_TOPIC_LOCKED}<!-- ELSE -->{L_POST_REPLY}<!-- ENDIF -->" class="normal"></a><!-- ENDIF -->
+		<!-- IF not S_IS_BOT and S_DISPLAY_REPLY_INFO -->
+			<a title="<!-- IF S_IS_LOCKED -->{L_TOPIC_LOCKED}<!-- ELSE -->{L_POST_REPLY}<!-- ENDIF -->" href="{U_POST_REPLY_TOPIC}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/button_topic_<!-- IF S_IS_LOCKED -->locked<!-- ELSE -->reply<!-- ENDIF -->.gif" alt="[<!-- IF S_IS_LOCKED -->{L_TOPIC_LOCKED_SHORT}<!-- ELSE -->{L_BUTTON_POST_REPLY}<!-- ENDIF -->]" title="<!-- IF S_IS_LOCKED -->{L_TOPIC_LOCKED}<!-- ELSE -->{L_POST_REPLY}<!-- ENDIF -->"></a>
 		<!-- ENDIF -->
 
 		<!-- EVENT viewtopic_buttons_top_after -->
-		</td>
-		<!-- IF TOTAL_POSTS -->
-			<td class="nav" valign="middle" nowrap="nowrap">&nbsp;{PAGE_NUMBER}<br /></td>
-			<td class="gensmall" nowrap="nowrap">&nbsp;[ {TOTAL_POSTS} ]&nbsp;</td>
-			<td class="gensmall" width="100%" align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><!-- INCLUDE pagination.html --><!-- EVENT viewtopic_body_pagination_top_after --></td>
+
+		<!-- IF (U_WATCH_TOPIC or U_BOOKMARK_TOPIC or U_BUMP_TOPIC or U_EMAIL_TOPIC or U_PRINT_TOPIC or S_DISPLAY_TOPIC_TOOLS) and not S_IS_BOT -->
+			<a href="#" id="topictools_top_link" title="" onclick="return false;"><img src="{T_THEME_PATH}/images/button_topic_tools.gif" alt="[{L_TOPIC_TOOLS}]" title=""></a>
 		<!-- ENDIF -->
+
+		</td>
+
+		<td class="gensmall" nowrap="nowrap" valign="middle"><!-- IF TOTAL_POSTS --><b>&nbsp;{PAGE_NUMBER}<br /></b><!-- ENDIF --></td>
+		<td class="gensmall" nowrap="nowrap" valign="middle"><!-- IF TOTAL_POSTS -->&nbsp;[ {TOTAL_POSTS} ]&nbsp;<!-- ENDIF --></td>
+		<td align="{S_CONTENT_FLOW_END}" class="gensmall" style="line-height: 220%" valign="bottom" width="100%"><!-- IF U_VIEW_UNREAD_POST --><b><a href="{U_VIEW_UNREAD_POST}" title="{L_VIEW_NEWEST_POST}">{L_VIEW_UNREAD_POST}</a></b><!-- IF .pagination --> | <!-- ENDIF --><!-- ENDIF --><!-- INCLUDE pagination.html --><!-- EVENT viewtopic_body_pagination_top_after --></td>
 	</tr>
+
+<!-- IF (U_WATCH_TOPIC or U_BOOKMARK_TOPIC or U_BUMP_TOPIC or U_EMAIL_TOPIC or U_PRINT_TOPIC or S_DISPLAY_TOPIC_TOOLS) and not S_IS_BOT -->
+	<tr id="topictools_top_hidden">	
+
+<script>
+if (typeof OldLegacyMode === 'undefined') { document.getElementById('topictools_top_hidden').style.display='none';
+
+	var ttl=document.getElementById('topictools_top_list'); ttl.onclick = function(e) { if (e) { e.stopPropagation(); } else { window.event.cancelBubble = true; } };
+
+		document.getElementById('topictools_top_link').onclick = function(e) { if (e) { e.stopPropagation(); } else { window.event.cancelBubble = true; } if (typeof qkl !== 'undefined') {qkl.style.display='none'}; if (typeof nfl !== 'undefined') {nfl.style.display='none'}; if (typeof usl !== 'undefined') {usl.style.display='none'}; var tts = ttl.style.display != 'none'; ttl.style.display = tts ? 'none' : 'inline'; 
+
+		if (ttl.style.display != 'none') {
+			for (i=0 ; i<ttl.getElementsByTagName('a').length ; i++) {	var LinkWidth = ttl.getElementsByTagName('a')[i].offsetWidth;	if (i==0) { var LinkWidest = LinkWidth } else if (LinkWidth>LinkWidest) { LinkWidest=LinkWidth }}	ttl.style.width = LinkWidest+8+"px";
+			var ButtonsTopSideWidth = document.getElementById('buttons_top_side').offsetWidth;<!-- IF S_CONTENT_DIRECTION eq "ltr" --> ttl.style.marginLeft <!-- ELSE --> ttl.style.marginRight <!-- ENDIF --> = ButtonsTopSideWidth-(document.getElementById('topictools_top_link').offsetWidth+5)+"px";
+			if (typeof iFrameFix !== 'undefined') {	ttl.appendChild(iFrameFix); iFrameFix.style.height=ttl.offsetHeight+"px"; iFrameFix.style.width=ttl.offsetWidth+"px";}
+		};
+
+	return false;
+	};
+
+} else if (document.all) { document.all('topictools_top_link').style.display='none';}
+</script>
+
+		<td class="bigger" colspan="4">
+			<!-- IF U_WATCH_TOPIC -->[<a href="{U_WATCH_TOPIC}" class="nowrap">{S_WATCH_TOPIC_TITLE}</a>]<!-- ENDIF -->
+			<!-- IF U_BOOKMARK_TOPIC -->[<a href="{U_BOOKMARK_TOPIC}" class="nowrap">{S_BOOKMARK_TOPIC}</a>]<!-- ENDIF -->
+			<!-- IF U_PRINT_TOPIC -->[<a href="{U_PRINT_TOPIC}" class="nowrap">{L_PRINT_TOPIC}</a>]<!-- ENDIF -->
+			<!-- IF U_EMAIL_TOPIC -->[<a href="{U_EMAIL_TOPIC}" class="nowrap">{L_EMAIL_TOPIC}</a>]<!-- ENDIF -->
+			<!-- IF U_BUMP_TOPIC -->[<a href="{U_BUMP_TOPIC}" class="nowrap">{L_BUMP_TOPIC}</a>]<!-- ENDIF -->
+		</td>
+	</tr>
+<!-- ENDIF -->
 	</table>
 
 	<table class="tablebg" width="100%" cellspacing="1">
@@ -121,18 +160,10 @@
 
 <!-- BEGIN postrow -->	<!-- EVENT viewtopic_body_postrow_post_before -->
 	<table width="100%" cellspacing="0"><tr><td width="19"></td><td><table class="tablebg" width="100%" cellspacing="1">	<!-- IF postrow.S_FIRST_ROW -->
-		<tr class="cat"><td class="nav" colspan="2">
-				<!-- IF not S_IS_BOT -->
-					<!-- IF U_WATCH_TOPIC --><a href="{U_WATCH_TOPIC}" style="white-space: nowrap">{S_WATCH_TOPIC_TITLE}</a><!-- IF U_PRINT_TOPIC or U_EMAIL_TOPIC or U_BUMP_TOPIC or U_BOOKMARK_TOPIC --> | <!-- ENDIF --><!-- ENDIF -->
-					<!-- IF U_BOOKMARK_TOPIC --><a href="{U_BOOKMARK_TOPIC}" style="white-space: nowrap">{S_BOOKMARK_TOPIC}</a><!-- IF U_PRINT_TOPIC or U_EMAIL_TOPIC or U_BUMP_TOPIC --> | <!-- ENDIF --><!-- ENDIF -->
-					<!-- IF U_PRINT_TOPIC --><a href="{U_PRINT_TOPIC}" style="white-space: nowrap">{L_PRINT_TOPIC}</a><!-- IF U_EMAIL_TOPIC or U_BUMP_TOPIC --> | <!-- ENDIF --><!-- ENDIF -->
-					<!-- IF U_EMAIL_TOPIC --><a href="{U_EMAIL_TOPIC}" style="white-space: nowrap">{L_EMAIL_TOPIC}</a><!-- IF U_BUMP_TOPIC --> | <!-- ENDIF --><!-- ENDIF -->
-					<!-- IF U_BUMP_TOPIC --><a href="{U_BUMP_TOPIC}" style="white-space: nowrap">{L_BUMP_TOPIC}</a><!-- ENDIF -->
-			<!-- IF U_VIEW_UNREAD_POST --><!-- IF U_PRINT_TOPIC or U_EMAIL_TOPIC or U_BUMP_TOPIC or U_BOOKMARK_TOPIC or U_WATCH_TOPIC --> | <!-- ENDIF --><a href="{U_VIEW_UNREAD_POST}">{L_VIEW_UNREAD_POST}</a><!-- ENDIF -->		<!-- ENDIF -->
-					</td></tr><tr>
+		<tr>
 			<th>{L_AUTHOR}</th>
 			<th>{L_MESSAGE}</th>
-	</tr>		<!-- ENDIF -->
+		</tr>		<!-- ENDIF -->
 	<!-- IF postrow.S_ROW_COUNT is even --><tr class="row1"><!-- ELSE --><tr class="row2"><!-- ENDIF -->
 
 	<!-- IF postrow.S_POST_HIDDEN -->
@@ -156,7 +187,7 @@
 				<!-- ENDIF -->
 				<a name="p{postrow.POST_ID}" class="anchor"></a>
 				<!-- EVENT viewtopic_body_post_author_before -->
-				<b class="postauthor"<!-- IF postrow.POST_AUTHOR_COLOUR --> style="color: {postrow.POST_AUTHOR_COLOUR}"<!-- ENDIF -->>{postrow.POST_AUTHOR}</b>
+				<span class="normal"><!-- IF not postrow.U_POST_AUTHOR --><strong>{postrow.POST_AUTHOR_FULL}</strong><!-- ELSE -->{postrow.POST_AUTHOR_FULL}<!-- ENDIF --></span>
 				<!-- EVENT viewtopic_body_post_author_after -->
 			</td>
 			<!-- EVENT viewtopic_body_postrow_post_details_before -->
@@ -211,11 +242,10 @@
 			<!-- ENDIF -->
 				</table>
 
-				<span class="postdetails">
+				<div class="postdetails" style="width:150px; overflow:hidden; word-wrap: break-word;">
 
 					<!-- IF postrow.POSTER_POSTS != '' --><b>{L_POSTS}{L_COLON}</b> <!-- IF postrow.U_SEARCH !== '' --><a title="{L_SEARCH_USER_POSTS}" href="{postrow.U_SEARCH}"><!-- ENDIF -->{postrow.POSTER_POSTS}<!-- IF postrow.U_SEARCH !== '' --></a><!-- ENDIF --><br /><!-- ENDIF -->
 					<!-- IF postrow.POSTER_WARNINGS --><b>{L_WARNINGS}{L_COLON}</b> <b class="error">{postrow.POSTER_WARNINGS}</b><br /><!-- ENDIF -->
-
 					<!-- IF postrow.POSTER_JOINED --><b>{L_JOINED}{L_COLON}</b> {postrow.POSTER_JOINED}<!-- ENDIF -->
 
 					<!-- EVENT viewtopic_body_postrow_custom_fields_before -->
@@ -225,7 +255,14 @@
 						<!-- ENDIF -->
 					<!-- END custom_fields -->
 					<!-- EVENT viewtopic_body_postrow_custom_fields_after -->
-				</span>
+
+					<!-- EVENT viewtopic_body_contact_fields_before -->
+					<!-- IF not S_IS_BOT and .postrow.contact -->
+						<br /><b>{L_CONTACT}{L_COLON}</b> <!-- BEGIN contact --><span class="nowrap"><a href="<!-- IF postrow.contact.U_CONTACT -->{postrow.contact.U_CONTACT}<!-- ELSE -->{postrow.U_POST_AUTHOR}<!-- ENDIF -->"<!-- IF postrow.contact.ID eq 'pm' or postrow.contact.ID eq 'email' --> title="{postrow.contact.NAME}"<!-- ENDIF --><!-- IF postrow.contact.ID eq 'jabber' --> onclick="popup(this.href, 750, 320); return false;"<!-- ENDIF -->><!-- IF postrow.contact.ID eq 'pm' -->{L_PM}<!-- ELSEIF postrow.contact.ID eq 'email' -->{L_EMAIL}<!-- ELSE -->{postrow.contact.NAME}<!-- ENDIF --></a><!-- IF not postrow.contact.S_LAST_ROW -->{L_COMMA_SEPARATOR}<!-- ENDIF --></span><!-- END contact -->
+					<!-- ENDIF -->
+					<!-- EVENT viewtopic_body_contact_fields_after -->
+
+				</div>
 
 			</td>
 			<td valign="top">
@@ -337,8 +374,6 @@
 			<!-- EVENT viewtopic_body_postrow_back2top_after -->
 			<td>
 <table width="100%" cellspacing="0"><tr><td align="{S_CONTENT_FLOW_BEGIN}" class="gensmall"><!-- IF postrow.U_POST_AUTHOR --><a title="{L_READ_PROFILE}{L_COLON} {postrow.POST_AUTHOR}" href="{postrow.U_POST_AUTHOR}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_user_profile.gif" alt="[{L_READ_PROFILE}]" title="{L_READ_PROFILE}{L_COLON} {postrow.POST_AUTHOR}"></a> <!-- ENDIF -->
-					<!-- IF postrow.U_PM --><a title="{L_SEND_PRIVATE_MESSAGE}" href="{postrow.U_PM}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_contact_pm.gif" alt="[{L_PRIVATE_MESSAGE}]" title="{L_SEND_PRIVATE_MESSAGE}"></a> <!-- ENDIF -->
-					<!-- IF postrow.U_EMAIL --><a title="{L_SEND_EMAIL}" href="{postrow.U_EMAIL}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_contact_email.gif" alt="[{L_EMAIL}]" title="{L_SEND_EMAIL}"></a><!-- ENDIF -->
 </td><td align="{S_CONTENT_FLOW_END}" class="gensmall"><!-- EVENT viewtopic_body_post_buttons_before -->
 					<!-- IF not S_IS_BOT -->
 						<!-- IF postrow.U_EDIT --><a title="{L_EDIT_POST}" href="{postrow.U_EDIT}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_post_edit.gif" alt="[{L_BUTTON_EDIT}]" title="{L_EDIT_POST}"></a> <!-- ENDIF -->
@@ -347,44 +382,60 @@
 					<!-- EVENT viewtopic_body_post_buttons_after --></td></tr></table></td>
 	<!-- ENDIF -->
 		</tr>
-	<!-- IF postrow.S_LAST_ROW and not S_IS_BOT --><tr style="text-align:center"><td class="cat" colspan="2"><form name="viewtopic" method="post" action="{S_TOPIC_ACTION}"><span class="genmed">{L_DISPLAY_POSTS}{L_COLON}</span> {S_SELECT_SORT_DAYS}&nbsp;<span class="genmed">{L_SORT_BY}</span> {S_SELECT_SORT_KEY} {S_SELECT_SORT_DIR}&nbsp;<input class="btnlite" type="submit" value="{L_GO}" name="sort" /></form></td></tr><!-- ENDIF --> </table>
-</td><td width="19"></td></tr></table>	<!-- EVENT viewtopic_body_postrow_post_after -->
+	<!-- IF postrow.S_LAST_ROW and not S_IS_BOT -->
+	<tr style="text-align:center"><td class="cat" colspan="2"><form name="viewtopic" method="post" action="{S_TOPIC_ACTION}"><span class="genmed">{L_DISPLAY_POSTS}{L_COLON}</span> {S_SELECT_SORT_DAYS}&nbsp;<span class="genmed">{L_SORT_BY}</span> {S_SELECT_SORT_KEY} {S_SELECT_SORT_DIR}&nbsp;<input class="btnlite" type="submit" value="{L_GO}" name="sort" /></form></td></tr>
+	<!-- ENDIF -->
+		</table></td><td width="19"></td></tr></table>	<!-- EVENT viewtopic_body_postrow_post_after -->
 <!-- END postrow --><table width="100%" cellspacing="0"><tr><td width="19"></td><td></td><td width="19"></td></tr><tr><td width="19"></td><td>	<!-- EVENT viewtopic_body_topic_actions_before -->
 
 	<table width="100%" cellspacing="1">
 	<tr>
-		<td align="{S_CONTENT_FLOW_BEGIN}" valign="middle" nowrap="nowrap">
+		<td class="genmed" id="buttons_bottom_side" nowrap="nowrap" valign="top">
+
 		<!-- EVENT viewtopic_buttons_bottom_before -->
 
-		<!-- IF not S_IS_BOT -->
-			<!-- IF S_DISPLAY_POST_INFO and not S_IS_LOCKED --><a title="{L_POST_NEW_TOPIC}" href="{U_POST_NEW_TOPIC}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/button_topic_new.gif" alt="[{L_POST_NEW_TOPIC}]" title="{L_POST_NEW_TOPIC}" class="normal"></a><!-- ENDIF -->
-			<!-- IF S_DISPLAY_REPLY_INFO --><a title="<!-- IF S_IS_LOCKED -->{L_TOPIC_LOCKED}<!-- ELSE -->{L_POST_REPLY}<!-- ENDIF -->" href="{U_POST_REPLY_TOPIC}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/button_topic_<!-- IF S_IS_LOCKED -->locked<!-- ELSE -->reply<!-- ENDIF -->.gif" alt="[<!-- IF S_IS_LOCKED -->{L_TOPIC_LOCKED_SHORT}<!-- ELSE -->{L_POST_REPLY}<!-- ENDIF -->]" title="<!-- IF S_IS_LOCKED -->{L_TOPIC_LOCKED}<!-- ELSE -->{L_POST_REPLY}<!-- ENDIF -->" class="normal"></a><!-- ENDIF -->
+		<!-- IF not S_IS_BOT and S_DISPLAY_REPLY_INFO -->
+			<a title="<!-- IF S_IS_LOCKED -->{L_TOPIC_LOCKED}<!-- ELSE -->{L_POST_REPLY}<!-- ENDIF -->" href="{U_POST_REPLY_TOPIC}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/button_topic_<!-- IF S_IS_LOCKED -->locked<!-- ELSE -->reply<!-- ENDIF -->.gif" alt="[<!-- IF S_IS_LOCKED -->{L_TOPIC_LOCKED_SHORT}<!-- ELSE -->{L_BUTTON_POST_REPLY}<!-- ENDIF -->]" title="<!-- IF S_IS_LOCKED -->{L_TOPIC_LOCKED}<!-- ELSE -->{L_POST_REPLY}<!-- ENDIF -->"></a>
 		<!-- ENDIF -->
 
 		<!-- EVENT viewtopic_buttons_bottom_after -->
+
 		</td>
-		<!-- IF TOTAL_POSTS -->
-			<td class="nav" valign="middle" nowrap="nowrap">&nbsp;{PAGE_NUMBER}<br /></td>
-			<td class="gensmall" nowrap="nowrap">&nbsp;[ {TOTAL_POSTS} ]&nbsp;</td>
-			<td class="gensmall" width="100%" align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><!-- INCLUDE pagination.html --></td>
-		<!-- ENDIF -->
+
+		<td class="gensmall" nowrap="nowrap" valign="middle"><!-- IF TOTAL_POSTS --><b>&nbsp;{PAGE_NUMBER}<br /></b><!-- ENDIF --></td>
+		<td class="gensmall" nowrap="nowrap" valign="middle"><!-- IF TOTAL_POSTS -->&nbsp;[ {TOTAL_POSTS} ]&nbsp;<!-- ENDIF --></td>
+		<td align="{S_CONTENT_FLOW_END}" class="gensmall" style="line-height: 220%" valign="top" width="100%"><b><a href="{U_VIEW_FORUM}" class="nowrap">{L_RETURN_TO_FORUM}</a></b><!-- IF .pagination --> | <!-- ENDIF --><!-- INCLUDE pagination.html --></td>
 	</tr>
 	</table>
-
 </div>
 
 <div id="pagefooter"></div>
 
-<br clear="all" />
 <!-- IF S_QUICK_REPLY -->
 </td></tr></table><table width="100%" cellspacing="0"><tr><td width="19"></td><td><!-- INCLUDE quickreply_editor.html --></td><td width="19"></td></tr></table><table width="100%" cellspacing="0"><tr><td width="19"></td><td></td><td width="19"></td></tr><tr><td width="19"></td><td>
 <!-- ENDIF -->
 
 <!-- EVENT viewtopic_body_footer_before -->
-<!-- INCLUDE breadcrumbs.html -->
+
+<table width="100%" cellspacing="0">
+<tr>
+	<td valign="middle">
+	<!-- IF .quickmod -->
+		<form method="post" action="{S_MOD_ACTION}">
+			<select name="action" id="quick-mod-select" title="{L_QUICK_MOD}">
+				<!-- BEGIN quickmod -->
+				<option value="{quickmod.VALUE}">{quickmod.TITLE}</option>
+				<!-- END quickmod -->
+			</select>
+			<input class="btnlite" title="{L_QUICK_MOD}" type="submit" value="{L_GO}" />
+		</form>		<br>
+	<!-- ENDIF -->
+	<!-- IF S_DISPLAY_SEARCHBOX --><!-- INCLUDE searchbox.html --><br><!-- ENDIF --></td>
+	<td align="{S_CONTENT_FLOW_END}" valign="top"><!-- IF S_DISPLAY_POST_INFO --><span class="gensmall"><!-- BEGIN rules -->{rules.RULE}<br /><!-- END rules --></span><!-- ENDIF --><!-- INCLUDE jumpbox.html --></td>
+</tr>
+</table>
 
 <!-- IF S_DISPLAY_ONLINE_LIST -->
-	<br clear="all" />
 
 	<table class="tablebg" width="100%" cellspacing="1">
 	<tr>
@@ -396,33 +447,8 @@
 	</table>
 <!-- ENDIF -->
 
-<br clear="all" />
+	<br clear="all" />
 
-<table width="100%" cellspacing="1">
-<tr>
-	<td width="40%" valign="top" nowrap="nowrap" align="{S_CONTENT_FLOW_BEGIN}">
-	<!-- IF .quickmod -->
-		<form method="post" action="{S_MOD_ACTION}">
-			<span class="gensmall">{L_QUICK_MOD}{L_COLON}</span>
-			<select name="action" id="quick-mod-select">
-				<!-- BEGIN quickmod -->
-				<option value="{quickmod.VALUE}">{quickmod.TITLE}</option>
-				<!-- END quickmod -->
-			</select>
-			<input class="btnlite" type="submit" value="{L_GO}" />
-		</form>
-	<!-- ENDIF -->
-	</td>
-</tr>
-</table>
-
-<br clear="all" />
-
-<table width="100%" cellspacing="0">
-<tr>
-	<td><!-- IF S_DISPLAY_SEARCHBOX --><!-- INCLUDE searchbox.html --><!-- ENDIF --></td>
-	<td align="{S_CONTENT_FLOW_END}"><!-- INCLUDE jumpbox.html --></td>
-</tr>
-</table>
+<!-- INCLUDE breadcrumbs.html -->
 
 <!-- INCLUDE overall_footer.html -->

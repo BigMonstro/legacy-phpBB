@@ -22,7 +22,7 @@
 				<tr>
 					<td class="nav" valign="middle" nowrap="nowrap">&nbsp;{PAGE_NUMBER}<br /></td>
 					<td class="gensmall" nowrap="nowrap">&nbsp;[ {NUM_ATTACHMENTS} ]&nbsp;</td>
-					<td class="gensmall" width="100%" align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><!-- INCLUDE pagination.html --></td>
+					<td class="gensmall" width="100%" align="{S_CONTENT_FLOW_END}"><!-- INCLUDE pagination.html --></td>
 				</tr>
 				</table>
 			</td>
@@ -39,12 +39,12 @@
 		<td style="padding: 4px;" align="center" valign="middle"><input type="checkbox" class="radio" name="attachment[{attachrow.ATTACH_ID}]" value="1" /></td>
 	</tr>
 	<!-- IF attachrow.S_LAST_ROW -->	<tr> 
-		<td class="cat" colspan="6"><table width="100%" cellspacing="0"><tr><td align="center" style="padding-top:10px"><span class="gensmall">{L_SORT_BY}{L_COLON} </span><select<!-- IF attachrow.S_NUM_ROWS < 4 --> id="sortattach"<!-- ENDIF --> name="sk">{S_SORT_OPTIONS}</select> <select name="sd">{S_ORDER_SELECT}</select>&nbsp;<input class="btnlite" type="submit" name="sort" value="{L_SORT}" /></td></tr><tr><td align="{S_CONTENT_FLOW_END}"><input class="btnlite" type="submit" name="delete" value="{L_DELETE_MARKED}" />&nbsp;</td></tr></table></td>
+		<td class="cat" colspan="6"><table width="100%" cellspacing="0"><tr><td align="center" style="padding-top:10px"><span class="gensmall">{L_SORT_BY}{L_COLON} </span><select name="sk">{S_SORT_OPTIONS}</select> <select name="sd">{S_ORDER_SELECT}</select>&nbsp;<input class="btnlite" type="submit" name="sort" value="{L_SORT}" /></td></tr><tr><td align="{S_CONTENT_FLOW_END}"><input class="btnlite" type="submit" name="delete" value="{L_DELETE_MARKED}" />&nbsp;</td></tr></table></td>
 	</tr>
 	<!-- ENDIF -->	<!-- END attachrow -->
 	</table>
 
-	<div style="text-align: {S_CONTENT_FLOW_END};"><b class="gensmall"><a href="javascript:;" onclick="marklist('ucp', 'attachment', true); return false;">{L_MARK_ALL}</a> :: <a href="javascript:;" onclick="marklist('ucp', 'attachment', false); return false;">{L_UNMARK_ALL}</a></b></div>
+	<div style="text-align: {S_CONTENT_FLOW_END};"><b class="gensmall"><a href="#" onclick="marklist('ucp', 'attachment', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('ucp', 'attachment', false); return false;">{L_UNMARK_ALL}</a></b></div>
 
 <!-- ELSE -->
 

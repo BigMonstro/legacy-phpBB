@@ -1,14 +1,8 @@
 <!-- INCLUDE overall_header.html -->
 
 <div id="pageheader">
-	<!-- IF U_MCP -->
-		<p class="linkmcp" style="margin-bottom: 4px">
-			[<!-- IF U_ACP -->&nbsp;<a href="{U_ACP}">{L_ACP}</a>&nbsp;|<!-- ENDIF -->&nbsp;<a href="{U_MCP}">{L_MCP}</a><!-- IF U_MCP_FORUM -->&nbsp;|&nbsp;<a href="{U_MCP_FORUM}">{L_MODERATE_FORUM}</a><!-- ENDIF --><!-- IF U_MCP_TOPIC -->&nbsp;|&nbsp;<a href="{U_MCP_TOPIC}">{L_MODERATE_TOPIC}</a><!-- ENDIF --><!-- IF U_MCP_POST -->&nbsp;|&nbsp;<a href="{U_MCP_POST}">{L_MODERATE_POST}</a><!-- ENDIF -->&nbsp;]
-		</p>
-	<!-- ENDIF -->
-
 	<!-- IF TOPIC_TITLE or FORUM_NAME -->
-	<h2><!-- IF TOPIC_TITLE --><a class="titles" href="{U_VIEW_TOPIC}">{TOPIC_TITLE}</a><!-- ELSE --><a class="titles" href="{U_VIEW_FORUM}">{FORUM_NAME}</a><!-- ENDIF --></h2>
+	<h2 style="margin-top: 10px;"><!-- IF TOPIC_TITLE --><a class="titles" href="{U_VIEW_TOPIC}">{TOPIC_TITLE}</a><!-- ELSE --><a class="titles" href="{U_VIEW_FORUM}">{FORUM_NAME}</a><!-- ENDIF --></h2>
 	<!-- ENDIF -->
 </div>
 

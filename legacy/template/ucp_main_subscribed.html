@@ -16,7 +16,7 @@
 
 		<!-- IF forumrow.S_ROW_COUNT is even --><tr class="row1"><!-- ELSE --><tr class="row2"><!-- ENDIF -->
 			<td style="padding: 4px;" width="20" align="center" valign="middle"><!-- IF forumrow.S_UNREAD_FORUM --><a title="{L_UNREAD_POSTS}" href="{forumrow.U_VIEWFORUM}"><!-- ENDIF --><img src="{T_THEME_PATH}/images/{forumrow.FORUM_IMG_STYLE}.gif" alt="<!-- IF forumrow.S_UNREAD_FORUM -->{L_UNREAD_POSTS}<!-- ENDIF -->" title="<!-- IF forumrow.S_UNREAD_FORUM -->{L_UNREAD_POSTS}<!-- ELSE -->{L_NO_UNREAD_POSTS}<!-- ENDIF -->" class="normal"><!-- IF forumrow.S_UNREAD_FORUM --></a><!-- ENDIF --></td>
-			<td style="padding: 4px;" width="100%"><p class="topictitle"><a title="<!-- IF forumrow.S_UNREAD_FORUM -->{L_UNREAD_POSTS}<!-- ELSE -->{L_NO_UNREAD_POSTS}<!-- ENDIF -->" href="{forumrow.U_VIEWFORUM}">{forumrow.FORUM_NAME}</a></p></td>
+			<td style="padding: 4px;" width="100%"><p class="topictitle"><a title="<!-- IF forumrow.S_UNREAD_FORUM -->{L_UNREAD_POSTS}<!-- ELSEIF forumrow.FORUM_IMG_STYLE eq "forum_read_locked" -->{L_FORUM_LOCKED}<!-- ELSE -->{L_NO_UNREAD_POSTS}<!-- ENDIF -->" href="{forumrow.U_VIEWFORUM}">{forumrow.FORUM_NAME}</a></p></td>
 			<td class="genmed" style="padding: 4px;" align="center" valign="middle" nowrap="nowrap"><!-- IF forumrow.LAST_POST_TIME -->{forumrow.LAST_POST_TIME}<br />{forumrow.LAST_POST_AUTHOR_FULL} <a title="{L_VIEW_LATEST_POST}" href="{forumrow.U_LAST_POST}"><img src="{T_THEME_PATH}/images/icon_topic_latest.gif" alt=">" title="{L_VIEW_LATEST_POST}"></a><!-- ELSE -->{L_NO_POSTS}<!-- ENDIF --></td>
 			<td align="center" style="padding: 4px;"> <input type="checkbox" class="radio" name="f[{forumrow.FORUM_ID}]" /> </td>
 		</tr>
@@ -38,7 +38,7 @@
 				<tr>
 					<td class="nav" valign="middle" nowrap="nowrap">&nbsp;{PAGE_NUMBER}<br /></td>
 					<td class="gensmall" nowrap="nowrap">&nbsp;[ {TOTAL_TOPICS} ]&nbsp;</td>
-					<td class="gensmall" width="100%" align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><!-- INCLUDE pagination.html --></td>
+					<td class="gensmall" width="100%" align="{S_CONTENT_FLOW_END}"><!-- INCLUDE pagination.html --></td>
 				</tr>
 				</table>
 			</td>
@@ -84,7 +84,7 @@
 <!-- ENDIF -->
 </table>
 <!-- IF .topicrow or .forumrow -->
-<div class="gensmall" style="text-align: {S_CONTENT_FLOW_END}; padding-top: 2px;"><b><a href="javascript:;" onclick="marklist('ucp', 't', true); marklist('ucp', 'f', true); return false;">{L_MARK_ALL}</a> :: <a href="javascript:;" onclick="marklist('ucp', 't', false);marklist('ucp', 'f', false); return false;">{L_UNMARK_ALL}</a></b></div>
+<div class="gensmall" style="text-align: {S_CONTENT_FLOW_END}; padding-top: 2px;"><b><a href="#" onclick="marklist('ucp', 't', true); marklist('ucp', 'f', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('ucp', 't', false);marklist('ucp', 'f', false); return false;">{L_UNMARK_ALL}</a></b></div>
 <!-- ENDIF -->
 
 <!-- INCLUDE ucp_footer.html -->

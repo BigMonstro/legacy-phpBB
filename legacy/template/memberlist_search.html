@@ -34,30 +34,6 @@
 			opener.document.forms['{S_FORM_NAME}'].{S_FIELD_NAME}.value = user;
 			self.close();
 		}
-
-		/**
-		* Mark/unmark checklist
-		* id = ID of parent container, name = name prefix, state = state [true/false]
-		*/
-		function marklist(id, name, state)
-{
- if (document.getElementById)	{ var parent = document.getElementById(id) || document[id]; }	else if (document.all) {var parent = document.all(id);}
-
-	if (!parent)
-			{
-				return;
-	}
-
-	if (document.getElementById) {var rb = parent.getElementsByTagName('input');}	else if (document.all) {var rb = parent.document.all.tags('input');}
-
-	for (var r = 0; r < rb.length; r++)
-			{
-				if (rb[r].name.substr(0, name.length) == name)
-				{
-					rb[r].checked = state;
-				}
-			}
-		}
 	// ]]>
 	</script>
 <!-- ENDIF -->
@@ -66,7 +42,7 @@
 
 
 <!-- EVENT memberlist_search_fields_before -->
-<table class="tablebg" id="move_tablebg" width="100%" cellspacing="1">
+<table class="tablebg" width="100%" cellspacing="1">
 <tr>
 	<th colspan="4">{L_FIND_USERNAME}</th>
 </tr>

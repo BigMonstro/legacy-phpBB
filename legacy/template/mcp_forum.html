@@ -1,12 +1,12 @@
 <!-- INCLUDE mcp_header.html -->
 
-<!-- IF U_VIEW_FORUM_LOGS --><a href="{U_VIEW_FORUM_LOGS}" class="normal">{L_VIEW_FORUM_LOGS}</a><!-- ENDIF -->
+<!-- IF U_VIEW_FORUM_LOGS --><a href="{U_VIEW_FORUM_LOGS}" class="normal" style="display:block; margin-bottom:4px">{L_VIEW_FORUM_LOGS}</a><!-- ENDIF -->
 
 <form method="post" id="mcp" action="{S_MCP_ACTION}">
 
 <table class="tablebg" width="100%" cellspacing="1">
 <tr>
-	<td class="cat" colspan="6" id="displayoptions"><span class="nowrap"><span class="gensmall">{L_DISPLAY_TOPICS}{L_COLON}</span> {S_SELECT_SORT_DAYS}</span>&nbsp;<span class="nowrap"><span class="gensmall">{L_SORT_BY}</span> {S_SELECT_SORT_KEY} {S_SELECT_SORT_DIR}</span>&nbsp;<input class="btnlite" type="submit" name="sort" value="{L_GO}" /></td>
+	<td class="cat" colspan="6"><span class="nowrap"><span class="gensmall">{L_DISPLAY_TOPICS}{L_COLON}</span> {S_SELECT_SORT_DAYS}</span>&nbsp;<span class="nowrap"><span class="gensmall">{L_SORT_BY}</span> {S_SELECT_SORT_KEY} {S_SELECT_SORT_DIR}</span>&nbsp;<input class="btnlite" type="submit" name="sort" value="{L_GO}" /></td>
 </tr>
 <tr>
 	<th width="4%" nowrap="nowrap">&nbsp;</th>
@@ -52,7 +52,7 @@
 <!-- END topicrow -->
 <!-- IF .topicrow and not S_MERGE_SELECT -->
 <tr>
-	<td align="right" class="cat" colspan="6" style="padding-left:180px">
+	<td class="cat" colspan="6" align="{S_CONTENT_FLOW_END}">
 		<select name="action">
 			<option value="" selected="selected">{L_SELECT_ACTION}</option>
 			<!-- IF S_CAN_DELETE --><option value="delete_topic">{L_DELETE}</option><!-- ENDIF -->
@@ -80,7 +80,7 @@
 <!-- IF not S_MERGE_SELECT -->
 <table width="100%" cellspacing="2" cellpadding="2" border="0" align="center">
 <tr>
-	<td align="{S_CONTENT_FLOW_END}" valign="top" nowrap="nowrap"><b class="gensmall"><a href="javascript:;" onclick="marklist('mcp', 'topic_id_list', true); return false;">{L_MARK_ALL}</a> :: <a href="javascript:;" onclick="marklist('mcp', 'topic_id_list', false); return false;">{L_UNMARK_ALL}</a></b></td>
+	<td align="{S_CONTENT_FLOW_END}" valign="top" nowrap="nowrap"><b class="gensmall"><a href="#" onclick="marklist('mcp', 'topic_id_list', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('mcp', 'topic_id_list', false); return false;">{L_UNMARK_ALL}</a></b></td>
 </tr>
 </table>
 <!-- ENDIF -->

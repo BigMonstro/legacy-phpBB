@@ -35,7 +35,7 @@
 			<tr>
 				<td class="genmed" align="center">
 				<!-- BEGIN smiley -->
-					<a title="{smiley.SMILEY_DESC}" href="javascript:;" onclick="insert_text('{smiley.A_SMILEY_CODE}', true); return false;" style="line-height: 20px;"><img src="{smiley.SMILEY_IMG}" alt="{smiley.SMILEY_CODE}" title="{smiley.SMILEY_DESC}" hspace="2" vspace="2" /></a>
+					<a title="{smiley.SMILEY_DESC}" href="#" onclick="insert_text('{smiley.A_SMILEY_CODE}', true); return false;" style="line-height: 20px;"><img src="{smiley.SMILEY_IMG}" alt="{smiley.SMILEY_CODE}" title="{smiley.SMILEY_DESC}" hspace="2" vspace="2" /></a>
 				<!-- END smiley -->
 				</td>
 			</tr>
@@ -54,7 +54,7 @@
 		<table cellspacing="0" cellpadding="2" border="0" width="100%">
 		<!-- INCLUDE posting_buttons.html -->
 		<tr>
-			<td valign="top" style="width: 100%;"<!-- IF not S_BBCODE_ALLOWED --> colspan="2"<!-- ENDIF -->><textarea name="signature" rows="15" cols="76" tabindex="3" onselect="storeCaret(this);" onclick="storeCaret(this);" onkeyup="storeCaret(this);" onfocus="initInsertions();" style="width: 99%; height: 270px;">{SIGNATURE}</textarea><script>var textarea = document.forms[form_name].elements[text_name]; textarea.onkeydown = function(e) { if ((event.keyCode==9 || event.which==9) && inCodeTag() && !event.altKey && !event.ctrlKey && !event.shiftKey && !event.metaKey) { event.preventDefault ? event.preventDefault() : (event.returnValue = false); bbfontstyle("\t","");}}; if (!document.all) {	textarea.onkeypress = function(event) { if ((event.keyCode==9 || event.which==9) && inCodeTag() && !event.altKey && !event.ctrlKey && !event.shiftKey && !event.metaKey) { event.preventDefault ? event.preventDefault() : (event.returnValue = false); bbfontstyle("\t","");}}}</script><!--[if lte IE 7]><script>var wwidth=document.body.offsetWidth; if (!document.compatMode) {wwidth=wwidth-20}; var msg=(<!-- IF S_BBCODE_ALLOWED -->380<!-- ELSE -->445<!-- ENDIF -->+0.725*(wwidth-620))*0.8; document.all("signature").style.width=msg;</script><![endif]--></td>
+			<td valign="top" style="width: 100%;"<!-- IF not S_BBCODE_ALLOWED --> colspan="2"<!-- ENDIF -->><textarea name="signature" rows="15" cols="76" tabindex="3" onselect="storeCaret(this);" onclick="storeCaret(this);" onkeyup="storeCaret(this);" onfocus="initInsertions();" style="width: 99%; height: 270px;">{SIGNATURE}</textarea><script>var textarea = document.forms[form_name].elements[text_name]; textarea.onkeydown = function(e) { if ((event.keyCode==9 || event.which==9) && inCodeTag() && !event.altKey && !event.ctrlKey && !event.shiftKey && !event.metaKey) { event.preventDefault ? event.preventDefault() : (event.returnValue = false); bbfontstyle("\t","");}}; if (!document.all) {	textarea.onkeypress = function(event) { if ((event.keyCode==9 || event.which==9) && inCodeTag() && !event.altKey && !event.ctrlKey && !event.shiftKey && !event.metaKey) { event.preventDefault ? event.preventDefault() : (event.returnValue = false); bbfontstyle("\t","");}}}; if (typeof TextareaFix !== 'undefined') {	var wwidth=document.documentElement.offsetWidth; var msg=(<!-- IF S_BBCODE_ALLOWED -->380<!-- ELSE -->445<!-- ENDIF -->+0.725*(wwidth-620))*0.8; textarea.style.width=msg;};</script></td>
 			<!-- IF S_BBCODE_ALLOWED -->
 	<td class="row2" valign="top"><script>colorPalette();</script></td>	<!-- ENDIF -->
 	 	</tr>
