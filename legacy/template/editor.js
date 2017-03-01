@@ -109,7 +109,6 @@ function bbfontstyle(bbopen, bbclose) {
 	}
 
 	textarea.focus();
-	return;
 }
 
 /**
@@ -165,7 +164,7 @@ function attachInline(index, filename) {
 /**
 * Add quote text to message
 */
-function addquote(post_id, username, l_wrote) {
+function addquote(post_id, username, l_wrote, attributes) {
 	var message_name = 'message_' + post_id;
 	var theSelection = '';
 	var divarea = false;
@@ -174,6 +173,9 @@ function addquote(post_id, username, l_wrote) {
 	if (typeof l_wrote === 'undefined') {
 		// Backwards compatibility
 		l_wrote = 'wrote';
+	}
+	if (typeof attributes !== 'object') {
+		attributes = {};
 	}
 
 	if (document.all) {
@@ -212,7 +214,8 @@ function addquote(post_id, username, l_wrote) {
 
 	if (theSelection) {
 		if (bbcodeEnabled) {
-			insert_text('[quote="' + username + '"]' + theSelection + '[/quote]');
+			attributes.author = username;
+			insert_text(generateQuote(theSelection, attributes));
 		} else {
 			insert_text(username + ' ' + l_wrote + ':' + '\n');
 			var lines = split_lines(theSelection);
@@ -221,8 +224,38 @@ function addquote(post_id, username, l_wrote) {
 			}
 		}
 	}
+}
 
-	return;
+function generateQuote(text, attributes) {
+	text = text.replace(/^\s+/, '').replace(/\s+$/, '');
+	var quote = '[quote';
+	if (attributes.author) {
+		// Add the author as the BBCode's default attribute
+		quote += '=' + formatAttributeValue(attributes.author);
+		delete attributes.author;
+	}
+	for (var name in attributes) {
+		if (typeof attributes[name] !== 'function') {
+			var value = attributes[name];
+			quote += ' ' + name + '=' + formatAttributeValue(value.toString());
+		}
+	}	
+	quote += ']';
+	var newline = ((quote + text + '[/quote]').length > 80 || text.indexOf('\n') > -1) ? '\n' : '';
+	quote += newline + text + newline + '[/quote]';
+
+	return quote;
+}
+
+function formatAttributeValue(str) {
+	if (!/[ "'\\\]]/.test(str)) {
+		// Return as-is if it contains none of: space, ' " \ or ]
+		return str;
+	}
+	var singleQuoted = "'" + str.replace(/[\\']/g, '\\$&') + "'",
+		doubleQuoted = '"' + str.replace(/[\\"]/g, '\\$&') + '"';
+
+	return (singleQuoted.length < doubleQuoted.length) ? singleQuoted : doubleQuoted;
 }
 
 function split_lines(text) {

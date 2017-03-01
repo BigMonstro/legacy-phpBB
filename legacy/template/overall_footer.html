@@ -1,10 +1,10 @@
 	<!-- EVENT overall_footer_content_after -->
 
-	<!-- IF not S_IS_BOT --><span class="gensmall">{RUN_CRON_TASK}</span><!-- ENDIF -->
-<!-- EVENT overall_footer_page_body_after -->
+	<!-- IF not S_IS_BOT --><span class="genmed">{RUN_CRON_TASK}</span><!-- ENDIF -->
+	<!-- EVENT overall_footer_page_body_after -->
 
 <div id="wrapfooter">
-	<!-- IF U_ACP --><span class="gensmall">[ <a href="{U_ACP}">{L_ACP}</a> ]</span><br /><br /><!-- ENDIF -->
+	<!-- IF U_ACP --><span class="genmed">[ <a href="{U_ACP}">{L_ACP}</a> ]</span><br /><br /><!-- ENDIF -->
 	<span class="copyright">
 	<!-- EVENT overall_footer_copyright_prepend -->
 	{CREDIT_LINE}
@@ -12,4 +12,21 @@
 	<!-- EVENT overall_footer_copyright_append -->
 	<!-- IF DEBUG_OUTPUT --><br /><bdo dir="ltr">[ {DEBUG_OUTPUT} ]</bdo><!-- ENDIF --></span>
 </div>
-</td></tr></table></body></html>
+</td></tr></table><!-- IF S_COOKIE_NOTICE -->
+<script>
+function cookiedialogclose() {
+   var d = new Date();
+   d.setTime(d.getTime() + 31536000000);
+   document.cookie = "cookieconsent_status=dismiss; expires="+d.toUTCString()+"; path=/";
+   cookieconsentmsg.style.display='none';
+}
+if (!/cookieconsent_status=dismiss/i.test(document.cookie)) {
+	if (document.getElementById) {
+		var cookieconsentmsg = document.getElementById('cookieconsentdialog'); 
+	} else if (document.all) {
+		var cookieconsentmsg = document.all('cookieconsentdialog'); 
+	}
+	cookieconsentmsg.style.display='';
+}
+</script>
+<!-- ENDIF --></body></html>

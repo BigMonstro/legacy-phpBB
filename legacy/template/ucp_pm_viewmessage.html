@@ -68,7 +68,7 @@
 						<td class="row3"><b class="genmed">{L_ATTACHMENTS}{L_COLON} </b></td>
 					</tr>
 					<!-- BEGIN attachment -->
-						<tr>
+						<tr class="postbody">
 							<td class="row2">{attachment.DISPLAY_ATTACHMENT}</td>
 						</tr>
 					<!-- END attachment -->
@@ -76,20 +76,20 @@
 				<!-- ENDIF -->
 
 				<!-- IF S_DISPLAY_NOTICE -->
-					<span class="gensmall" style="color: red"><br /><br />{L_DOWNLOAD_NOTICE}</span>
+					<span class="genmed" style="color: #FF0000"><br /><br />{L_DOWNLOAD_NOTICE}</span>
 				<!-- ENDIF -->
 				<!-- IF SIGNATURE -->
 					<span class="postbody"><br />_________________<br />{SIGNATURE}</span>
 				<!-- ENDIF -->
 				<!-- IF EDITED_MESSAGE -->
-					<span class="gensmall">{EDITED_MESSAGE}</span>
+					<span class="genmed">{EDITED_MESSAGE}</span>
 				<!-- ENDIF -->
 
 				<!-- IF not S_HAS_ATTACHMENTS --><br clear="all" /><br /><!-- ENDIF -->
 
 				<table width="100%" cellspacing="0">
 				<tr valign="middle">
-					<td class="gensmall" align="{S_CONTENT_FLOW_END}"> <!-- IF U_REPORT --><a title="{L_REPORT_PM}" href="{U_REPORT}"><img src="{T_THEME_PATH}/images/icon_post_report.gif" alt="[!]" title="{L_REPORT_PM}"></a> <!-- ENDIF --><!-- IF U_DELETE --><a title="{L_DELETE_MESSAGE}" href="{U_DELETE}"><img src="{T_THEME_PATH}/images/icon_post_delete.gif" alt="[X]" title="{L_DELETE_MESSAGE}"></a> <!-- ENDIF --></td>
+					<td class="genmed" align="{S_CONTENT_FLOW_END}"> <!-- IF U_REPORT --><a title="{L_REPORT_PM}" href="{U_REPORT}"><img src="{T_THEME_PATH}/images/icon_post_report.gif" width="20" height="20" alt="[!]" title="{L_REPORT_PM}"></a> <!-- ENDIF --><!-- IF U_DELETE --><a title="{L_DELETE_MESSAGE}" href="{U_DELETE}"><img src="{T_THEME_PATH}/images/icon_post_delete.gif" width="20" height="20" alt="[X]" title="{L_DELETE_MESSAGE}"></a> <!-- ENDIF --></td>
 				</tr>
 				</table>
 
@@ -101,12 +101,12 @@
 
 <tr class="row1">
 	<td>
-		<table width="100%" cellspacing="0"><tr><td align="{S_CONTENT_FLOW_BEGIN}" class="gensmall"><!-- IF U_MESSAGE_AUTHOR --><a title="{L_READ_PROFILE}{L_COLON} {MESSAGE_AUTHOR}" href="{U_MESSAGE_AUTHOR}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_user_profile.gif" alt="[{L_READ_PROFILE}]" title="{L_READ_PROFILE}{L_COLON} {MESSAGE_AUTHOR}"></a> <!-- ENDIF -->
-			<!-- IF U_EMAIL --><a title="{L_SEND_EMAIL}" href="{U_EMAIL}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_contact_email.gif" alt="[{L_EMAIL}]" title="{L_SEND_EMAIL}"></a> <!-- ENDIF -->
-</td><td align="{S_CONTENT_FLOW_END}" class="gensmall"><!-- EVENT ucp_pm_viewmessage_post_buttons_before -->
-			<!-- IF U_EDIT --><a title="{L_POST_EDIT_PM}" href="{U_EDIT}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_post_edit.gif" alt="[{L_BUTTON_EDIT}]" title="{L_POST_EDIT_PM}"></a> <!-- ENDIF -->
-			<!-- IF U_QUOTE --><a title="{L_POST_QUOTE_PM}" href="{U_QUOTE}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_post_quote.gif" alt="[{L_BUTTON_QUOTE}]" title="{L_POST_QUOTE_PM}"></a> <!-- ENDIF -->
-			<!-- IF U_POST_REPLY_PM --><a title="{L_POST_REPLY_PM}" href="{U_POST_REPLY_PM}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/button_pm_reply.gif" alt="[{L_BUTTON_PM_REPLY}]" title="{L_POST_REPLY_PM}"></a><!-- ENDIF -->
+		<table width="100%" cellspacing="0"><tr><td align="{S_CONTENT_FLOW_BEGIN}" class="genmed"><!-- IF U_MESSAGE_AUTHOR --><a title="{L_READ_PROFILE}{L_COLON} {MESSAGE_AUTHOR}" href="{U_MESSAGE_AUTHOR}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_user_profile.gif" width="72" height="20" alt="[{L_READ_PROFILE}]" title="{L_READ_PROFILE}{L_COLON} {MESSAGE_AUTHOR}"></a> <!-- ENDIF -->
+			<!-- IF U_EMAIL --><a title="{L_SEND_EMAIL}" href="{U_EMAIL}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_contact_email.gif" width="72" height="20" alt="[{L_EMAIL}]" title="{L_SEND_EMAIL}"></a> <!-- ENDIF -->
+</td><td align="{S_CONTENT_FLOW_END}" class="genmed"><!-- EVENT ucp_pm_viewmessage_post_buttons_before -->
+			<!-- IF U_EDIT --><a title="{L_POST_EDIT_PM}" href="{U_EDIT}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_post_edit.gif" width="90" height="20" alt="[{L_BUTTON_EDIT}]" title="{L_POST_EDIT_PM}"></a> <!-- ENDIF -->
+			<!-- IF U_QUOTE --><a title="{L_POST_QUOTE_PM}" href="{U_QUOTE}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_post_quote.gif" width="90" height="20" alt="[{L_BUTTON_QUOTE}]" title="{L_POST_QUOTE_PM}"></a> <!-- ENDIF -->
+			<!-- IF U_POST_REPLY_PM --><a title="{L_POST_REPLY_PM}" href="{U_POST_REPLY_PM}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/button_pm_reply.gif" width="90" height="20" alt="[{L_BUTTON_PM_REPLY}]" title="{L_POST_REPLY_PM}"></a><!-- ENDIF -->
 			<!-- EVENT ucp_pm_viewmessage_post_buttons_after -->
 </td></tr></table>
 	</td>

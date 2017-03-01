@@ -62,12 +62,12 @@
 
 		<td class="postdetails" style="padding: 4px;">{draftrow.DATE}</td>
 		<td style="padding: 4px;"><b class="gen">{draftrow.DRAFT_SUBJECT}</b>
-			<!-- IF draftrow.S_LINK_TOPIC --><br /><span class="gensmall">{L_TOPIC}{L_COLON} <a href="{draftrow.U_VIEW}">{draftrow.TITLE}</a></span>
-			<!-- ELSEIF draftrow.S_LINK_FORUM --><br /><span class="gensmall">{L_FORUM}{L_COLON} <a href="{draftrow.U_VIEW}">{draftrow.TITLE}</a></span>
-			<!-- ELSEIF draftrow.S_LINK_PM --><br /><span class="gensmall">{L_PRIVATE_MESSAGE}</span>
-			<!-- ELSE --><br /><span class="gensmall">{L_NO_TOPIC_FORUM}</span><!-- ENDIF -->
+			<!-- IF draftrow.S_LINK_TOPIC --><br /><span class="genmed">{L_TOPIC}{L_COLON} <a href="{draftrow.U_VIEW}">{draftrow.TITLE}</a></span>
+			<!-- ELSEIF draftrow.S_LINK_FORUM --><br /><span class="genmed">{L_FORUM}{L_COLON} <a href="{draftrow.U_VIEW}">{draftrow.TITLE}</a></span>
+			<!-- ELSEIF draftrow.S_LINK_PM --><br /><span class="genmed">{L_PRIVATE_MESSAGE}</span>
+			<!-- ELSE --><br /><span class="genmed">{L_NO_TOPIC_FORUM}</span><!-- ENDIF -->
 		</td>
-		<td style="padding: 4px;" align="center"><span class="gen"><a href="{draftrow.U_INSERT}">{L_LOAD_DRAFT}</a></span></td>
+		<td style="padding: 4px;" align="center" class="gen"><a href="{draftrow.U_INSERT}">{L_LOAD_DRAFT}</a></td>
 	</tr>
 	<!-- END draftrow -->
 	</table>
@@ -88,7 +88,7 @@
 
 <!-- IF ERROR -->
 	<tr>
-		<td class="row2" colspan="2" align="center"><span class="genmed" style="color: red">{ERROR}</span></td>
+		<td class="row2" colspan="2" align="center"><span class="genmed" style="color: #FF0000">{ERROR}</span></td>
 	</tr>
 <!-- ENDIF -->
 
@@ -98,7 +98,7 @@
 		<td class="row2">
 			<table width="100%" cellspacing="0" cellpadding="0" border="0">
 			<tr>
-				<td><input type="radio" class="radio" name="icon" value="0"{S_NO_ICON_CHECKED} tabindex="1" /><span class="genmed"><!-- IF S_SHOW_TOPIC_ICONS -->{L_NO_TOPIC_ICON}<!-- ELSE -->{L_NO_PM_ICON}<!-- ENDIF --></span> <!-- BEGIN topic_icon --><span class="nowrap"><input type="radio" class="radio" name="icon" value="{topic_icon.ICON_ID}"{topic_icon.S_ICON_CHECKED} tabindex="1" /><img src="{topic_icon.ICON_IMG}" alt=" {topic_icon.ICON_NAME}" class="normal" title="" hspace="2" vspace="2" /></span> <!-- END topic_icon --></td>
+				<td><input type="radio" class="radio" name="icon" value="0"{S_NO_ICON_CHECKED} tabindex="1" /><span class="genmed"><!-- IF S_SHOW_TOPIC_ICONS -->{L_NO_TOPIC_ICON}<!-- ELSE -->{L_NO_PM_ICON}<!-- ENDIF --></span> <!-- BEGIN topic_icon --><input type="radio" class="radio" name="icon" value="{topic_icon.ICON_ID}"{topic_icon.S_ICON_CHECKED} tabindex="1" /><img src="{topic_icon.ICON_IMG}" width="{topic_icon.ICON_WIDTH}" height="{topic_icon.ICON_HEIGHT}" class="bigger" alt="{topic_icon.ICON_ALT}" title="{topic_icon.ICON_ALT}" /> <!-- END topic_icon --></td>
 			</tr>
 			</table>
 		</td>
@@ -120,7 +120,7 @@
 		<!-- BEGIN to_recipient -->
 
 			<span class="genmed"><strong>
-			<!-- IF to_recipient.IS_GROUP --><a href="{to_recipient.U_VIEW}"><span class="sep">{to_recipient.NAME}</span></a><!-- ELSE -->{to_recipient.NAME_FULL}<!-- ENDIF --></strong>&nbsp;</span><!-- IF not S_EDIT_POST --><input class="post" type="submit" name="remove_{to_recipient.TYPE}[{to_recipient.UG_ID}]" value="{L_REMOVE}" />&nbsp;<!-- ENDIF -->
+			<!-- IF to_recipient.IS_GROUP --><a href="{to_recipient.U_VIEW}"><span class="sep">{to_recipient.NAME}</span></a><!-- ELSE -->{to_recipient.NAME_FULL}<!-- ENDIF --></strong>&nbsp;</span><!-- IF not S_EDIT_POST --><input class="btnlite" type="submit" name="remove_{to_recipient.TYPE}[{to_recipient.UG_ID}]" value="{L_REMOVE}" />&nbsp;<!-- ENDIF -->
 
 		<!-- BEGINELSE -->
 			<span class="genmed">{L_NO_TO_RECIPIENT}</span>
@@ -133,7 +133,7 @@
 		<td class="row2">
 		<!-- BEGIN bcc_recipient -->
 			<span class="genmed"><strong>
-			<!-- IF bcc_recipient.IS_GROUP --><a href="{bcc_recipient.U_VIEW}"><span class="sep">{bcc_recipient.NAME}</span></a><!-- ELSE -->{bcc_recipient.NAME_FULL}<!-- ENDIF --></strong>&nbsp;</span><!-- IF not S_EDIT_POST --><input class="post" type="submit" name="remove_{bcc_recipient.TYPE}[{bcc_recipient.UG_ID}]" value="{L_REMOVE}" />&nbsp;<!-- ENDIF -->		<!-- BEGINELSE -->
+			<!-- IF bcc_recipient.IS_GROUP --><a href="{bcc_recipient.U_VIEW}"><span class="sep">{bcc_recipient.NAME}</span></a><!-- ELSE -->{bcc_recipient.NAME_FULL}<!-- ENDIF --></strong>&nbsp;</span><!-- IF not S_EDIT_POST --><input class="btnlite" type="submit" name="remove_{bcc_recipient.TYPE}[{bcc_recipient.UG_ID}]" value="{L_REMOVE}" />&nbsp;<!-- ENDIF -->		<!-- BEGINELSE -->
 			<span class="genmed">{L_NO_BCC_RECIPIENT}</span>
 		<!-- END bcc_recipient -->
 		</td>
@@ -151,17 +151,17 @@
 </tr>
 <!-- EVENT posting_editor_subject_after -->
 <tr>
-	<td class="row1" valign="top"><b class="genmed">{L_MESSAGE_BODY}{L_COLON}</b><br /><span class="gensmall">{L_MESSAGE_BODY_EXPLAIN}&nbsp;</span><br /><br />
+	<td class="row1" valign="top"><b class="genmed">{L_MESSAGE_BODY}{L_COLON}</b><br /><span class="genmed">{L_MESSAGE_BODY_EXPLAIN}&nbsp;</span><br /><br />
 	<!-- EVENT posting_editor_smilies_before -->
 	<!-- IF S_SMILIES_ALLOWED -->
 		<table width="100%" cellspacing="5" cellpadding="0" border="0" align="center">
 			<tr>
-				<td class="gensmall" align="center"><b>{L_SMILIES}</b></td>
+				<td class="genmed" align="center"><b>{L_SMILIES}</b></td>
 			</tr>
 			<tr>
 				<td class="genmed" align="center">
 				<!-- BEGIN smiley -->
-					<a title="{smiley.SMILEY_DESC}" href="#" onclick="insert_text('{smiley.A_SMILEY_CODE}', true); return false;" style="line-height: 20px;"><img src="{smiley.SMILEY_IMG}" alt="{smiley.SMILEY_CODE}" title="{smiley.SMILEY_DESC}" hspace="2" vspace="2" /></a>
+					<a title="{smiley.SMILEY_DESC}" href="#" onclick="insert_text('{smiley.A_SMILEY_CODE}', true); return false;" style="line-height: 20px;"><img src="{smiley.SMILEY_IMG}" width="{smiley.SMILEY_WIDTH}" height="{smiley.SMILEY_HEIGHT}" alt="{smiley.SMILEY_CODE}" title="{smiley.SMILEY_DESC}" hspace="2" vspace="2" /></a>
 				<!-- END smiley -->
 				</td>
 			</tr>
@@ -207,23 +207,23 @@
 	<td class="row1" valign="top"><b class="genmed">{L_OPTIONS}{L_COLON}</b><br />
 		<table cellspacing="2" cellpadding="0" border="0">
 		<tr>
-			<td class="gensmall">{BBCODE_STATUS}</td>
+			<td class="genmed">{BBCODE_STATUS}</td>
 		</tr>
 		<!-- IF S_BBCODE_ALLOWED -->
 		<tr>
-			<td class="gensmall">{IMG_STATUS}</td>
+			<td class="genmed">{IMG_STATUS}</td>
 		</tr>
 		<tr>
-			<td class="gensmall">{FLASH_STATUS}</td>
+			<td class="genmed">{FLASH_STATUS}</td>
 		</tr>
 		<tr>
-			<td class="gensmall">{URL_STATUS}</td>
+			<td class="genmed">{URL_STATUS}</td>
 		</tr>
 		<!-- ENDIF -->
 		<tr>
-			<td class="gensmall">{SMILIES_STATUS}</td>
+			<td class="genmed">{SMILIES_STATUS}</td>
 		</tr>
-		<tr><td>&raquo; <a href="{U_FAQ}?mode=bbcode" class="nav">{L_BBCODE_GUIDE}</a></td></tr>	</table>
+		</table>
 	</td>
 	<!-- EVENT posting_editor_bbcode_status_after -->
 	<td class="row2">
@@ -282,7 +282,7 @@
 			<!-- IF S_TYPE_TOGGLE -->
 				<tr>
 					<td></td>
-					<td class="gen"><!-- IF S_EDIT_POST -->{L_CHANGE_TOPIC_TO}<!-- ELSE -->{L_POST_TOPIC_AS}<!-- ENDIF -->{L_COLON} <!-- BEGIN topic_type --><input type="radio" class="radio" name="topic_type" value="{topic_type.VALUE}"{topic_type.S_CHECKED} />{topic_type.L_TOPIC_TYPE}&nbsp;&nbsp;<!-- END topic_type --></td>
+					<td class="gen"><!-- IF S_EDIT_POST -->{L_CHANGE_TOPIC_TO}<!-- ELSE -->{L_POST_TOPIC_AS}<!-- ENDIF -->{L_COLON} <!-- BEGIN topic_type --><input type="radio" class="radio" name="topic_type" value="{topic_type.VALUE}"{topic_type.S_CHECKED} />{topic_type.L_TOPIC_TYPE}&nbsp; <!-- END topic_type --></td>
 				</tr>
 			<!-- ENDIF -->
 		<!-- ENDIF -->
@@ -312,8 +312,8 @@
 
 <!-- IF S_TOPIC_TYPE_ANNOUNCE or S_TOPIC_TYPE_STICKY -->
 	<tr>
-		<td class="row1"><b class="genmed">{L_STICK_TOPIC_FOR}{L_COLON}</b><br /><span class="gensmall">{L_STICKY_ANNOUNCE_TIME_LIMIT}</span></td>
-		<td class="row2"><input class="post" type="number" min="0" max="999" name="topic_time_limit" value="{TOPIC_TIME_LIMIT}" />&nbsp;<b class="gen">{L_DAYS}</b> <span class="gensmall">{L_STICK_TOPIC_FOR_EXPLAIN}</span></td>
+		<td class="row1"><b class="genmed">{L_STICK_TOPIC_FOR}{L_COLON}</b><br /><span class="genmed">{L_STICKY_ANNOUNCE_TIME_LIMIT}</span></td>
+		<td class="row2"><input class="post" type="number" min="0" max="999" name="topic_time_limit" value="{TOPIC_TIME_LIMIT}" />&nbsp;<b class="gen">{L_DAYS}</b> <span class="genmed">{L_STICK_TOPIC_FOR_EXPLAIN}</span></td>
 	</tr>
 <!-- ENDIF -->
 
@@ -333,11 +333,7 @@
 <!-- IF S_SHOW_ATTACH_BOX or S_SHOW_POLL_BOX -->
 	<tr>
 		<td class="cat" colspan="2" align="center">
-			<!-- IF S_HAS_DRAFTS --><input class="btnlite" type="submit" accesskey="d" tabindex="8" name="load" value="{L_LOAD_DRAFT}" /><!-- ENDIF -->
-			<!-- IF S_SAVE_ALLOWED -->&nbsp; <input class="btnlite" type="submit" accesskey="k" tabindex="7" name="save" value="{L_SAVE_DRAFT}" /><!-- ENDIF -->
-			&nbsp; <input class="btnmain" type="submit" tabindex="5" name="preview" value="{L_PREVIEW}" />
-			&nbsp; <input class="btnmain" type="submit" accesskey="s" tabindex="6" name="post" value="{L_SUBMIT}" />
-			&nbsp; <input class="btnlite" type="submit" accesskey="c" tabindex="9" name="cancel" value="{L_CANCEL}" />
+			<!-- IF S_HAS_DRAFTS --><input class="btnlite" type="submit" tabindex="8" name="load" value="{L_LOAD_DRAFT}" /><!-- ENDIF --><!-- IF S_SAVE_ALLOWED -->&nbsp; <input class="btnlite" type="submit" tabindex="7" name="save" value="{L_SAVE_DRAFT}" /><!-- ENDIF -->&nbsp; <input class="btnmain" type="submit" tabindex="5" name="preview" value="{L_PREVIEW}" />&nbsp; <input class="btnmain" type="submit" accesskey="s" tabindex="6" name="post" value="{L_SUBMIT}" />&nbsp; <input class="btnlite" type="submit" tabindex="9" name="cancel" value="{L_CANCEL}" />
 		</td>
 	</tr>
 
@@ -356,13 +352,7 @@
 <tr>
 	<td class="cat" colspan="2" align="center">{S_HIDDEN_FIELDS}
 		<!-- IF not S_SHOW_ATTACH_BOX and not S_SHOW_POLL_BOX -->
-			<!-- IF S_HAS_DRAFTS --><input class="btnlite" type="submit" accesskey="d" tabindex="13" name="load" value="{L_LOAD_DRAFT}" /><!-- ENDIF -->
-		<!-- IF S_SAVE_ALLOWED -->&nbsp; <input class="btnlite" type="submit" accesskey="k" tabindex="12" name="save" value="{L_SAVE_DRAFT}" /><!-- ENDIF -->
-			<!-- ENDIF -->
-		&nbsp; <input class="btnmain" type="submit" tabindex="10" name="preview" value="{L_PREVIEW}" />
-		&nbsp; <input class="btnmain" type="submit" accesskey="s" tabindex="11" name="post" value="{L_SUBMIT}" />
-		<!-- EVENT posting_editor_submit_buttons -->
-		&nbsp; <input class="btnlite" type="submit" accesskey="c" tabindex="14" name="cancel" value="{L_CANCEL}" />
+			<!-- IF S_HAS_DRAFTS --><input class="btnlite" type="submit" tabindex="13" name="load" value="{L_LOAD_DRAFT}" /><!-- ENDIF --><!-- IF S_SAVE_ALLOWED -->&nbsp; <input class="btnlite" type="submit" tabindex="12" name="save" value="{L_SAVE_DRAFT}" /><!-- ENDIF --><!-- ENDIF -->&nbsp; <input class="btnmain" type="submit" tabindex="10" name="preview" value="{L_PREVIEW}" />&nbsp; <input class="btnmain" type="submit" accesskey="s" tabindex="11" name="post" value="{L_SUBMIT}" />&nbsp;<!-- EVENT posting_editor_submit_buttons --> <input class="btnlite" type="submit" tabindex="14" name="cancel" value="{L_CANCEL}" />
 	</td>
 </tr>
 </table>
@@ -391,7 +381,7 @@
 			<td class="cat"><h4>{L_WHO_IS_ONLINE}</h4></td>
 		</tr>
 		<tr>
-			<td class="row1"><span class="gensmall">{LOGGED_IN_USER_LIST}</span></td>
+			<td class="row1"><span class="genmed">{LOGGED_IN_USER_LIST}</span></td>
 		</tr>
 		</table>
 	<!-- ENDIF -->

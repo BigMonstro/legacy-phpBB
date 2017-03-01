@@ -23,8 +23,10 @@
 
 				<!-- IF topic_review_row.S_IGNORE_POST -->
 				<td colspan="2" class="normal">{topic_review_row.L_IGNORE_POST}</td>
+				<!-- ELSE IF topic_review_row.S_POST_DELETED -->
+				<td colspan="2" class="normal">{topic_review_row.L_DELETE_POST}</td>
 				<!-- ELSE -->
-				<td rowspan="2" align="{S_CONTENT_FLOW_BEGIN}" valign="top"><a id="pr{topic_review_row.POST_ID}" class="anchor"></a>
+				<td rowspan="2" align="{S_CONTENT_FLOW_BEGIN}" valign="top"><a name="pr{topic_review_row.POST_ID}" class="anchor"></a>
 					<table width="150" cellspacing="0">
 					<tr>
 						<td align="center"><b class="postauthor"<!-- IF topic_review_row.POST_AUTHOR_COLOUR --> style="color: {topic_review_row.POST_AUTHOR_COLOUR}"<!-- ENDIF -->>{topic_review_row.POST_AUTHOR}</b></td>
@@ -35,9 +37,9 @@
 					<table width="100%" cellspacing="0">
 					<tr>
 						<td>&nbsp;</td>
-						<td class="gensmall" valign="middle" nowrap="nowrap"><b>{L_POST_SUBJECT}{L_COLON}</b>&nbsp;</td>
-						<td class="gensmall" width="100%" valign="middle">{topic_review_row.POST_SUBJECT}</td>
-						<td valign="top" nowrap="nowrap">&nbsp;<!-- IF topic_review_row.POSTER_QUOTE and topic_review_row.DECODED_MESSAGE --><a title="{L_QUOTE} {topic_review_row.POST_AUTHOR}" href="#" onclick="addquote({topic_review_row.POST_ID},'{topic_review_row.POSTER_QUOTE}', '{LA_WROTE}'); return false;"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_post_quote.gif" alt="{L_QUOTE} {topic_review_row.POST_AUTHOR}" class="normal"></a><!-- ENDIF --></td>
+						<td class="genmed" valign="middle" nowrap="nowrap"><b>{L_POST_SUBJECT}{L_COLON}</b>&nbsp;</td>
+						<td class="genmed" width="100%" valign="middle">{topic_review_row.POST_SUBJECT}</td>
+						<td valign="top" nowrap="nowrap">&nbsp;<!-- IF topic_review_row.POSTER_QUOTE and topic_review_row.DECODED_MESSAGE --><a title="{L_QUOTE} {topic_review_row.POST_AUTHOR}" href="#" onclick="addquote({topic_review_row.POST_ID}, '{topic_review_row.POSTER_QUOTE}', '{LA_WROTE}', {post_id:{topic_review_row.POST_ID},time:{topic_review_row.POST_TIME},user_id:{topic_review_row.USER_ID}}); return false;"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_post_quote.gif" width="90" height="20" alt="[{L_BUTTON_QUOTE}]" title="{L_QUOTE} {topic_review_row.POST_AUTHOR}" class="normal"></a><!-- ENDIF --></td>
 					</tr>
 					</table>
 				</td>
@@ -56,7 +58,7 @@
 									<!-- IF topic_review_row.POST_ID == REPORTED_POST_ID -->
 									<table width="100%" cellspacing="0">
 										<tr>
-											<span class="postreported"><img src="{T_THEME_PATH}/images/icon_topic_reported.gif" alt="(!)" title=""></span>
+											<span class="postreported"><img src="{T_THEME_PATH}/images/icon_topic_reported.gif" width="19" height="18" alt="(!)" title=""></span>
 										</tr>
 									</table>
 									<!-- ENDIF -->
@@ -70,7 +72,7 @@
 											<td class="row3"><b class="genmed">{L_ATTACHMENTS}{L_COLON} </b></td>
 										</tr>
 										<!-- BEGIN attachment -->
-											<tr>
+											<tr class="postbody">
 												<!-- IF topic_review_row.attachment.S_ROW_COUNT is even --><td class="row2"><!-- ELSE --><td class="row1"><!-- ENDIF -->{topic_review_row.attachment.DISPLAY_ATTACHMENT}</td>
 											</tr>
 										<!-- END attachment -->
@@ -89,8 +91,8 @@
 						<td>
 							<table width="100%" cellspacing="0">
 							<tr valign="middle">
-								<td width="100%" align="{S_CONTENT_FLOW_BEGIN}"><span class="gensmall"><!-- IF topic_review_row.U_MCP_DETAILS -->[ <a href="{topic_review_row.U_MCP_DETAILS}">{L_POST_DETAILS}</a> ]<!-- ENDIF --></span></td>
-								<td class="gensmall" nowrap="nowrap"><b>{L_POSTED}{L_COLON}</b> {topic_review_row.POST_DATE}</td>
+								<td width="100%" align="{S_CONTENT_FLOW_BEGIN}" class="genmed"><!-- IF topic_review_row.U_MCP_DETAILS -->[ <a href="{topic_review_row.U_MCP_DETAILS}">{L_POST_DETAILS}</a> ]<!-- ENDIF --></td>
+								<td class="genmed" nowrap="nowrap"><b>{L_POSTED}{L_COLON}</b> {topic_review_row.POST_DATE}</td>
 							</tr>
 							</table>
 						</td>
@@ -100,7 +102,7 @@
 				<!-- ENDIF -->
 			</tr>
 			<tr>
-				<td class="spacer" colspan="2"></td>
+				<td class="row3" colspan="2"></td>
 			</tr>
 		<!-- END topic_review_row -->
 		</table>
@@ -108,4 +110,4 @@
 </tr>
 </table>
 
-<br clear="all" />
+<!-- IF not S_MCP_QUEUE and not S_MCP_REPORT --><br clear="all" /><!-- ENDIF -->

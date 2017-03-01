@@ -11,7 +11,7 @@
 
 	<!-- IF LOGIN_LINK_ERROR -->
 		<tr>
-			<td class="row1" align="center"><span class="genmed" style="color: red">{LOGIN_LINK_ERROR}</span></td>
+			<td class="row1" align="center"><span class="genmed" style="color: #FF0000">{LOGIN_LINK_ERROR}</span></td>
 		</tr>
 	<!-- ENDIF -->
 
@@ -41,17 +41,17 @@
 
 					<!-- IF LOGIN_ERROR -->
 						<tr>
-							<td class="row1" align="center" colspan="2"><span class="genmed" style="color: red">{LOGIN_ERROR}</span></td>
+							<td class="row1" align="center" colspan="2"><span class="genmed" style="color: #FF0000">{LOGIN_ERROR}</span></td>
 						</tr>
 					<!-- ENDIF -->
 
 					<tr>
-						<td><label for="{USERNAME_CREDENTIAL}">{L_USERNAME}{L_COLON}</label></td>
+						<td align="{S_CONTENT_FLOW_END}"><b class="genmed"><label for="{USERNAME_CREDENTIAL}">{L_USERNAME}{L_COLON}</label></b></td>
 						<td><input type="text" tabindex="2" name="{USERNAME_CREDENTIAL}" id="{USERNAME_CREDENTIAL}" size="25" value="{LOGIN_USERNAME}" class="inputbox" style="width:auto" /></td>
 					</tr>
 
 					<tr>
-						<td><label for="{PASSWORD_CREDENTIAL}">{L_PASSWORD}{L_COLON}</label></td>
+						<td align="{S_CONTENT_FLOW_END}"><b class="genmed"><label for="{PASSWORD_CREDENTIAL}">{L_PASSWORD}{L_COLON}</label></b></td>
 						<td><input type="password" tabindex="3" id="{PASSWORD_CREDENTIAL}" name="{PASSWORD_CREDENTIAL}" size="25" class="inputbox" style="width:auto" autocomplete="off" /></td>
 					</tr>
 
@@ -70,5 +70,11 @@
 		</td>
 	</tr>
 </table>
+
+<br clear="all" />
+
+<!-- INCLUDE breadcrumbs.html -->
+
+<br clear="all" />
 
 <!-- INCLUDE overall_footer.html -->

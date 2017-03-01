@@ -1,6 +1,6 @@
 /*  phpBB3 Style Sheet
     --------------------------------------------------------------
-	Style name:			Legacy
+	Style name:			Legacy 1.2.0
 	Based on style: 	subSilver (the default phpBB 2.0.x style)
 	Original author:	Tom Beddard ( http://www.subblue.com/ )
 	Modified by:		Big Monstro (initial CSS by LiveKiller44)
@@ -30,7 +30,7 @@ body {
 	color: #333333;
 	background-color: #FFFFFF;
 	font-size: 100%; /* This sets the default font size to be equivalent to 16px */
-	line-height: 78%;
+	line-height: 85%;
 	margin: 0;
 }
 
@@ -52,21 +52,11 @@ body {
 	width: 100%;
 	margin: 0;
 	background-color: #C0C0C0;
-	border-width: 1px;
-	border-style: solid;
-	border-color: #C0C0C0;
-}
-
-#logodesc {
-	padding: 0 25px 15px 25px;
+	border: 1px solid #C0C0C0;
 }
 
 #menubar {
 	margin: 0;
-}
-
-#datebar {
-	margin: 8px 0 2px;
 }
 
 #findbar {
@@ -85,13 +75,13 @@ div.forumrules {
 	font-weight: normal;
 	font-size: 0.7em;
 	font-family: "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
-	margin-bottom:12px;
+	margin-bottom: 12px;
 }
 
 h3.forumrules {
-	color: red;
+	color: #FF0000;
 	font-size: 1.27em;
-	margin-bottom:12px;
+	margin-bottom: 12px;
 }
 
 #pageheader { }
@@ -111,7 +101,7 @@ h1 {
 	font-weight: bold;
 	font-size: 1.1em;
 	text-decoration: none;
-	margin: 7px 0 5px;
+	margin: 7px 0 4px;
 }
 
 h2 {
@@ -119,35 +109,23 @@ h2 {
 	font-weight: bold;
 	font-size: 0.95em;
 	text-decoration: none;
-	line-height: 120%;
+	line-height: 1.2em;
 }
 
 h3 {
 	font-size: 0.8em;
 	font-weight: bold;
 	font-family: Arial, Helvetica, sans-serif;
-	line-height: 120%;
+	line-height: 1.2em;
 }
 
 h4 {
 	margin: 0;
-	font-size: 0.7em;
 	font-weight: bold;
 }
 
-p {
+h4, p, .bigger, .forumdesc, .helpbox, .topictitle {
 	font-size: 0.7em;
-}
-
-p.moderators {
-	margin: 0;
-	float: left;
-	color: #000000;
-	font-weight: bold;
-}
-
-.rtl p.moderators {
-	float: right;
 }
 
 p.breadcrumbs {
@@ -159,56 +137,31 @@ p.breadcrumbs {
 	text-align: left;
 }
 
-.rtl p.breadcrumbs {
+.rtl p.breadcrumbs, .postdatetime {
 	text-align: right;
+}
+
+.rtl .postdatetime {
+	text-align: left;
 }
 
 p.datetime {
 	margin: 0;
 	white-space: normal;
-	font-size: 0.6em;
 }
 
-p.searchbar {
-	padding: 2px 0;
-	white-space: nowrap;
-}
-
-p.searchbarreg {
-	margin: 0;
-	float: right;
-	white-space: nowrap;
-}
-
-.rtl p.searchbarreg {
-	float: left;
-}
-
-.forumdesc {
-	font-size: 0.7em;
-}
-
-p.topicauthor {
+p.topicauthor, p.topicdetails {
 	margin: 1px 0;
 }
 
-p.topicdetails {
+.postreported, .postreported a:link, .postreported a:visited, .postreported a:hover {
 	margin: 1px 0;
-}
-
-p.topictitle {
-	font-size: 0.7em;
-
-}
-
-.postreported, .postreported a:link, .postreported a:visited, .postreported a:hover, .postreported a:active {
-	margin: 1px 0;
-	color: red !important;
+	color: #FF0000 !important;
 	font-weight: bold;
 }
 
-.postapprove, .postapprove a:link, .postapprove a:visited, .postapprove a:hover, .postapprove a:active {
-	color: green !important;
+.postapprove, .postapprove a:link, .postapprove a:visited, .postapprove a:hover {
+	color: #008000 !important;
 	font-weight: bold;
 }
 
@@ -237,7 +190,7 @@ p.topictitle {
 }
 
 .posthilit {
-	background-color: yellow;
+	background-color: #FFFF00;
 }
 
 .nav {
@@ -245,13 +198,6 @@ p.topictitle {
 	color: #000000;
 	font-weight: bold;
 	font-size: 0.65em;
-}
-
-.pagination {
-	padding: 4px;
-	color: #000000;
-	font-size: 0.6em;
-	font-weight: bold;
 }
 
 .cattitle { }
@@ -268,11 +214,11 @@ p.topictitle {
 
 .gensmall {
 	margin: 1px 1px;
-	font-size: 0.6em;
+	font-size: 0.65em;
 }
 
 .copyright {
-	color: black;
+	color: #000000;
 	font-weight: normal;
 	font-family: "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
 	font-size: 0.65em;
@@ -285,36 +231,31 @@ p.topictitle {
 	text-decoration: none;
 }
 
-.online {
-	color: green;
+.error, .inactive {
+	color: #FF0000;
 }
 
-.offline, .error, .inactive {
-	color: red;
+.giant {
+	font-size: 1.4em;
 }
 
-.bigger {
-	font-size:0.7em;
+.larger {
+	font-size: 0.9em;
 }
 
 .normal {
 	font-size: 0.625em;
 }
 
-.no_alt {
-	font-size:0;
-}
-
 
 /* Tables
  ------------ */
 th {
-	color: #FFFFFF;
+	background-color: #000080;
 	font-size: 0.7em;
 	font-weight: bold;
-	background-color: #000080;
-	white-space: nowrap;
 	padding: 7px 5px;
+	white-space: nowrap;
 }
 
 th.center {
@@ -325,7 +266,7 @@ td {
 	padding: 2px;
 }
 
-td.profile {
+td.profile, .row1, .row2, .row3 {
 	padding: 4px;
 }
 
@@ -333,54 +274,23 @@ td.profile {
 	background-color: #C0C0C0;
 }
 
-.catdiv {
-	height: 28px;
-	margin: 0;
-	padding: 0;
-	border: 0;
-	background: #C0C0C0;
-}
-
-.rtl .catdiv {
-	background: #C0C0C0;
-}
-
 .cat {
+	border: 0;
 	height: 28px;
 	margin: 0;
-	padding: 0;
-	border: 0;
-	background-color: #C0C0C0;
-	text-indent: 4px;
+	padding: 4px;
 }
 
 .row1 {
 	background-color: #FFFFFF;
-	padding: 4px;
 }
 
 .row2 {
 	background-color: #FFFFFF;
-	padding: 4px;
 }
 
-.row3 {
+.row3, .cat {
 	background-color: #C0C0C0;
-	padding: 4px;
-}
-
-.row4 {
-	background-color: #FFFFFF;
-	font-size: 140%;
-	padding: 4px;
-}
-
-.spacer {
-	background-color: #C0C0C0;
-}
-
-.current {
-	background-color: #00FFFF;
 }
 
 hr {
@@ -388,11 +298,6 @@ hr {
 	border-width: 0;
 	background-color: #C0C0C0;
 	color: #C0C0C0;
-}
-
-.legend {
-	text-align:center;
-	margin: 0 auto;
 }
 
 
@@ -404,15 +309,8 @@ hr {
 	unicode-bidi: embed;
 }
 
-/* CSS spec requires a:link, a:visited, a:hover and a:active rules to be specified in this order. */
-/* See http://www.phpbb.com/bugs/phpbb3/59685 */
-a:link {
+a:link, a:visited {
 	color: #006597;
-	text-decoration: none;
-}
-
-a:visited {
-	color: #005784;
 	text-decoration: none;
 }
 
@@ -421,13 +319,7 @@ a:hover {
 	text-decoration: underline;
 }
 
-a:active {
-	color: #005784;
-	text-decoration: none;
-}
-
-a.forumlink {
-	color: #069;
+a.forumlink, a.topictitle {
 	font-weight: bold;
 	font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
 	font-size: 0.75em;
@@ -439,26 +331,17 @@ a.titles {
 
 a.topictitle {
 	margin: 1px 0;
-	font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
-	font-weight: bold;
-	font-size: 0.75em;
 }
 
 a.topictitle:visited {
-	color: #5493B4;
-	text-decoration: none;
+	color: #808080;
 }
 
-th a, th a:visited {
+th, th a, th a:visited {
 	color: #FFFFFF !important;
-	text-decoration: none;
 }
 
-th a:hover {
-	text-decoration: underline;
-}
-
-a.anchor {
+a.anchor, .dropdown .quicktools {
 	display: inline;
 }
 
@@ -472,7 +355,7 @@ form {
 }
 
 input {
-	color: black;
+	color: #000000;
 	font-family: "Lucida Grande", Verdana, Helvetica, sans-serif;
 	font-size: 0.7em;
 	font-weight: normal;
@@ -483,7 +366,7 @@ input {
 
 textarea {
 	background-color: #FFFFFF !important;
-	color: black;
+	color: #000000;
 	font-family: "Lucida Grande", Verdana, Helvetica, Arial, sans-serif;
 	font-size: 0.8em;
 	line-height: 1.4em;
@@ -493,12 +376,13 @@ textarea {
 }
 
 select {
-	color: black;
-	 background-color: #FFFFFF !important;
+	color: #000000;
+	background-color: #FFFFFF !important;
 	font-family: "Lucida Grande", Verdana, Helvetica, sans-serif;
 	font-size: 0.7em;
 	font-weight: normal;
 	border: 1px solid #C0C0C0;
+	cursor: pointer;
 	padding: 1px;
 }
 
@@ -514,9 +398,13 @@ option.disabled-option {
 	padding: 0 0 0 1em;
 }
 
+.helpbox, .radio {
+	background-color: transparent; /* Even older browsers support that transparency */
+}
+
 input.radio {
 	border: none;
-	background-color: transparent;
+	cursor: pointer;
 }
 
 .post {
@@ -525,45 +413,25 @@ input.radio {
 	border-width: 1px;
 }
 
+.btnbbcode, .btnlite, .btnmain {
+	background-color: #FFFFFF;
+	border: 1px solid #C0C0C0;
+	cursor: pointer;
+	font-size: 0.7em;
+	*overflow: visible;
+	*width: auto;
+}
+
 .btnbbcode {
-	color: #000000;
-	font-weight: normal;
-	font-size: 0.7em;
 	font-family: "Lucida Grande", Verdana, Helvetica, sans-serif;
-	background-color: #FFFFFF;
-	border: 1px solid #808080;
 }
 
-.btnmain {
+.btnlite, .btnmain {
+	padding: 1px 5px;
+}
+
+.btnmain, .bold, .username-coloured {
 	font-weight: bold;
-	background-color: #FFFFFF;
-	border: 1px solid #C0C0C0;
-	cursor: pointer;
-	padding: 1px 5px;
-	font-size: 0.7em;
-}
-
-.btnlite {
-	font-weight: normal;
-	background-color: #FFFFFF;
-	border: 1px solid #C0C0C0;
-	cursor: pointer;
-	padding: 1px 5px;
-	font-size: 0.7em;
-}
-
-.btnfile {
-	font-weight: normal;
-	background-color: #FFFFFF;
-	border: 1px solid #C0C0C0;
-	padding: 1px 5px;
-	font-size: 0.7em;
-}
-
-.helpline {
-	background-color: #FFFFFF;
-	border-style: none;
-	font-size: 0.65em;
 }
 
 input:focus, select:focus, textarea:focus {
@@ -573,38 +441,45 @@ input:focus, select:focus, textarea:focus {
 
 /* BBCode
  ------------ */
-.quotetitle, .attachtitle, .codetitle {
-	margin: 10px 5px 0 5px;
-	padding: 2px 4px;
-	border-width: 1px 1px 0 1px;
-	border-style: solid;
-	border-color: #C0C0C0;
-	color: black;
+.attachtitle, .codetitle, .quotetitle {
+	color: #000000;
 	background-color: #C0C0C0;
+	border-color: #C0C0C0;
+	border-style: solid;
+	border-width: 1px 1px 0 1px;
+	margin: 10px 5px 0 5px;
+}
+
+.attachtitle, .codetitle {
 	font-size: 0.85em;
 	font-weight: bold;
+	padding: 2px 4px;
 }
 
 .codetitle {
 	text-transform: uppercase;
 }
 
-.quotecontent, .attachcontent {
+.quotetitle {
+	font-size: 1.2em;
+	padding: 0 2px;
+	width: auto !important;
+	_width: 100%;
+	_wid\th: auto;
+}
+
+.attachcontent, .quotecontent {
+	color: #4B5C77;
 	margin: 0 5px 10px 5px;
 	padding: 5px;
 	border-color: #C0C0C0;
 	border-width: 0 1px 1px 1px;
 	border-style: solid;
 	font-weight: normal;
-	font-size: 1.00em;
+	font-size: 1.0em;
 	line-height: 1.4em;
 	font-family: "Lucida Grande", "Trebuchet MS", Helvetica, Arial, sans-serif;
 	background-color: #FFFFFF;
-	color: black;
-}
-
-.attachcontent {
-	font-size: 1.40em;
 }
 
 .codecontent {
@@ -619,51 +494,8 @@ input:focus, select:focus, textarea:focus {
 	font-size: 0.85em !important;
 	font-size: 1.0em;
 	background-color: #FFFFFF;
-	line-height: 95%;
+	line-height: normal;
 	letter-spacing: 0px;
-}
-
-.syntaxbg {
-	color: #FFFFFF;
-}
-
-.syntaxcomment {
-	color: orange;
-}
-
-.syntaxdefault {
-	color: #0000FF;
-}
-
-.syntaxhtml {
-	color: #000000;
-}
-
-.syntaxkeyword {
-	color: #008000;
-}
-
-.syntaxstring {
-	color: #FF0000;
-}
-
-
-/* Private messages
- ------------------ */
-.pm_marked_colour {
-	background-color: #000000;
-}
-
-.pm_replied_colour {
-	background-color: #C0C0C0;
-}
-
-.pm_friend_colour {
-	background-color: #008000;
-}
-
-.pm_foe_colour {
-	background-color: #FF0000;
 }
 
 
@@ -673,21 +505,37 @@ img {
 	border: none;
 }
 
+dl, ol, ul {
+	line-height: 1.5em;
+}
+
 .block {
 	display: block;
 	white-space: nowrap;
+}
+
+.quicktools, .dropdown  .quick_links_hidden {
+	display: none;
+}
+
+.emoji {
+	min-height: 18px;
+	min-width: 18px;
+	height: 1em;
+	width: 1em;
 }
 
 .sep {
 	color: #000000;
 }
 
-table.colortable td {
-	padding: 0;
+.site_logo {
+	height: 94px;
+	width: 170px;
 }
 
-.topictitle {
-	font-size: 0.65em;
+table.colortable td {
+	padding: 0;
 }
 
 pre {
@@ -695,16 +543,7 @@ pre {
 	font-family: Monaco, 'Courier New', monospace;
 }
 
-.notification_time {
-	font-size: 90%;
-	text-align: right;
-}
-
-.rtl .notification_time {
-	text-align: left;
-}
-
-#notification_list iframe, #quick_links_list iframe, #topictools_bottom_list iframe, #topictools_top_list iframe, #user_list iframe{
+#notification_list iframe, #quick_links_list iframe, #topictools_top_list iframe, #user_list iframe{
 	position: absolute;
 	left: -2px;
 	right: auto;
@@ -713,15 +552,11 @@ pre {
 	filter: mask();
 }
 
-.rtl #notification_list iframe, #quick_links_list iframe, #user_list iframe{
+.rtl #notification_list iframe, #quick_links_list iframe, #topictools_top_list iframe, #user_list iframe{
 	left: auto;
 	right: -2px;
 }
 
 .nowrap {
 	white-space: nowrap;
-}
-
-.username-coloured {
-	font-weight: bold;
 }

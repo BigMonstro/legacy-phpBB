@@ -21,7 +21,7 @@
 	<form method="post" action="{S_UCP_ACTION}" id="register">
 		<table width="100%" cellspacing="0">
 			<tr>
-				<td align="{S_CONTENT_FLOW_END}" style="margin: 1px 1px;"><span class="normal">{L_LANGUAGE}{L_COLON} </span><select name="lang" id="lang" onchange="change_language(this.value); return false;">{S_LANG_OPTIONS}</select></td>
+				<td align="{S_CONTENT_FLOW_END}" style="margin: 1px 1px;"><span class="genmed">{L_LANGUAGE}{L_COLON} </span><select name="lang" id="lang" onchange="change_language(this.value); return false;">{S_LANG_OPTIONS}</select></td>
 			</tr>
 		</table>
 		{S_HIDDEN_FIELDS}
@@ -72,7 +72,7 @@
 			<tr>
 				<td>
 					<span class="genmed"><br />{AGREEMENT_TEXT}<br /><br /></span>
-					<div align="center" class="normal">
+					<div align="center" class="genmed">
 						<a href="{U_BACK}">{L_BACK}</a>
 					</div>
 				</td>
@@ -83,5 +83,11 @@
 	</table>
 
 <!-- ENDIF -->
+
+<br clear="all" />
+
+<!-- INCLUDE breadcrumbs.html -->
+
+<br clear="all" />
 
 <!-- INCLUDE overall_footer.html -->

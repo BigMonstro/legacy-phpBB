@@ -38,31 +38,31 @@
 	<th colspan="2" nowrap="nowrap">{L_TITLE}</th>
 </tr>
 <tr>
-	<td class="row3" colspan="2"><span class="normal">{L_EXPLAIN}</span></td>
+	<td class="row3" colspan="2"><span class="genmed">{L_EXPLAIN}</span></td>
 </tr>
 <!-- EVENT mcp_ban_fields_before -->
 <tr>
-	<td class="row1" width="45%" valign="top"><b class="normal">{L_BAN_CELL}{L_COLON}</b></td>
+	<td class="row1" width="45%" valign="top"><b class="genmed">{L_BAN_CELL}{L_COLON}</b></td>
 	<td class="row2">
 		<textarea name="ban" id="ban" cols="40" rows="3" class="post">{USERNAMES}</textarea>
-		<!-- IF S_USERNAME_BAN --><br /><span class="normal">[ <a href="{U_FIND_USERNAME}" onclick="find_username(this.href); return false;">{L_FIND_USERNAME}</a> ]</span><!-- ENDIF -->
+		<!-- IF S_USERNAME_BAN --><br /><span class="genmed">[ <a href="{U_FIND_USERNAME}" onclick="find_username(this.href); return false;">{L_FIND_USERNAME}</a> ]</span><!-- ENDIF -->
 	</td>
 </tr>
 <tr>
-	<td class="row1" valign="top"><b class="normal">{L_BAN_EXCLUDE}{L_COLON}</b><br /><span class="gensmall">{L_BAN_EXCLUDE_EXPLAIN}</span></td>
-	<td class="row2"><span class="normal"><input type="radio" class="radio" name="banexclude" value="1" /> {L_YES} &nbsp; <input type="radio" class="radio" name="banexclude" value="0" checked="checked" /> {L_NO}</span></td>
+	<td class="row1" valign="top"><b class="genmed">{L_BAN_EXCLUDE}{L_COLON}</b><br /><span class="genmed">{L_BAN_EXCLUDE_EXPLAIN}</span></td>
+	<td class="row2"><span class="genmed"><input type="radio" class="radio" name="banexclude" value="1" /> {L_YES} &nbsp;<input type="radio" class="radio" name="banexclude" value="0" checked="checked" /> {L_NO}</span></td>
 </tr>
 <tr>
-	<td class="row1" valign="top"><b class="normal">{L_BAN_REASON}{L_COLON}</b></td>
+	<td class="row1" valign="top"><b class="genmed">{L_BAN_REASON}{L_COLON}</b></td>
 	<td class="row2"><input name="banreason" type="text" class="post" maxlength="255" /></td>
 </tr>
 <tr>
-	<td class="row1" valign="top"><b class="normal">{L_BAN_GIVE_REASON}{L_COLON}</b></td>
+	<td class="row1" valign="top"><b class="genmed">{L_BAN_GIVE_REASON}{L_COLON}</b></td>
 	<td class="row2"><input name="bangivereason" type="text" class="post" maxlength="255" /></td>
 </tr>
 <tr>
-	<td class="row1" valign="top"><b class="normal">{L_BAN_LENGTH}{L_COLON}</b></td>
-	<td class="row2"><select name="banlength" onchange="if (document.getElementById) {if(this.value==-1){document.getElementById('banlengthuntil').style.display = 'block';}else{document.getElementById('banlengthuntil').style.display='none';}} else if (document.all) {if(this.value==-1){document.all('banlengthuntil').style.display = 'block';}else{document.all('banlengthuntil').style.display='none';}}">{S_BAN_END_OPTIONS}</select><div id="banlengthuntil" style="display:none"><input type="text" name="banlengthother" class="post" /> <span class="normal">{L_YEAR_MONTH_DAY}</span></div></td>
+	<td class="row1" valign="top"><b class="genmed">{L_BAN_LENGTH}{L_COLON}</b></td>
+	<td class="row2"><select name="banlength" onchange="if (document.getElementById) {if(this.value==-1){document.getElementById('banlengthuntil').style.display = 'block';}else{document.getElementById('banlengthuntil').style.display='none';}} else if (document.all) {if(this.value==-1){document.all('banlengthuntil').style.display = 'block';}else{document.all('banlengthuntil').style.display='none';}}">{S_BAN_END_OPTIONS}</select><div id="banlengthuntil" style="display:none"><input type="text" name="banlengthother" class="post" /> <span class="genmed">{L_YEAR_MONTH_DAY}</span></div></td>
 </tr>
 <!-- EVENT mcp_ban_fields_after -->
 <tr>
@@ -77,24 +77,24 @@
 	<th colspan="2" nowrap="nowrap">{L_UNBAN_TITLE}</th>
 </tr>
 <tr>
-	<td class="row3" colspan="2"><span class="normal">{L_UNBAN_EXPLAIN}</span></td>
+	<td class="row3" colspan="2"><span class="genmed">{L_UNBAN_EXPLAIN}</span></td>
 </tr>
 <!-- IF S_BANNED_OPTIONS -->
 	<!-- EVENT mcp_ban_unban_before -->
 	<tr>
-		<td class="row1" valign="top" width="45%"><b class="normal">{L_BAN_CELL}{L_COLON}</b></td>
+		<td class="row1" valign="top" width="45%"><b class="genmed">{L_BAN_CELL}{L_COLON}</b></td>
 		<td class="row2"><select name="unban[]" multiple="multiple" size="10" style="width: 50%" onchange="if (this.selectedIndex > -1) display_details(this.options[this.selectedIndex].value); else display_details(-1);">{BANNED_OPTIONS}</select></td>
 	</tr>
 	<tr>
-		<td class="row1" valign="top"><b class="normal">{L_BAN_LENGTH}{L_COLON}</b></td>
+		<td class="row1" valign="top"><b class="genmed">{L_BAN_LENGTH}{L_COLON}</b></td>
 		<td class="row2"><input style="border: 0; width: 100%" type="text" name="unbanlength" readonly="readonly" /></td>
 	</tr>
 	<tr>
-		<td class="row1" valign="top"><b class="normal">{L_BAN_REASON}{L_COLON}</b></td>
+		<td class="row1" valign="top"><b class="genmed">{L_BAN_REASON}{L_COLON}</b></td>
 		<td class="row2"><textarea style="border: 0; width: 100%" name="unbanreason" readonly="readonly" rows="5" cols="80">&nbsp;</textarea></td>
 	</tr>
 	<tr>
-		<td class="row1" valign="top"><b class="normal">{L_BAN_GIVE_REASON}{L_COLON}</b></td>
+		<td class="row1" valign="top"><b class="genmed">{L_BAN_GIVE_REASON}{L_COLON}</b></td>
 		<td class="row2"><textarea style="border: 0; width: 100%" name="unbangivereason" readonly="readonly" rows="5" cols="80">&nbsp;</textarea></td>
 	</tr>
 	<!-- EVENT mcp_ban_unban_after -->
@@ -103,7 +103,7 @@
 	</tr>
 <!-- ELSE -->
 	<tr>
-		<td class="row1" colspan="2"><b>{L_NO_BAN_CELL}</b></td>
+		<td class="row1" colspan="2"><b class="genmed">{L_NO_BAN_CELL}</b></td>
 	</tr>
 <!-- ENDIF -->
 </table>

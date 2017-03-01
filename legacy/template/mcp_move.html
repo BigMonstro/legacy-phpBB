@@ -13,10 +13,10 @@
 	<tr>
 		<td class="row1" align="center">
 			<!-- IF ADDITIONAL_MSG -->
-				<span class="gen" style="color:red;">{ADDITIONAL_MSG}</span><br />
+				<span class="gen" style="color: #FF0000">{ADDITIONAL_MSG}</span><br />
 			<!-- ENDIF -->
 			<!-- IF S_FORUM_SELECT -->
-				<span class="gen"><br />{L_SELECT_DESTINATION_FORUM}&nbsp;&nbsp;</span>
+				<span class="gen"><br />{L_SELECT_DESTINATION_FORUM} &nbsp;</span>
 					<select name="to_forum_id">{S_FORUM_SELECT}</select><br />
 				<!-- IF S_CAN_LEAVE_SHADOW -->
 					<input type="checkbox" class="radio" name="move_leave_shadow" /><span class="gen">{L_LEAVE_SHADOW}</span><br />
@@ -25,7 +25,7 @@
 					<input type="checkbox" class="radio" name="move_lock_topics" /><span class="gen">{L_LOCK_TOPIC}</span><br />
 				<!-- ENDIF -->
 				<br />{S_HIDDEN_FIELDS}<span class="gen">{MESSAGE_TEXT}</span><br /><br />
-				<input type="submit" name="confirm" value="{YES_VALUE}" class="btnmain" />&nbsp;&nbsp;<input type="submit" name="cancel" value="{L_NO}" class="btnlite" />
+				<input type="submit" name="confirm" value="{YES_VALUE}" class="btnmain" />&nbsp; <input type="submit" name="cancel" value="{L_NO}" class="btnlite" />
 			<!-- ELSE -->
 				<span class="gen">{L_NO_DESTINATION_FORUM}</span><br /><br />
 					{S_HIDDEN_FIELDS}

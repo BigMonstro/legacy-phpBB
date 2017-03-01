@@ -22,12 +22,23 @@
 			<td rowspan="2" align="{S_CONTENT_FLOW_BEGIN}" valign="top"><a name="{history_row.MSG_ID}" class="anchor"></a>
 				<table width="150" cellspacing="0">
 				<tr>
-					<td align="center" colspan="2"><span class="postauthor">{history_row.MESSAGE_AUTHOR_FULL}</span></td>
+					<td align="center" colspan="2"><b class="postauthor">{history_row.MESSAGE_AUTHOR_FULL}</b></td>
 				</tr>
 				</table>
 			</td>
-			<td<!-- IF history_row.S_CURRENT_MSG --> class="current"<!-- ENDIF -->>
-				<table width="100%" cellspacing="0"><tr><td align="{S_CONTENT_FLOW_BEGIN}" class="gensmall"><b>{L_PM_SUBJECT}{L_COLON}</b>&nbsp;{history_row.SUBJECT}</td><td align="{S_CONTENT_FLOW_END}" class="gensmall"><b>{L_FOLDER}{L_COLON}</b>&nbsp;{history_row.FOLDER}</td></tr></table></td>
+			<td>
+				<table width="100%" cellspacing="0">
+				<tr>
+					<td align="{S_CONTENT_FLOW_BEGIN}" class="genmed"><b>{L_PM_SUBJECT}{L_COLON}</b>&nbsp;{history_row.SUBJECT}</td>
+					<td align="{S_CONTENT_FLOW_END}" class="genmed">
+						<!-- EVENT ucp_pm_history_post_buttons_before -->
+						<!-- IF history_row.U_QUOTE or history_row.MESSAGE_AUTHOR_QUOTE -->	<a title="{L_QUOTE} {history_row.MESSAGE_AUTHOR}" <!-- IF history_row.U_QUOTE -->href="{history_row.U_QUOTE}"<!-- ELSE -->href="#" onclick="addquote({history_row.MSG_ID}, '{history_row.MESSAGE_AUTHOR_QUOTE}', '{LA_WROTE}', {time:{history_row.MESSAGE_TIME},user_id:{history_row.USER_ID}}); return false;"<!-- ENDIF -->><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_post_quote.gif" width="90" height="20" alt="[{L_BUTTON_QUOTE}]" title="{L_QUOTE} {history_row.MESSAGE_AUTHOR}"></a> <!-- ENDIF --> 
+						<!-- IF history_row.U_POST_REPLY_PM --><a title="{L_POST_REPLY_PM}" href="{history_row.U_POST_REPLY_PM}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/button_pm_reply.gif" width="90" height="20" alt="[{L_BUTTON_PM_REPLY}]" title="{L_POST_REPLY_PM}"></a><!-- ENDIF -->&nbsp;
+						<!-- EVENT ucp_pm_history_post_buttons_after -->
+					</td>
+				</tr>
+				</table>
+			</td>
 		</tr>
 
 		<!-- IF history_row.S_ROW_COUNT is even --><tr class="row1"><!-- ELSE --><tr class="row2"><!-- ENDIF -->
@@ -46,9 +57,8 @@
 					<td>
 						<table width="100%" cellspacing="0">
 						<tr valign="middle">
-							<td width="100%">&nbsp;</td>
-							<td width="10" nowrap="nowrap"></td>
-							<td class="gensmall" nowrap="nowrap"><b>{L_SENT_AT}{L_COLON}</b> {history_row.SENT_DATE}</td>
+							<td width="100%" align="{S_CONTENT_FLOW_BEGIN}" class="genmed">[ <a href="{history_row.U_VIEW_MESSAGE}">{L_VIEW_PM}</a> ]</td>
+							<td class="genmed" nowrap="nowrap"><b>{L_SENT_AT}{L_COLON}</b> {history_row.SENT_DATE}</td>
 						</tr>
 						</table>
 					</td>
@@ -57,17 +67,8 @@
 			</td>
 		</tr>
 
-		<!-- IF history_row.S_ROW_COUNT is even --><tr class="row1"><!-- ELSE --><tr class="row2"><!-- ENDIF -->
-			<td class="gensmall"><a href="{history_row.U_VIEW_MESSAGE}">{L_VIEW_PM}</a></td>
-			<td align="{S_CONTENT_FLOW_END}" class="gensmall">
-					<!-- EVENT ucp_pm_history_post_buttons_before -->
-					<!-- IF history_row.U_QUOTE or history_row.MESSAGE_AUTHOR_QUOTE -->	<a title="{L_QUOTE} {history_row.MESSAGE_AUTHOR}" <!-- IF history_row.U_QUOTE -->href="{history_row.U_QUOTE}"<!-- ELSE -->href="#" onclick="addquote({history_row.MSG_ID}, '{history_row.MESSAGE_AUTHOR_QUOTE}', '{LA_WROTE}'); return false;"<!-- ENDIF -->><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_post_quote.gif" alt="[{L_QUOTE} {history_row.MESSAGE_AUTHOR}]" title="{L_QUOTE} {history_row.MESSAGE_AUTHOR}"></a> <!-- ENDIF --> 
-					<!-- IF history_row.U_POST_REPLY_PM --><a title="{L_POST_REPLY_PM}" href="{history_row.U_POST_REPLY_PM}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/button_pm_reply.gif" alt="[{L_POST_REPLY_PM}]" title="{L_POST_REPLY_PM}"></a><!-- ENDIF -->&nbsp;
-					<!-- EVENT ucp_pm_history_post_buttons_after -->
-				</td>
-		</tr>
 		<tr>
-			<td class="spacer" colspan="2"></td>
+			<td class="row3" colspan="2"></td>
 		</tr>
 	<!-- END history_row -->
 		</table>

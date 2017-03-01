@@ -1,12 +1,19 @@
 <!-- INCLUDE mcp_header.html -->
 
+<table width="100%" cellspacing="1">
+<tr>
+	<td class="gensmall" nowrap="nowrap">&nbsp;<b>{PAGE_NUMBER}</b>&nbsp;[ {TOTAL} ]&nbsp;</td>
+	<!-- IF .pagination --><td class="gensmall" width="100%" align="{S_CONTENT_FLOW_END}"><!-- INCLUDE pagination.html --></td><!-- ENDIF -->
+</tr>
+</table>
+
 <form name="mcp" id="mcp" method="post" action="{S_MCP_ACTION}">
 
 <table width="100%" class="tablebg" cellspacing="1" cellpadding="4" border="0">
 <tr>
-	<td colspan="5" class="cat" style="line-height:125%;"><span class="nowrap"><span class="gensmall">{L_DISPLAY_POSTS}{L_COLON}</span> {S_SELECT_SORT_DAYS}</span>&nbsp;<span class="nowrap"><span class="gensmall">{L_SORT_BY}</span> {S_SELECT_SORT_KEY} {S_SELECT_SORT_DIR}</span><!-- IF not S_PM -->&nbsp;<span class="nowrap"><span class="gensmall">{L_FORUM}</span> <select name="f">{S_FORUM_OPTIONS}</select></span> &nbsp; <!-- IF TOPIC_ID --><input type="checkbox" class="radio" name="t" value="{TOPIC_ID}" checked="checked" />&nbsp; <b class="normal">{L_ONLY_TOPIC}</b> &nbsp; <!-- ENDIF --><!-- ENDIF --><input class="btnlite" type="submit" name="sort" value="{L_GO}" /></td>
+	<td colspan="5" class="cat" style="line-height:125%"><!-- INCLUDE display_options.html --></td>
 </tr>
-<tr> 
+<tr>
 	<!-- IF S_PM -->
 	<th>&nbsp;{L_PM}&nbsp;</th>
 	<th>&nbsp;{L_TO} &amp; {L_BCC}&nbsp;</th>
@@ -22,19 +29,19 @@
 
 	<!-- IF postrow.S_ROW_ is even --><tr class="row1"><!-- ELSE --><tr class="row2"><!-- ENDIF -->
 		<!-- IF S_PM -->
-		<td style="padding: 4px;"><!-- IF postrow.ATTACH_ICON_IMG --><img src="{T_THEME_PATH}/images/icon_topic_attach.gif" alt="({L_TOTAL_ATTACHMENTS})" title="{L_TOTAL_ATTACHMENTS}" class="normal"><!-- ENDIF --><a class="topictitle" href="{postrow.U_VIEW_DETAILS}">{postrow.PM_SUBJECT}</a><br>
-			<span class="gensmall">{L_PM_FROM}{L_COLON} {postrow.PM_AUTHOR_FULL}</span></td>
+		<td style="padding: 4px;"><!-- IF postrow.ATTACH_ICON_IMG --><img src="{T_THEME_PATH}/images/icon_topic_attach.gif" width="14" height="18" alt="(*)" title="{L_TOTAL_ATTACHMENTS}" class="genmed"><!-- ENDIF --><a class="topictitle" href="{postrow.U_VIEW_DETAILS}">{postrow.PM_SUBJECT}</a><br>
+			<span class="genmed">{L_PM_FROM}{L_COLON} {postrow.PM_AUTHOR_FULL}</span></td>
 		<td style="padding: 4px;" align="{S_CONTENT_FLOW_BEGIN}" valign="top"><span class="gen">{postrow.RECIPIENTS}</span><br />
-			<span class="gensmall">{L_SENT_AT}{L_COLON} {postrow.PM_TIME}</span></td>
+			<span class="genmed">{L_SENT_AT}{L_COLON} {postrow.PM_TIME}</span></td>
 		<!-- ELSE -->
-		<td style="padding: 4px;"><!-- IF postrow.ATTACH_ICON_IMG --><img src="{T_THEME_PATH}/images/icon_topic_attach.gif" alt="({L_TOTAL_ATTACHMENTS})" title="{L_TOTAL_ATTACHMENTS}" class="normal"><!-- ENDIF --><a class="topictitle" href="{postrow.U_VIEWPOST}">{postrow.POST_SUBJECT}</a><br>
-			<span class="gensmall"><!-- IF postrow.U_VIEWFORUM -->{L_FORUM}{L_COLON} <a href="{postrow.U_VIEWFORUM}">{postrow.FORUM_NAME}</a><!-- ELSE -->{postrow.FORUM_NAME}<!-- ENDIF --></span></td>
+		<td style="padding: 4px;"><!-- IF postrow.ATTACH_ICON_IMG --><img src="{T_THEME_PATH}/images/icon_topic_attach.gif" width="14" height="18" alt="(*)" title="{L_TOTAL_ATTACHMENTS}" class="genmed"><!-- ENDIF --><a class="topictitle" href="{postrow.U_VIEWPOST}">{postrow.POST_SUBJECT}</a><br>
+			<span class="genmed"><!-- IF postrow.U_VIEWFORUM -->{L_FORUM}{L_COLON} <a href="{postrow.U_VIEWFORUM}">{postrow.FORUM_NAME}</a><!-- ELSE -->{postrow.FORUM_NAME}<!-- ENDIF --></span></td>
 		<td style="padding: 4px;" align="{S_CONTENT_FLOW_BEGIN}" valign="top" nowrap="nowrap"><span class="gen">{postrow.POST_AUTHOR_FULL}</span><br />
-			<span class="gensmall">{postrow.POST_TIME}</span></td>
+			<span class="genmed">{postrow.POST_TIME}</span></td>
 		<!-- ENDIF -->
-		<td style="padding: 4px;" align="{S_CONTENT_FLOW_BEGIN}" valign="top" nowrap="nowrap"><span class="gen">{postrow.REPORTER_FULL}</span></td>
+		<td style="padding: 4px;" align="{S_CONTENT_FLOW_BEGIN}" class="gen" valign="top" nowrap="nowrap">{postrow.REPORTER_FULL}</td>
 		<td style="padding: 4px;" align="{S_CONTENT_FLOW_BEGIN}" valign="top" nowrap="nowrap"><span class="gen">{postrow.REPORT_TIME}</span><br />
-			<span class="gensmall">[ <a href="{postrow.U_VIEW_DETAILS}">{L_VIEW_DETAILS}</a> ]</span></td>
+			<span class="genmed">[ <a href="{postrow.U_VIEW_DETAILS}">{L_VIEW_DETAILS}</a> ]</span></td>
 		<td align="center"><input type="checkbox" class="radio" name="report_id_list[]" value="{postrow.REPORT_ID}" /></td>
 	</tr>
 <!-- BEGINELSE -->
@@ -47,7 +54,7 @@
 	<!-- IF S_CLOSED -->
 		<input class="btnmain" type="submit" value="{L_DELETE_REPORTS}" name="action[delete]" />
 	<!-- ELSE -->
-		<input class="btnlite" type="submit" value="{L_DELETE_REPORTS}" name="action[delete]" /> &nbsp; <input class="btnmain" type="submit" name="action[close]" value="{L_CLOSE_REPORTS}" />
+		<input class="btnlite" type="submit" value="{L_DELETE_REPORTS}" name="action[delete]" /> &nbsp;<input class="btnmain" type="submit" name="action[close]" value="{L_CLOSE_REPORTS}" />
 	<!-- ENDIF -->
 	</td>
 </tr>

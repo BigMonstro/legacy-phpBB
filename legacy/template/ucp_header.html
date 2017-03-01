@@ -20,11 +20,11 @@
 	</tr>
 	<!-- IF not S_ALLOW_MASS_PM -->
 	<tr>
-		<td class="row1"><b class="genmed">{L_USERNAME}{L_COLON}</b><br /><span class="gensmall">[ <a href="{U_FIND_USERNAME}" onclick="find_username(this.href); return false;">{L_FIND_USERNAME}</a> ]</span></td>
+		<td class="row1"><b class="genmed">{L_USERNAME}{L_COLON}</b><br /><span class="genmed">[ <a href="{U_FIND_USERNAME}" onclick="find_username(this.href); return false;">{L_FIND_USERNAME}</a> ]</span></td>
 	</tr>
 	
 	<tr>
-		<td class="row2"><input class="post" type="text" name="username_list" size="8" value="" />&nbsp;<input class="post" type="submit" name="add_to" value="{L_ADD}" /></td>
+		<td class="row2"><input class="post" type="text" name="username_list" size="8" value="" />&nbsp;<input class="btnlite" type="submit" name="add_to" value="{L_ADD}" /></td>
 	</tr>
 	<!-- ELSE -->
 		<tr>
@@ -33,7 +33,7 @@
 		<!-- EVENT posting_pm_header_find_username_before -->
 		<tr>
 			<td class="row2"><textarea name="username_list" rows="5" cols="22" tabindex="1"></textarea><br />
-				<span class="gensmall">[ <a href="{U_FIND_USERNAME}" onclick="find_username(this.href); return false;">{L_FIND_USERNAME}</a> ]</span>			</td>
+				<span class="genmed">[ <a href="{U_FIND_USERNAME}" onclick="find_username(this.href); return false;">{L_FIND_USERNAME}</a> ]</span>			</td>
 		</tr>
 		<!-- EVENT posting_pm_header_find_username_after -->
 	<!-- ENDIF -->
@@ -47,7 +47,7 @@
 	<!-- ENDIF -->
 	<!-- IF S_ALLOW_MASS_PM -->
 		<tr>
-			<td class="row1">&nbsp;<input class="btnbbcode" type="submit" name="add_to" value="{L_ADD}" tabindex="1" />&nbsp; &nbsp;<input class="btnbbcode" type="submit" name="add_bcc" value="{L_ADD_BCC}" tabindex="1" />&nbsp;</td>
+			<td class="row1">&nbsp;<input class="btnbbcode" type="submit" name="add_to" value="{L_ADD}" tabindex="1" /> <input class="btnbbcode" type="submit" name="add_bcc" value="{L_ADD_BCC}" tabindex="1" />&nbsp;</td>
 		</tr>
 	<!-- ENDIF -->
 	</table>
@@ -92,7 +92,7 @@
 			<!-- END l_block2 -->
 			</ul>
 		<!-- ELSE -->
-			<td class="row2" nowrap="nowrap" onmouseover="this.className='row1'" onmouseout="this.className='row2'"><a class="nav" href="{l_block1.U_TITLE}">{l_block1.L_TITLE}</a>
+			<td class="row2" nowrap="nowrap"><a class="nav" href="{l_block1.U_TITLE}">{l_block1.L_TITLE}</a>
 		<!-- ENDIF -->
 		</td>
 	</tr>
@@ -101,6 +101,31 @@
 
 <div style="padding: 2px;"></div>
 
+<!-- IF S_SHOW_COLOUR_LEGEND -->
+	<table class="tablebg" width="100%" cellspacing="1">
+	<tr>
+		<th colspan="2" style="white-space:normal">{L_MESSAGE_COLOURS}</th>
+	</tr>
+		<tr>
+			<td style="background-color: #FF0000" width="25"></td>
+			<td class="row1"><span class="genmed">{L_MARKED_MESSAGE}</span></td>
+		</tr>
+		<tr>
+			<td style="background-color: #C0C0C0" width="25"></td>
+			<td class="row1"><span class="genmed">{L_REPLIED_MESSAGE}</span></td>
+		</tr>
+		<tr>
+			<td style="background-color: #0000FF" width="25"></td>
+			<td class="row1"><span class="genmed">{L_FRIEND_MESSAGE}</span></td>
+		</tr>
+		<tr>
+			<td style="background-color: #000000" width="25"></td>
+			<td class="row1"><span class="genmed">{L_FOE_MESSAGE}</span></td>
+		</tr>
+	</table>
+
+	<div style="padding: 2px;"></div>
+<!-- ENDIF -->
 
 <!-- IF S_ZEBRA_ENABLED and S_ZEBRA_FRIENDS_ENABLED -->
 	<table class="tablebg" width="100%" cellspacing="1">
@@ -110,13 +135,13 @@
 	<tr>
 		<td class="row1" align="center">
 		
-			<b class="genmed" style="color: green">{L_FRIENDS_ONLINE}</b>
+			<b class="genmed" style="color: #008000">{L_FRIENDS_ONLINE}</b>
 
 			<ul class="nav" style="margin: 0; padding: 0; list-style-type: none; line-height: 175%;">
 			<!-- BEGIN friends_online -->
 				<li>{friends_online.USERNAME_FULL}
 				<!-- IF S_SHOW_PM_BOX -->
-					&nbsp;[ <input class="post" style="font-size: 90%;" type="submit" name="add_to[{friends_online.USER_ID}]" value="{L_ADD}" /> ]
+					&nbsp;<input class="btnlite" style="font-size:100%" type="submit" name="add_to[{friends_online.USER_ID}]" value="{L_ADD}" />
 				<!-- ENDIF -->
 				</li>
 			<!-- BEGINELSE -->
@@ -126,13 +151,13 @@
 
 			<hr />
 
-			<b class="genmed" style="color: red">{L_FRIENDS_OFFLINE}</b>
+			<b class="genmed" style="color: #FF0000">{L_FRIENDS_OFFLINE}</b>
 
 			<ul class="nav" style="margin: 0; padding: 0; list-style-type: none; line-height: 175%;">
 			<!-- BEGIN friends_offline -->
 				<li>{friends_offline.USERNAME_FULL}
 				<!-- IF S_SHOW_PM_BOX -->
-					&nbsp;[ <input class="post" style="font-size: 90%;" type="submit" name="add_to[{friends_offline.USER_ID}]" value="{L_ADD}" /> ]
+					&nbsp;<input class="btnlite" style="font-size:100%" type="submit" name="add_to[{friends_offline.USER_ID}]" value="{L_ADD}" />
 				<!-- ENDIF -->
 				</li>
 			<!-- BEGINELSE -->
@@ -145,4 +170,4 @@
 	</table>
 <!-- ENDIF -->
 
-</td><td class="gensmall">&nbsp;</td><td width="80%" valign="top"><!-- IF not S_PRIVMSGS or S_SHOW_DRAFTS --><form name="ucp" id="ucp" method="post" action="{S_UCP_ACTION}"{S_FORM_ENCTYPE}><!-- ENDIF -->
+</td><td class="genmed">&nbsp;</td><td width="80%" valign="top"><!-- IF not S_PRIVMSGS or S_SHOW_DRAFTS --><form name="ucp" id="ucp" method="post" action="{S_UCP_ACTION}"{S_FORM_ENCTYPE}><!-- ENDIF -->

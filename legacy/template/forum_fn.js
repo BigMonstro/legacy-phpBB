@@ -90,34 +90,67 @@ function selectCode(a)
 }
 
 /**
-* Play quicktime file by determining it's width/height
-* from the displayed rectangle area
+* Dropdown menus initialisation
 */
-function play_qt_file(obj)
+
+if (typeof LegacyDropDownMenus !== 'undefined')
 {
-	var rectangle = obj.GetRectangle();
-
-	if (rectangle)
+	if (!window.XMLHttpRequest)
 	{
-		rectangle = rectangle.split(',')
-		var x1 = parseInt(rectangle[0]);
-		var x2 = parseInt(rectangle[2]);
-		var y1 = parseInt(rectangle[1]);
-		var y2 = parseInt(rectangle[3]);
+		var iFrameFix=document.createElement("IFRAME"); iFrameFix.src="javascript:'<html></html>';";
+	};
 
-		var width = (x1 < 0) ? (x1 * -1) + x2 : x2 - x1;
-		var height = (y1 < 0) ? (y1 * -1) + y2 : y2 - y1;
-	}
-	else
+	if (document.getElementById('quick_links_list'))
 	{
-		var width = 200;
-		var height = 0;
+		var qkl=document.getElementById('quick_links_list'); qkl.onclick = function(e) { if (e) { e.stopPropagation(); } else { window.event.cancelBubble = true; } };
+
+		document.getElementById('quick_link').onclick = function(e) { if (e) { e.stopPropagation(); } else { window.event.cancelBubble = true; } if (typeof nfl !== 'undefined') {nfl.style.display='none'}; if (typeof usl !== 'undefined') {usl.style.display='none'}; if (typeof ttl !== 'undefined') {ttl.style.display='none'}; var qks = qkl.style.display != 'none'; qkl.style.display = qks ? 'none' : 'inline';
+			if (qkl.style.display != 'none')
+			{
+				for (i=0 ; i<qkl.getElementsByTagName('a').length ; i++) {	var LinkWidth = qkl.getElementsByTagName('a')[i].offsetWidth;	if (i==0) { var LinkWidest = LinkWidth } else if (LinkWidth>LinkWidest) { LinkWidest=LinkWidth }}	qkl.style.width = LinkWidest+8+"px";
+				if (document.addEventListener) { var TotalHeight = window.innerHeight } else { var TotalHeight = document.documentElement.offsetHeight }	if (TotalHeight>400) { qkl.style.lineHeight="220%" } else { qkl.style.lineHeight="normal" }
+				if (typeof iFrameFix !== 'undefined') {	qkl.appendChild(iFrameFix); iFrameFix.style.height=qkl.offsetHeight+"px";	iFrameFix.style.width=qkl.offsetWidth+"px";}
+			};
+			return false;
+		};
 	}
 
-	obj.width = width;
-	obj.height = height + 16;
+	if (document.getElementById('user_list'))
+	{
+		if (document.getElementById('notification_list'))
+		{
+			var nfl=document.getElementById('notification_list'); nfl.onclick = function(e) { if (e) { e.stopPropagation(); } else { window.event.cancelBubble = true; } };
 
-	obj.SetControllerVisible(true);
+			document.getElementById('notification_link').onclick = function(e) { if (e) { e.stopPropagation(); } else { window.event.cancelBubble = true; } if (typeof qkl !== 'undefined') {qkl.style.display='none'}; usl.style.display='none'; if (typeof ttl !== 'undefined') {ttl.style.display='none'}; var nfs = nfl.style.display != 'none'; nfl.style.display = nfs ? 'none' : 'inline'; 
 
-	obj.Play();
+				if (nfl.style.display != 'none')
+				{
+					var UserSideWidth = document.getElementById('user_side').offsetWidth; if (UserSideWidth < 180) { document.getElementById('notification_title').style.fontSize="80%"; document.getElementById('notification_title').style.padding="2px" } if (UserSideWidth > 270) { nfl.style.width = "270px" } else if (UserSideWidth < 90) { nfl.style.width = "90px" } else { nfl.style.width = UserSideWidth+"px" }
+					if (document.getElementById('notification_list_overflow')) { var nfo = document.getElementById('notification_list_overflow'); nfo.style.height="auto"; if (document.addEventListener) { var TotalHeight = window.innerHeight } else { var TotalHeight = document.documentElement.offsetHeight } if (TotalHeight>520) { var MaxListHeight = 350 } else if (TotalHeight>400) { var MaxListHeight = 225 } else { var MaxListHeight = 100 } var ListHeight = nfo.offsetHeight; if (ListHeight < MaxListHeight) { nfo.style.height = ListHeight+"px" } else { nfo.style.height = MaxListHeight+"px" }}
+					if (typeof iFrameFix !== 'undefined') { nfl.appendChild(iFrameFix); iFrameFix.style.height=nfl.offsetHeight+"px"; iFrameFix.style.width=nfl.offsetWidth+"px";}
+				};
+				return false;
+			};
+		}
+
+		var usl=document.getElementById('user_list'); usl.onclick = function(e) { if (e) { e.stopPropagation(); } else { window.event.cancelBubble = true; } };
+
+		document.getElementById('user_link').onclick = function(e) { if (e) { e.stopPropagation(); } else { window.event.cancelBubble = true; } if (typeof qkl !== 'undefined') {qkl.style.display='none'}; if (typeof nfl !== 'undefined') {nfl.style.display='none'}; if (typeof ttl !== 'undefined') {ttl.style.display='none'}; var uss = usl.style.display != 'none'; usl.style.display = uss ? 'none' : 'inline'; 
+			if (usl.style.display != 'none')
+			{
+				for (i=0 ; i<usl.getElementsByTagName('a').length ; i++) {	var LinkWidth = usl.getElementsByTagName('a')[i].offsetWidth;	if (i==0) { var LinkWidest = LinkWidth } else if (LinkWidth>LinkWidest) { LinkWidest=LinkWidth }} usl.style.width = LinkWidest+8+"px"; var UserSideWidth = document.getElementById('user_side').offsetWidth; var UserListMargin = UserSideWidth - usl.offsetWidth; if (document.body.className == "ltr") { usl.style.marginLeft = UserListMargin+2+"px";} else { usl.style.marginRight = UserListMargin+2+"px";}
+				if (typeof iFrameFix !== 'undefined') { usl.appendChild(iFrameFix); iFrameFix.style.height=usl.offsetHeight+"px"; iFrameFix.style.width=usl.offsetWidth+"px";}
+			};
+			return false;
+		};
+
+	}
+
+	document.onclick = function() { if (typeof qkl !== 'undefined') {qkl.style.display='none'};  if (typeof nfl !== 'undefined') {nfl.style.display='none'};  if (typeof usl !== 'undefined') {usl.style.display='none'}; if (typeof ttl !== 'undefined') {ttl.style.display='none'};};
 }
+
+/**
+* Run onload function
+*/
+
+window.onload = function () { if (document.getElementById) { document.documentElement.className = document.documentElement.className.replace(/nojs/gi,'hasjs');}	else if (document.all) { document.all.tags('html')[0].className = 'hasjs';}}

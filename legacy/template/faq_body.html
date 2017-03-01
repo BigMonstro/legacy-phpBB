@@ -10,17 +10,17 @@
 	</tr>
 	<tr>
 		<td class="row1">
+		<table width="100%"><tr valign="top"><td>
 		<!-- BEGIN faq_block -->
+			<!-- IF faq_block.SWITCH_COLUMN or (SWITCH_COLUMN_MANUALLY and faq_block.S_ROW_COUNT == 4) --></td><td width="50%"><!-- ENDIF -->
 			<span class="gen"><b>{faq_block.BLOCK_TITLE}</b></span><br />
 			<!-- BEGIN faq_row -->
 				<span class="gen"><a href="#f{faq_block.S_ROW_COUNT}r{faq_block.faq_row.S_ROW_COUNT}">{faq_block.faq_row.FAQ_QUESTION}</a></span><br />
 			<!-- END faq_row -->
 			<br />
 		<!-- END faq_block -->
+		</td></tr></table>
 		</td>
-	</tr>
-	<tr>
-		<td class="cat">&nbsp;</td>
 	</tr>
 	</table>
 
@@ -40,7 +40,7 @@
 			<!-- ENDIF -->
 				<div class="postbody"><a name="f{faq_block.S_ROW_COUNT}r{faq_block.faq_row.S_ROW_COUNT}" class="anchor"></a><b>&#187; {faq_block.faq_row.FAQ_QUESTION}</b></div>
 				<div class="postbody">{faq_block.faq_row.FAQ_ANSWER}</div>
-				<p class="gensmall"><a href="#faqtop">{L_BACK_TO_TOP}</a></p>
+				<p class="genmed"><a href="#faqtop">{L_BACK_TO_TOP}</a></p>
 			</td>
 		</tr>
 		<!-- END faq_row -->

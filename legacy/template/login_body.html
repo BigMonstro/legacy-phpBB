@@ -10,9 +10,9 @@
 		<th>{LOGIN_EXPLAIN}</th>
 	<!-- ENDIF -->
 </tr>
-<!-- IF LOGIN_EXPLAIN && not S_ADMIN_AUTH -->
+<!-- IF LOGIN_EXPLAIN and not S_ADMIN_AUTH -->
 	<tr>
-		<td class="row3" colspan="2" align="center"><span class="gensmall">{LOGIN_EXPLAIN}</span></td>
+		<td class="row3" colspan="2" align="center"><span class="genmed">{LOGIN_EXPLAIN}</span></td>
 	</tr>
 <!-- ENDIF -->
 <tr><!-- IF not S_ADMIN_AUTH and S_REGISTER_ENABLED -->
@@ -29,36 +29,36 @@
 		<table align="center" cellspacing="1" cellpadding="4" style="width: 100%;">
 		<!-- IF LOGIN_ERROR -->
 			<tr>
-				<td class="gensmall" colspan="2" align="center"><span class="error">{LOGIN_ERROR}</span></td>
+				<td class="genmed" colspan="2" align="center"><span class="error">{LOGIN_ERROR}</span></td>
 			</tr>
 		<!-- ENDIF -->
 
 		<tr>
-			<td valign="top" <!-- IF S_ADMIN_AUTH or not S_REGISTER_ENABLED -->style="width: 50%; text-align: {S_CONTENT_FLOW_END};"<!-- ENDIF -->><b class="gensmall">{L_USERNAME}{L_COLON}</b></td>
+			<td valign="top" <!-- IF S_ADMIN_AUTH or not S_REGISTER_ENABLED -->style="width: 50%; text-align: {S_CONTENT_FLOW_END};"<!-- ENDIF -->><b class="genmed">{L_USERNAME}{L_COLON}</b></td>
 			<td><input class="post" type="text" name="{USERNAME_CREDENTIAL}" size="25" value="{USERNAME}" tabindex="1" />
 				<!-- IF not S_ADMIN_AUTH and S_REGISTER_ENABLED -->
-					<br /><a class="gensmall" href="{U_REGISTER}">{L_REGISTER}</a>
+					<br /><a class="genmed" href="{U_REGISTER}">{L_REGISTER}</a>
 				<!-- ENDIF -->
 			</td>
 		</tr>
 		<tr>
-			<td valign="top" <!-- IF S_ADMIN_AUTH or not S_REGISTER_ENABLED -->style="width: 50%; text-align: {S_CONTENT_FLOW_END};"<!-- ENDIF -->><b class="gensmall">{L_PASSWORD}{L_COLON}</b></td>
+			<td valign="top" <!-- IF S_ADMIN_AUTH or not S_REGISTER_ENABLED -->style="width: 50%; text-align: {S_CONTENT_FLOW_END};"<!-- ENDIF -->><b class="genmed">{L_PASSWORD}{L_COLON}</b></td>
 			<td>
 				<input class="post" type="password" name="{PASSWORD_CREDENTIAL}" size="25" tabindex="2" autocomplete="off" />
-				<!-- IF U_SEND_PASSWORD --><br /><a class="gensmall" href="{U_SEND_PASSWORD}">{L_FORGOT_PASS}</a><!-- ENDIF -->
-				<!-- IF U_RESEND_ACTIVATION and not S_ADMIN_AUTH --><br /><a class="gensmall" href="{U_RESEND_ACTIVATION}">{L_RESEND_ACTIVATION}</a><!-- ENDIF -->
+				<!-- IF U_SEND_PASSWORD --><br /><a class="genmed" href="{U_SEND_PASSWORD}">{L_FORGOT_PASS}</a><!-- ENDIF -->
+				<!-- IF U_RESEND_ACTIVATION and not S_ADMIN_AUTH --><br /><a class="genmed" href="{U_RESEND_ACTIVATION}">{L_RESEND_ACTIVATION}</a><!-- ENDIF -->
 			</td>
 		</tr>
 		<!-- IF S_DISPLAY_FULL_LOGIN -->
 			<!-- IF S_AUTOLOGIN_ENABLED -->
 			<tr>
 				<td>&nbsp;</td>
-				<td><input type="checkbox" class="radio" name="autologin" tabindex="3" /> <span class="gensmall">{L_LOG_ME_IN}</span></td>
+				<td><input type="checkbox" class="radio" name="autologin" tabindex="3" /> <span class="genmed">{L_LOG_ME_IN}</span></td>
 			</tr>
 			<!-- ENDIF -->
 			<tr>
 				<td>&nbsp;</td>
-				<td><input type="checkbox" class="radio" name="viewonline" tabindex="4" /> <span class="gensmall">{L_HIDE_ME}</span></td>
+				<td><input type="checkbox" class="radio" name="viewonline" tabindex="4" /> <span class="genmed">{L_HIDE_ME}</span></td>
 			</tr>
 		<!-- ENDIF -->
 		<!-- IF not S_ADMIN_AUTH and PROVIDER_TEMPLATE_FILE -->

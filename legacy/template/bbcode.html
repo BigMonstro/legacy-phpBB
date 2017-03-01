@@ -20,6 +20,42 @@
 </div>
 <!-- END quote_close -->
 
+<!-- BEGIN quote_extended -->
+<div class="quotetitle"><table class="bigger" cellspacing="0" width="100%"><tr class="bold">
+<xsl:if test="not(@author)">
+	<td>
+		<xsl:value-of select="$L_QUOTE"/>
+		<xsl:value-of select="$L_COLON"/>
+	</td>
+</xsl:if>
+<xsl:if test="@author">
+	<td>
+	<xsl:choose>
+		<xsl:when test="@url">
+			<a href="{@url}" class="postlink"><xsl:value-of select="@author"/></a>
+		</xsl:when>
+		<xsl:when test="@profile_url">
+			<a href="{@profile_url}"><xsl:value-of select="@author"/></a>
+		</xsl:when>
+		<xsl:otherwise>
+			<xsl:value-of select="@author"/>
+		</xsl:otherwise>
+	</xsl:choose>
+	<xsl:text> </xsl:text>
+	<xsl:value-of select="$L_WROTE"/>
+	<xsl:value-of select="$L_COLON"/>
+	<xsl:if test="@post_url">
+		<xsl:text> </xsl:text>
+		<a href="{@post_url}" data-post-id="{@post_id}" style="font-weight:normal">*</a>
+	</xsl:if>
+	</td>
+	<xsl:if test="@date">
+		<td class="postdatetime"><xsl:value-of select="@date"/></td>
+	</xsl:if>
+</xsl:if>
+</tr></table></div><div class="quotecontent"><xsl:apply-templates/></div>
+<!-- END quote_extended -->
+
 <!-- BEGIN code_open -->
 <div><div class="codetitle">{L_CODE}{L_COLON} <a href="#" onclick="selectCode(this); return false;">{L_SELECT_ALL_CODE}</a></div><pre class="codecontent">
 <!-- END code_open -->
@@ -35,7 +71,6 @@
 <!-- BEGIN inline_attachment_close -->
 </div>
 <!-- END inline_attachment_close -->
-
 
 <!-- BEGIN b_open --><strong><!-- END b_open -->
 <!-- BEGIN b_close --></strong><!-- END b_close -->

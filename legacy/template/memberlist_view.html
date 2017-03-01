@@ -8,11 +8,11 @@
 
 	<table class="tablebg" width="100%" cellspacing="1">
 	<tr>
-		<th colspan="2" nowrap="nowrap">{L_VIEWING_PROFILE}</th>
+		<th colspan="2" style="text-align: {S_CONTENT_FLOW_BEGIN}">&nbsp;{L_VIEWING_PROFILE}&nbsp;</th>
 	</tr>
 	<tr>
 		<td class="cat" width="40%" align="center"><h4>{L_USER_PRESENCE}</h4></td>
-		<td class="cat" width="60%" align="center"><h4>{L_USER_FORUM}</h4></td>
+		<td class="cat" width="60%" style="padding-{S_CONTENT_FLOW_BEGIN}:85px"><h4>{L_USER_FORUM}</h4></td>
 	</tr>
 	<tr>
 		<td class="row1" align="center">
@@ -20,7 +20,7 @@
 			<table cellspacing="1" cellpadding="2" border="0">
 			<!-- IF S_USER_INACTIVE -->
 			<tr>
-				<td align="center"><b class="gen" style="color: red">{L_USER_IS_INACTIVE}</b><br /><span class="normal">{L_INACTIVE_REASON}{L_COLON} {USER_INACTIVE_REASON}</span><br /><br /></td>
+				<td align="center"><b class="gen" style="color: #FF0000">{L_USER_IS_INACTIVE}</b><br /><span class="genmed">{L_INACTIVE_REASON}{L_COLON} {USER_INACTIVE_REASON}</span><br /><br /></td>
 			</tr>
 			<!-- ENDIF -->
 			<tr>
@@ -32,22 +32,20 @@
 				<!-- IF U_USER_BAN or U_USER_ADMIN --></span><!-- ENDIF -->
 				</td>
 			</tr>
-			<!-- EVENT memberlist_view_rank_before -->
-			<!-- IF RANK_TITLE -->
+			<!-- IF RANK_TITLE or RANK_IMG -->
 				<tr>
-					<td class="postdetails" align="center">{RANK_TITLE}</td>
+					<td class="postdetails" align="center">{RANK_TITLE}<!-- IF RANK_IMG --><img src="{RANK_IMG_SRC}" alt="" style="display:block"><!-- ENDIF --></td>
 				</tr>
 			<!-- ENDIF -->
-			<!-- IF RANK_IMG -->
+			<!-- IF AVATAR_IMG -->
 				<tr>
-					<td align="center" class="no_alt">{RANK_IMG}</td>
+					<td align="center" class="normal">{AVATAR_IMG}</td>
 				</tr>
 			<!-- ENDIF -->
-			<!-- EVENT memberlist_view_rank_after -->
-			<!-- IF AVATAR_IMG or ONLINE_IMG -->
+			<!-- IF ONLINE_IMG -->
 				<tr>
-					<td align="center" class="normal"><!-- IF AVATAR_IMG --><span class="no_alt">{AVATAR_IMG}</span><!-- IF ONLINE_IMG --><br><!-- ENDIF --><!-- ENDIF --><!-- IF ONLINE_IMG --><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_user_<!-- IF S_ONLINE -->online<!-- ELSE -->offline<!-- ENDIF -->.gif" alt="<!-- IF S_ONLINE -->{L_ONLINE}<!-- ELSE -->{L_OFFLINE}<!-- ENDIF -->" title=""><!-- ENDIF --></td>
-			</tr>
+					<td align="center" class="normal"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_user_<!-- IF S_ONLINE -->online<!-- ELSE -->offline<!-- ENDIF -->.gif" width="72" height="20" alt="<!-- IF S_ONLINE -->{L_ONLINE}<!-- ELSE -->{L_OFFLINE}<!-- ENDIF -->" title=""></td>
+				</tr>
 			<!-- ENDIF -->
 			<!-- IF U_EDIT_SELF -->
 			<tr>
@@ -115,7 +113,7 @@
 	</tr>
 	<tr>
 		<td class="cat" align="center"><h4>{L_CONTACT}</h4></td>
-		<td class="cat" align="center"><h4>{L_ABOUT_USER}</h4></td>
+		<td class="cat" style="padding-{S_CONTENT_FLOW_BEGIN}:85px"><h4>{L_ABOUT_USER}</h4></td>
 	</tr>
 	<!-- EVENT memberlist_view_contact_before -->
 	<tr>
@@ -183,7 +181,8 @@
 	<!-- EVENT memberlist_view_contact_after -->
 	<!-- IF SIGNATURE -->
 		<tr>
-			<td class="cat" colspan="2" align="center"><h4>{L_SIGNATURE}</h4></td>
+			<td class="cat" align="center"><h4>{L_SIGNATURE}</h4></td>
+			<td class="cat"></td>
 		</tr>
 		<tr>
 			<td class="row1" colspan="2"><div class="postbody" style="padding: 10px;">{SIGNATURE}</div></td>
@@ -197,12 +196,12 @@
 
 </div>
 
-<br clear="all" />
+</td></tr></table><table width="100%" cellspacing="0"><tr><td width="19"></td><td></td><td width="19"></td></tr><tr><td width="19"></td><td style="padding-top:8px">
 
 <!-- INCLUDE breadcrumbs.html -->
 
 <br clear="all" />
 
-<div style="text-align: {S_CONTENT_FLOW_END};"><!-- INCLUDE jumpbox.html --></div>
+<div align="{S_CONTENT_FLOW_END}"><!-- INCLUDE jumpbox.html --></div>
 
 <!-- INCLUDE overall_footer.html -->

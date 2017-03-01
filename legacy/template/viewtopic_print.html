@@ -29,11 +29,11 @@ td {
 	margin: 0 5px 0 5px;
 	padding: 5px;
 	font-size: smaller;
-	border: black solid 1px;
+	border: 1px solid #000000;
 }
 
 .quotetitle {
-	color: black;
+	color: #000000;
 	display : block;
 	font-weight: bold;
 }
@@ -50,7 +50,7 @@ td {
 	font-weight: bold;
 }
 
-.gensmall {
+.genmed {
 	font-size: 8pt;
 }
 
@@ -73,14 +73,14 @@ hr.sep {
 
 <table width="85%" cellspacing="3" cellpadding="0" border="0" align="center">
 <tr>
-	<td colspan="2" align="center"><span class="Forum">{SITENAME}</span><br /><span class="gensmall"><a href="{U_FORUM}">{U_FORUM}</a></span></td>
+	<td colspan="2" align="center"><span class="forum">{SITENAME}</span><br /><span class="genmed"><a href="{U_FORUM}">{U_FORUM}</a></span></td>
 </tr>
 <tr>
 	<td colspan="2"><br /></td>
 </tr>
 <tr>
-	<td><span class="topic">{TOPIC_TITLE}</span><br /><span class="gensmall"><a href="{U_TOPIC}">{U_TOPIC}</a></span></td>
-	<td align="{S_CONTENT_FLOW_END}" valign="bottom"><span class="gensmall">{PAGE_NUMBER}</span></td>
+	<td><span class="topic">{TOPIC_TITLE}</span><br /><span class="genmed"><a href="{U_TOPIC}">{U_TOPIC}</a></span></td>
+	<td align="{S_CONTENT_FLOW_END}" valign="bottom" class="genmed">{PAGE_NUMBER}</td>
 </tr>
 </table>
 
@@ -124,11 +124,11 @@ hr.sep {
 
 <table width="85%" cellspacing="3" cellpadding="0" border="0" align="center">
 <tr>
-	<td><span class="gensmall">{PAGE_NUMBER}</span></td>
-	<td align="{S_CONTENT_FLOW_END}"><span class="gensmall">{S_TIMEZONE}</span></td>
+	<td class="genmed">{PAGE_NUMBER}</td>
+	<td align="{S_CONTENT_FLOW_END}" class="genmed">{S_TIMEZONE}</td>
 </tr>
 <tr>
-	<td colspan="2" align="center"><span class="gensmall">Powered by phpBB&reg; Forum Software &copy; phpBB Limited<br />https://www.phpbb.com/</span></td>
+	<td colspan="2" align="center" class="genmed">Powered by phpBB&reg; Forum Software &copy; phpBB Limited<br />https://www.phpbb.com/</td>
 </tr>
 </table>
 
