@@ -1,10 +1,10 @@
-<table class="tablebg" width="100%" cellspacing="1" cellpadding="0">
+<table class="main" width="100%" cellspacing="1">
 <tr>
-	<td class="row1">
-	<!-- IF CUR_FOLDER_NAME --><h2>{L_TITLE}{L_COLON} {CUR_FOLDER_NAME}</h2><br><!-- ENDIF -->
-		<table border="0" cellspacing="0" cellpadding="0" width="100%">
-		<tr class="gensmall">
-			<td align="{S_CONTENT_FLOW_BEGIN}">
+	<td class="bg1">
+	<!-- IF CUR_FOLDER_NAME --><h3>{L_TITLE}{L_COLON} {CUR_FOLDER_NAME}</h3><br /><!-- ENDIF -->
+		<table cellspacing="0" width="100%">
+		<tr>
+			<td>
 			<!-- IF TOTAL_MESSAGES -->
 					<b>{PAGE_NUMBER}</b>
 					&nbsp;
@@ -13,7 +13,6 @@
 					<!-- ELSE -->
 						[ {TOTAL_MESSAGES} ]
 					<!-- ENDIF -->
-					&nbsp;
 			<!-- ENDIF -->
 
 			<!-- IF S_VIEW_MESSAGE -->

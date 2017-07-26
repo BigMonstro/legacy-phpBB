@@ -1,0 +1,19 @@
+<table cellspacing="0" width="100%">
+	<!-- INCLUDE posting_buttons.html -->
+	<!-- EVENT posting_editor_message_before -->
+	<tr valign="top">
+		<td width="100%">
+			<table class="fixed"><tr><td>
+			<textarea name=<!-- IF $SIG_EDIT -->"signature"<!-- ELSE -->"message"<!-- ENDIF --> rows="15" cols="76" tabindex="3" onselect="storeCaret(this);" onclick="storeCaret(this);" onkeyup="storeCaret(this);" onfocus="initInsertions();" style="width: 99%; *width: 98%; height: 270px">{MESSAGE}{DRAFT_MESSAGE}{SIGNATURE}</textarea>
+			</td></tr></table>
+		</td>
+		<!-- IF S_BBCODE_ALLOWED -->
+			<td style="padding: 4px">
+			<script type="text/javascript"><!--
+				if (typeof colorPalette === 'function') {colorPalette();}
+			//--></script>
+			</td>
+		<!-- ENDIF -->
+	</tr>
+	<!-- EVENT posting_editor_message_after -->
+</table>

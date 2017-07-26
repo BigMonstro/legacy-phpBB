@@ -6,21 +6,20 @@
 
 	<form method="post" action="{S_PROFILE_ACTION}">
 
-	<table class="tablebg" width="100%" cellspacing="1">
+	<table class="main" width="100%" cellspacing="1">
 	<tr>
-		<th colspan="2" style="text-align: {S_CONTENT_FLOW_BEGIN}">&nbsp;{L_VIEWING_PROFILE}&nbsp;</th>
+		<th colspan="2" class="nocenter" style="padding: 7px 5px">{L_VIEWING_PROFILE}</th>
 	</tr>
 	<tr>
 		<td class="cat" width="40%" align="center"><h4>{L_USER_PRESENCE}</h4></td>
-		<td class="cat" width="60%" style="padding-{S_CONTENT_FLOW_BEGIN}:85px"><h4>{L_USER_FORUM}</h4></td>
+		<td class="cat" width="60%" align="center"><h4>{L_USER_FORUM}</h4></td>
 	</tr>
 	<tr>
-		<td class="row1" align="center">
-
-			<table cellspacing="1" cellpadding="2" border="0">
+		<td class="bg1" align="center">
+			<table width="100%" cellspacing="1">
 			<!-- IF S_USER_INACTIVE -->
 			<tr>
-				<td align="center"><b class="gen" style="color: #FF0000">{L_USER_IS_INACTIVE}</b><br /><span class="genmed">{L_INACTIVE_REASON}{L_COLON} {USER_INACTIVE_REASON}</span><br /><br /></td>
+				<td align="center"><span class="gen"><b class="error">{L_USER_IS_INACTIVE}</b></span><br /><span class="genmed">{L_INACTIVE_REASON}{L_COLON} {USER_INACTIVE_REASON}</span><br /><br /></td>
 			</tr>
 			<!-- ENDIF -->
 			<tr>
@@ -34,17 +33,17 @@
 			</tr>
 			<!-- IF RANK_TITLE or RANK_IMG -->
 				<tr>
-					<td class="postdetails" align="center">{RANK_TITLE}<!-- IF RANK_IMG --><img src="{RANK_IMG_SRC}" alt="" style="display:block"><!-- ENDIF --></td>
+					<td align="center"><!-- IF RANK_TITLE --><div class="genmed">{RANK_TITLE}</div><!-- ENDIF --><!-- IF RANK_IMG --><img src="{RANK_IMG_SRC}" alt="" /><!-- ENDIF --></td>
 				</tr>
 			<!-- ENDIF -->
 			<!-- IF AVATAR_IMG -->
 				<tr>
-					<td align="center" class="normal">{AVATAR_IMG}</td>
+					<td align="center">{AVATAR_IMG}</td>
 				</tr>
 			<!-- ENDIF -->
 			<!-- IF ONLINE_IMG -->
 				<tr>
-					<td align="center" class="normal"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_user_<!-- IF S_ONLINE -->online<!-- ELSE -->offline<!-- ENDIF -->.gif" width="72" height="20" alt="<!-- IF S_ONLINE -->{L_ONLINE}<!-- ELSE -->{L_OFFLINE}<!-- ENDIF -->" title=""></td>
+					<td align="center"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_user_<!-- IF S_ONLINE -->online<!-- ELSE -->offline<!-- ENDIF -->.gif" width="72" height="20" alt="<!-- IF S_ONLINE -->{L_ONLINE}<!-- ELSE -->{L_OFFLINE}<!-- ENDIF -->" title="" /></td>
 				</tr>
 			<!-- ENDIF -->
 			<!-- IF U_EDIT_SELF -->
@@ -74,36 +73,36 @@
 			<!-- EVENT memberlist_view_zebra_after -->
 			</table>
 		</td>
-		<td class="row1">
-			<table width="100%" cellspacing="1" cellpadding="2" border="0">
+		<td class="bg1">
+			<table width="100%" cellspacing="1">
 			<!-- EVENT memberlist_view_user_statistics_before -->
-			<tr>
-				<td class="gen" align="{S_CONTENT_FLOW_END}" nowrap="nowrap">{L_JOINED}{L_COLON} </td>
-				<td width="100%"><b class="gen">{JOINED}</b></td>
+			<tr valign="top">
+				<td align="{S_CONTENT_FLOW_END}"><span class="gen">{L_JOINED}{L_COLON}</span></td>
+				<td width="78%"><b class="gen">{JOINED}</b></td>
 			</tr>
-			<tr>
-				<td class="gen" align="{S_CONTENT_FLOW_END}" nowrap="nowrap">{L_LAST_ACTIVE}{L_COLON} </td>
-				<td width="100%"><b class="gen">{LAST_ACTIVE}</b></td>
+			<tr valign="top">
+				<td align="{S_CONTENT_FLOW_END}"><span class="gen">{L_LAST_ACTIVE}{L_COLON}</span></td>
+				<td><b class="gen">{LAST_ACTIVE}</b></td>
 			</tr>
 			<!-- IF S_WARNINGS -->
-				<tr>
-					<td class="gen" align="{S_CONTENT_FLOW_END}" valign="top" nowrap="nowrap">{L_WARNINGS}{L_COLON} </td>
-					<td width="100%"><b class="gen">{WARNINGS}</b><!-- IF U_NOTES or U_WARN --><br /><span class="genmed"> [ <!-- IF U_NOTES --><a href="{U_NOTES}">{L_VIEW_NOTES}</a><!-- ENDIF --> <!-- IF U_WARN --><!-- IF U_NOTES --> | <!-- ENDIF --><a href="{U_WARN}">{L_WARN_USER}</a><!-- ENDIF --> ]</span><!-- ENDIF --></td>
+				<tr valign="top">
+					<td align="{S_CONTENT_FLOW_END}"><span class="gen">{L_WARNINGS}{L_COLON}</span></td>
+					<td><b class="gen">{WARNINGS}</b><!-- IF U_NOTES or U_WARN --><br /><span class="genmed"> [ <!-- IF U_NOTES --><a href="{U_NOTES}">{L_VIEW_NOTES}</a><!-- ENDIF --> <!-- IF U_WARN --><!-- IF U_NOTES --> | <!-- ENDIF --><a href="{U_WARN}">{L_WARN_USER}</a><!-- ENDIF --> ]</span><!-- ENDIF --></td>
 				</tr>
 			<!-- ENDIF -->
-			<tr>
-				<td class="gen" align="{S_CONTENT_FLOW_END}" valign="top" nowrap="nowrap">{L_TOTAL_POSTS}{L_COLON} </td>
+			<tr valign="top">
+				<td align="{S_CONTENT_FLOW_END}"><span class="gen">{L_TOTAL_POSTS}{L_COLON}</span></td>
 				<td><b class="gen">{POSTS}</b><span class="genmed"><!-- IF POSTS_PCT --><br />[{POSTS_PCT} / {POSTS_DAY}]<!-- ENDIF -->
 				<!-- IF POSTS_IN_QUEUE and U_MCP_QUEUE --><br />[<a href="{U_MCP_QUEUE}">{L_POSTS_IN_QUEUE}</a>]<!-- ELSEIF POSTS_IN_QUEUE --><br />[{L_POSTS_IN_QUEUE}]<!-- ENDIF -->
 				<!-- IF S_DISPLAY_SEARCH --><br /><a href="{U_SEARCH_USER}">{L_SEARCH_USER_POSTS}</a><!-- ENDIF --></span></td>
 			</tr>
 			<!-- IF S_SHOW_ACTIVITY -->
-				<tr>
-					<td class="gen" align="{S_CONTENT_FLOW_END}" valign="top" nowrap="nowrap">{L_ACTIVE_IN_FORUM}{L_COLON} </td>
+				<tr valign="top">
+					<td align="{S_CONTENT_FLOW_END}"><span class="gen">{L_ACTIVE_IN_FORUM}{L_COLON}</span></td>
 					<td><!-- IF ACTIVE_FORUM != '' --><b><a class="gen" href="{U_ACTIVE_FORUM}">{ACTIVE_FORUM}</a></b><br /><span class="genmed">[ {ACTIVE_FORUM_POSTS} / {ACTIVE_FORUM_PCT} ]</span><!-- ELSE --><span class="gen">-</span><!-- ENDIF --></td>
 				</tr>
-				<tr>
-					<td class="gen" align="{S_CONTENT_FLOW_END}" valign="top" nowrap="nowrap">{L_ACTIVE_IN_TOPIC}{L_COLON} </td>
+				<tr valign="top">
+					<td align="{S_CONTENT_FLOW_END}"><span class="gen">{L_ACTIVE_IN_TOPIC}{L_COLON}</span></td>
 					<td><!-- IF ACTIVE_TOPIC != '' --><b><a class="gen" href="{U_ACTIVE_TOPIC}">{ACTIVE_TOPIC}</a></b><br /><span class="genmed">[ {ACTIVE_TOPIC_POSTS} / {ACTIVE_TOPIC_PCT} ]</span><!-- ELSE --><span class="gen">-</span><!-- ENDIF --></td>
 				</tr>
 			<!-- ENDIF -->
@@ -113,64 +112,66 @@
 	</tr>
 	<tr>
 		<td class="cat" align="center"><h4>{L_CONTACT}</h4></td>
-		<td class="cat" style="padding-{S_CONTENT_FLOW_BEGIN}:85px"><h4>{L_ABOUT_USER}</h4></td>
+		<td class="cat" align="center"><h4>{L_ABOUT_USER}</h4></td>
 	</tr>
 	<!-- EVENT memberlist_view_contact_before -->
 	<tr>
-		<td class="row1" nowrap="nowrap">
-			<table width="100%" cellspacing="1" cellpadding="2" border="0">
+		<td class="bg1">
+			<table width="100%" cellspacing="1">
 			<!-- IF U_EMAIL -->
-				<tr>
-				<td class="gen" align="{S_CONTENT_FLOW_END}">{L_EMAIL}{L_COLON} </td>
-				<td width="100%"><a class="genmed" href="{U_EMAIL}">{L_SEND_EMAIL}</a></td>
+				<tr valign="top">
+				<td align="{S_CONTENT_FLOW_END}"><span class="gen">{L_EMAIL}{L_COLON}</span></td>
+				<td width="78%"><a class="genmed" href="{U_EMAIL}">{L_SEND_EMAIL}</a></td>
 			</tr>
 			<!-- ENDIF -->
 			<!-- IF U_PM -->
-				<tr>
-					<td class="gen" align="{S_CONTENT_FLOW_END}">{L_PM}{L_COLON} </td>
-					<td><a class="genmed" href="{U_PM}">{L_SEND_PRIVATE_MESSAGE}</a></td>
+				<tr valign="top">
+					<td align="{S_CONTENT_FLOW_END}"><span class="gen">{L_PM}{L_COLON}</span></td>
+					<td width="78%"><a class="genmed" href="{U_PM}">{L_SEND_PRIVATE_MESSAGE}</a></td>
 				</tr>
 			<!-- ENDIF -->
 			<!-- IF S_JABBER_ENABLED -->
-			<tr>
-				<td class="gen" align="{S_CONTENT_FLOW_END}">{L_JABBER}{L_COLON} </td>
-				<td><!-- IF U_JABBER --><a class="genmed" href="{U_JABBER}" onclick="popup(this.href, 550, 320); return false">{L_SEND_JABBER_MESSAGE}</a><!-- ELSEIF USER_JABBER --><span class="genmed">{USER_JABBER}</span><!-- ENDIF --></td>
+			<tr valign="top">
+				<td align="{S_CONTENT_FLOW_END}"><span class="gen">{L_JABBER}{L_COLON}</span></td>
+				<td width="78%"><!-- IF U_JABBER --><a class="genmed" href="{U_JABBER}" onclick="popup(this.href, 550, 320); return false">{L_SEND_JABBER_MESSAGE}</a><!-- ELSEIF USER_JABBER --><span class="genmed">{USER_JABBER}</span><!-- ENDIF --></td>
 			</tr>
 			<!-- ENDIF -->
 			<!-- EVENT memberlist_view_contact_custom_fields_before -->
 			<!-- BEGIN custom_fields -->
 				<!-- IF custom_fields.S_PROFILE_CONTACT -->
-				<tr>
-					<td class="gen" align="{S_CONTENT_FLOW_END}">{custom_fields.PROFILE_FIELD_NAME}{L_COLON} </td>
+				<tr valign="top">
+					<td align="{S_CONTENT_FLOW_END}"><span class="gen">{custom_fields.PROFILE_FIELD_NAME}{L_COLON}</span></td>
+					<td width="78%">
 					<!-- IF custom_fields.PROFILE_FIELD_CONTACT -->
-						<td><a class="genmed" href="{custom_fields.PROFILE_FIELD_CONTACT}">{custom_fields.PROFILE_FIELD_DESC}</a></td>
+						<a class="genmed" href="{custom_fields.PROFILE_FIELD_CONTACT}">{custom_fields.PROFILE_FIELD_DESC}</a>
 					<!-- ELSE -->
-						<td><b class="genmed">{custom_fields.PROFILE_FIELD_VALUE}</b></td>
+						<table class="fixed"><tr><td class="profile"><b class="genmed">{custom_fields.PROFILE_FIELD_VALUE}</b></td></tr></table>
 					<!-- ENDIF -->
+					</td>
 				</tr>
 				<!-- ENDIF -->
 			<!-- END custom_fields -->
 			<!-- EVENT memberlist_view_contact_custom_fields_after -->
 			</table>
 		</td>
-		<td class="row1">
-			<table cellspacing="1" cellpadding="2" border="0">
-			<tr>
-				<td class="gen" align="{S_CONTENT_FLOW_END}" nowrap="nowrap">{L_USERGROUPS}{L_COLON} </td>
-				<td><select name="g">{S_GROUP_OPTIONS}</select> <input class="btnlite" type="submit" name="submit" value="{L_GO}" /></td>
+		<td class="bg1">
+			<table width="100%" cellspacing="1">
+			<tr valign="top">
+				<td align="{S_CONTENT_FLOW_END}"><span class="gen">{L_USERGROUPS}{L_COLON}</span></td>
+				<td width="78%"><select name="g">{S_GROUP_OPTIONS}</select> <input class="button2" type="submit" name="submit" value="{L_GO}" /></td>
 			</tr>
 			<!-- IF AGE !== '' -->
-			<tr>
-				<td class="gen" align="{S_CONTENT_FLOW_END}" nowrap="nowrap">{L_AGE}{L_COLON} </td>
+			<tr valign="top">
+				<td align="{S_CONTENT_FLOW_END}"><span class="gen">{L_AGE}{L_COLON}</span></td>
 				<td><b class="genmed">{AGE}</b></td>
 			</tr>
 			<!-- ENDIF -->
 			<!-- EVENT memberlist_view_non_contact_custom_fields_before -->
 			<!-- BEGIN custom_fields -->
 				<!-- IF not custom_fields.S_PROFILE_CONTACT -->
-				<tr>
-					<td class="gen" align="{S_CONTENT_FLOW_END}" nowrap="nowrap">{custom_fields.PROFILE_FIELD_NAME}{L_COLON} </td>
-					<td><b class="genmed">{custom_fields.PROFILE_FIELD_VALUE}</b></td>
+				<tr valign="top">
+					<td align="{S_CONTENT_FLOW_END}"><span class="gen">{custom_fields.PROFILE_FIELD_NAME}{L_COLON}</span></td>
+					<td><table class="fixed"><tr><td class="profile"><b class="genmed">{custom_fields.PROFILE_FIELD_VALUE}</b></td></tr></table></td>
 				</tr>
 				<!-- ENDIF -->
 			<!-- END custom_fields -->
@@ -181,11 +182,10 @@
 	<!-- EVENT memberlist_view_contact_after -->
 	<!-- IF SIGNATURE -->
 		<tr>
-			<td class="cat" align="center"><h4>{L_SIGNATURE}</h4></td>
-			<td class="cat"></td>
+			<td class="cat" colspan="2"><table cellspacing="0" width="40%"><tr><td align="center" style="padding: 0"><h4>{L_SIGNATURE}</h4></td></tr></table></td>
 		</tr>
 		<tr>
-			<td class="row1" colspan="2"><div class="postbody" style="padding: 10px;">{SIGNATURE}</div></td>
+			<td class="bg1" colspan="2"><div class="postbody" style="padding: 10px">{SIGNATURE}</div></td>
 		</tr>
 	<!-- ENDIF -->
 	</table>

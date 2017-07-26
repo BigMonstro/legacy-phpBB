@@ -4,10 +4,10 @@
 	</form>
 <!-- ENDIF -->
 
-<!-- IF S_VIEW_MESSAGE or .messagerow --><table class="tablebg" width="100%" cellspacing="1" cellpadding="0">
+<!-- IF S_VIEW_MESSAGE or .messagerow --><table class="main" width="100%" cellspacing="1">
 <tr>
-	<td class="row1">
-		<table border="0" cellspacing="0" cellpadding="0" width="100%">
+	<td class="bg1">
+		<table cellspacing="0" width="100%">
 		<tr>
 			<td>
 				<!-- IF S_VIEW_MESSAGE -->
@@ -17,20 +17,20 @@
 						<!-- IF U_POST_REPLY_PM and S_PM_RECIPIENTS gt 1 --><!-- IF U_PRINT_PM or U_FORWARD_PM --> | <!-- ENDIF --><a href="{U_POST_REPLY_ALL}">{L_REPLY_TO_ALL}</a><!-- ENDIF -->
 					</span>
 				<!-- ELSE -->
-					<form name="sortmsg" method="post" action="{S_PM_ACTION}" style="margin:0px">
+					<form name="sortmsg" method="post" action="{S_PM_ACTION}">
 						<!-- INCLUDE display_options.html -->
 					{S_FORM_TOKEN}
 					</form>
 				<!-- ENDIF -->
 			</td>
 		<!-- IF S_VIEW_MESSAGE -->
-			<td align="{S_CONTENT_FLOW_END}" nowrap="nowrap">
+			<td align="{S_CONTENT_FLOW_END}">
 				<!-- IF not S_SPECIAL_FOLDER -->
-					<form name="movepm" method="post" action="{S_PM_ACTION}" style="margin:0px">
+					<form name="movepm" method="post" action="{S_PM_ACTION}">
 						<input type="hidden" name="marked_msg_id[]" value="{MSG_ID}" />
 						<input type="hidden" name="cur_folder_id" value="{CUR_FOLDER_ID}" />
 						<input type="hidden" name="p" value="{MSG_ID}" />
-						<span class="genmed">{L_MOVE_TO_FOLDER}{L_COLON} </span><select name="dest_folder">{S_TO_FOLDER_OPTIONS}</select>&nbsp;<input class="btnlite" type="submit" name="move_pm" value="{L_GO}" />
+						<span class="genmed">{L_MOVE_TO_FOLDER}{L_COLON} </span><select name="dest_folder">{S_TO_FOLDER_OPTIONS}</select>&nbsp;<input class="button2" type="submit" name="move_pm" value="{L_GO}" />
 					{S_FORM_TOKEN}
 					</form>
 				<!-- ENDIF -->
@@ -43,7 +43,7 @@
 </table><!-- ENDIF -->
 
 <!-- IF not S_VIEW_MESSAGE --><!-- IF .messagerow -->
-	<div style="padding-top:2px; text-align: {S_CONTENT_FLOW_END}"><b class="gensmall"><a href="#" onclick="marklist('viewfolder', 'marked_msg_id', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('viewfolder', 'marked_msg_id', false); return false;">{L_UNMARK_ALL}</a></b></div>
+	<div align="{S_CONTENT_FLOW_END}" style="padding-top:2px"><b><a href="#" onclick="marklist('viewfolder', 'marked_msg_id', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('viewfolder', 'marked_msg_id', false); return false;">{L_UNMARK_ALL}</a></b></div>
 <!-- ENDIF --><!-- IF FOLDER_CUR_MESSAGES neq 0 and .pagination -->
-	<div class="gensmall" style="padding-top:4px; text-align: {S_CONTENT_FLOW_END}"><!-- INCLUDE pagination.html --></div>
+	<div align="{S_CONTENT_FLOW_END}" style="padding-top:4px"><!-- INCLUDE pagination.html --></div>
 <!-- ENDIF --><!-- ENDIF -->

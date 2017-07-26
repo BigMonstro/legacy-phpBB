@@ -9,30 +9,30 @@
 <!-- BEGIN listitem_close --></li><!-- END listitem_close -->
 
 <!-- BEGIN quote_username_open -->
-<div class="quotetitle">{USERNAME} {L_WROTE}{L_COLON}</div><div class="quotecontent">
+<blockquote class="quotation"><div class="quotetitle"><div class="cite">{USERNAME} {L_WROTE}{L_COLON}</div></div><div class="quotecontent">
 <!-- END quote_username_open -->
 
 <!-- BEGIN quote_open -->
-<div class="quotetitle">{L_QUOTE}{L_COLON}</div><div class="quotecontent">
+<blockquote class="quotation"><div class="quotetitle"><div class="cite">{L_QUOTE}{L_COLON}</div></div><div class="quotecontent">
 <!-- END quote_open -->
 
 <!-- BEGIN quote_close -->
-</div>
+</div></blockquote>
 <!-- END quote_close -->
 
 <!-- BEGIN quote_extended -->
-<div class="quotetitle"><table class="bigger" cellspacing="0" width="100%"><tr class="bold">
+<blockquote class="quotation"><div class="quotetitle"><table class="table1"><tr>
 <xsl:if test="not(@author)">
-	<td>
+	<td class="cite">
 		<xsl:value-of select="$L_QUOTE"/>
 		<xsl:value-of select="$L_COLON"/>
 	</td>
 </xsl:if>
 <xsl:if test="@author">
-	<td>
+	<td class="cite">
 	<xsl:choose>
 		<xsl:when test="@url">
-			<a href="{@url}" class="postlink"><xsl:value-of select="@author"/></a>
+			<a href="{@url}"><xsl:value-of select="@author"/></a>
 		</xsl:when>
 		<xsl:when test="@profile_url">
 			<a href="{@profile_url}"><xsl:value-of select="@author"/></a>
@@ -46,40 +46,35 @@
 	<xsl:value-of select="$L_COLON"/>
 	<xsl:if test="@post_url">
 		<xsl:text> </xsl:text>
-		<a href="{@post_url}" data-post-id="{@post_id}" style="font-weight:normal">*</a>
+		<a href="{@post_url}" data-post-id="{@post_id}">*</a>
 	</xsl:if>
 	</td>
 	<xsl:if test="@date">
-		<td class="postdatetime"><xsl:value-of select="@date"/></td>
+		<td class="date">&nbsp;&nbsp;<xsl:value-of select="@date"/></td>
 	</xsl:if>
 </xsl:if>
-</tr></table></div><div class="quotecontent"><xsl:apply-templates/></div>
+</tr></table></div><div class="quotecontent"><xsl:apply-templates/></div></blockquote>
 <!-- END quote_extended -->
 
 <!-- BEGIN code_open -->
-<div><div class="codetitle">{L_CODE}{L_COLON} <a href="#" onclick="selectCode(this); return false;">{L_SELECT_ALL_CODE}</a></div><pre class="codecontent">
+<table class="fixed"><tr><td><div class="codebox"><div class="codetitle">{L_CODE}{L_COLON} <a href="#" onclick="selectCode(this); return false;">{L_SELECT_ALL_CODE}</a></div><div class="codecontent"><pre>
 <!-- END code_open -->
 
 <!-- BEGIN code_close -->
-</pre></div>
+</pre></div></div></td></tr></table>
 <!-- END code_close -->
 
-<!-- BEGIN inline_attachment_open -->
-<div class="attachtitle">{L_ATTACHMENT}{L_COLON}</div><div class="attachcontent">
-<!-- END inline_attachment_open -->
+<!-- BEGIN inline_attachment_open --><div class="inline-attachment"><!-- END inline_attachment_open -->
+<!-- BEGIN inline_attachment_close --></div><!-- END inline_attachment_close -->
 
-<!-- BEGIN inline_attachment_close -->
-</div>
-<!-- END inline_attachment_close -->
-
-<!-- BEGIN b_open --><strong><!-- END b_open -->
-<!-- BEGIN b_close --></strong><!-- END b_close -->
+<!-- BEGIN b_open --><b><!-- END b_open -->
+<!-- BEGIN b_close --></b><!-- END b_close -->
 
 <!-- BEGIN u_open --><span style="text-decoration: underline"><!-- END u_open -->
 <!-- BEGIN u_close --></span><!-- END u_close -->
 
-<!-- BEGIN i_open --><em><!-- END i_open -->
-<!-- BEGIN i_close --></em><!-- END i_close -->
+<!-- BEGIN i_open --><i><!-- END i_open -->
+<!-- BEGIN i_close --></i><!-- END i_close -->
 
 <!-- BEGIN color --><span style="color: {COLOR}">{TEXT}</span><!-- END color -->
 

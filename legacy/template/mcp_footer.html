@@ -3,12 +3,11 @@
 		</tr>
 	</table>
 
-	<!-- IF .pagination -->
+	<!-- IF .pagination and not $MCPVIEWIP -->
 		<table width="80%" align="{S_CONTENT_FLOW_END}" cellspacing="1">
 		<tr>
-		<td class="nav" valign="middle" nowrap="nowrap">&nbsp;{PAGE_NUMBER}<br></td>
-		<td class="gensmall" nowrap="nowrap">&nbsp;[ <!-- IF $MCPNOTEUSER -->{TOTAL_REPORTS}<!-- ELSEIF $MCPWARNLIST -->{TOTAL_USERS}<!-- ELSEIF TOTAL_TOPICS -->{TOTAL_TOPICS}<!-- ELSEIF TOTAL_POSTS -->{TOTAL_POSTS}<!-- ELSE -->{TOTAL}<!-- ENDIF --> ]&nbsp;</td>
-		<td class="gensmall" width="100%" align="{S_CONTENT_FLOW_END}"><!-- INCLUDE pagination.html --></td>
+			<td valign="middle" nowrap="nowrap"><b>{PAGE_NUMBER}</b> [ <!-- IF $MCPNOTEUSER -->{TOTAL_REPORTS}<!-- ELSEIF $MCPWARNLIST -->{TOTAL_USERS}<!-- ELSEIF TOTAL_TOPICS -->{TOTAL_TOPICS}<!-- ELSEIF TOTAL_POSTS -->{TOTAL_POSTS}<!-- ELSE -->{TOTAL}<!-- ENDIF --> ]</td>
+			<td width="100%" align="{S_CONTENT_FLOW_END}"><!-- INCLUDE pagination.html --></td>
 		</tr>
 		</table>
 		<br />
@@ -21,7 +20,5 @@
 <!-- INCLUDE breadcrumbs.html -->
 
 <br clear="all" />
-
-<div align="{S_CONTENT_FLOW_END}"><!-- INCLUDE jumpbox.html --></div>
 
 <!-- INCLUDE overall_footer.html -->

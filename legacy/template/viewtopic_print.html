@@ -2,14 +2,20 @@
 <html dir="{S_CONTENT_DIRECTION}" lang="{S_USER_LANG}">
 <head>
 <meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="robots" content="noindex" />
 <title>{SITENAME} :: {PAGE_TITLE}</title>
 
 <style type="text/css">
 <!--
 
-body {
+<!-- IF S_CONTENT_DIRECTION eq "rtl" -->
+a {
+	direction: rtl;
+	unicode-bidi: embed;
+}
+
+<!-- ENDIF -->body {
 	font-family: Verdana,serif;
 	font-size: 10pt;
 }
@@ -24,18 +30,38 @@ td {
 	line-height: 150%;
 }
 
-.code, .codecontent,
-.quote, .quotecontent {
-	margin: 0 5px 0 5px;
-	padding: 5px;
-	font-size: smaller;
-	border: 1px solid #000000;
+.codecontent pre {
+	direction: ltr;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 9pt;
+	line-height: normal;
 }
 
-.quotetitle {
-	color: #000000;
-	display : block;
+.codetitle {
+	display: none;
+}
+
+.quotation {
+	margin: 10px 5px;
+}
+
+.quotecontent {
+	border: 1px solid #999999;
+	display: block;
+	padding: 5px;
+}
+
+.quotetitle .cite, .quotetitle .date {
+	font-style: italic;
 	font-weight: bold;
+	padding: 0;
+}
+
+.emoji {
+	min-height: 18px;
+	min-width: 18px;
+	height: 1em;
+	width: 1em;
 }
 
 .forum {
@@ -71,15 +97,15 @@ hr.sep {
 </head>
 <body>
 
-<table width="85%" cellspacing="3" cellpadding="0" border="0" align="center">
+<table width="85%" cellspacing="3" align="center">
 <tr>
-	<td colspan="2" align="center"><span class="forum">{SITENAME}</span><br /><span class="genmed"><a href="{U_FORUM}">{U_FORUM}</a></span></td>
+	<td colspan="2" align="center"><span class="forum">{SITENAME}</span><br /><a href="{U_FORUM}" class="genmed">{U_FORUM}</a></td>
 </tr>
 <tr>
 	<td colspan="2"><br /></td>
 </tr>
 <tr>
-	<td><span class="topic">{TOPIC_TITLE}</span><br /><span class="genmed"><a href="{U_TOPIC}">{U_TOPIC}</a></span></td>
+	<td><span class="topic">{TOPIC_TITLE}</span><br /><a href="{U_TOPIC}" class="genmed">{U_TOPIC}</a></td>
 	<td align="{S_CONTENT_FLOW_END}" valign="bottom" class="genmed">{PAGE_NUMBER}</td>
 </tr>
 </table>
@@ -88,7 +114,7 @@ hr.sep {
 
 	<hr width="85%" />
 
-	<table width="85%" cellspacing="3" cellpadding="0" border="0" align="center">
+	<table width="85%" cellspacing="3" align="center">
 	<tr>
 		<td width="10%" nowrap="nowrap">{L_AUTHOR}{L_COLON}&nbsp;</td>
 		<td><b>{postrow.POST_AUTHOR}</b> [ {postrow.POST_DATE} ]</td>
@@ -98,31 +124,14 @@ hr.sep {
 		<td><b>{postrow.POST_SUBJECT}</b></td>
 	</tr>
 	<tr>
-		<td colspan="2"><hr class="sep" />{postrow.MESSAGE}
-
-		<!-- IF postrow.S_HAS_ATTACHMENTS -->
-			<br clear="all" /><br />
-
-			<table class="tablebg" width="100%" cellspacing="1">
-			<tr>
-				<td><b class="genmed">{L_ATTACHMENTS}{L_COLON} </b></td>
-			</tr>
-			<!-- BEGIN attachment -->
-				<tr>
-					<td>{postrow.attachment.DISPLAY_ATTACHMENT}</td>
-				</tr>
-			<!-- END attachment -->
-			</table>
-		<!-- ENDIF -->
-
-		</td>
+		<td colspan="2"><hr class="sep" />{postrow.MESSAGE}</td>
 	</tr>
 	</table>
 <!-- END postrow -->
 
 <hr width="85%" />
 
-<table width="85%" cellspacing="3" cellpadding="0" border="0" align="center">
+<table width="85%" cellspacing="3" align="center">
 <tr>
 	<td class="genmed">{PAGE_NUMBER}</td>
 	<td align="{S_CONTENT_FLOW_END}" class="genmed">{S_TIMEZONE}</td>

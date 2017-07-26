@@ -1,16 +1,16 @@
 <!-- IF S_RECAPTCHA_AVAILABLE -->
 	<tr>
-		<th colspan="2" valign="middle">{L_CONFIRM_CODE}</th>
+		<th colspan="2">{L_CONFIRM_CODE}</th>
 	</tr>
 	<!-- IF S_TYPE == 1 -->
 	<tr>
-		<td class="row2" colspan="2"><span class="genmed">{L_CONFIRM_EXPLAIN}</span></td>
+		<td class="bg2" colspan="2"><span class="genmed">{L_CONFIRM_EXPLAIN}</span></td>
 	</tr>
 	<!-- ENDIF -->	
 	<tr>
-		<td class="row1"><b class="genmed">{L_CONFIRM_CODE}{L_COLON}</b><br /><span class="genmed">{L_RECAPTCHA_EXPLAIN}</span></td>
-		<td class="row2">
-			<noscript><b class="genmed">{L_RECAPTCHA_NOSCRIPT}</b></noscript>
+		<td class="bg1"><b class="genmed">{L_CONFIRM_CODE}{L_COLON}</b><br /><span class="genmed">{L_RECAPTCHA_EXPLAIN}</span></td>
+		<td class="bg2">
+			<b><noscript>{L_RECAPTCHA_NOSCRIPT}</noscript></b>
 			<script src="{RECAPTCHA_SERVER}.js?hl={LA_RECAPTCHA_LANG}" async defer></script>
 			<div class="g-recaptcha" data-sitekey="{RECAPTCHA_PUBKEY}" data-tabindex="<!-- IF $CAPTCHA_TAB_INDEX -->{$CAPTCHA_TAB_INDEX}<!-- ELSE -->10<!-- ENDIF -->"></div>
 		</td>

@@ -2,7 +2,7 @@
 
 <form action="{S_LOGIN_ACTION}" method="post">
 
-<table class="tablebg" width="100%" cellspacing="1">
+<table class="main" width="100%" cellspacing="1">
 <tr>
 	<!-- IF not S_ADMIN_AUTH -->
 		<th colspan="2">{L_LOGIN}</th>
@@ -12,11 +12,11 @@
 </tr>
 <!-- IF LOGIN_EXPLAIN and not S_ADMIN_AUTH -->
 	<tr>
-		<td class="row3" colspan="2" align="center"><span class="genmed">{LOGIN_EXPLAIN}</span></td>
+		<td class="bg3" colspan="2" align="center"><span class="genmed">{LOGIN_EXPLAIN}</span></td>
 	</tr>
 <!-- ENDIF -->
 <tr><!-- IF not S_ADMIN_AUTH and S_REGISTER_ENABLED -->
-	<td class="row1" width="50%">
+	<td class="bg1" width="50%">
 		<p class="genmed">{L_LOGIN_INFO}</p>
 
 		<p class="genmed" align="center">
@@ -24,27 +24,27 @@
 		</p>
 	</td>
 	<!-- ENDIF -->
-	<td class="row2">
+	<td class="bg2">
 	
-		<table align="center" cellspacing="1" cellpadding="4" style="width: 100%;">
+		<table align="center" cellspacing="1" width="100%">
 		<!-- IF LOGIN_ERROR -->
 			<tr>
-				<td class="genmed" colspan="2" align="center"><span class="error">{LOGIN_ERROR}</span></td>
+				<td colspan="2" align="center"><p class="error">{LOGIN_ERROR}</p></td>
 			</tr>
 		<!-- ENDIF -->
 
 		<tr>
-			<td valign="top" <!-- IF S_ADMIN_AUTH or not S_REGISTER_ENABLED -->style="width: 50%; text-align: {S_CONTENT_FLOW_END};"<!-- ENDIF -->><b class="genmed">{L_USERNAME}{L_COLON}</b></td>
-			<td><input class="post" type="text" name="{USERNAME_CREDENTIAL}" size="25" value="{USERNAME}" tabindex="1" />
+			<td valign="top" <!-- IF S_ADMIN_AUTH or not S_REGISTER_ENABLED -->align="{S_CONTENT_FLOW_END}" width="50%"<!-- ENDIF -->><b class="genmed">{L_USERNAME}{L_COLON}</b></td>
+			<td><input type="text" class="inputbox" id="legacy_username" name="{USERNAME_CREDENTIAL}" size="25" value="{USERNAME}" tabindex="1" />
 				<!-- IF not S_ADMIN_AUTH and S_REGISTER_ENABLED -->
 					<br /><a class="genmed" href="{U_REGISTER}">{L_REGISTER}</a>
 				<!-- ENDIF -->
 			</td>
 		</tr>
 		<tr>
-			<td valign="top" <!-- IF S_ADMIN_AUTH or not S_REGISTER_ENABLED -->style="width: 50%; text-align: {S_CONTENT_FLOW_END};"<!-- ENDIF -->><b class="genmed">{L_PASSWORD}{L_COLON}</b></td>
+			<td valign="top" <!-- IF S_ADMIN_AUTH or not S_REGISTER_ENABLED -->align="{S_CONTENT_FLOW_END}" width="50%"<!-- ENDIF -->><b class="genmed">{L_PASSWORD}{L_COLON}</b></td>
 			<td>
-				<input class="post" type="password" name="{PASSWORD_CREDENTIAL}" size="25" tabindex="2" autocomplete="off" />
+				<input type="password" class="inputbox" id="legacy_password" name="{PASSWORD_CREDENTIAL}" size="25" tabindex="2" autocomplete="off" />
 				<!-- IF U_SEND_PASSWORD --><br /><a class="genmed" href="{U_SEND_PASSWORD}">{L_FORGOT_PASS}</a><!-- ENDIF -->
 				<!-- IF U_RESEND_ACTIVATION and not S_ADMIN_AUTH --><br /><a class="genmed" href="{U_RESEND_ACTIVATION}">{L_RESEND_ACTIVATION}</a><!-- ENDIF -->
 			</td>
@@ -53,12 +53,12 @@
 			<!-- IF S_AUTOLOGIN_ENABLED -->
 			<tr>
 				<td>&nbsp;</td>
-				<td><input type="checkbox" class="radio" name="autologin" tabindex="3" /> <span class="genmed">{L_LOG_ME_IN}</span></td>
+				<td><input type="checkbox" name="autologin" tabindex="3" /> <span class="genmed">{L_LOG_ME_IN}</span></td>
 			</tr>
 			<!-- ENDIF -->
 			<tr>
 				<td>&nbsp;</td>
-				<td><input type="checkbox" class="radio" name="viewonline" tabindex="4" /> <span class="genmed">{L_HIDE_ME}</span></td>
+				<td><input type="checkbox" name="viewonline" tabindex="4" /> <span class="genmed">{L_HIDE_ME}</span></td>
 			</tr>
 		<!-- ENDIF -->
 		<!-- IF not S_ADMIN_AUTH and PROVIDER_TEMPLATE_FILE -->
@@ -70,14 +70,14 @@
 
 <!-- IF CAPTCHA_TEMPLATE and S_CONFIRM_CODE -->
 </table>
-<table class="tablebg" width="100%" cellspacing="1">
+<table class="main" width="100%" cellspacing="1">
 	<!-- DEFINE $CAPTCHA_TAB_INDEX = 4 -->
 	<!-- INCLUDE {CAPTCHA_TEMPLATE} -->
 <!-- ENDIF -->
 
 {S_LOGIN_REDIRECT}
 <tr>
-	<td class="cat" <!-- IF not S_ADMIN_AUTH or S_CONFIRM_CODE -->colspan="2"<!-- ENDIF --> align="center">{S_HIDDEN_FIELDS}<input type="submit" name="login" class="btnmain" value="{L_LOGIN}" tabindex="5" /></td>
+	<td class="cat" <!-- IF not S_ADMIN_AUTH or S_CONFIRM_CODE -->colspan="2"<!-- ENDIF --> align="center">{S_HIDDEN_FIELDS}<input type="submit" name="login" class="button1" value="{L_LOGIN}" tabindex="5" /></td>
 </tr>
 </table>
 {S_FORM_TOKEN}
@@ -89,23 +89,8 @@
 
 <br clear="all" />
 
-<div align="{S_CONTENT_FLOW_END}"><!-- INCLUDE jumpbox.html --></div>
-
-<script type="text/javascript">if (document.getElementsByName)	{ 
-// <![CDATA[
-	(function()
-	{
-		var elements = document.getElementsByName("<!-- IF S_ADMIN_AUTH -->{PASSWORD_CREDENTIAL}<!-- ELSE -->{USERNAME_CREDENTIAL}<!-- ENDIF -->");
-		for (var i = 0; i < elements.length; ++i)
-		{
-			if (elements[i].tagName.toLowerCase() == 'input')
-			{
-				elements[i].focus();
-				break;
-			}
-		}
-	})();
-// ]]>
- } else if (document.all) { document.all("<!-- IF S_ADMIN_AUTH -->{PASSWORD_CREDENTIAL}<!-- ELSE -->{USERNAME_CREDENTIAL}<!-- ENDIF -->").focus(); }</script>
+<script type="text/javascript"><!--
+	if (typeof getStuff === 'function') { getStuff("<!-- IF S_ADMIN_AUTH -->legacy_password<!-- ELSE -->legacy_username<!-- ENDIF -->").focus();}
+//--></script>
 
 <!-- INCLUDE overall_footer.html -->

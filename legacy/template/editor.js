@@ -26,7 +26,7 @@ function helpline(help) {
 /**
 * Fix a bug involving the TextRange object. From
 * http://www.frostjedi.com/terra/scripts/demo/caretBug.html
-*/ 
+*/
 function initInsertions() {
 	var doc;
 
@@ -44,6 +44,23 @@ function initInsertions() {
 
 		if (!document.forms[form_name]) {
 			document.body.focus();
+		}
+	}
+	
+	if (textarea === document.forms[form_name].elements[text_name]) {
+		// Allow to use tab character when typing code
+		if (window.InstallTrigger) {
+			textarea.onkeypress = function(event) {
+				if ((event.keyCode==9 || event.which==9) && inCodeTag() && !event.altKey && !event.ctrlKey && !event.shiftKey && !event.metaKey) {
+					event.preventDefault ? event.preventDefault() : (event.returnValue = false); bbfontstyle("\t","");
+				}
+			}
+		} else {
+			textarea.onkeydown = function(e) {
+				if ((event.keyCode==9 || event.which==9) && inCodeTag() && !event.altKey && !event.ctrlKey && !event.shiftKey && !event.metaKey) {
+					event.preventDefault ? event.preventDefault() : (event.returnValue = false); bbfontstyle("\t","");
+				}
+			}
 		}
 	}
 }
@@ -376,7 +393,7 @@ function colorPalette() {
 	numberList[3] = 'BF';
 	numberList[4] = 'FF';
 
-	document.writeln('<table width="60" cellspacing="1" style="font-size:6px; _line-height:normal">');
+	document.writeln('<table width="60" cellspacing="1" class="main" style="font-size:6px; _line-height:normal">');
 
 	for (r = 0; r < 5; r++)
 	{
@@ -388,7 +405,7 @@ function colorPalette() {
 			{
 				color = String(numberList[r]) + String(numberList[g]) + String(numberList[b]);
 				document.write('<td style="background-color: #' + color + '; padding:0" height="10" width="11">');
-				document.write('<a style="height:100%;width:100%;display:block" href="#" onclick="bbfontstyle(\'[color=#' + color + ']\', \'[/color]\'); return false;" title="#' + color + '"><div style="height:100%;width:100%"></div></a>');
+				document.write('<a style="height:100%;width:100%;display:block" href="#" onclick="bbfontstyle(\'[color=#' + color + ']\', \'[/color]\'); return false;" title="#' + color + '"><div style="cursor:pointer; _cursor:hand; height:100%; width:100%"></div></a>');
 				document.writeln('</td>');
 			}
 				document.writeln('</tr>');
@@ -399,7 +416,6 @@ function colorPalette() {
 
 /**
 * Check if cursor is currently inside a code tag
-* Allow to use tab character when typing code
 */
 function inCodeTag() {
 	var textarea = document.forms[form_name].elements[text_name];

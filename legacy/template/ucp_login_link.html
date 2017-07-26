@@ -1,22 +1,22 @@
 <!-- INCLUDE overall_header.html -->
 
-<table class="tablebg" width="100%" cellspacing="1">
+<table class="main" width="100%" cellspacing="1">
 	<tr>
 		<th>{SITENAME} - {L_LOGIN_LINK}</th>
 	</tr>
 
 	<tr>
-		<td class="row1" align="center"><span class="genmed">{L_LOGIN_LINK_EXPLAIN}</span></td>
+		<td class="bg1" align="center"><span class="genmed">{L_LOGIN_LINK_EXPLAIN}</span></td>
 	</tr>
 
 	<!-- IF LOGIN_LINK_ERROR -->
 		<tr>
-			<td class="row1" align="center"><span class="genmed" style="color: #FF0000">{LOGIN_LINK_ERROR}</span></td>
+			<td class="bg1" align="center"><p class="error">{LOGIN_LINK_ERROR}</p></td>
 		</tr>
 	<!-- ENDIF -->
 
 	<tr>
-		<td class="row1">
+		<td class="bg1">
 			<form action="{REGISTER_ACTION}" method="post" id="register">
 				<table width="100%" cellspacing="1">
 					<tr>
@@ -24,7 +24,7 @@
 					</tr>
 
 					<tr>
-						<td>{S_HIDDEN_FIELDS}<input type="submit" name="register" tabindex="1" value="{L_REGISTER}" class="button1" /></td>
+						<td>{S_HIDDEN_FIELDS}<input type="submit" name="register" tabindex="1" value="{L_REGISTER}" class="button2" /></td>
 					</tr>
 				</table>
 			</form>
@@ -32,7 +32,7 @@
 	</tr>
 
 	<tr>
-		<td class="row1">
+		<td class="bg1">
 			<form action="{LOGIN_ACTION}" method="post" id="login">
 				<table width="100%" cellspacing="1">
 					<tr>
@@ -41,18 +41,18 @@
 
 					<!-- IF LOGIN_ERROR -->
 						<tr>
-							<td class="row1" align="center" colspan="2"><span class="genmed" style="color: #FF0000">{LOGIN_ERROR}</span></td>
+							<td class="bg1" align="center" colspan="2"><p class="error">{LOGIN_ERROR}</p></td>
 						</tr>
 					<!-- ENDIF -->
 
 					<tr>
 						<td align="{S_CONTENT_FLOW_END}"><b class="genmed"><label for="{USERNAME_CREDENTIAL}">{L_USERNAME}{L_COLON}</label></b></td>
-						<td><input type="text" tabindex="2" name="{USERNAME_CREDENTIAL}" id="{USERNAME_CREDENTIAL}" size="25" value="{LOGIN_USERNAME}" class="inputbox" style="width:auto" /></td>
+						<td><input type="text" class="inputbox" tabindex="2" name="{USERNAME_CREDENTIAL}" id="{USERNAME_CREDENTIAL}" size="25" value="{LOGIN_USERNAME}" /></td>
 					</tr>
 
 					<tr>
 						<td align="{S_CONTENT_FLOW_END}"><b class="genmed"><label for="{PASSWORD_CREDENTIAL}">{L_PASSWORD}{L_COLON}</label></b></td>
-						<td><input type="password" tabindex="3" id="{PASSWORD_CREDENTIAL}" name="{PASSWORD_CREDENTIAL}" size="25" class="inputbox" style="width:auto" autocomplete="off" /></td>
+						<td><input type="password" class="inputbox" tabindex="3" id="{PASSWORD_CREDENTIAL}" name="{PASSWORD_CREDENTIAL}" size="25" autocomplete="off" /></td>
 					</tr>
 
 					<!-- IF CAPTCHA_TEMPLATE and S_CONFIRM_CODE -->
@@ -63,7 +63,7 @@
 					{S_LOGIN_REDIRECT}
 					<tr>
 						<td>&nbsp;</td>
-						<td>{S_HIDDEN_FIELDS}<input type="submit" name="login" tabindex="5" value="{L_LOGIN}" class="button1" /></td>
+						<td>{S_HIDDEN_FIELDS}<input type="submit" name="login" tabindex="5" value="{L_LOGIN}" class="button2" /></td>
 					</tr>
 				</table>
 			</form>

@@ -1,8 +1,16 @@
 <tr>
-	<td class="row1" width="50%"><b class="genmed">{L_BOARD_TIMEZONE}{L_COLON}</b></td>
-	<td class="row2">
-	<select name="tz" id="timezone" class="tz_select" style="width:auto">
-			<option value="">{L_SELECT_TIMEZONE}</option>
+	<td class="bg1" width="50%"><b class="genmed">{L_BOARD_TIMEZONE}{L_COLON}</b></td>
+	<td class="bg2">
+	<!-- IF .timezone_date -->
+		<div id="tz_select_date" style="display: none; margin-bottom: 3px">
+			<select id="tz_date" class="tz_select" onchange="ChangeCurrentTime(this);">
+				<!-- BEGIN timezone_date -->
+				<option value="{timezone_date.VALUE}"<!-- IF timezone_date.SELECTED --> selected="selected"<!-- ENDIF -->>{timezone_date.TITLE}</option>
+				<!-- END timezone_date -->
+			</select>
+		</div>
+	<!-- ENDIF -->
+		<select name="tz" id="timezone" class="tz_select">
 			<!-- BEGIN timezone_select -->
 			<optgroup label="{timezone_select.LABEL}" data-tz-value="{timezone_select.VALUE}">
 				<!-- BEGIN timezone_options -->
@@ -11,6 +19,6 @@
 			</optgroup>
 			<!-- END timezone_select -->
 		</select>
-
+	<script type="text/javascript" src="{T_TEMPLATE_PATH}/timezone.js?assets_version={T_ASSETS_VERSION}"></script>
 	</td>
 </tr>

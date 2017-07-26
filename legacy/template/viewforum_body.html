@@ -1,115 +1,30 @@
 <!-- INCLUDE overall_header.html -->
+
 <!-- IF S_FORUM_RULES -->
-
-	<div class="forumrules">
-	<h3 class="forumrules">{L_FORUM_RULES}</h3>	<!-- IF U_FORUM_RULES -->
-	<a href="{U_FORUM_RULES}"><b>{L_FORUM_RULES_LINK}</b></a>
-	<!-- ELSE -->
-	{FORUM_RULES}
-	<!-- ENDIF -->
+	<div class="rules">
+		<h3>{L_FORUM_RULES}</h3><br />
+		<!-- IF U_FORUM_RULES --><a href="{U_FORUM_RULES}"><b>{L_FORUM_RULES_LINK}</b></a><!-- ELSE -->{FORUM_RULES}<!-- ENDIF -->
 	</div>
-
 <!-- ENDIF -->
 
-<!-- IF S_DISPLAY_ACTIVE -->
-	<table class="tablebg" width="100%" cellspacing="1">
-	<tr>
-		<td class="cat" colspan="<!-- IF S_TOPIC_ICONS -->7<!-- ELSE -->6<!-- ENDIF -->"><span class="nav">{L_ACTIVE_TOPICS}</span></td>
-	</tr>
-
-	<tr>
-		<th colspan="<!-- IF S_TOPIC_ICONS -->3<!-- ELSE -->2<!-- ENDIF -->">&nbsp;{L_TOPICS}&nbsp;</th>
-		<th width="130">&nbsp;{L_AUTHOR}&nbsp;</th>
-		<th width="50">&nbsp;{L_REPLIES}&nbsp;</th>
-		<th width="50">&nbsp;{L_VIEWS}&nbsp;</th>
-		<th nowrap="nowrap">&nbsp;{L_LAST_POST}&nbsp;</th>
-	</tr>
-
-	<!-- EVENT viewforum_body_topic_row_before -->
-
-	<!-- BEGIN topicrow -->
-
-		<!-- EVENT viewforum_body_topicrow_row_before -->
-		<tr>
-			<!-- EVENT viewforum_body_topic_row_prepend -->
-			<td class="row1" width="25" style="*width:25px" align="center"><!-- IF topicrow.S_UNREAD_TOPIC --><b><font color=#FF0000>{L_UNREAD_POSTS}</font></b><!-- ELSE --><!-- IF topicrow.S_TOPIC_LOCKED -->{L_TOPIC_LOCKED_SHORT}<!-- ELSE -->{L_NO_UNREAD_POSTS}<!-- ENDIF --><!-- ENDIF --></td>
-			<!-- IF S_TOPIC_ICONS -->
-				<td class="row1" width="25" style="*width:25px" align="center"><!-- IF topicrow.TOPIC_ICON_IMG --><img src="{T_ICONS_PATH}{topicrow.TOPIC_ICON_IMG}" width="{topicrow.TOPIC_ICON_IMG_WIDTH}" height="{topicrow.TOPIC_ICON_IMG_HEIGHT}" alt="" title="" /><!-- ENDIF --></td>
-			<!-- ENDIF -->
-			<td class="row1">
-				<!-- EVENT topiclist_row_prepend -->
-				<!-- IF topicrow.S_UNREAD_TOPIC --><a title="{L_UNREAD_POSTS}" href="{topicrow.U_NEWEST_POST}"><img src="{T_THEME_PATH}/images/icon_topic_newest.gif" width="18" height="9" alt=">>>" class="normal" title="{L_UNREAD_POSTS}"></a><!-- ENDIF -->
-				<!-- IF topicrow.ATTACH_ICON_IMG --><img src="{T_THEME_PATH}/images/icon_topic_attach.gif" width="14" height="18" alt="(*)" title="{L_TOTAL_ATTACHMENTS}" class="normal"><!-- ENDIF --><!-- IF topicrow.S_HAS_POLL or topicrow.S_TOPIC_MOVED --><span class="nav">{topicrow.TOPIC_TYPE} </span><!-- ENDIF --><a title="{L_POSTED}{L_COLON} {topicrow.FIRST_POST_TIME}" href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a>
-				<!-- IF topicrow.S_TOPIC_UNAPPROVED or topicrow.S_POSTS_UNAPPROVED -->
-					<a title="<!-- IF topicrow.S_TOPIC_UNAPPROVED -->{L_TOPIC_UNAPPROVED}<!-- ELSE -->{L_POSTS_UNAPPROVED}<!-- ENDIF -->" href="{topicrow.U_MCP_QUEUE}"><img src="{T_THEME_PATH}/images/icon_topic_unapproved.gif" width="19" height="18" alt="(?)" title="<!-- IF topicrow.S_TOPIC_UNAPPROVED -->{L_TOPIC_UNAPPROVED}<!-- ELSE -->{L_POSTS_UNAPPROVED}<!-- ENDIF -->" class="normal"></a>&nbsp;
-				<!-- ENDIF -->
-				<!-- IF topicrow.S_TOPIC_DELETED -->
-					<a title="{L_TOPIC_DELETED}" href="{topicrow.U_MCP_QUEUE}"><img src="{T_THEME_PATH}/images/icon_topic_deleted.gif" width="14" height="14" alt="(X)" title="{L_TOPIC_DELETED}" class="normal"></a>&nbsp;
-				<!-- ENDIF -->
-				<!-- IF topicrow.S_TOPIC_REPORTED -->
-					<a title="{L_TOPIC_REPORTED}" href="{topicrow.U_MCP_REPORT}"><img src="{T_THEME_PATH}/images/icon_topic_reported.gif" width="19" height="18" alt="(!)" title="{L_TOPIC_REPORTED}" class="normal"></a>&nbsp;
-				<!-- ENDIF -->
-				<!-- EVENT topiclist_row_topic_title_after -->
-				<!-- IF .topicrow.pagination -->
-					<p class="genmed"> [ <img src="{T_THEME_PATH}/images/icon_post_target.gif" width="12" height="9" alt="">{L_GOTO_PAGE}{L_COLON}
-					<!-- BEGIN pagination -->
-						<!-- IF topicrow.pagination.S_IS_PREV -->
-						<!-- ELSEIF topicrow.pagination.S_IS_CURRENT --><strong>{topicrow.pagination.PAGE_NUMBER}</strong>
-						<!-- ELSEIF topicrow.pagination.S_IS_ELLIPSIS --> {L_ELLIPSIS}
-						<!-- ELSEIF topicrow.pagination.S_IS_NEXT -->
-						<!-- ELSE --><a href="{topicrow.pagination.PAGE_URL}">{topicrow.pagination.PAGE_NUMBER}</a>
-						<!-- ENDIF -->
-					<!-- END pagination -->
-					] </p>
-				<!-- ENDIF -->
-				<!-- EVENT topiclist_row_append -->
-			</td>
-			<td class="row2" align="center"><p class="topicauthor">{topicrow.TOPIC_AUTHOR_FULL}</p></td>
-			<td class="row1" align="center"><p class="topicdetails">{topicrow.REPLIES}</p></td>
-			<td class="row2" align="center"><p class="topicdetails">{topicrow.VIEWS}</p></td>
-			<td class="row1" align="center" width="140">
-				<p class="topicdetails" style="white-space: nowrap">{topicrow.LAST_POST_TIME}</p>
-				<p class="topicdetails">{topicrow.LAST_POST_AUTHOR_FULL}
-					<!-- IF not S_IS_BOT --><a title="{L_VIEW_LATEST_POST}" href="{topicrow.U_LAST_POST}"><img src="{T_THEME_PATH}/images/icon_topic_latest.gif" width="18" height="9" alt=">" title="{L_VIEW_LATEST_POST}"></a><!-- ENDIF -->
-				</p>
-			</td>
-			<!-- EVENT viewforum_body_topic_row_append -->
-		</tr>
-		<!-- EVENT viewforum_body_topic_row_after -->
-
-	<!-- BEGINELSE -->
-
-		<tr>
-			<td class="row1" colspan="<!-- IF S_TOPIC_ICONS -->7<!-- ELSE -->6<!-- ENDIF -->" height="30" align="center" valign="middle"><span class="gen"><!-- IF not S_SORT_DAYS -->{L_NO_TOPICS}<!-- ELSE -->{L_NO_TOPICS_TIME_FRAME}<!-- ENDIF --></span></td>
-		</tr>
-	<!-- END topicrow -->
-
-	<tr align="center">
-		<td class="cat" colspan="<!-- IF S_TOPIC_ICONS -->7<!-- ELSE -->6<!-- ENDIF -->">&nbsp;</td>
-	</tr>
-	</table>
-
-	<br clear="all" />
-<!-- ENDIF -->
-
-<div id="pageheader" style="margin-bottom:3px; *margin-bottom:auto;">
-		<!-- EVENT viewforum_forum_title_before -->
-		<h2 style="margin-top: 10px; *margin-bottom: 4px"><!-- EVENT viewforum_forum_name_prepend --><a class="titles" href="{U_VIEW_FORUM}">{FORUM_NAME}</a><!-- EVENT viewforum_forum_name_append --></h2>
-		<!-- EVENT viewforum_forum_title_after -->
+<div id="pageheader" style="margin-top: 10px; <!-- IF S_HAS_SUBFORUM and not (U_MARK_FORUMS and not S_IS_BOT) -->margin-bottom: 8px<!-- ELSE -->margin-bottom: 4px<!-- ENDIF -->">
+	<!-- EVENT viewforum_forum_title_before -->
+	<h2><!-- EVENT viewforum_forum_name_prepend --><a class="header" href="{U_VIEW_FORUM}">{FORUM_NAME}</a><!-- EVENT viewforum_forum_name_append --></h2>
+	<!-- EVENT viewforum_forum_title_after -->
 		
-<!-- IF S_HAS_SUBFORUM -->
-	<!-- IF not S_IS_BOT and U_MARK_FORUMS --><div class="nav" align="{S_CONTENT_FLOW_END}" style="margin-bottom: 12px"><a href="{U_MARK_FORUMS}">{L_MARK_SUBFORUMS_READ}</a></div><!-- ENDIF -->
-	<!-- INCLUDE forumlist_body.html -->
-	<br clear="all" />
-<!-- ENDIF -->
-	</div>
+	<!-- IF S_HAS_SUBFORUM -->
+		<!-- IF U_MARK_FORUMS and not S_IS_BOT --><div align="{S_CONTENT_FLOW_END}" style="margin-bottom: 12px"><b><a href="{U_MARK_FORUMS}">{L_MARK_SUBFORUMS_READ}</a></b></div><!-- ENDIF -->
+		<!-- INCLUDE forumlist_body.html -->
+		<br clear="all" />
+	<!-- ENDIF -->
+</div>
 
 <div id="pagecontent">
 
 <!-- IF S_NO_READ_ACCESS -->
-	<table class="tablebg" width="100%" cellspacing="1">
+	<table class="main" width="100%" cellspacing="1">
 	<tr>
-		<td class="row1" height="30" align="center" valign="middle"><span class="gen">{L_NO_READ_ACCESS}</span></td>
+		<td class="bg1" height="30" align="center" valign="middle"><span class="gen">{L_NO_READ_ACCESS}</span></td>
 	</tr>
 	</table>
 
@@ -119,12 +34,12 @@
 
 		<form method="post" action="{S_LOGIN_ACTION}">
 
-		<table class="tablebg" width="100%" cellspacing="1">
+		<table class="main" width="100%" cellspacing="1">
 		<tr>
 			<td class="cat"><h4><a href="{U_LOGIN_LOGOUT}">{L_LOGIN_LOGOUT}</a></h4></td>
 		</tr>
 		<tr>
-			<td class="row1" align="center"><span class="genmed">{L_USERNAME}{L_COLON}</span> <input class="post" type="text" name="username" size="10" />&nbsp; <span class="genmed">{L_PASSWORD}{L_COLON}</span> <input class="post" type="password" name="password" size="10" autocomplete="off" /><!-- IF S_AUTOLOGIN_ENABLED -->&nbsp; <span class="genmed">{L_LOG_ME_IN}</span> <input type="checkbox" class="radio" name="autologin" /><!-- ENDIF -->&nbsp; <input type="submit" class="btnmain" name="login" value="{L_LOGIN}" /></td>
+			<td class="bg1" align="center"><span class="genmed">{L_USERNAME}{L_COLON}</span> <input type="text" class="inputbox" name="username" size="10" />&nbsp; <span class="genmed">{L_PASSWORD}{L_COLON}</span> <input type="password" class="inputbox" name="password" size="10" autocomplete="off" /><!-- IF S_AUTOLOGIN_ENABLED -->&nbsp; <span class="genmed">{L_LOG_ME_IN}</span> <input type="checkbox" name="autologin" /><!-- ENDIF -->&nbsp; <input type="submit" class="button1" name="login" value="{L_LOGIN}" /></td>
 		</tr>
 		</table>
 		{S_LOGIN_REDIRECT}
@@ -135,71 +50,75 @@
 	<br clear="all" />
 <!-- ENDIF -->
 
-	<!-- IF (S_DISPLAY_POST_INFO and not S_IS_BOT) or .pagination or TOTAL_TOPICS or (U_WATCH_FORUM_LINK and not S_IS_BOT) -->
+	<!-- IF MODERATORS or (S_DISPLAY_POST_INFO and not S_IS_BOT) or .pagination or TOTAL_TOPICS or (U_WATCH_FORUM_LINK and not S_IS_BOT) -->
 		<table width="100%" cellspacing="1">
 		<!-- IF MODERATORS -->
 		<tr>
 			<td class="genmed" colspan="3"><!-- IF S_SINGLE_MODERATOR -->{L_MODERATOR}<!-- ELSE -->{L_MODERATORS}<!-- ENDIF -->{L_COLON} {MODERATORS}</td>
 		</tr>
 		<!-- ENDIF -->
-		<tr>
+		<tr class="action-bar">
 			<td class="genmed" nowrap="nowrap" valign="bottom">
-			<!-- IF S_DISPLAY_POST_INFO and not S_IS_BOT -->
+			<!-- IF (S_DISPLAY_POST_INFO or U_WATCH_FORUM_LINK) and not S_IS_BOT -->
 
-			<!-- EVENT viewforum_buttons_top_before -->
-			
-			<a title="<!-- IF S_IS_LOCKED -->{L_POST_FORUM_LOCKED}<!-- ELSE -->{L_POST_NEW_TOPIC}<!-- ENDIF -->" href="{U_POST_NEW_TOPIC}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/button_topic_<!-- IF S_IS_LOCKED -->locked<!-- ELSE -->new<!-- ENDIF -->.gif" width="97" height="27" alt="[<!-- IF S_IS_LOCKED -->{L_BUTTON_FORUM_LOCKED}<!-- ELSE -->{L_BUTTON_NEW_TOPIC}<!-- ENDIF -->]" title="<!-- IF S_IS_LOCKED -->{L_POST_FORUM_LOCKED}<!-- ELSE -->{L_POST_NEW_TOPIC}<!-- ENDIF -->"></a>
+				<!-- IF S_DISPLAY_POST_INFO and not S_IS_BOT -->
+					<!-- EVENT viewforum_buttons_top_before -->
+					<a href="{U_POST_NEW_TOPIC}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/button_topic_<!-- IF S_IS_LOCKED -->locked<!-- ELSE -->new<!-- ENDIF -->.gif" width="97" height="27" alt="[<!-- IF S_IS_LOCKED -->{L_BUTTON_FORUM_LOCKED}<!-- ELSE -->{L_BUTTON_NEW_TOPIC}<!-- ENDIF -->]" border="0" title="<!-- IF S_IS_LOCKED -->{L_POST_FORUM_LOCKED}<!-- ELSE -->{L_POST_NEW_TOPIC}<!-- ENDIF -->" /></a>
+					<!-- EVENT viewforum_buttons_top_after -->
+				<!-- ENDIF -->
 
-			<!-- EVENT viewforum_buttons_top_after -->
+				<!-- IF U_WATCH_FORUM_LINK and not S_IS_BOT -->
+					<a href="{U_WATCH_FORUM_LINK}"><img src="{T_THEME_PATH}/images/button_forum_<!-- IF S_WATCHING_FORUM -->un<!-- ENDIF -->subscribe.gif" width="36" height="27" alt="[<!-- IF S_WATCHING_FORUM -->X<!-- ELSE -->*<!-- ENDIF -->]" border="0" title="{S_WATCH_FORUM_TITLE}" /></a>
+				<!-- ENDIF -->
 
 			<!-- ENDIF -->
-
-			<!-- IF U_WATCH_FORUM_LINK and not S_IS_BOT -->
-				<a href="{U_WATCH_FORUM_LINK}" title="{S_WATCH_FORUM_TITLE}"><img src="{T_THEME_PATH}/images/button_forum_<!-- IF S_WATCHING_FORUM -->un<!-- ENDIF -->subscribe.gif" width="36" height="27" alt="[<!-- IF S_WATCHING_FORUM -->X<!-- ELSE -->*<!-- ENDIF -->]" title="{S_WATCH_FORUM_TITLE}"></a>
-			<!-- ENDIF -->
-
 			</td>
-			<td class="gensmall" nowrap="nowrap" valign="middle"><!-- IF TOTAL_TOPICS --><b>&nbsp;{PAGE_NUMBER}</b> &nbsp;[ {TOTAL_TOPICS} ]&nbsp;<!-- ENDIF --></td>
-			<td align="{S_CONTENT_FLOW_END}" class="gensmall" style="line-height: 220%" valign="bottom" width="100%"><!-- IF U_MARK_TOPICS and .topicrow and not S_IS_BOT --><b><a href="{U_MARK_TOPICS}" class="nowrap">{L_MARK_TOPICS_READ}</a></b><!-- IF .pagination --> | <!-- ENDIF --><!-- ENDIF --><!-- INCLUDE pagination.html --></td>
+			<td nowrap="nowrap" valign="middle"><!-- IF TOTAL_TOPICS --><b>&nbsp;{PAGE_NUMBER}</b> &nbsp;[ {TOTAL_TOPICS} ]<!-- ENDIF --></td>
+			<td align="{S_CONTENT_FLOW_END}" style="line-height: 220%" valign="bottom" width="100%"><!-- IF U_MARK_TOPICS and .topicrow and not S_IS_BOT --><b><a href="{U_MARK_TOPICS}" class="nowrap">{L_MARK_TOPICS_READ}</a></b><!-- IF .pagination --> | <!-- ENDIF --><!-- ENDIF --><!-- INCLUDE pagination.html --></td>
 		</tr>
 		</table>
-		<div style="padding: 2px;"></div>
+		<div style="padding: 2px"></div>
 	<!-- ENDIF -->
 
-	<!-- IF not S_DISPLAY_ACTIVE and (S_IS_POSTABLE or .topicrow) -->
-		<table class="tablebg" width="100%" cellspacing="1">
+	<!-- EVENT viewforum_body_topic_row_before -->
+
+	<!-- IF S_IS_POSTABLE or .topicrow -->
+		<table class="main" width="100%" cellspacing="1">
 
 		<!-- BEGIN topicrow -->
 			<!-- IF topicrow.S_FIRST_ROW or not topicrow.S_TOPIC_TYPE_SWITCH -->
 				<tr>
-					<th colspan="<!-- IF S_TOPIC_ICONS -->3<!-- ELSE -->2<!-- ENDIF -->" style="text-align: {S_CONTENT_FLOW_BEGIN}">&nbsp;<!-- IF topicrow.S_TOPIC_TYPE_SWITCH eq 1 -->{L_ANNOUNCEMENTS}<!-- ELSE -->{L_TOPICS}<!-- ENDIF -->&nbsp;</th>
-					<th width="130">&nbsp;{L_AUTHOR}&nbsp;</th>
-					<th width="50">&nbsp;{L_REPLIES}&nbsp;</th>
-					<th width="50">&nbsp;{L_VIEWS}&nbsp;</th>
-					<th nowrap="nowrap">&nbsp;{L_LAST_POST}&nbsp;</th>
+					<th colspan="<!-- IF S_TOPIC_ICONS -->3<!-- ELSE -->2<!-- ENDIF -->" class="nocenter"><!-- IF S_DISPLAY_ACTIVE -->{L_ACTIVE_TOPICS}<!-- ELSEIF topicrow.S_TOPIC_TYPE_SWITCH and (topicrow.S_POST_ANNOUNCE or topicrow.S_POST_GLOBAL) -->{L_ANNOUNCEMENTS}<!-- ELSE -->{L_TOPICS}<!-- ENDIF --></th>
+					<th width="10%">{L_AUTHOR}</th>
+					<th width="50">{L_REPLIES}</th>
+					<th width="50">{L_VIEWS}</th>
+					<th nowrap="nowrap">{L_LAST_POST}</th>
 				</tr>
 			<!-- ENDIF -->
 
+		<!-- EVENT viewforum_body_topicrow_row_before -->
 			<tr>
-				<td class="row1" width="25" style="*width:25px" align="center"><!-- IF topicrow.S_UNREAD_TOPIC and not topicrow.S_TOPIC_MOVED --><a title="{L_UNREAD_POSTS}" href="{topicrow.U_NEWEST_POST}"><!-- ENDIF --><img src="{T_THEME_PATH}/images/{topicrow.TOPIC_IMG_STYLE}.gif" width="19" height="18" alt="<!-- IF topicrow.S_UNREAD_TOPIC -->+<!-- ENDIF -->" title="{topicrow.TOPIC_FOLDER_IMG_ALT}" class="normal"><!-- IF topicrow.S_UNREAD_TOPIC and not topicrow.S_TOPIC_MOVED --></a><!-- ENDIF --></td>
+			<!-- EVENT viewforum_body_topic_row_prepend -->
+				<td class="bg1" width="25" style="*width:25px" align="center"><!-- IF topicrow.S_UNREAD_TOPIC and not topicrow.S_TOPIC_MOVED --><a href="{topicrow.U_NEWEST_POST}"><!-- ENDIF --><img src="{T_THEME_PATH}/images/{topicrow.TOPIC_IMG_STYLE}.gif" width="19" height="18" alt="<!-- IF topicrow.S_UNREAD_TOPIC -->+" border="0<!-- ENDIF -->" title="{topicrow.TOPIC_FOLDER_IMG_ALT}" /><!-- IF topicrow.S_UNREAD_TOPIC and not topicrow.S_TOPIC_MOVED --></a><!-- ENDIF --></td>
 				<!-- IF S_TOPIC_ICONS -->
-					<td class="row1" width="25" style="*width:25px" align="center"><!-- IF topicrow.TOPIC_ICON_IMG --><img src="{T_ICONS_PATH}{topicrow.TOPIC_ICON_IMG}" width="{topicrow.TOPIC_ICON_IMG_WIDTH}" height="{topicrow.TOPIC_ICON_IMG_HEIGHT}" alt="" title="" /><!-- ENDIF --></td>
+					<td class="bg1" width="25" style="*width:25px" align="center"><!-- IF topicrow.TOPIC_ICON_IMG --><img src="{T_ICONS_PATH}{topicrow.TOPIC_ICON_IMG}" width="{topicrow.TOPIC_ICON_IMG_WIDTH}" height="{topicrow.TOPIC_ICON_IMG_HEIGHT}" alt="" title="" /><!-- ENDIF --></td>
 				<!-- ENDIF -->
-				<td class="row1">
-					<!-- EVENT topiclist_row_prepend -->
-				<!-- IF topicrow.S_UNREAD_TOPIC --><a title="{L_UNREAD_POSTS}" href="{topicrow.U_NEWEST_POST}"><img src="{T_THEME_PATH}/images/icon_topic_newest.gif" width="18" height="9" alt=">>>" class="normal" title="{L_UNREAD_POSTS}"></a><!-- ENDIF -->
-				<!-- IF topicrow.ATTACH_ICON_IMG --><img src="{T_THEME_PATH}/images/icon_topic_attach.gif" width="14" height="18" alt="(*)" title="{L_TOTAL_ATTACHMENTS}" class="normal"><!-- ENDIF --><!-- IF topicrow.S_HAS_POLL or topicrow.S_TOPIC_MOVED --><span class="nav">{topicrow.TOPIC_TYPE} </span><!-- ENDIF --><a title="{L_POSTED}{L_COLON} {topicrow.FIRST_POST_TIME}" href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a>
+				<td class="bg1">
+				<!-- EVENT topiclist_row_prepend -->
+				<!-- IF topicrow.S_UNREAD_TOPIC --><a href="{topicrow.U_NEWEST_POST}"><img src="{T_THEME_PATH}/images/icon_topic_newest.gif" width="18" height="9" alt="&gt;&gt;&gt;" border="0" title="{L_UNREAD_POSTS}" /></a><!-- ENDIF -->
+				<!-- IF topicrow.ATTACH_ICON_IMG --><img src="{T_THEME_PATH}/images/icon_topic_attach.gif" width="14" height="18" alt="(*)" title="{L_TOTAL_ATTACHMENTS}" /><!-- ENDIF --><!-- IF topicrow.S_HAS_POLL or topicrow.S_TOPIC_MOVED --><strong>{topicrow.TOPIC_TYPE} </strong><!-- ENDIF --><a title="{L_POSTED}{L_COLON} {topicrow.FIRST_POST_TIME}" href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a>
 					<!-- IF topicrow.S_TOPIC_UNAPPROVED or topicrow.S_POSTS_UNAPPROVED -->
-						<a title="<!-- IF topicrow.S_TOPIC_UNAPPROVED -->{L_TOPIC_UNAPPROVED}<!-- ELSE -->{L_POSTS_UNAPPROVED}<!-- ENDIF -->" href="{topicrow.U_MCP_QUEUE}"><img src="{T_THEME_PATH}/images/icon_topic_unapproved.gif" width="19" height="18" alt="(?)" title="<!-- IF topicrow.S_TOPIC_UNAPPROVED -->{L_TOPIC_UNAPPROVED}<!-- ELSE -->{L_POSTS_UNAPPROVED}<!-- ENDIF -->" class="normal"></a>&nbsp;
+						<a href="{topicrow.U_MCP_QUEUE}"><img src="{T_THEME_PATH}/images/icon_topic_unapproved.gif" width="19" height="18" alt="(?)" border="0" title="<!-- IF topicrow.S_TOPIC_UNAPPROVED -->{L_TOPIC_UNAPPROVED}<!-- ELSE -->{L_POSTS_UNAPPROVED}<!-- ENDIF -->" /></a>&nbsp;
 					<!-- ENDIF -->
 					<!-- IF topicrow.S_TOPIC_DELETED -->
-						<a title="{L_TOPIC_DELETED}" href="{topicrow.U_MCP_QUEUE}"><img src="{T_THEME_PATH}/images/icon_topic_deleted.gif" width="14" height="14" alt="(X)" title="{L_TOPIC_DELETED}" class="normal"></a>&nbsp;
+						<a href="{topicrow.U_MCP_QUEUE}"><img src="{T_THEME_PATH}/images/icon_topic_deleted.gif" width="14" height="14" alt="(X)" border="0" title="{L_TOPIC_DELETED}" /></a>&nbsp;
 					<!-- ENDIF -->
 					<!-- IF topicrow.S_TOPIC_REPORTED -->
-						<a title="{L_TOPIC_REPORTED}" href="{topicrow.U_MCP_REPORT}"><img src="{T_THEME_PATH}/images/icon_topic_reported.gif" width="19" height="18" alt="(!)" title="{L_TOPIC_REPORTED}" class="normal"></a>&nbsp;
+						<a href="{topicrow.U_MCP_REPORT}"><img src="{T_THEME_PATH}/images/icon_topic_reported.gif" width="19" height="18" alt="(!)" border="0" title="{L_TOPIC_REPORTED}" /></a>&nbsp;
 					<!-- ENDIF -->
+					<!-- EVENT topiclist_row_topic_title_after -->
 					<!-- IF .topicrow.pagination -->
-						<p class="genmed"> [ <img src="{T_THEME_PATH}/images/icon_post_target.gif" width="12" height="9" alt="">{L_GOTO_PAGE}{L_COLON}
+						<p class="genmed"> [ <img src="{T_THEME_PATH}/images/icon_post_target.gif" width="12" height="9" alt="" />{L_GOTO_PAGE}{L_COLON}
 						<!-- BEGIN pagination -->
 							<!-- IF topicrow.pagination.S_IS_PREV -->
 							<!-- ELSEIF topicrow.pagination.S_IS_CURRENT --><strong>{topicrow.pagination.PAGE_NUMBER}</strong>
@@ -213,60 +132,53 @@
 					<!-- IF topicrow.S_POST_GLOBAL and FORUM_ID != topicrow.FORUM_ID --><p class="genmed">{L_IN} <a href="{topicrow.U_VIEW_FORUM}">{topicrow.FORUM_NAME}</a></p><!-- ENDIF -->
 					<!-- EVENT topiclist_row_append -->
 				</td>
-				<td class="row2" align="center"><p class="topicauthor">{topicrow.TOPIC_AUTHOR_FULL}</p></td>
-				<td class="row1" align="center"><p class="topicdetails">{topicrow.REPLIES}</p></td>
-				<td class="row2" align="center"><p class="topicdetails">{topicrow.VIEWS}</p></td>
-				<td class="row1" align="center" width="140">
-					<p class="topicdetails" style="white-space: nowrap;">{topicrow.LAST_POST_TIME}</p>
-					<p class="topicdetails">{topicrow.LAST_POST_AUTHOR_FULL}
+				<td class="bg2" align="center"><p>{topicrow.TOPIC_AUTHOR_FULL}</p></td>
+				<td class="bg1" align="center"><p>{topicrow.REPLIES}</p></td>
+				<td class="bg2" align="center"><p>{topicrow.VIEWS}</p></td>
+				<td class="bg1" align="center" nowrap="nowrap" width="10%">
+					<p>{topicrow.LAST_POST_TIME}</p>
+					<p>{topicrow.LAST_POST_AUTHOR_FULL}
 						<!-- IF not S_IS_BOT -->
-							<a title="{L_VIEW_LATEST_POST}" href="{topicrow.U_LAST_POST}"><img src="{T_THEME_PATH}/images/icon_topic_latest.gif" width="18" height="9" alt=">" title="{L_VIEW_LATEST_POST}"></a>
+							<a href="{topicrow.U_LAST_POST}"><img src="{T_THEME_PATH}/images/icon_topic_latest.gif" width="18" height="9" alt="&gt;" border="0" title="{L_VIEW_LATEST_POST}" /></a>
 						<!-- ENDIF -->
 					</p>
 				</td>
+				<!-- EVENT viewforum_body_topic_row_append -->
 			</tr>
-		<!-- BEGINELSE -->
-			<!-- IF S_IS_POSTABLE -->
+			<!-- IF topicrow.S_LAST_ROW and not S_IS_BOT and not S_DISPLAY_ACTIVE -->
 			<tr>
-				<th>&nbsp;{L_TOPICS}&nbsp;</th>
-				<th>&nbsp;{L_AUTHOR}&nbsp;</th>
-				<th>&nbsp;{L_REPLIES}&nbsp;</th>
-				<th>&nbsp;{L_VIEWS}&nbsp;</th>
-				<th nowrap="nowrap">&nbsp;{L_LAST_POST}&nbsp;</th>
-			</tr>
-			<tr>
-				<td class="row1" colspan="5" height="30" align="center" valign="middle"><span class="gen"><!-- IF not S_SORT_DAYS -->{L_NO_TOPICS}<!-- ELSE -->{L_NO_TOPICS_TIME_FRAME}<!-- ENDIF --></span></td>
+				<td class="cat" colspan="<!-- IF S_TOPIC_ICONS -->7<!-- ELSE -->6<!-- ENDIF -->">
+					<form method="post" action="{S_FORUM_ACTION}"><!-- INCLUDE display_options.html --></form>
+				</td>
 			</tr>
 			<!-- ENDIF -->
+		<!-- BEGINELSE -->
+			<tr>
+				<td class="bg1" colspan="5" height="30" align="center" valign="middle"><span class="gen"><!-- IF not S_SORT_DAYS -->{L_NO_TOPICS}<!-- ELSE -->{L_NO_TOPICS_TIME_FRAME}<!-- ENDIF --></span></td>
+			</tr>
 		<!-- END topicrow -->
-
-		<!-- IF not S_IS_BOT -->
-		<tr>
-			<td class="cat" colspan="<!-- IF S_TOPIC_ICONS -->7<!-- ELSE -->6<!-- ENDIF -->">
-					<form method="post" action="{S_FORUM_ACTION}"><!-- INCLUDE display_options.html --></form>
-			</td>
-		</tr>
-		<!-- ENDIF -->
 		</table>
 	<!-- ENDIF -->
 
+	<!-- EVENT viewforum_body_topic_row_after -->
+
+		<div style="padding: 4px"></div>
 	<!-- IF (S_DISPLAY_POST_INFO and not S_IS_BOT) or .pagination or TOTAL_TOPICS -->
-		<div style="padding: 4px;"></div>
 		<table width="100%" cellspacing="1">
-		<tr>
+		<tr class="action-bar">
 			<td class="genmed" nowrap="nowrap" valign="top">
 			<!-- IF S_DISPLAY_POST_INFO and not S_IS_BOT -->
 
-			<!-- EVENT viewforum_buttons_bottom_before -->
-			
-			<a title="<!-- IF S_IS_LOCKED -->{L_POST_FORUM_LOCKED}<!-- ELSE -->{L_POST_NEW_TOPIC}<!-- ENDIF -->" href="{U_POST_NEW_TOPIC}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/button_topic_<!-- IF S_IS_LOCKED -->locked<!-- ELSE -->new<!-- ENDIF -->.gif" width="97" height="27" alt="[<!-- IF S_IS_LOCKED -->{L_BUTTON_FORUM_LOCKED}<!-- ELSE -->{L_BUTTON_NEW_TOPIC}<!-- ENDIF -->]" title="<!-- IF S_IS_LOCKED -->{L_POST_FORUM_LOCKED}<!-- ELSE -->{L_POST_NEW_TOPIC}<!-- ENDIF -->"></a>
+				<!-- EVENT viewforum_buttons_bottom_before -->
 
-			<!-- EVENT viewforum_buttons_bottom_after -->
+				<a href="{U_POST_NEW_TOPIC}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/button_topic_<!-- IF S_IS_LOCKED -->locked<!-- ELSE -->new<!-- ENDIF -->.gif" width="97" height="27" alt="[<!-- IF S_IS_LOCKED -->{L_BUTTON_FORUM_LOCKED}<!-- ELSE -->{L_BUTTON_NEW_TOPIC}<!-- ENDIF -->]" border="0" title="<!-- IF S_IS_LOCKED -->{L_POST_FORUM_LOCKED}<!-- ELSE -->{L_POST_NEW_TOPIC}<!-- ENDIF -->" /></a>
+
+				<!-- EVENT viewforum_buttons_bottom_after -->
 
 			<!-- ENDIF -->
 			</td>
-			<td class="gensmall" nowrap="nowrap" valign="middle"><!-- IF TOTAL_TOPICS --><b>&nbsp;{PAGE_NUMBER}</b> &nbsp;[ {TOTAL_TOPICS} ]&nbsp;<!-- ENDIF --></td>
-			<td align="{S_CONTENT_FLOW_END}" class="gensmall" style="line-height: 220%" valign="top" width="100%"><b><a href="{U_INDEX}" class="nowrap">{L_RETURN_TO_INDEX}</a></b><!-- IF .pagination --> | <!-- ENDIF --><!-- INCLUDE pagination.html --></td>
+			<td nowrap="nowrap" valign="middle"><!-- IF TOTAL_TOPICS --><b>&nbsp;{PAGE_NUMBER}</b> &nbsp;[ {TOTAL_TOPICS} ]<!-- ENDIF --></td>
+			<td align="{S_CONTENT_FLOW_END}" style="line-height: 220%" valign="top" width="100%"><b><a href="{U_INDEX}" class="nowrap">{L_RETURN_TO_INDEX}</a></b><!-- IF .pagination --> | <!-- ENDIF --><!-- INCLUDE pagination.html --></td>
 		</tr>
 		</table>
 	<!-- ENDIF -->
@@ -274,32 +186,32 @@
 </div>
 
 <table width="100%" cellspacing="0">
-<tr>
-	<td valign="top"><!-- IF S_DISPLAY_SEARCHBOX --><!-- INCLUDE searchbox.html --><br><!-- ENDIF --></td>
-	<td align="{S_CONTENT_FLOW_END}" valign="top"><!-- INCLUDE jumpbox.html --></td>
+<tr valign="top">
+	<td><!-- IF S_DISPLAY_SEARCHBOX --><!-- INCLUDE searchbox.html --><br /><!-- ENDIF --></td>
+	<td align="{S_CONTENT_FLOW_END}"><!-- INCLUDE jumpbox.html --></td>
 </tr>
 </table>
 
 <!-- IF S_DISPLAY_ONLINE_LIST -->
 
-	<table class="tablebg" width="100%" cellspacing="1">
+	<table class="main" width="100%" cellspacing="1">
 	<tr>
-		<td class="cat"><h4>{L_WHO_IS_ONLINE}</h4></td>
+		<td class="cat"><h4><!-- IF U_VIEWONLINE --><a href="{U_VIEWONLINE}">{L_WHO_IS_ONLINE}</a><!-- ELSE -->{L_WHO_IS_ONLINE}<!-- ENDIF --></h4></td>
 	</tr>
 	<tr>
-		<td class="row1"><p class="genmed">{LOGGED_IN_USER_LIST}</p></td>
+		<td class="bg1"><p class="genmed">{LOGGED_IN_USER_LIST}</p></td>
 	</tr>
 	</table>
 <!-- ENDIF -->
 
 <!-- IF S_DISPLAY_POST_INFO -->
 <!-- IF S_DISPLAY_ONLINE_LIST --><br clear="all" /><!-- ENDIF -->
-	<table class="tablebg" width="100%" cellspacing="1">
+	<table class="main" width="100%" cellspacing="1">
 	<tr>
 		<td class="cat"><h4>{L_FORUM_PERMISSIONS}</h4></td>
 	</tr>
 	<tr>
-		<td class="row1"><p class="genmed"><!-- BEGIN rules -->{rules.RULE}<!-- IF not rules.S_LAST_ROW --><br><!-- ENDIF --><!-- END rules --></p></td>
+		<td class="bg1"><p class="genmed"><!-- BEGIN rules -->{rules.RULE}<!-- IF not rules.S_LAST_ROW --><br /><!-- ENDIF --><!-- END rules --></p></td>
 	</tr>
 	</table>
 <!-- ENDIF -->
@@ -308,4 +220,6 @@
 
 <!-- INCLUDE breadcrumbs.html -->
 
-<br clear="all" /><!-- INCLUDE overall_footer.html -->
+<br clear="all" />
+
+<!-- INCLUDE overall_footer.html -->

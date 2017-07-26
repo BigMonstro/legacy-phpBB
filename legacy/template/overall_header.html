@@ -2,7 +2,7 @@
 <html class="nojs" dir="{S_CONTENT_DIRECTION}" lang="{S_USER_LANG}">
 <head>
 <meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 {META}
 <title><!-- IF UNREAD_NOTIFICATIONS_COUNT -->({UNREAD_NOTIFICATIONS_COUNT}) <!-- ENDIF --><!-- IF not S_VIEWTOPIC and not S_VIEWFORUM -->{SITENAME} - <!-- ENDIF --><!-- IF S_IN_MCP -->{L_MCP} - <!-- ELSEIF S_IN_UCP -->{L_UCP} - <!-- ENDIF --><!-- IF not S_VIEWFORUM -->{PAGE_TITLE}<!-- ELSE -->{FORUM_NAME}<!-- IF CURRENT_PAGE neq 1 --> - Page {CURRENT_PAGE}<!-- ENDIF --><!-- ENDIF --><!-- IF S_VIEWTOPIC or S_VIEWFORUM --> - {SITENAME}<!-- ENDIF --></title>
 
@@ -28,7 +28,7 @@
 	Modified by:	  Big Monstro ( http://www.win3x.org/ )
 -->
 
-<link rel="stylesheet" href="{T_STYLESHEET_LINK}" type="text/css" />
+<link rel="stylesheet" href="{T_STYLESHEET_LINK}" type="text/css" media="all" />
 
 <!-- EVENT overall_header_head_append -->
 
@@ -36,73 +36,163 @@
 
 <!-- EVENT overall_header_stylesheets_after -->
 
-<script> if (document.fireEvent || window.XMLHttpRequest) { document.documentElement.className += " dropdown"; var LegacyDropDownMenus=1; }</script>
+<script type="text/javascript"><!--
+	if (document.fireEvent || window.XMLHttpRequest) { document.documentElement.className += " dropdown-enabled";}
+//--></script>
 
 </head>
 
-<body bgcolor="#FFFFFF" class="{S_CONTENT_DIRECTION}">
-
-<!-- IF S_COOKIE_NOTICE --><div id="cookieconsentdialog" style="background-color: #000080; display: none"><table width="100%"><tr><td class="gen" style="color: #FFFFFF; line-height: 150%; text-align: center">{L_COOKIE_CONSENT_MSG}</td><td style="padding: 0 30px; text-align: {S_CONTENT_FLOW_END}"><input class="btnmain" type="button" value="{L_COOKIE_CONSENT_OK}" onclick="cookiedialogclose()"></td></tr></table></div><!-- ENDIF -->
+<body class="{S_CONTENT_DIRECTION}">
 
 <!-- EVENT overall_header_body_before -->
 
 <a name="top" class="anchor"></a>
 
-<div id="wrapheader">
-
-	<div id="menubar">
-		<table width="100%" cellspacing="0">
-		<tr>
-			<td width="21"></td><td width="200"><a href="<!-- IF U_SITE_HOME -->{U_SITE_HOME}<!-- ELSE -->{U_INDEX}<!-- ENDIF -->"><img src="{T_THEME_PATH}/images/site_logo.gif" class="site_logo" alt=""></a></td>
-			<td align="center"><h1>{SITENAME}</h1><span class="gen">{SITE_DESCRIPTION}</span></td><td align="{S_CONTENT_FLOW_END}" class="genmed" width="5" nowrap="nowrap"><!-- EVENT overall_header_searchbox_before --></td><td align="{S_CONTENT_FLOW_END}" width="192" nowrap="nowrap"><!-- IF S_DISPLAY_SEARCH and not S_IN_SEARCH --><!-- DEFINE $OVERALL_HEADER_SEARCHBOX = 1 --><!-- INCLUDE searchbox.html --><!-- UNDEFINE $OVERALL_HEADER_SEARCHBOX --><!-- ENDIF --></td><td class="genmed" width="5" nowrap="nowrap"><!-- EVENT overall_header_searchbox_after --></td><td width="12"></td>
-		</tr>
-		</table>
-		<!-- EVENT overall_header_navbar_before -->
-		<table width="100%" cellspacing="0"><tr><td width="19"></td><td>	<table width="100%" cellspacing="0">
-		<tr>
-			<td class="genmed" valign="top" width="100%"> <!-- IF (S_DISPLAY_MEMBERLIST and not S_IS_BOT) or S_DISPLAY_SEARCH or (U_ACP and not U_RESTORE_PERMISSIONS) or U_MCP -->		<!-- DEFINE $QUICKLINKS = 1 -->
-
-	<div id="quick_links_list" style="background-color: #FFFFFF; border: 2px solid #808080; display: none; margin-{S_CONTENT_FLOW_BEGIN}: -2px; margin-top: 15px; padding: 0 4px; position: absolute; z-index: 1"><!-- IF U_ACP and not U_RESTORE_PERMISSIONS --><a href="{U_ACP}" class="nowrap" title="{L_ACP}">{L_ACP_SHORT}</a><!-- IF U_MCP --><br><!-- ELSE --><hr><!-- ENDIF --><!-- ENDIF --><!-- IF U_MCP --><a href="{U_MCP}" class="nowrap" title="{L_MCP}">{L_MCP_SHORT}</a><hr><!-- ENDIF --><!-- IF S_DISPLAY_SEARCH --><!-- IF S_REGISTERED_USER --><a href="{U_SEARCH_SELF}" class="nowrap">{L_SEARCH_SELF}</a><br><!-- ENDIF --><!-- IF S_USER_LOGGED_IN --><a href="{U_SEARCH_NEW}" class="nowrap">{L_SEARCH_NEW}</a><br><!-- ENDIF --><!-- IF S_LOAD_UNREADS --><a href="{U_SEARCH_UNREAD}" class="nowrap">{L_SEARCH_UNREAD}</a><br><!-- ENDIF --><a href="{U_SEARCH_UNANSWERED}" class="nowrap">{L_SEARCH_UNANSWERED}</a><br><a href="{U_SEARCH_ACTIVE_TOPICS}" class="nowrap">{L_SEARCH_ACTIVE_TOPICS}</a><hr><a href="{U_SEARCH}" class="nowrap">{L_SEARCH}</a><!-- ENDIF --><!-- IF S_DISPLAY_MEMBERLIST and not S_IS_BOT --><!-- IF S_DISPLAY_SEARCH --><hr><!-- ENDIF --><a href="{U_MEMBERLIST}" class="nowrap">{L_MEMBERLIST}</a><!-- IF U_TEAM --><br><a href="{U_TEAM}" class="nowrap">{L_THE_TEAM}</a><!-- ENDIF --><!-- ENDIF --></div>	<span class="quicktools"><a href="#" id="quick_link" class="nowrap"><img src="{T_THEME_PATH}/images/icon_mini_members.gif" width="12" height="13" alt="" /> {L_QUICK_LINKS}</a>&nbsp;</span><!-- ENDIF -->			<!-- EVENT overall_header_navigation_prepend -->			<a href="{U_FAQ}" class="nowrap"><img src="{T_THEME_PATH}/images/icon_mini_faq.gif" width="12" height="13" alt="" /> {L_FAQ}</a>			<!-- EVENT overall_header_navigation_append -->						<!-- IF S_BOARD_DISABLED and S_USER_LOGGED_IN and (U_MCP or U_ACP) --> &nbsp;<span class="error">{L_BOARD_DISABLED}</span><!-- ENDIF -->
-</td>		<td class="genmed" valign="top">		<!-- IF S_REGISTERED_USER -->
-		<div id="user_list" style="background-color: #FFFFFF; border: 2px solid #808080; display: none; line-height: 220%; margin-top: 15px; padding: 0 4px; position: absolute; z-index: 1"><!-- IF U_RESTORE_PERMISSIONS --><a href="{U_RESTORE_PERMISSIONS}" class="nowrap">{L_RESTORE_PERMISSIONS}</a><br><!-- ENDIF --><a href="{U_PROFILE}" class="nowrap">{L_PROFILE}</a><!-- IF U_USER_PROFILE --><br><a href="{U_USER_PROFILE}" class="nowrap">{L_READ_PROFILE}</a><!-- ENDIF --><hr><a href="{U_LOGIN_LOGOUT}" class="nowrap">{L_LOGIN_LOGOUT}</a></div> 		<!-- IF S_NOTIFICATIONS_DISPLAY --> <div id="notification_list" style="background-color: #FFFFFF; border: 2px solid #808080; display: none; margin-{S_CONTENT_FLOW_BEGIN}: 4px; margin-top: 15px; position: absolute; z-index: 1"><div class="giant row2" style="border-bottom: 1px solid #808080; overflow: hidden; padding: 4px 0"><table class="bigger" cellspacing="0" width="100%"><tr><td id="notification_title" nowrap="nowrap" style="padding-{S_CONTENT_FLOW_BEGIN}: 10px; text-transform: uppercase"><strong>{L_NOTIFICATIONS}</strong>
-</td><td align="{S_CONTENT_FLOW_END}" nowrap="nowrap" style="padding-{S_CONTENT_FLOW_END}: 10px"><a href="{U_NOTIFICATION_SETTINGS}">{L_SETTINGS}</a></td></tr></table></div>
-<!-- BEGIN notifications --> <!-- IF notifications.S_FIRST_ROW --><div id="notification_list_overflow" style="overflow: auto; width: 100%">	<!-- ENDIF --><div style="background-color: #<!-- IF notifications.UNREAD -->C0C0C0<!-- ELSE -->FFFFFF<!-- ENDIF -->;<!-- IF not notifications.S_LAST_ROW --> border-bottom: 1px solid #808080;<!-- ENDIF --> line-height: 140%; padding:4px; word-wrap: break-word"><!-- IF notifications.URL --><a href="<!-- IF notifications.UNREAD -->{notifications.U_MARK_READ}<!-- ELSE -->{notifications.URL}<!-- ENDIF -->"><!-- ENDIF -->
- {notifications.FORMATTED_TITLE}
- <!-- IF notifications.URL --></a><!-- ENDIF -->
-
- <!-- IF notifications.REFERENCE --><br />{notifications.REFERENCE}<!-- ENDIF -->
- <!-- IF notifications.FORUM --><br />{notifications.FORUM}<!-- ENDIF -->
- <!-- IF notifications.REASON --><br />{notifications.REASON}<!-- ENDIF -->
- <div class="larger postdatetime">{notifications.TIME}</div> <!-- IF not notifications.URL and notifications.UNREAD -->
- <div><a href="{notifications.U_MARK_READ}">{L_MARK_READ}</a></div> <!-- ENDIF --></div><!-- IF notifications.S_LAST_ROW --></div><!-- ENDIF --><!-- BEGINELSE --><div style="background-color: #FFFFFF; padding: 10px 4px; text-align: center">{L_NO_NOTIFICATIONS}</div><!-- END notifications -->
-<div style="background-color: #FFFFFF; border-top: 1px solid #808080; overflow:hidden; padding:4px 0; text-align:center"><a href="{U_VIEW_ALL_NOTIFICATIONS}">{L_SEE_ALL}</a></div></div></td>		<td class="genmed" id="user_side" nowrap="nowrap" valign="top">
-					 <a href="{U_VIEW_ALL_NOTIFICATIONS}" id="notification_link" class="nowrap"><img src="{T_THEME_PATH}/images/icon_mini_notification.gif" width="12" height="13" alt="" /> {L_NOTIFICATIONS} [<strong>{NOTIFICATIONS_COUNT}</strong>]</a>&nbsp;		<!-- ELSE -->		</td><td class="genmed" id="user_side" nowrap="nowrap" valign="top">
-					<!-- ENDIF -->		<!-- IF S_DISPLAY_PM --> <a href="{U_PRIVATEMSGS}" class="nowrap"><img src="{T_THEME_PATH}/images/icon_mini_message.gif" width="12" height="13" alt="" /> {L_PRIVATE_MESSAGES} [<strong>{PRIVATE_MESSAGE_COUNT}</strong>]</a>&nbsp;<!-- ENDIF -->
-	<a href="{U_PROFILE}" id="user_link" class="nowrap"><img src="{T_THEME_PATH}/images/icon_mini_profile.gif" width="12" height="13" alt="" /> {CURRENT_USERNAME_SIMPLE}</a></td></tr></table></td><!-- ELSE -->			</td><td class="genmed" nowrap="nowrap" valign="top">
-				<!-- IF S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) --> <a href="{U_REGISTER}" class="nowrap"><img src="{T_THEME_PATH}/images/icon_mini_register.gif" width="12" height="13" alt="" /> {L_REGISTER}</a>&nbsp;
-					<!-- ENDIF -->
-				<a href="{U_LOGIN_LOGOUT}" class="nowrap"><img src="{T_THEME_PATH}/images/icon_mini_login.gif" width="12" height="13" alt="" /> {L_LOGIN_LOGOUT}</a></td></tr></table></td><!-- ENDIF -->		<td width="19"></td></tr></table>
-	</div>
+<div id="logodesc">
+	<table width="100%" height="100" cellspacing="0"><tr>
+		<td width="21"></td>
+		<td class="site-logo" width="200"><a href="<!-- IF U_SITE_HOME -->{U_SITE_HOME}<!-- ELSE -->{U_INDEX}<!-- ENDIF -->"><img src="{T_THEME_PATH}/images/site_logo.gif" alt="" border="0" /></a></td>
+		<td align="center" class="site-description"><h1>{SITENAME}</h1><div class="gen">{SITE_DESCRIPTION}</div></td>
+		<td align="{S_CONTENT_FLOW_END}" class="search-header" width="200">
+			<!-- EVENT overall_header_searchbox_before -->
+			<!-- IF S_DISPLAY_SEARCH and not S_IN_SEARCH --><!-- DEFINE $HEADER_SEARCHBOX = 1 --><!-- INCLUDE searchbox.html --><!-- UNDEFINE $HEADER_SEARCHBOX --><!-- ENDIF -->
+			<!-- EVENT overall_header_searchbox_after -->
+		</td>
+		<td width="21"></td>
+	</tr></table>
 </div>
+
+<!-- EVENT overall_header_navbar_before -->
+
+<table width="100%" cellspacing="0">
+	<tr><td style="padding:0" width="19"></td><td style="padding:0"></td><td style="padding:0" width="19"></td></tr>
+	<tr><td width="19"></td><td><div id="menubar"><table width="100%" cellspacing="0"><tr>
+	<td class="genmed" id="quick_links_side" valign="top" width="100%">
+		<div><table cellspacing="0"><tr><td style="padding:0">
+		<!-- IF (S_DISPLAY_MEMBERLIST and not S_IS_BOT) or S_DISPLAY_SEARCH or (U_ACP and not U_RESTORE_PERMISSIONS) or U_MCP --><!-- DEFINE $QUICKLINKS = 1 -->
+			<span class="quicktools"><a href="#" id="quick_link" class="nowrap"><img src="{T_THEME_PATH}/images/icon_mini_members.gif" width="12" height="13" alt="" /> {L_QUICK_LINKS}</a>&nbsp;</span>
+		<!-- ENDIF -->
+
+		<!-- EVENT overall_header_navigation_prepend -->
+		<a href="{U_FAQ}" class="nowrap"><img src="{T_THEME_PATH}/images/icon_mini_faq.gif" width="12" height="13" alt="" /> {L_FAQ}</a>
+		<!-- EVENT overall_header_navigation_append -->
+		</td></tr></table></div>
+
+		<!-- IF S_BOARD_DISABLED and S_USER_LOGGED_IN and (U_MCP or U_ACP) -->
+			<div class="error">{L_BOARD_DISABLED}</div>
+		<!-- ENDIF -->
+
+		<!-- IF $QUICKLINKS -->
+			<div id="quick_links_list" style="display: none"><!-- 
+				<!-- IF U_ACP and not U_RESTORE_PERMISSIONS --><a href="{U_ACP}" class="nowrap" title="{L_ACP}">{L_ACP_SHORT}</a><!-- IF U_MCP --><br /><!-- ELSE --><hr /><!-- ENDIF --><!-- ENDIF -->
+				<!-- IF U_MCP --><a href="{U_MCP}" class="nowrap" title="{L_MCP}">{L_MCP_SHORT}</a><hr /><!-- ENDIF -->
+				<!-- IF S_DISPLAY_SEARCH -->
+					<!-- IF S_REGISTERED_USER --><a href="{U_SEARCH_SELF}" class="nowrap">{L_SEARCH_SELF}</a><br /><!-- ENDIF -->
+					<!-- IF S_USER_LOGGED_IN --><a href="{U_SEARCH_NEW}" class="nowrap">{L_SEARCH_NEW}</a><br /><!-- ENDIF -->
+					<!-- IF S_LOAD_UNREADS --><a href="{U_SEARCH_UNREAD}" class="nowrap">{L_SEARCH_UNREAD}</a><br /><!-- ENDIF -->
+					<a href="{U_SEARCH_UNANSWERED}" class="nowrap">{L_SEARCH_UNANSWERED}</a><br /><a href="{U_SEARCH_ACTIVE_TOPICS}" class="nowrap">{L_SEARCH_ACTIVE_TOPICS}</a><hr /><a href="{U_SEARCH}" class="nowrap">{L_SEARCH}</a>
+				<!-- ENDIF -->
+				<!-- IF S_DISPLAY_MEMBERLIST and not S_IS_BOT --><!-- IF S_DISPLAY_SEARCH --><hr /><!-- ENDIF --><a href="{U_MEMBERLIST}" class="nowrap">{L_MEMBERLIST}</a><!-- IF U_TEAM --><br /><a href="{U_TEAM}" class="nowrap">{L_THE_TEAM}</a><!-- ENDIF --><!-- ENDIF -->
+			--></div>
+		<!-- ENDIF -->
+	</td>
+	<td class="genmed" id="user_side" valign="top">
+		<!-- IF S_REGISTERED_USER -->
+			<div align="{S_CONTENT_FLOW_END}"><table cellspacing="0"><tr><td style="padding:0" nowrap="nowrap">
+			<!-- IF S_NOTIFICATIONS_DISPLAY -->
+				<a href="{U_VIEW_ALL_NOTIFICATIONS}" id="notification_link"><img src="{T_THEME_PATH}/images/icon_mini_notification.gif" width="12" height="13" alt="" /> {L_NOTIFICATIONS} [<strong>{NOTIFICATIONS_COUNT}</strong>]</a>&nbsp;
+			<!-- ENDIF -->
+
+			<!-- IF S_DISPLAY_PM -->
+				<a href="{U_PRIVATEMSGS}"><img src="{T_THEME_PATH}/images/icon_mini_message.gif" width="12" height="13" alt="" /> {L_PRIVATE_MESSAGES} [<strong>{PRIVATE_MESSAGE_COUNT}</strong>]</a>&nbsp;
+			<!-- ENDIF -->
+
+			<a href="{U_PROFILE}" id="user_link" style="text-decoration: none"><img src="{T_THEME_PATH}/images/icon_mini_profile.gif" width="12" height="13" alt="" /> {CURRENT_USERNAME_SIMPLE}</a>
+			</td></tr></table></div>
+			<!-- IF S_NOTIFICATIONS_DISPLAY -->
+				<div id="notification_list" style="display: none; line-height: normal !important; padding: 0 !important"><!-- 
+					<div class="bg2" style="padding: 4px 0; overflow: hidden">
+						<b style="display: block; float: {S_CONTENT_FLOW_BEGIN}; padding: 0 10px">{L_NOTIFICATIONS}</b>
+						<div align="{S_CONTENT_FLOW_END}" style="padding: 0 10px"><a href="{U_NOTIFICATION_SETTINGS}">{L_SETTINGS}</a></div>
+					</div>
+					<!-- BEGIN notifications -->
+						<!-- IF notifications.S_FIRST_ROW --><div id="notification_scroll" style="clear: both"><!-- ENDIF -->
+						<div<!-- IF notifications.UNREAD --> class="bg3"<!-- ENDIF --><!-- IF notifications.S_LAST_ROW --> style="border-bottom: 0"<!-- ENDIF -->>
+							<!-- IF notifications.URL --><a href="<!-- IF notifications.UNREAD -->{notifications.U_MARK_READ}<!-- ELSE -->{notifications.URL}<!-- ENDIF -->"><!-- ENDIF -->{notifications.FORMATTED_TITLE}<!-- IF notifications.URL --></a><!-- ENDIF -->
+							<!-- IF notifications.REFERENCE --><br />{notifications.REFERENCE}<!-- ENDIF -->
+							<!-- IF notifications.FORUM --><br />{notifications.FORUM}<!-- ENDIF -->
+							<!-- IF notifications.REASON --><br />{notifications.REASON}<!-- ENDIF -->
+							<p align="{S_CONTENT_FLOW_END}" class="small">{notifications.TIME}</p>
+							<!-- IF not notifications.URL and notifications.UNREAD --><a href="{notifications.U_MARK_READ}">{L_MARK_READ}</a><!-- ENDIF -->
+						</div>
+						<!-- IF notifications.S_LAST_ROW --></div><div align="center" style="padding: 4px; overflow: hidden"><a href="{U_VIEW_ALL_NOTIFICATIONS}">{L_SEE_ALL}</a></div><!-- ENDIF -->
+					<!-- BEGINELSE -->
+						<div align="center" style="clear: both; padding: 8px; overflow: hidden">{L_NO_NOTIFICATIONS}</div>
+					<!-- END notifications -->
+				--></div>
+			<!-- ENDIF -->
+			<div id="user_list" style="display: none"><!-- 
+				<!-- IF U_RESTORE_PERMISSIONS --><a href="{U_RESTORE_PERMISSIONS}" class="nowrap">{L_RESTORE_PERMISSIONS}</a><br /><!-- ENDIF -->
+				<a href="{U_PROFILE}" class="nowrap">{L_PROFILE}</a><!-- IF U_USER_PROFILE --><br />
+				<a href="{U_USER_PROFILE}" class="nowrap">{L_READ_PROFILE}</a><!-- ENDIF -->
+				<hr /><a href="{U_LOGIN_LOGOUT}" class="nowrap">{L_LOGIN_LOGOUT}</a>
+			--></div>
+		<!-- ELSE -->
+			<div align="{S_CONTENT_FLOW_END}"><table cellspacing="0"><tr><td style="padding:0" nowrap="nowrap">
+			<!-- IF S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) -->
+				<a href="{U_REGISTER}"><img src="{T_THEME_PATH}/images/icon_mini_register.gif" width="12" height="13" alt="" /> {L_REGISTER}</a>&nbsp;
+			<!-- ENDIF -->
+
+			<a href="{U_LOGIN_LOGOUT}"><img src="{T_THEME_PATH}/images/icon_mini_login.gif" width="12" height="13" alt="" /> {L_LOGIN_LOGOUT}</a>
+			</td></tr></table></div>
+		<!-- ENDIF -->
+	</td>
+</tr></table></div></td><td width="19"></td></tr></table>
 
 <!-- EVENT overall_header_page_body_before -->
 
-<table width="100%" cellspacing="0"><tr class="quick_links_hidden"<!-- IF not S_DISPLAY_SEARCH and not S_REGISTERED_USER --> style="display:none"<!-- ENDIF -->>
+<table width="100%" cellspacing="0"><!-- IF not S_DISPLAY_SEARCH and not S_REGISTERED_USER --><tr style="display:none"><!-- ELSE --><tr class="hidden_links"><!-- ENDIF -->
 
 <script type="text/javascript" src="{T_TEMPLATE_PATH}/forum_fn.js?assets_version={T_ASSETS_VERSION}"></script>
 
-<!--[if lte IE 7]><script> var TextareaFix=1; window.onresize = function() { if (typeof qkl !== 'undefined') { if (qkl.style.display != 'none') { qkl.style.display="none"; qkl.style.display="inline"; }}	if (typeof nfl !== 'undefined') {if (nfl.style.display != 'none') { nfl.style.display="none"; nfl.style.display="inline"; }}	if (typeof usl !== 'undefined') {if (usl.style.display != 'none') { usl.style.display="none"; usl.style.display="inline"; }} <!-- IF S_VIEWTOPIC --> if (typeof ttl !== 'undefined') {if (ttl.style.display != 'none') { ttl.style.display="none"; ttl.style.display="inline"; }} <!-- ELSE --> if (typeof textarea !== 'undefined' && typeof wwidth !== 'undefined') { wwidth=document.documentElement.offsetWidth; var msg=<!-- IF S_BBCODE_ALLOWED -->380<!-- ELSE -->445<!-- ENDIF -->+0.725*(wwidth-620);<!-- IF S_IN_UCP --> msg=msg*0.8;<!-- ENDIF --> textarea.style.width=msg;} <!-- ENDIF --> }; </script><![endif]-->
+<td width="19"></td>
 
-<td width="19"></td><td align="{S_CONTENT_FLOW_BEGIN}" class="bigger"><div id="wrapcentre"><!-- IF S_DISPLAY_SEARCH --><a href="{U_SEARCH_UNANSWERED}" class="nowrap">{L_SEARCH_UNANSWERED}</a> | <a href="{U_SEARCH_ACTIVE_TOPICS}" class="nowrap">{L_SEARCH_ACTIVE_TOPICS}</a><!-- ENDIF --><!-- IF U_MCP --><!-- IF S_DISPLAY_SEARCH --> | <!-- ENDIF --><a href="{U_MCP}" class="nowrap" title="{L_MCP}">{L_MCP_SHORT}</a><!-- ENDIF --></div></td>
-		<td align="{S_CONTENT_FLOW_END}" class="bigger"><div id="wrapcentre"><!-- IF S_DISPLAY_SEARCH -->
-<!-- IF S_LOAD_UNREADS --><a href="{U_SEARCH_UNREAD}" class="nowrap">{L_SEARCH_UNREAD}</a><!-- IF S_USER_LOGGED_IN --> | <!-- ENDIF --><!-- ENDIF --><!-- IF S_USER_LOGGED_IN --><a href="{U_SEARCH_NEW}" class="nowrap">{L_SEARCH_NEW}</a><!-- IF S_REGISTERED_USER --> | <a href="{U_SEARCH_SELF}" class="nowrap">{L_SEARCH_SELF}</a> | <!-- ENDIF --><!-- ENDIF --><!-- ENDIF --><!-- IF S_REGISTERED_USER --><a href="{U_LOGIN_LOGOUT}" class="nowrap">{L_LOGIN_LOGOUT}</a><!-- IF U_RESTORE_PERMISSIONS --> | <a href="{U_RESTORE_PERMISSIONS}" class="nowrap">{L_RESTORE_PERMISSIONS}</a><!-- ENDIF --><!-- ENDIF --></div></td><td width="19"></td></tr><tr><td width="19"></td><td colspan="2">
+	<!-- IF not S_DISPLAY_SEARCH and not U_MCP -->
+		<td>
+	<!-- ELSE -->
+		<td class="genmed"><div style="margin-top: 14px">
+			<!-- IF S_DISPLAY_SEARCH --><a href="{U_SEARCH_UNANSWERED}" class="nowrap">{L_SEARCH_UNANSWERED}</a> | <a href="{U_SEARCH_ACTIVE_TOPICS}" class="nowrap">{L_SEARCH_ACTIVE_TOPICS}</a><!-- ENDIF -->
+			<!-- IF U_MCP --><!-- IF S_DISPLAY_SEARCH --> | <!-- ENDIF --><a href="{U_MCP}" class="nowrap" title="{L_MCP}">{L_MCP_SHORT}</a><!-- ENDIF -->
+		</div>
+	<!-- ENDIF -->
+		</td>
+
+		<!-- IF not (S_DISPLAY_SEARCH and S_LOAD_UNREADS) and not (S_DISPLAY_SEARCH and S_USER_LOGGED_IN) and not S_REGISTERED_USER -->
+			<td>
+		<!-- ELSE -->
+			<td align="{S_CONTENT_FLOW_END}" class="genmed">
+				<div style="margin-top: 14px">
+				<!-- IF S_DISPLAY_SEARCH -->
+					<!-- IF S_LOAD_UNREADS --><a href="{U_SEARCH_UNREAD}" class="nowrap">{L_SEARCH_UNREAD}</a><!-- IF S_USER_LOGGED_IN --> | <!-- ENDIF --><!-- ENDIF -->
+					<!-- IF S_USER_LOGGED_IN --><a href="{U_SEARCH_NEW}" class="nowrap">{L_SEARCH_NEW}</a>
+						<!-- IF S_REGISTERED_USER --> | <a href="{U_SEARCH_SELF}" class="nowrap">{L_SEARCH_SELF}</a> | <!-- ENDIF -->
+					<!-- ENDIF -->
+				<!-- ENDIF -->
+				<!-- IF S_REGISTERED_USER --><a href="{U_LOGIN_LOGOUT}" class="nowrap">{L_LOGIN_LOGOUT}</a>
+					<!-- IF U_RESTORE_PERMISSIONS --> | <a href="{U_RESTORE_PERMISSIONS}" class="nowrap">{L_RESTORE_PERMISSIONS}</a><!-- ENDIF -->
+				<!-- ENDIF -->
+				</div>
+		<!-- ENDIF -->
+			</td>
+
+<td width="19"></td></tr><tr><td width="19"></td><td colspan="2">
 
 	<!-- DEFINE $S_MICRODATA = 1 -->
-	<!-- DEFINE $OVERALL_HEADER_BREADCRUMBS = 1 -->
+	<!-- DEFINE $HEADER_BREADCRUMB = 1 -->
 	<!-- INCLUDE breadcrumbs.html -->
-	<!-- UNDEFINE $OVERALL_HEADER_BREADCRUMBS -->
+	<!-- UNDEFINE $HEADER_BREADCRUMB -->
 	<!-- DEFINE $S_MICRODATA = 0 -->
 
 </td><td width="19"></td></tr></table>
 <table width="100%" cellspacing="0"><tr><td width="19"></td><td></td><td width="19"></td></tr><tr><td width="19"></td><td>
-<span class="normal"><!-- EVENT overall_header_content_before --></span>	
+<!-- EVENT overall_header_content_before -->	
