@@ -11,23 +11,24 @@
 
 <table width="100%" class="main" cellspacing="1">
 <tr>
-	<td colspan="4" class="bg3"><!-- INCLUDE display_options.html --></td>
+	<th colspan="4">{L_TITLE}</th>
+</tr>
+<tr>
+	<td colspan="4" class="cat"><!-- INCLUDE display_options.html --></td>
 </tr>
 <tr>
 	<th><!-- IF S_TOPICS -->{L_TOPIC}<!-- ELSE -->{L_POST}<!-- ENDIF --></th>
 	<th width="20%">{L_AUTHOR}</th>
 	<th width="20%">{L_POST_TIME}</th>
-	<th width="5%">{L_SELECT}</th>
+	<th width="5%">{L_MARK}</th>
 </tr>
 <!-- BEGIN postrow -->
-
-	<!-- IF postrow.S_ROW_COUNT is even --><tr class="bg1"><!-- ELSE --><tr class="bg2"><!-- ENDIF -->
-		<td style="padding: 4px"><!-- IF postrow.ATTACH_ICON_IMG --><img src="{T_THEME_PATH}/images/icon_topic_attach.gif" width="14" height="18" alt="(*)" title="{L_TOTAL_ATTACHMENTS}" class="genmed" /><!-- ENDIF --><a href="{postrow.U_VIEWPOST}" class="topictitle">{postrow.POST_SUBJECT}</a><br />
-			<span class="genmed"><!-- IF postrow.U_VIEWFORUM -->{L_FORUM}{L_COLON} <a href="{postrow.U_VIEWFORUM}">{postrow.FORUM_NAME}</a><!-- ELSE -->{postrow.FORUM_NAME}<!-- ENDIF --></span></td>
-		<td style="padding: 4px" valign="top"><span class="gen">{postrow.POST_AUTHOR_FULL}</span><br />
-			<span class="genmed">[ <a href="{postrow.U_VIEW_DETAILS}">{L_VIEW_DETAILS}</a> ]</span></td>
-		<td class="genmed" style="padding: 4px" valign="top">{postrow.POST_TIME}</td>
-		<td align="center">
+	<tr><!-- IF postrow.S_ROW_COUNT is even --><!-- DEFINE $BG = 'bg1' --><!-- ELSE --><!-- DEFINE $BG = 'bg2' --><!-- ENDIF -->
+		<td class="{$BG}"><!-- IF postrow.ATTACH_ICON_IMG --><img src="{T_THEME_PATH}/images/icon_topic_attach.gif" width="14" height="18" alt="(*)" title="{L_TOTAL_ATTACHMENTS}" class="bigger" /><!-- ENDIF --><a href="{postrow.U_VIEW_DETAILS}" class="big">{postrow.POST_SUBJECT}</a>
+			<div class="bigger">{L_FORUM}{L_COLON} <!-- IF postrow.U_VIEWFORUM --><a href="{postrow.U_VIEWFORUM}">{postrow.FORUM_NAME}</a><!-- ELSE -->{postrow.FORUM_NAME}<!-- ENDIF --></div></td>
+		<td align="center" class="{$BG}"><span class="big">{postrow.POST_AUTHOR_FULL}</span></td>
+		<td align="center" class="{$BG}"><span class="bigger">{postrow.POST_TIME}</span></td>
+		<td align="center" class="{$BG}">
 			<!-- IF S_TOPICS -->
 				<input type="checkbox" name="topic_id_list[]" value="{postrow.TOPIC_ID}" />
 			<!-- ELSE -->
@@ -37,8 +38,8 @@
 	</tr>
 <!-- BEGINELSE -->
 	<tr>
-		<td class="bg1" colspan="4" height="30" align="center" valign="middle">
-			<span class="gen">
+		<td class="bg1" colspan="4" align="center">
+			<span class="big">
 				<!-- IF S_RESTORE -->
 					<!-- IF S_TOPICS -->{L_NO_TOPICS_DELETED}<!-- ELSE -->{L_NO_POSTS_DELETED}<!-- ENDIF -->
 				<!-- ELSE -->
@@ -47,7 +48,9 @@
 			</span>
 		</td>
 	</tr>
-<!-- END postrow --><!-- IF .postrow -->
+<!-- END postrow -->
+
+<!-- IF .postrow -->
 <tr>
 	<td class="cat" colspan="4" align="center">
 		<!-- IF S_RESTORE -->
@@ -57,22 +60,15 @@
 		<!-- ENDIF -->
 	</td>
 </tr>
-<!-- ENDIF --></table>
+<!-- ENDIF -->
+</table>
 {S_FORM_TOKEN}
 </form>
-<!-- IF .postrow -->
-<table width="100%" cellspacing="2" align="center">
-<tr>
-	<td align="{S_CONTENT_FLOW_END}" valign="top" nowrap="nowrap">
-		<b>
-			<!-- IF S_TOPICS -->
-				<a href="#" onclick="marklist('mcp', 'topic_id_list', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('mcp', 'topic_id_list', false); return false;">{L_UNMARK_ALL}</a>
-			<!-- ELSE -->
-				<a href="#" onclick="marklist('mcp', 'post_id_list', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('mcp', 'post_id_list', false); return false;">{L_UNMARK_ALL}</a>
-			<!-- ENDIF -->
-		</b>
-	</td>
-</tr>
-</table>
-<!-- ENDIF -->
+
+<table width="100%" cellspacing="1"><tr>
+	<!-- IF .postrow --><td nowrap="nowrap"><b>{PAGE_NUMBER}</b> [ {TOTAL} ]</td>
+	<td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('mcp', '<!-- IF S_TOPICS -->topic<!-- ELSE -->post<!-- ENDIF -->_id_list', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('mcp', '<!-- IF S_TOPICS -->topic<!-- ELSE -->post<!-- ENDIF -->_id_list', false); return false;">{L_UNMARK_ALL}</a></b></td><!-- IF .pagination --></tr><tr><!-- ENDIF --><!-- ENDIF -->
+	<!-- IF .pagination --><td align="{S_CONTENT_FLOW_END}"<!-- IF .postrow --> colspan="2"<!-- ENDIF -->><!-- INCLUDE pagination.html --></td><!-- ENDIF -->
+</tr></table>
+
 <!-- INCLUDE mcp_footer.html -->

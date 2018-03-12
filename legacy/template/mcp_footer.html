@@ -1,24 +1,4 @@
 
-			</td>
-		</tr>
-	</table>
-
-	<!-- IF .pagination and not $MCPVIEWIP -->
-		<table width="80%" align="{S_CONTENT_FLOW_END}" cellspacing="1">
-		<tr>
-			<td valign="middle" nowrap="nowrap"><b>{PAGE_NUMBER}</b> [ <!-- IF $MCPNOTEUSER -->{TOTAL_REPORTS}<!-- ELSEIF $MCPWARNLIST -->{TOTAL_USERS}<!-- ELSEIF TOTAL_TOPICS -->{TOTAL_TOPICS}<!-- ELSEIF TOTAL_POSTS -->{TOTAL_POSTS}<!-- ELSE -->{TOTAL}<!-- ENDIF --> ]</td>
-			<td width="100%" align="{S_CONTENT_FLOW_END}"><!-- INCLUDE pagination.html --></td>
-		</tr>
-		</table>
-		<br />
-	<!-- ENDIF -->
-
-</div>
-
-<br clear="all" />
-
-<!-- INCLUDE breadcrumbs.html -->
-
-<br clear="all" />
+<!-- IF not $HISTORY --></td></tr></table><!-- ENDIF -->
 
 <!-- INCLUDE overall_footer.html -->

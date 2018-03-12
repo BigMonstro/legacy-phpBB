@@ -1,10 +1,13 @@
 <!-- INCLUDE ucp_header.html -->
+
 <table class="main" width="100%" cellspacing="1">
 <tr>
-	<th colspan="6">{L_UCP}</th>
+	<th colspan="6">{L_TITLE}</th>
 </tr>
 <tr>
-	<td class="bg1" colspan="6" align="center"><span class="genmed">{L_ATTACHMENTS_EXPLAIN}</span></td></tr>
+	<td class="bg1" colspan="6" align="center"><span class="bigger">{L_ATTACHMENTS_EXPLAIN}</span></td>
+</tr>
+
 <!-- IF S_ATTACHMENT_ROWS -->
 
 	<tr>
@@ -13,7 +16,7 @@
 		<th><a href="{U_SORT_POST_TIME}">{L_POST_TIME}</a></th>
 		<th><a href="{U_SORT_FILESIZE}">{L_FILESIZE}</a></th>
 		<th><a href="{U_SORT_DOWNLOADS}">{L_DOWNLOADS}</a></th>
-		<th>{L_DELETE}</th>
+		<th width="5%">{L_MARK}</th>
 	</tr>
 	<!-- IF TOTAL_ATTACHMENTS -->
 		<tr>
@@ -21,39 +24,36 @@
 				<table width="100%" cellspacing="1">
 				<tr>
 					<td nowrap="nowrap"><b>{PAGE_NUMBER}</b> &nbsp;[ {NUM_ATTACHMENTS} ]</td>
-					<td width="100%" align="{S_CONTENT_FLOW_END}"><!-- INCLUDE pagination.html --></td>
+					<!-- IF .pagination --><td width="100%" align="{S_CONTENT_FLOW_END}"><!-- INCLUDE pagination.html --></td><!-- ENDIF -->
 				</tr>
 				</table>
 			</td>
 		</tr>
 	<!-- ENDIF -->
 	<!-- BEGIN attachrow -->
-		<!-- IF attachrow.S_ROW_COUNT is even --><tr class="bg2"><!-- ELSE --><tr class="bg1"><!-- ENDIF -->
-
-		<td class="genmed" style="padding: 4px" align="center" width="2%">&nbsp;{attachrow.ROW_NUMBER}&nbsp;</td>
-		<td style="padding: 4px"><a class="gen" href="{attachrow.U_VIEW_ATTACHMENT}">{attachrow.FILENAME}</a><br /><span class="genmed"><!-- IF attachrow.S_IN_MESSAGE --><b>{L_PM}{L_COLON} </b><!-- ELSE --><b>{L_TOPIC}{L_COLON} </b><!-- ENDIF --><a href="{attachrow.U_VIEW_TOPIC}">{attachrow.TOPIC_TITLE}</a></span></td>
-		<td class="genmed" style="padding: 4px" align="center" valign="middle">{attachrow.POST_TIME}</td>
-		<td class="genmed" style="padding: 4px" align="center" valign="middle" nowrap="nowrap">{attachrow.SIZE}</td>
-		<td class="genmed" style="padding: 4px" align="center">{attachrow.DOWNLOAD_COUNT}</td>
-		<td style="padding: 4px" align="center" valign="middle"><input type="checkbox" name="attachment[{attachrow.ATTACH_ID}]" value="1" /></td>
+	<tr><!-- IF attachrow.S_ROW_COUNT is even --><!-- DEFINE $BG = 'bg1' --><!-- ELSE --><!-- DEFINE $BG = 'bg2' --><!-- ENDIF -->	
+		<td align="center" class="{$BG}" width="2%"><p>&nbsp;{attachrow.ROW_NUMBER}&nbsp;</p></td>
+		<td class="{$BG}"><a class="big" href="{attachrow.U_VIEW_ATTACHMENT}">{attachrow.FILENAME}</a><p><!-- IF attachrow.S_IN_MESSAGE --><b>{L_PM}{L_COLON} </b><!-- ELSE --><b>{L_TOPIC}{L_COLON} </b><!-- ENDIF --><a href="{attachrow.U_VIEW_TOPIC}">{attachrow.TOPIC_TITLE}</a></p></td>
+		<td align="center" class="{$BG}"><p>{attachrow.POST_TIME}</p></td>
+		<td align="center" class="{$BG}" nowrap="nowrap"><p>{attachrow.SIZE}</p></td>
+		<td align="center" class="{$BG}"><p>{attachrow.DOWNLOAD_COUNT}</p></td>
+		<td align="center" class="{$BG}"><input type="checkbox" name="attachment[{attachrow.ATTACH_ID}]" value="1" /></td>
 	</tr>
-	<!-- IF attachrow.S_LAST_ROW -->
-	<tr> 
-		<td align="center" class="cat" colspan="6"><!-- INCLUDE display_options.html -->&nbsp;<input class="button2" type="submit" name="delete" value="{L_DELETE_MARKED}" /></td>
+	<!-- END attachrow -->
+	<tr>
+		<td class="cat" colspan="6"><table cellspacing="0" width="100%"><tr><td><!-- INCLUDE display_options.html --></td><td align="{S_CONTENT_FLOW_END}"><input class="button2" type="submit" name="delete" value="{L_DELETE_MARKED}" /></td></tr></table></td>
 	</tr>
-	<!-- ENDIF -->	<!-- END attachrow -->
 	</table>
 
-	<!-- IF TOTAL_ATTACHMENTS -->
-	<div align="{S_CONTENT_FLOW_END}" style="padding-top:2px"><!-- INCLUDE pagination.html --></div>
-	<!-- ENDIF -->
-
-	<div align="{S_CONTENT_FLOW_END}" style="<!-- IF .pagination -->padding-top:4px<!-- ELSE -->padding-top:2px<!-- ENDIF -->"><b><a href="#" onclick="marklist('ucp', 'attachment', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('ucp', 'attachment', false); return false;">{L_UNMARK_ALL}</a></b></div>
+	<table width="100%" cellspacing="2">
+		<tr><td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('ucp', 'attachment', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('ucp', 'attachment', false); return false;">{L_UNMARK_ALL}</a></b></td></tr>
+		<!-- IF .pagination --><tr><td align="{S_CONTENT_FLOW_END}"><!-- INCLUDE pagination.html --></td></tr><!-- ENDIF -->
+	</table>
 
 <!-- ELSE -->
 
 	<tr class="bg1">
-		<td align="center" colspan="6"><b class="genmed">{L_UCP_NO_ATTACHMENTS}</b></td>
+		<td align="center" colspan="6"><b class="bigger">{L_UCP_NO_ATTACHMENTS}</b></td>
 	</tr>
 	</table>
 

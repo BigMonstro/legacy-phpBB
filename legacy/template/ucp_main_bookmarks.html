@@ -2,14 +2,21 @@
 
 <table class="main" width="100%" cellspacing="1">
 <tr>
-	<th colspan="4">{L_UCP}</th>
+	<th colspan="4">{L_TITLE}</th>
 </tr>
 <tr>
-	<td class="bg1" colspan="4" align="center"><span class="genmed">{L_BOOKMARKS_EXPLAIN}</span></td></tr>	<!-- IF .topicrow --><tr>
+	<td class="bg1" colspan="4" align="center"><span class="bigger">{L_BOOKMARKS_EXPLAIN}</span></td>
+</tr>
+
+<!-- IF .topicrow -->
+	<tr>
 		<th colspan="4">{L_BOOKMARKS}</th>
-</tr><!-- ENDIF --> <!-- IF S_NO_DISPLAY_BOOKMARKS -->
+	</tr>
+<!-- ENDIF -->
+
+<!-- IF S_NO_DISPLAY_BOOKMARKS -->
 	<tr class="bg1">
-		<td colspan="4" align="center"><b class="genmed">{L_BOOKMARKS_DISABLED}</b></td>
+		<td colspan="4" align="center"><b class="bigger">{L_BOOKMARKS_DISABLED}</b></td>
 	</tr>
 <!-- ELSE -->
 
@@ -19,7 +26,7 @@
 				<table width="100%" cellspacing="1">
 				<tr>
 					<td nowrap="nowrap"><b>{PAGE_NUMBER}</b> &nbsp;[ {TOTAL_TOPICS} ]</td>
-					<td width="100%" align="{S_CONTENT_FLOW_END}"><!-- INCLUDE pagination.html --></td>
+					<!-- IF .pagination --><td width="100%" align="{S_CONTENT_FLOW_END}"><!-- INCLUDE pagination.html --></td><!-- ENDIF -->
 				</tr>
 				</table>
 			</td>
@@ -27,56 +34,52 @@
 	<!-- ENDIF -->
 
 	<!-- BEGIN topicrow -->
-
-	 <tr <!-- IF topicrow.S_ROW_COUNT is even -->class="bg1"<!-- ELSE -->class="bg2"<!-- ENDIF --> valign="middle">
-			<td style="padding: 4px" width="3%" align="center"><!-- IF topicrow.S_UNREAD_TOPIC --><a href="{topicrow.U_NEWEST_POST}"><!-- ENDIF --><img src="{T_THEME_PATH}/images/{topicrow.TOPIC_IMG_STYLE}.gif" width="19" height="18" alt="<!-- IF topicrow.S_UNREAD_TOPIC -->+" border="0<!-- ENDIF -->" title="{topicrow.TOPIC_FOLDER_IMG_ALT}" /><!-- IF topicrow.S_UNREAD_TOPIC --></a><!-- ENDIF --></td>
+		<tr><!-- IF topicrow.S_ROW_COUNT is even --><!-- DEFINE $BG = 'bg1' --><!-- ELSE --><!-- DEFINE $BG = 'bg2' --><!-- ENDIF -->
+			<td align="center" class="{$BG}" width="25"><!-- IF topicrow.S_UNREAD_TOPIC --><a href="{topicrow.U_NEWEST_POST}"><!-- ENDIF --><img src="{T_THEME_PATH}/images/{topicrow.TOPIC_IMG_STYLE}.gif" width="19" height="18" alt="<!-- IF topicrow.S_UNREAD_TOPIC -->+" border="0<!-- ENDIF -->" title="{topicrow.TOPIC_FOLDER_IMG_ALT}" /><!-- IF topicrow.S_UNREAD_TOPIC --></a><!-- ENDIF --></td>
 		<!-- IF topicrow.S_DELETED_TOPIC -->
-			<td class="genmed" style="padding: 4px" colspan="2">{L_DELETED_TOPIC}</td>
+			<td class="{$BG}" colspan="2" width="97%"><p>{L_DELETED_TOPIC}</p></td>
 		<!-- ELSE -->
-			<td style="padding: 4px">
+			<td class="{$BG}" width="83%">
 				<!-- IF topicrow.S_UNREAD_TOPIC --><a href="{topicrow.U_NEWEST_POST}"><img src="{T_THEME_PATH}/images/icon_topic_newest.gif" width="18" height="9" alt="&gt;&gt;&gt;" border="0" title="{L_UNREAD_POSTS}" /></a> <!-- ENDIF --><!-- IF topicrow.ATTACH_ICON_IMG --><img src="{T_THEME_PATH}/images/icon_topic_attach.gif" width="14" height="18" alt="(*)" title="{L_TOTAL_ATTACHMENTS}" /><!-- ENDIF --><a title="{L_POSTED}{L_COLON} {topicrow.FIRST_POST_TIME}" href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a>
-				<br />
-				<!-- IF topicrow.S_GLOBAL_TOPIC --><span class="genmed">{L_GLOBAL_ANNOUNCEMENT}</span><!-- ELSE --><span class="genmed"><b>{L_FORUM}{L_COLON} </b><a href="{topicrow.U_VIEW_FORUM}">{topicrow.FORUM_NAME}</a></span><!-- ENDIF -->
+				<div class="bigger"><b>{L_FORUM}{L_COLON}</b> <a href="{topicrow.U_VIEW_FORUM}">{topicrow.FORUM_NAME}</a></div>
 				<!-- IF .topicrow.pagination -->
-					<p class="genmed"> [ <img src="{T_THEME_PATH}/images/icon_post_target.gif" width="12" height="9" alt="" />{L_GOTO_PAGE}{L_COLON} 
+					<div class="bigger"> [ <img src="{T_THEME_PATH}/images/icon_post_target.gif" width="12" height="9" alt="" />{L_GOTO_PAGE}{L_COLON} 
 					<!-- BEGIN pagination -->
 						<!-- IF topicrow.pagination.S_IS_PREV -->
-						<!-- ELSEIF topicrow.pagination.S_IS_CURRENT --><strong>{topicrow.pagination.PAGE_NUMBER}</strong>
+						<!-- ELSEIF topicrow.pagination.S_IS_CURRENT --><b>{topicrow.pagination.PAGE_NUMBER}</b>
 						<!-- ELSEIF topicrow.pagination.S_IS_ELLIPSIS --> {L_ELLIPSIS} 
 						<!-- ELSEIF topicrow.pagination.S_IS_NEXT -->
 						<!-- ELSE --><a href="{topicrow.pagination.PAGE_URL}">{topicrow.pagination.PAGE_NUMBER}</a>
 						<!-- ENDIF -->
 					<!-- END pagination -->
-					] </p>
+					] </div>
 				<!-- ENDIF -->
 			</td>
-			<td class="genmed" style="padding: 4px" width="14%" align="center">
-				{topicrow.LAST_POST_TIME}<br />
-				{topicrow.LAST_POST_AUTHOR_FULL}
-					<a href="{topicrow.U_LAST_POST}"><img src="{T_THEME_PATH}/images/icon_topic_latest.gif" width="18" height="9" alt="&gt;" border="0" title="{L_VIEW_LATEST_POST}" /></a></td>
+			<td align="center" class="{$BG}" width="14%">
+				<p>{topicrow.LAST_POST_TIME}<br />{topicrow.LAST_POST_AUTHOR_FULL} <a href="{topicrow.U_LAST_POST}"><img src="{T_THEME_PATH}/images/icon_topic_latest.gif" width="18" height="9" alt="&gt;" border="0" title="{L_GOTO_LAST_POST}" /></a></p>
+			</td>
 		<!-- ENDIF -->
-			<td style="padding: 4px" width="3%" align="center"> <input type="checkbox" name="t[{topicrow.TOPIC_ID}]" /> </td>
+			<td align="center" class="{$BG}" width="3%"><input type="checkbox" name="t[{topicrow.TOPIC_ID}]" /></td>
 		</tr>
 	<!-- BEGINELSE -->
-		<tr class="bg1">
-			<td colspan="4" align="center"><b class="genmed">{L_NO_BOOKMARKS}</b></td>
+		<tr>
+			<td align="center" class="bg1" colspan="4"><b class="bigger">{L_NO_BOOKMARKS}</b></td>
 		</tr>
 	<!-- END topicrow -->
 
-		<!-- IF .topicrow -->
-			<tr>
-				<td class="cat" colspan="4" align="{S_CONTENT_FLOW_END}"><input class="button2" type="submit" name="unbookmark" value="{L_REMOVE_BOOKMARK_MARKED}" /></td>
-			</tr>
-		<!-- ENDIF -->
+	<!-- IF .topicrow -->
+		<tr>
+			<td class="cat" colspan="4" align="{S_CONTENT_FLOW_END}"><input class="button2" type="submit" name="unbookmark" value="{L_REMOVE_BOOKMARK_MARKED}" /></td>
+		</tr>
 	<!-- ENDIF -->
+<!-- ENDIF -->
 </table>
 
-<!-- IF TOTAL_TOPICS -->
-	<div align="{S_CONTENT_FLOW_END}" style="padding-top:2px"><!-- INCLUDE pagination.html --></div>
-<!-- ENDIF -->
-
-<!-- IF not S_NO_DISPLAY_BOOKMARKS and .topicrow -->
-	<div align="{S_CONTENT_FLOW_END}" style="<!-- IF .pagination -->padding-top:4px;<!-- ELSE -->padding-top:2px;<!-- ENDIF -->"><b><a href="#" onclick="marklist('ucp', 't', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('ucp', 't', false); return false;">{L_UNMARK_ALL}</a></b></div>
+<!-- IF (.topicrow and not S_NO_DISPLAY_BOOKMARKS) or .pagination -->
+	<table width="100%" cellspacing="2">
+		<!-- IF not S_NO_DISPLAY_BOOKMARKS and .topicrow --><tr><td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('ucp', 't', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('ucp', 't', false); return false;">{L_UNMARK_ALL}</a></b></td></tr><!-- ENDIF -->
+		<!-- IF .pagination --><tr><td align="{S_CONTENT_FLOW_END}"><!-- INCLUDE pagination.html --></td></tr><!-- ENDIF -->
+	</table>
 <!-- ENDIF -->
 
 <!-- INCLUDE ucp_footer.html -->

@@ -9,11 +9,11 @@
 <!-- BEGIN listitem_close --></li><!-- END listitem_close -->
 
 <!-- BEGIN quote_username_open -->
-<blockquote class="quotation"><div class="quotetitle"><div class="cite">{USERNAME} {L_WROTE}{L_COLON}</div></div><div class="quotecontent">
+<blockquote><div class="quotetitle"><div class="cite">{USERNAME} {L_WROTE}{L_COLON}</div></div><div class="quotecontent">
 <!-- END quote_username_open -->
 
 <!-- BEGIN quote_open -->
-<blockquote class="quotation"><div class="quotetitle"><div class="cite">{L_QUOTE}{L_COLON}</div></div><div class="quotecontent">
+<blockquote><div class="quotetitle"><div class="cite">{L_QUOTE}{L_COLON}</div></div><div class="quotecontent">
 <!-- END quote_open -->
 
 <!-- BEGIN quote_close -->
@@ -21,7 +21,7 @@
 <!-- END quote_close -->
 
 <!-- BEGIN quote_extended -->
-<blockquote class="quotation"><div class="quotetitle"><table class="table1"><tr>
+<blockquote><div class="quotetitle"><table class="table1"><tr>
 <xsl:if test="not(@author)">
 	<td class="cite">
 		<xsl:value-of select="$L_QUOTE"/>

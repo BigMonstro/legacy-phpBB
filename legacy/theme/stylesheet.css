@@ -1,6 +1,6 @@
 /*  phpBB3 Style Sheet
     --------------------------------------------------------------
-	Style name:			Legacy 1.2.1
+	Style name:			Legacy 1.2.2
 	Based on style: 	subSilver (the default phpBB 2.0.x style)
 	Original author:	Tom Beddard ( http://www.subblue.com/ )
 	Modified by:		Big Monstro (initial CSS by LiveKiller44)
@@ -9,11 +9,6 @@
 
 /* Layout
  ------------ */
-* {
-	margin: 0;
-	padding: 0;
-}
-
 html {
 	font-size: 100%;
 	height: 101%;
@@ -24,25 +19,33 @@ body {
 	background-color: #FFFFFF;
 	font-family: "Lucida Grande", Verdana, Geneva, sans-serif;
 	font-size: 62.5%;
-	margin: 0;
+	margin: 0 25px;
+	padding: 0;
 }
 
 
-/*  Text
+/* Text
  --------------------- */
+code, kbd, pre, samp {
+	font-family: "Courier New", Courier, monospace;
+	font-size: 1em;
+	margin: 0;
+}
+
 h1 {
 	font-family: "Lucida Grande", "Trebuchet MS", Helvetica, sans-serif;
 	font-size: 1.8em;
+	margin: 0;
 }
 
 h2 {
 	font-size: 1.6em;
-	line-height: 1.2em;
+	margin: 0;
 }
 
 h3 {
 	font-size: 1.3em;
-	line-height: 1.2em;
+	margin: 0;
 }
 
 h4, p {
@@ -50,39 +53,37 @@ h4, p {
 	margin: 0;
 }
 
-code, kbd, pre, samp {
-	font-family: "Courier New", Courier, monospace;
-	font-size: 1em;
+ol, ul {
+	margin: 0.8em 0 0.9em 3em;
+	padding: 0;
 }
 
-div.profile {
-	overflow: hidden;
-	word-wrap: break-word;
-	width: 150px;
-}
-
-div.rules {
-	font-size: 1.1em;
-	margin-bottom: 12px;
-	padding: 4px;
-}
-
-.error, .rules h3, .warnings {
-	color: #FF0000;
-}
-
-.forumdesc {
-	line-height: 1.4em;
-}
-
-.gen {
+.big {
 	font-size: 1.2em;
 	margin: 1px;
 }
 
-.genmed {
+.bigger {
 	font-size: 1.1em;
 	margin: 1px;
+}
+
+.error, .forumrules {
+	color: #FF0000;
+}
+
+.forumdesc {
+	font-size: 1.1em;
+	line-height: 1.4em;
+}
+
+.locked {
+	color: #333333;
+}
+
+.navigation {
+	font-weight: bold;
+	line-height: 1.75em;
 }
 
 .offline {
@@ -99,27 +100,16 @@ div.rules {
 	line-height: 1.4em;
 }
 
-.postbody li, ol, ul {
-	margin: 0 0 0 1.5em;
-}
-
-.rtl .postbody li, .rtl ol, .rtl ul {
-	margin: 0 1.5em 0 0;
-}
-
 .posthilit {
 	background-color: #FFFF00;
 }
 
-.small {
-	font-size: 0.9em !important;
+.rtl ol, .rtl ul {
+	margin: 0.8em 3em 0.9em 0;
 }
 
-ul.navigation {
-	font-weight: bold;
-	line-height: 1.75em;
-	list-style-type: none;
-	margin: 0;
+.small {
+	font-size: 0.9em !important;
 }
 
 
@@ -143,41 +133,45 @@ td.cat {
 	padding: 0 4px;
 }
 
+td.member {
+	font-size: 1.1em;
+	padding: 5px;
+}
+
 th {
 	background-color: #000080;
 	color: #FFFFFF;
 	font-size: 1.1em;
 	padding: 7px 5px;
-	text-align: center;
 }
 
-th.nocenter {
+th.category {
 	padding: 7px 9px;
-	text-align: left;
-}
-
-.rtl th.nocenter {
-	text-align: right;
 }
 
 table.fixed {
 	border-collapse: collapse;
 	table-layout: fixed;
 	width: 100%;
-	/* **/ *width: auto; /** */
+	*width: auto;
 }
 
 table.fixed td, table.fixed th {
 	overflow: hidden;
 	padding: 0;
-}
-
-table.fixed td.profile {
 	word-wrap: break-word;
 }
 
 table.main {
 	background-color: #C0C0C0;
+}
+
+table.profile {
+	border-collapse: collapse;
+}
+
+table.profile td {
+	padding: 0;
 }
 
 table.table1 {
@@ -219,13 +213,11 @@ a.topictitle:visited {
 }
 
 a.postapprove {
-	color: #008000;
-	font-weight: bold;
+	color: #008000 !important;
 }
 
 a.postreported {
-	color: #FF0000;
-	font-weight: bold;
+	color: #FF0000 !important;
 }
 
 th a, th a:visited {
@@ -233,14 +225,42 @@ th a, th a:visited {
 }
 
 
+/* Fake buttons
+ ------------ */
+a.button {
+	background-color: #FFFFFF;
+	border: 1px solid #C0C0C0;
+	display: -moz-inline-box;
+	display: inline-block;
+	font-weight: bold;
+	line-height: 1.4em;
+	margin: 1px;
+	padding: 1px 20px 0;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
+.action-bar a.button {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1.1em;
+	padding: 3px 10px;
+}
+
+a.button:hover {
+	border-color: #000080;
+	text-decoration: none;
+}
+
+
 /* Form Elements
  ------------ */
-button, input, select, textarea {
+button, fieldset, input, select, textarea {
 	color: #333333;
 	font-family: "Lucida Grande", Verdana, Geneva, sans-serif;
-	font-weight: normal;
 	font-size: 1.1em;
-	padding: 1px;
+	font-weight: normal;
+	margin: 0;
 }
 
 button, input.button1, input.button2 {
@@ -248,16 +268,22 @@ button, input.button1, input.button2 {
 	border: 1px solid #C0C0C0;
 	cursor: pointer;
 	padding: 1px 5px;
-	_cursor: hand;
+	*cursor: hand;
 	*overflow: visible;
 	*width: auto;
+}
+
+fieldset, form {
+	border-width: 0;
+	margin: 0;
+	padding: 0;
 }
 
 input.button1 {
 	font-weight: bold;
 }
 
-input.inputbox, select, textarea {
+input.inputbox {
 	background-color: #FFFFFF;
 	border: 1px solid #C0C0C0;
 	padding: 1px 3px;
@@ -275,55 +301,29 @@ option.disabled-option {
 	padding: 0 0 0 1em;
 }
 
+select {
+	background-color: #FFFFFF;
+	border-color: #C0C0C0;
+	border-width: 1px;
+	padding: 1px;
+}
+
 textarea {
+	background-color: #FFFFFF;
+	border: 1px solid #C0C0C0;
 	line-height: 1.4em;
 	font-size: 1.3em;
 	overflow: auto;
 	padding: 2px;
 }
 
-fieldset {
-	border-width: 0;
-	font-size: 1.1em;
-}
-
 
 /* BBCode
  ------------ */
-.codebox, .quotation {
+blockquote, .codebox {
 	background-color: #C0C0C0;
 	border: 1px solid #C0C0C0;
 	margin: 10px 5px;
-}
-
-.codetitle {
-	font-weight: bold;
-}
-
-.codetitle, .quotetitle {
-	color: #333333;
-	font-size: 0.9em;
-	min-height: 18px;
-	padding: 2px 4px;
-	_height: 22px;
-	_heig\ht: 18px;
-}
-
-.quotetitle .cite {
-	border: none;
-	font-weight: bold;
-	padding: 0;
-}
-
-.quotetitle .date {
-	border: none;
-	font-weight: normal;
-	text-align: right;
-	padding: 0;
-}
-
-.rtl .quotetitle .date {
-	text-align: left;
 }
 
 .codecontent {
@@ -338,8 +338,19 @@ fieldset {
 	font-size: 0.9em;
 	line-height: normal;
 	padding: 5px;
+	word-wrap: normal;
 	_height: 37px;
 	*min-height: 37px;
+}
+
+.codetitle, .quotetitle {
+	color: #333333;
+	font-size: 0.9em;
+	font-weight: bold;
+	min-height: 18px;
+	padding: 2px 4px;
+	_height: 22px;
+	_heig\ht: 18px;
 }
 
 .quotecontent {
@@ -347,11 +358,38 @@ fieldset {
 	color: #4B5C77;
 	line-height: 1.4em;
 	padding: 5px;
+	_width: 100%;
+	_width/**/: auto;
+}
+
+.quotetitle .cite {
+	border-width: 0;
+	font-weight: bold;
+	padding: 0;
+}
+
+.quotetitle .date {
+	border-width: 0;
+	font-weight: normal;
+	padding: 0;
+	text-align: right;
+}
+
+.rtl .quotetitle .date {
+	text-align: left;
 }
 
 
 /* Private messages
- ------------------ */
+ -------------------- */
+.pm-foe-colour {
+	border-color: #000000;
+}
+
+.pm-friend-colour {
+	border-color: #0000FF;
+}
+
 .pm-marked-colour {
 	border-color: #FF0000;
 }
@@ -360,47 +398,39 @@ fieldset {
 	border-color: #C0C0C0;
 }
 
-.pm-friend-colour {
-	border-color: #0000FF;
-}
-
-.pm-foe-colour {
-	border-color: #000000;
-}
-
 
 /* Misc
  ------------ */
-img {
-	border: none;
-}
-
 hr {
 	background-color: #C0C0C0;
 	border-width: 0;
+	color: #C0C0C0;
+	display: block;
 	height: 1px;
-	*color: #C0C0C0;
-	*display: block;
-	*overflow: hidden;
-	*margin: -7px 0;
+	margin: 2px 0;
+	*margin: -5px 0;
+}
+
+img {
+	border-width: 0;
 }
 
 #notification_list, #quick_links_list, #topictools_list, #user_list {
 	background-color: #FFFFFF;
-	border: 2px solid #808080;
-	line-height: 2.2em;
-	padding: 0 4px;
+	border-color: #808080;
+	position: absolute;
 }
 
 #notification_scroll {
-	border: 1px solid #808080;
+	border-color: #808080;
+	border-style: solid;
+	border-width: 1px 0;
 }
 
-#notification_scroll div {
-	border-bottom: 1px solid #808080;
-	line-height: 1.4em;
-	padding: 4px;
-	word-wrap: break-word;
+#quick_links_list, #topictools_list, #user_list {
+	line-height: 2.2em;
+	padding: 0 4px;
+	white-space: nowrap;
 }
 
 .bg1 {
@@ -430,8 +460,25 @@ hr {
 	width: 1em;
 }
 
+.notification {
+	border-top: 1px solid #808080;
+	line-height: 1.4em;
+	padding: 4px;
+	word-wrap: break-word;
+}
+
 .nowrap {
 	white-space: nowrap;
+}
+
+.separator {
+	border-bottom: 1px solid #C0C0C0;
+}
+
+.spacer {
+	background-color: #FFFFFF;
+	height: 4px;
+	_overflow: hidden;
 }
 
 .username-coloured {

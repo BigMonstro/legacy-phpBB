@@ -8,53 +8,41 @@
 
 <style type="text/css">
 <!--
-
-<!-- IF S_CONTENT_DIRECTION eq "rtl" -->
-a {
-	direction: rtl;
-	unicode-bidi: embed;
+big {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14pt;
 }
 
-<!-- ENDIF -->body {
-	font-family: Verdana,serif;
-	font-size: 10pt;
+big big {
+	font-size: 18pt;
+}
+
+code, kbd, pre, samp {
+	font-family: "Courier New", Courier, monospace;
 }
 
 img {
-	border: 0;
+	border-width: 0;
 }
 
-td {
-	font-family: Verdana,serif;
+small {
+	font-size: 8pt;
+}
+
+table {
+	font-family: Verdana, Geneva, sans-serif;
 	font-size: 10pt;
 	line-height: 150%;
 }
 
 .codecontent pre {
 	direction: ltr;
-	font-family: "Courier New", Courier, monospace;
 	font-size: 9pt;
 	line-height: normal;
 }
 
 .codetitle {
 	display: none;
-}
-
-.quotation {
-	margin: 10px 5px;
-}
-
-.quotecontent {
-	border: 1px solid #999999;
-	display: block;
-	padding: 5px;
-}
-
-.quotetitle .cite, .quotetitle .date {
-	font-style: italic;
-	font-weight: bold;
-	padding: 0;
 }
 
 .emoji {
@@ -64,95 +52,71 @@ td {
 	width: 1em;
 }
 
-.forum {
-	font-family: Arial,Helvetica,sans-serif;
-	font-weight: bold;
-	font-size: 18pt;
-}
-
-.topic {
-	font-family: Arial,Helvetica,sans-serif;
-	font-size: 14pt;
+.quotetitle .cite, .quotetitle .date {
+	font-style: italic;
 	font-weight: bold;
 }
 
-.genmed {
-	font-size: 8pt;
-}
-
-hr {
-	color: #808080;
-	height: 3px;
-	border-style: solid;
-}
-
-hr.sep {
-	color: #C0C0C0;
-	height: 1px;
-	border-style: dashed;
+.rtl a {
+	direction: rtl;
+	unicode-bidi: embed;
 }
 //-->
 </style>
 <!-- EVENT ucp_pm_viewmessage_print_head_append -->
 </head>
-<body>
 
-<table width="85%" cellspacing="3" align="center">
+<body class="{S_CONTENT_DIRECTION}">
+
+<table align="center" cellspacing="3" width="85%">
 <tr>
-	<td colspan="2" align="center"><span class="forum">{SITENAME}</span><br /><span class="genmed">{L_PRIVATE_MESSAGING}</span></td>
+	<td align="center" colspan="2"><big><big><b>{SITENAME}</b></big></big><br /><small>{L_PRIVATE_MESSAGING}</small></td>
 </tr>
 <tr>
 	<td colspan="2"><br /></td>
 </tr>
 <tr>
-	<td><span class="topic">{SUBJECT}</span><br /></td>
-	<td align="{S_CONTENT_FLOW_END}" class="genmed" valign="bottom">{PAGE_NUMBER}</td>
+	<td><big><b>{SUBJECT}</b></big><br /></td>
+	<td align="{S_CONTENT_FLOW_END}" valign="bottom"><small>{PAGE_NUMBER}</small></td>
 </tr>
 </table>
 
-<hr width="85%" />
-
-<table width="85%" cellspacing="3" align="center">
+<table align="center" cellspacing="3" width="85%">
 <tr>
-	<td width="10%" nowrap="nowrap">{L_PM_FROM}{L_COLON}&nbsp;</td>
-	<td><b>{MESSAGE_AUTHOR}</b> [ {SENT_DATE} ]</td>
+	<td nowrap="nowrap">{L_PM_FROM}{L_COLON}&nbsp;</td>
+	<td width="100%"><b>{MESSAGE_AUTHOR}</b> [ {SENT_DATE} ]</td>
 </tr>
-
 <!-- IF S_TO_RECIPIENT -->
 	<tr>
-		<td width="10%" nowrap="nowrap">{L_TO}{L_COLON}</td>
-		<td>
-		<!-- BEGIN to_recipient -->
-			<span<!-- IF to_recipient.IS_GROUP --> class="sep"<!-- ENDIF -->>{to_recipient.NAME}</span>&nbsp;
-		<!-- END to_recipient -->
-		</td>
+		<td nowrap="nowrap">{L_TO}{L_COLON}&nbsp;</td>
+		<td width="100%"><!-- BEGIN to_recipient -->{to_recipient.NAME}&nbsp; <!-- END to_recipient --></td>
 	</tr>
 <!-- ENDIF -->
-
 <!-- IF S_BCC_RECIPIENT -->
 	<tr>
-		<td width="10%" nowrap="nowrap">{L_BCC}{L_COLON}</td>
-		<td>
-		<!-- BEGIN bcc_recipient -->
-			<!-- IF bcc_recipient.COLOUR --><span style="color:{bcc_recipient.COLOUR}"><!-- ELSE --><span<!-- IF bcc_recipient.IS_GROUP --> class="sep"<!-- ENDIF -->><!-- ENDIF -->{bcc_recipient.NAME}</span>&nbsp;
-		<!-- END bcc_recipient -->
-		</td>
+		<td nowrap="nowrap">{L_BCC}{L_COLON}&nbsp;</td>
+		<td width="100%"><!-- BEGIN bcc_recipient -->{bcc_recipient.NAME}&nbsp; <!-- END bcc_recipient --></td>
 	</tr>
 <!-- ENDIF -->
+</table>
+
+<hr noshade="noshade" size="1" width="85%" />
+
+<table align="center" cellspacing="3" width="85%">
 <tr>
-	<td colspan="2"><hr class="sep" />{MESSAGE}</td>
+	<td>{MESSAGE}</td>
 </tr>
 </table>
 
-<hr width="85%" />
+<hr size="3" width="85%" />
 
-<table width="85%" cellspacing="3" align="center">
+<table align="center" cellspacing="3" width="85%">
 <tr>
-	<td class="genmed">{PAGE_NUMBER}</td>
-	<td align="{S_CONTENT_FLOW_END}" class="genmed">{S_TIMEZONE}</td>
+	<td><small>{PAGE_NUMBER}</small></td>
+	<td align="{S_CONTENT_FLOW_END}"><small>{S_TIMEZONE}</small></td>
 </tr>
 <tr>
-	<td colspan="2" align="center" class="genmed">Powered by phpBB&reg; Forum Software &copy; phpBB Limited<br />https://www.phpbb.com/</td>
+	<td align="center" colspan="2"><small>Powered by phpBB&reg; Forum Software &copy; phpBB Limited<br />https://www.phpbb.com/</small></td>
 </tr>
 </table>
 

@@ -7,13 +7,7 @@ var imageTag = false;
 var theSelection = false;
 var bbcodeEnabled = true;
 
-// Check for Browser & Platform for PC & IE specific bits
-// More details from: http://www.mozilla.org/docs/web-developer/sniffer/browser_type.html
-var clientPC = navigator.userAgent.toLowerCase(); // Get client info
-var clientVer = parseInt(navigator.appVersion, 10); // Get browser version
-
-var is_ie = ((clientPC.indexOf('msie') !== -1) && (clientPC.indexOf('opera') === -1));
-var is_win = ((clientPC.indexOf('win') !== -1) || (clientPC.indexOf('16bit') !== -1));
+var is_ie = ((typeof document.all !== 'undefined') && (typeof window.opera === 'undefined'));
 var baseHeight;
 
 /**
@@ -46,19 +40,19 @@ function initInsertions() {
 			document.body.focus();
 		}
 	}
-	
-	if (textarea === document.forms[form_name].elements[text_name]) {
+
+	if (document.forms[form_name]) {
 		// Allow to use tab character when typing code
 		if (window.InstallTrigger) {
 			textarea.onkeypress = function(event) {
 				if ((event.keyCode==9 || event.which==9) && inCodeTag() && !event.altKey && !event.ctrlKey && !event.shiftKey && !event.metaKey) {
-					event.preventDefault ? event.preventDefault() : (event.returnValue = false); bbfontstyle("\t","");
+					event.preventDefault ? event.preventDefault() : (event.returnValue = false); bbfontstyle('\t','',true);
 				}
 			}
 		} else {
 			textarea.onkeydown = function(e) {
 				if ((event.keyCode==9 || event.which==9) && inCodeTag() && !event.altKey && !event.ctrlKey && !event.shiftKey && !event.metaKey) {
-					event.preventDefault ? event.preventDefault() : (event.returnValue = false); bbfontstyle("\t","");
+					event.preventDefault ? event.preventDefault() : (event.returnValue = false); bbfontstyle('\t','',true);
 				}
 			}
 		}
@@ -75,28 +69,34 @@ function bbstyle(bbnumber) {
 }
 
 /**
-* Apply bbcodes
+* Apply bbcode
 */
-function bbfontstyle(bbopen, bbclose) {
+function bbfontstyle(bbopen, bbclose, appendText) {
 	theSelection = false;
 
 	var textarea = document.forms[form_name].elements[text_name];
 
 	textarea.focus();
 
-	if ((clientVer >= 4) && is_ie && is_win && document.getElementById) {
+	if (document.all && document.uniqueID) {
 		// Get text selection
 		theSelection = document.selection.createRange().text;
 
 		if (theSelection) {
 			// Add tags around selection
-			document.selection.createRange().text = bbopen + theSelection + bbclose;
+			if (appendText) {
+				document.selection.createRange().text = '';
+			} else {
+				document.selection.createRange().text = bbopen + theSelection + bbclose;
+			}
 			textarea.focus();
 			theSelection = '';
-			return;
+			if (!appendText) {
+				return;
+			}
 		}
 	} else if (textarea.selectionEnd && (textarea.selectionEnd - textarea.selectionStart > 0)) {
-		mozWrap(textarea, bbopen, bbclose);
+		mozWrap(textarea, bbopen, bbclose, appendText);
 		textarea.focus();
 		theSelection = '';
 		return;
@@ -104,10 +104,10 @@ function bbfontstyle(bbopen, bbclose) {
 
 	//The new position for the cursor after adding the bbcode
 	if (document.getElementById) {
-	var caret_pos = getCaretPosition(textarea).start;
-	var new_pos = caret_pos + bbopen.length;
+		var caret_pos = getCaretPosition(textarea).start;
+		var new_pos = caret_pos + bbopen.length;
 	}
-	
+
 	// Open tag
 	insert_text(bbopen + bbclose);
 
@@ -181,7 +181,7 @@ function attachInline(index, filename) {
 /**
 * Add quote text to message
 */
-function addquote(post_id, username, l_wrote, attributes) {
+function addquote(post_id, username, l_wrote, attributes, data) {
 	var message_name = 'message_' + post_id;
 	var theSelection = '';
 	var divarea = false;
@@ -191,6 +191,7 @@ function addquote(post_id, username, l_wrote, attributes) {
 		// Backwards compatibility
 		l_wrote = 'wrote';
 	}
+
 	if (typeof attributes !== 'object') {
 		attributes = {};
 	}
@@ -208,14 +209,20 @@ function addquote(post_id, username, l_wrote, attributes) {
 		theSelection = window.getSelection().toString();
 	} else if (document.getSelection && !is_ie) {
 		theSelection = document.getSelection();
-	} else if (document.selection) {
+	} else if (document.selection && document.getElementById) {
 		theSelection = document.selection.createRange().text;
 	}
 
 	if (theSelection === '' || typeof theSelection === 'undefined' || theSelection === null) {
-		if (divarea.innerHTML && document.getElementById) {
-			theSelection = divarea.innerHTML.replace(/<br>/ig, '\n');
+		if (data || (divarea.innerHTML && document.getElementById)) {
+			if (data) {
+				var content = divarea.getAttribute("data-content");
+			} else {
+				var content = divarea.innerHTML;
+			}
+			theSelection = content.replace(/<br>/ig, '\n');
 			theSelection = theSelection.replace(/<br\/>/ig, '\n');
+			theSelection = theSelection.replace(/<br \/>/ig, '\n');
 			theSelection = theSelection.replace(/&lt\;/ig, '<');
 			theSelection = theSelection.replace(/&gt\;/ig, '>');
 			theSelection = theSelection.replace(/&amp\;/ig, '&');
@@ -256,7 +263,7 @@ function generateQuote(text, attributes) {
 			var value = attributes[name];
 			quote += ' ' + name + '=' + formatAttributeValue(value.toString());
 		}
-	}	
+	}
 	quote += ']';
 	var newline = ((quote + text + '[/quote]').length > 80 || text.indexOf('\n') > -1) ? '\n' : '';
 	quote += newline + text + newline + '[/quote]';
@@ -309,19 +316,31 @@ function split_lines(text) {
 /**
 * From http://www.massless.org/mozedit/
 */
-function mozWrap(txtarea, open, close) {
+function mozWrap(txtarea, open, close, appendText) {
 	var selLength = (typeof(txtarea.textLength) === 'undefined') ? txtarea.value.length : txtarea.textLength;
 	var selStart = txtarea.selectionStart;
 	var selEnd = txtarea.selectionEnd;
 	var scrollTop = txtarea.scrollTop;
 
 	var s1 = (txtarea.value).substring(0,selStart);
-	var s2 = (txtarea.value).substring(selStart, selEnd);
+
+	if (appendText) {
+		var s2 = '';
+	} else {
+		var s2 = (txtarea.value).substring(selStart, selEnd);
+	}
+
 	var s3 = (txtarea.value).substring(selEnd, selLength);
 
 	txtarea.value = s1 + open + s2 + close + s3;
 	txtarea.selectionStart = selStart + open.length;
-	txtarea.selectionEnd = selEnd + open.length;
+
+	if (appendText) {
+		txtarea.selectionEnd = txtarea.selectionStart;
+	} else {
+		txtarea.selectionEnd = selEnd + open.length;
+	}
+
 	txtarea.focus();
 	txtarea.scrollTop = scrollTop;
 
@@ -393,20 +412,17 @@ function colorPalette() {
 	numberList[3] = 'BF';
 	numberList[4] = 'FF';
 
-	document.writeln('<table width="60" cellspacing="1" class="main" style="font-size:6px; _line-height:normal">');
+	document.writeln('<table width="61" cellspacing="1" class="main">');
 
-	for (r = 0; r < 5; r++)
-	{
-		for (g = 0; g < 5; g++)
-		{			
+	for (r = 0; r < 5; r++) {
+		for (g = 0; g < 5; g++) {
 				document.writeln('<tr>');
 
-			for (b = 0; b < 5; b++)
-			{
+			for (b = 0; b < 5; b++) {
 				color = String(numberList[r]) + String(numberList[g]) + String(numberList[b]);
-				document.write('<td style="background-color: #' + color + '; padding:0" height="10" width="11">');
-				document.write('<a style="height:100%;width:100%;display:block" href="#" onclick="bbfontstyle(\'[color=#' + color + ']\', \'[/color]\'); return false;" title="#' + color + '"><div style="cursor:pointer; _cursor:hand; height:100%; width:100%"></div></a>');
-				document.writeln('</td>');
+				document.write('<td style="background-color: #' + color + '; height: 10px; padding: 0; width: 11px">');
+				document.write('<a style="height: 100%; width: 100%; display: block; _overflow: hidden" href="#" onclick="bbfontstyle(\'[color=#' + color + ']\', \'[/color]\'); return false;" title="#' + color + '"><div style="cursor: inherit; *cursor: hand; height: 100%; width: 100%"></div></a>');
+				document.write('</td>');
 			}
 				document.writeln('</tr>');
 		}
@@ -444,7 +460,7 @@ function inCodeTag() {
 			} else if (document.all && window.opera) {
 				return false;
 			}
-			
+
 		n=n+5-count;
 		if (n<w) {
 			var y = e.search("\\[/code\\]");
@@ -490,5 +506,5 @@ function inCodeTag() {
 			str="[code]";
 		}
 	}
-		return false;
+	return false;
 }

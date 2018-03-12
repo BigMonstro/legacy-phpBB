@@ -1,33 +1,30 @@
 <!-- INCLUDE ucp_header.html -->
 
-<div id="pagecontent">
-
 <!-- INCLUDE ucp_pm_message_header.html -->
-<div style="padding: 2px"></div>
 
 <table class="main" width="100%" cellspacing="1">
 
 <tr class="bg1">
-	<td class="genmed" width="150"><b>{L_PM_SUBJECT}{L_COLON}</b></td>
-	<td class="gen">{SUBJECT}</td>
+	<td class="bigger" width="150"><b>{L_PM_SUBJECT}{L_COLON}</b></td>
+	<td class="big">{SUBJECT}</td>
 </tr>
 
 <tr class="bg1">
-	<td class="genmed"><b>{L_PM_FROM}{L_COLON}</b></td>
-	<td class="gen">{MESSAGE_AUTHOR_FULL}</td>
+	<td class="bigger"><b>{L_PM_FROM}{L_COLON}</b></td>
+	<td class="big">{MESSAGE_AUTHOR_FULL}</td>
 </tr>
 
 <tr class="bg1">
-	<td class="genmed"><b>{L_SENT_AT}{L_COLON}</b></td>
-	<td class="gen">{SENT_DATE}</td>
+	<td class="bigger"><b>{L_SENT_AT}{L_COLON}</b></td>
+	<td class="big">{SENT_DATE}</td>
 </tr>
 
 <!-- IF S_TO_RECIPIENT -->
 	<tr class="bg1">
-		<td class="genmed"><b>{L_TO}{L_COLON}</b></td>
-		<td class="gen">
+		<td class="bigger"><b>{L_TO}{L_COLON}</b></td>
+		<td class="big">
 		<!-- BEGIN to_recipient -->
-			<!-- IF to_recipient.IS_GROUP --><a href="{to_recipient.U_VIEW}">{to_recipient.NAME}</a><!-- ELSE -->{to_recipient.NAME_FULL}<!-- ENDIF -->&nbsp;
+			<!-- IF to_recipient.IS_GROUP --><b><a href="{to_recipient.U_VIEW}">{to_recipient.NAME}</a></b><!-- ELSE -->{to_recipient.NAME_FULL}<!-- ENDIF -->&nbsp;
 		<!-- END to_recipient -->
 		</td>
 	</tr>
@@ -35,19 +32,17 @@
 
 <!-- IF S_BCC_RECIPIENT -->
 	<tr class="bg1">
-		<td class="genmed"><b>{L_BCC}{L_COLON}</b></td>
-		<td class="gen">
+		<td class="bigger"><b>{L_BCC}{L_COLON}</b></td>
+		<td class="big">
 		<!-- BEGIN bcc_recipient -->
-			<!-- IF bcc_recipient.IS_GROUP --><a href="{bcc_recipient.U_VIEW}">{bcc_recipient.NAME}</a><!-- ELSE -->{bcc_recipient.NAME_FULL}<!-- ENDIF -->&nbsp;
+			<!-- IF bcc_recipient.IS_GROUP --><b><a href="{bcc_recipient.U_VIEW}">{bcc_recipient.NAME}</a></b><!-- ELSE -->{bcc_recipient.NAME_FULL}<!-- ENDIF -->&nbsp;
 		<!-- END bcc_recipient -->
 		</td>
 	</tr>
 <!-- ENDIF -->
 </table>
 
-<div style="padding: 2px"></div>
-
-<table class="main" width="100%" cellspacing="1">
+<table class="main" width="100%" cellspacing="1" style="margin-top: 4px">
 
 <tr>
 	<th>{L_MESSAGE}</th>
@@ -55,17 +50,17 @@
 
 <tr class="bg1">
 	<td valign="top">
-		<table width="100%" cellspacing="5">
+		<table cellspacing="5" width="100%">
 		<tr>
 			<td>
-				<div class="postbody">{MESSAGE}</div>
+				<div class="postbody"><span class="content">{MESSAGE}</span></div>
 
 				<!-- IF S_HAS_ATTACHMENTS -->
 					<br />
 							
 					<table class="main" width="100%" cellspacing="1">
 					<tr>
-						<td class="bg3"><b class="genmed">{L_ATTACHMENTS}</b></td>
+						<td class="bg3"><b class="bigger">{L_ATTACHMENTS}</b></td>
 					</tr>
 					<!-- BEGIN attachment -->
 						<tr class="postbody">
@@ -79,17 +74,17 @@
 					<br /><p class="error">{L_DOWNLOAD_NOTICE}</p>
 				<!-- ENDIF -->
 				<!-- IF SIGNATURE -->
-					<span class="postbody"><p>_________________</p>{SIGNATURE}</span>
+					<span class="postbody"><span class="signature"><p>_________________</p>{SIGNATURE}</span></span>
 				<!-- ENDIF -->
 				<!-- IF EDITED_MESSAGE -->
-					<span class="genmed">{EDITED_MESSAGE}</span>
+					<span class="bigger">{EDITED_MESSAGE}</span>
 				<!-- ENDIF -->
 
-				<!-- IF not S_HAS_ATTACHMENTS --><br clear="all" /><br /><!-- ENDIF -->
+				<br clear="all" /><br />
 
 				<table width="100%" cellspacing="0">
-				<tr valign="middle">
-					<td class="genmed" align="{S_CONTENT_FLOW_END}">
+				<tr>
+					<td class="bigger" align="{S_CONTENT_FLOW_END}">
 						<!-- IF U_DELETE --><a href="{U_DELETE}"><img src="{T_THEME_PATH}/images/icon_post_delete.gif" width="20" height="20" alt="[X]" border="0" title="{L_DELETE_MESSAGE}" /></a> <!-- ENDIF -->
 						<!-- IF U_REPORT --><a href="{U_REPORT}"><img src="{T_THEME_PATH}/images/icon_post_report.gif" width="20" height="20" alt="[!]" border="0" title="{L_REPORT_PM}" /></a> <!-- ENDIF -->
 					</td>
@@ -104,15 +99,15 @@
 <tr class="bg1">
 	<td>
 		<table width="100%" cellspacing="0"><tr>
-			<td class="genmed">
-				<!-- IF U_MESSAGE_AUTHOR --><a href="{U_MESSAGE_AUTHOR}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_user_profile.gif" width="72" height="20" alt="[{L_READ_PROFILE}]" border="0" title="{L_READ_PROFILE}{L_COLON} {MESSAGE_AUTHOR}" /></a> <!-- ENDIF -->
-				<!-- IF U_EMAIL --><a href="{U_EMAIL}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_contact_email.gif" width="72" height="20" alt="[{L_EMAIL}]" border="0" title="{L_SEND_EMAIL}" /></a> <!-- ENDIF -->
+			<td>
+				<!-- IF U_MESSAGE_AUTHOR --><a class="button" href="{U_MESSAGE_AUTHOR}" title="{L_READ_PROFILE}{L_COLON} {MESSAGE_AUTHOR}">{L_READ_PROFILE}</a> <!-- ENDIF -->
+				<!-- IF U_EMAIL --><a class="button" href="{U_EMAIL}" title="{L_SEND_EMAIL}">{L_EMAIL}</a> <!-- ENDIF -->
 			</td>
-			<td align="{S_CONTENT_FLOW_END}" class="genmed">
+			<td align="{S_CONTENT_FLOW_END}">
 				<!-- EVENT ucp_pm_viewmessage_post_buttons_before -->
-				<!-- IF U_EDIT --><a href="{U_EDIT}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_post_edit.gif" width="90" height="20" alt="[{L_BUTTON_EDIT}]" border="0" title="{L_POST_EDIT_PM}" /></a> <!-- ENDIF -->
-				<!-- IF U_QUOTE --><a href="{U_QUOTE}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/icon_post_quote.gif" width="90" height="20" alt="[{L_BUTTON_QUOTE}]" border="0" title="{L_POST_QUOTE_PM}" /></a> <!-- ENDIF -->
-				<!-- IF U_POST_REPLY_PM --><a href="{U_POST_REPLY_PM}"><img src="{T_THEME_PATH}/{T_THEME_LANG_NAME}/button_pm_reply.gif" width="90" height="20" alt="[{L_BUTTON_PM_REPLY}]" border="0" title="{L_POST_REPLY_PM}" /></a><!-- ENDIF -->
+				<!-- IF U_EDIT --><a class="button" href="{U_EDIT}" title="{L_POST_EDIT_PM}">{L_BUTTON_EDIT}</a> <!-- ENDIF -->
+				<!-- IF U_QUOTE --><a class="button" href="{U_QUOTE}" title="{L_POST_QUOTE_PM}">{L_BUTTON_QUOTE}</a> <!-- ENDIF -->
+				<!-- IF U_POST_REPLY_PM --><a class="button" href="{U_POST_REPLY_PM}" title="{L_POST_REPLY_PM}">{L_BUTTON_PM_REPLY}</a><!-- ENDIF -->
 				<!-- EVENT ucp_pm_viewmessage_post_buttons_after -->
 			</td>
 		</tr></table>
@@ -120,13 +115,8 @@
 </tr>
 </table>
 
-<div style="padding: 2px"></div>
 <!-- INCLUDE ucp_pm_message_footer.html -->
 
-<br clear="all" />
-
-</div>
-
-<!-- IF S_DISPLAY_HISTORY --></td></tr></table></td></tr></table><table width="100%" cellspacing="0"><tr><td width="19"></td><td><!-- INCLUDE ucp_pm_history.html --></td><td width="19"></td></tr></table><table width="100%" cellspacing="0"><tr><td width="19"></td><td></td><td width="19"></td></tr><tr><td width="19"></td><td><!-- ENDIF -->
+<!-- IF S_DISPLAY_HISTORY --></td></tr></table><br clear="all" /><!-- INCLUDE ucp_pm_history.html --><!-- DEFINE $HISTORY = 1 --><!-- ENDIF -->
 
 <!-- INCLUDE ucp_footer.html -->

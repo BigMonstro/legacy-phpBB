@@ -26,7 +26,7 @@ function ResetTimeZone() {
 	}
 }
 
-if (((document.compatMode && !window.opera) || (document.querySelector && window.opera)) && (document.getElementById(AltId) && document.getElementById(RefId))) {
+if (((document.compatMode && !window.opera) || document.getElementsByClassName) && document.getElementById(AltId) && document.getElementById(RefId)) {
 	document.getElementById(AltId).style.display = 'block';
 	var RefNumber = document.getElementById(RefId).selectedIndex;
 	var RefSelect = document.getElementById(RefId).cloneNode(true);

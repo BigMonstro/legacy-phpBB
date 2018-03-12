@@ -9,20 +9,20 @@
 	</tr>
 	<!-- IF S_SENT_JABBER -->
         <tr>
-            <td class="bg1" colspan="2" align="center"><span class="gen">{L_IM_SENT_JABBER}</span></td>
+            <td class="bg1" colspan="2" align="center"><span class="big">{L_IM_SENT_JABBER}</span></td>
         </tr>
 	<!-- ENDIF -->
 	<tr>
-		<td class="bg3" colspan="2"><span class="genmed">{L_SEND_IM_EXPLAIN}</span></td>
+		<td class="bg3" colspan="2"><span class="bigger">{L_SEND_IM_EXPLAIN}</span></td>
 	</tr>
 	<tr>
-		<td class="bg1"><b class="genmed">{L_IM_RECIPIENT}{L_COLON} </b></td>
-		<td class="bg2"><span class="gen"><b>{USERNAME}</b><!-- IF S_NO_SEND_JABBER --> [ {IM_CONTACT} ]<!-- ENDIF --></span></td>
+		<td class="bg1"><b class="bigger">{L_IM_RECIPIENT}{L_COLON} </b></td>
+		<td class="bg2"><span class="big"><b>{USERNAME}</b><!-- IF S_NO_SEND_JABBER --> [ {IM_CONTACT} ]<!-- ENDIF --></span></td>
 	</tr>
 
 	<!-- IF S_SEND_JABBER -->
 		<tr>
-			<td class="bg1"><b class="genmed">{L_IM_MESSAGE}{L_COLON} </b></td>
+			<td class="bg1"><b class="bigger">{L_IM_MESSAGE}{L_COLON} </b></td>
 			<td class="bg2"><textarea name="message" rows="5" cols="45"></textarea></td>
 		</tr>
 		<tr>
@@ -30,7 +30,7 @@
 		</tr>
 	<!-- ELSEIF S_NO_SEND_JABBER -->
 		<tr>
-			<td class="bg1" colspan="2"><span class="genmed">{L_IM_NO_JABBER}</span></td>
+			<td class="bg1" colspan="2"><span class="bigger">{L_IM_NO_JABBER}</span></td>
 		</tr>
 	<!-- ENDIF -->
 
@@ -38,6 +38,6 @@
 {S_FORM_TOKEN}
 </form>
 
-<br /><a class="genmed" href="#" onclick="window.close(); return false;">{L_CLOSE_WINDOW}</a>
+<br /><a class="bigger" href="#" onclick="window.close(); return false;">{L_CLOSE_WINDOW}</a>
 
 <!-- INCLUDE simple_footer.html -->

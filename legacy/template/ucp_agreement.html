@@ -18,10 +18,10 @@
 // ]]>
 </script>
 
-	<form method="post" action="{S_UCP_ACTION}" id="register">
+	<form name="register" method="post" action="{S_UCP_ACTION}">
 		<table width="100%" cellspacing="0">
 			<tr>
-				<td align="{S_CONTENT_FLOW_END}" style="margin: 1px"><span class="genmed">{L_LANGUAGE}{L_COLON} </span><select name="lang" id="lang" onchange="change_language(this.value); return false;">{S_LANG_OPTIONS}</select></td>
+				<td align="{S_CONTENT_FLOW_END}"><span class="bigger">{L_LANGUAGE}{L_COLON} </span><select name="lang" id="lang" onchange="change_language(this.value); return false;">{S_LANG_OPTIONS}</select></td>
 			</tr>
 		</table>
 		{S_HIDDEN_FIELDS}
@@ -32,18 +32,18 @@
 
 	<table class="main" width="100%" cellspacing="1">
 	<tr>
-		<th height="25">{SITENAME} - {L_REGISTRATION}</th>
+		<th>{SITENAME} - {L_REGISTRATION}</th>
 	</tr>
 	<tr>
 		<td class="bg1" align="center">
 			<table width="90%" cellspacing="2" align="center">
 			<tr>
 				<!-- IF S_SHOW_COPPA -->
-					<td class="gen" align="center"><br />{L_COPPA_BIRTHDAY}<br /><br /><a href="{U_COPPA_NO}">{L_COPPA_NO}</a> :: <a href="{U_COPPA_YES}">{L_COPPA_YES}</a><br /><br /></td>
+					<td class="big" align="center"><br />{L_COPPA_BIRTHDAY}<br /><br /><a href="{U_COPPA_NO}">{L_COPPA_NO}</a> :: <a href="{U_COPPA_YES}">{L_COPPA_YES}</a><br /><br /></td>
 				<!-- ELSE -->
 					<td>
 						<!-- EVENT ucp_agreement_terms_before -->
-						<span class="genmed"><br />{L_TERMS_OF_USE}<br /><br /></span>
+						<span class="bigger"><br />{L_TERMS_OF_USE}<br /><br /></span>
 						<!-- EVENT ucp_agreement_terms_after -->
 						<div align="center">
 							<input class="button2" type="submit" id="agreed" name="agreed" value="{L_AGREE}" /><br /><br />
@@ -64,15 +64,15 @@
 
 	<table class="main" width="100%" cellspacing="1">
 	<tr>
-		<th height="25">{SITENAME} - {AGREEMENT_TITLE}</th>
+		<th>{SITENAME} - {AGREEMENT_TITLE}</th>
 	</tr>
 	<tr>
 		<td class="bg1" align="center">
 			<table width="90%" cellspacing="2" align="center">
 			<tr>
 				<td>
-					<span class="genmed"><br />{AGREEMENT_TEXT}<br /><br /></span>
-					<div align="center" class="genmed">
+					<span class="bigger"><br />{AGREEMENT_TEXT}<br /><br /></span>
+					<div align="center" class="bigger">
 						<a href="{U_BACK}">{L_BACK}</a>
 					</div>
 				</td>
@@ -83,11 +83,5 @@
 	</table>
 
 <!-- ENDIF -->
-
-<br clear="all" />
-
-<!-- INCLUDE breadcrumbs.html -->
-
-<br clear="all" />
 
 <!-- INCLUDE overall_footer.html -->

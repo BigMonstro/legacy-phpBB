@@ -2,13 +2,13 @@
 
 <table width="100%" cellspacing="1" class="main">
 <tr>
-	<th colspan="2">{L_POST}</th>
+	<th colspan="2">{L_MCP_WARN_POST}</th>
 </tr>
 <tr>
 	<td class="bg1" align="center">
 		<table cellspacing="1">
 		<tr>
-			<td class="gen" align="center"><!-- IF USER_COLOR --><b style="color: #{USER_COLOR}"><!-- ELSE --><b><!-- ENDIF -->{USERNAME}</b></td>
+			<td class="big" align="center"><!-- IF USER_COLOR --><b style="color: #{USER_COLOR}"><!-- ELSE --><b><!-- ENDIF -->{USERNAME}</b></td>
 		</tr>
 		<tr>
 			<td align="center"><!-- IF AVATAR_IMG -->{AVATAR_IMG}<!-- ELSE --><img src="{T_THEME_PATH}/images/no_avatar.gif" width="100" height="100" alt="" /><!-- ENDIF --></td>
@@ -16,12 +16,36 @@
 		</table>
 	</td>
 	<td class="bg1">
-		<span class="gen">{POST}</span>
+		<table width="100%" cellspacing="1">
+		<tr class="big">
+			<td align="{S_CONTENT_FLOW_END}" width="35%">{L_JOINED}{L_COLON} </td>
+			<td width="65%"><b>{JOINED}</b></td>
+		</tr>
+		<tr class="big">
+			<td align="{S_CONTENT_FLOW_END}">{L_TOTAL_POSTS}{L_COLON} </td>
+			<td><b>{POSTS}</b></td>
+		</tr>
+		<tr class="big">
+			<td align="{S_CONTENT_FLOW_END}">{L_WARNINGS}{L_COLON} </td>
+			<td><b>{WARNINGS}</b></td>
+		</tr>
+		</table>
 	</td>
 </tr>
 </table>
 
-<br clear="all" /><br />
+<br clear="all" />
+
+<table width="100%" cellspacing="1" class="main">
+<tr>
+	<th>{L_POST_DETAILS}</th>
+</tr>
+<tr class="bg1">
+	<td><table cellspacing="5" width="100%"><tr><td><div class="postbody"><span class="content">{POST}</span><br /><br /></div></td></tr></table></td>
+</tr>
+</table>
+
+<br clear="all" />
 
 <form method="post" name="mcp" action="{U_POST_ACTION}">
 
@@ -32,14 +56,14 @@
 	<th>{L_ADD_WARNING}</th>
 </tr>
 <tr>
-	<td class="bg3" align="center"><span class="genmed">{L_ADD_WARNING_EXPLAIN}</span></td>
+	<td class="bg3" align="center"><span class="bigger">{L_ADD_WARNING_EXPLAIN}</span></td>
 </tr>
 <tr>
 	<td class="bg1" align="center"><textarea name="warning" rows="10" cols="76">{L_WARNING_POST_DEFAULT}</textarea></td>
 </tr>
 <!-- IF S_CAN_NOTIFY -->
 <tr>
-	<td class="bg1" align="center"><input type="checkbox" name="notify_user" checked="checked" /><span class="genmed">{L_NOTIFY_USER_WARN}</span></td>
+	<td class="bg1" align="center"><input type="checkbox" name="notify_user" checked="checked" /> <span class="bigger">{L_NOTIFY_USER_WARN}</span></td>
 </tr>
 <!-- ENDIF -->
 <tr>
@@ -51,7 +75,5 @@
 
 {S_FORM_TOKEN}
 </form>
-
-<br clear="all" /><br />
 
 <!-- INCLUDE mcp_footer.html -->

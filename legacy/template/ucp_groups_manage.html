@@ -14,7 +14,7 @@
 		<th colspan="2">{L_USERGROUPS}</th>
 	</tr>
 	<tr>
-		<td class="bg1" colspan="2"><span class="genmed">{L_GROUPS_EXPLAIN}</span></td>
+		<td class="bg1" colspan="2"><span class="bigger">{L_GROUPS_EXPLAIN}</span></td>
 	</tr>
 
 	<tr>
@@ -22,7 +22,7 @@
 	</tr>
 	<tr>
 		<td class="bg1" width="35%"><b><label<!-- IF not S_SPECIAL_GROUP --> for="group_name"<!-- ENDIF -->>{L_GROUP_NAME}{L_COLON}</label></b></td>
-		<td class="bg2"><!-- IF S_SPECIAL_GROUP --><b <!-- IF GROUP_COLOUR --> style="color: #{GROUP_COLOUR}"<!-- ENDIF -->>{GROUP_NAME}</b><!-- ENDIF --><input name="group_name" type="<!-- IF S_SPECIAL_GROUP -->hidden<!-- ELSE -->text<!-- ENDIF -->" id="group_name" value="{GROUP_INTERNAL_NAME}" /></td>
+		<td class="bg2"><!-- IF S_SPECIAL_GROUP --><b <!-- IF GROUP_COLOUR --> style="color: #{GROUP_COLOUR}"<!-- ENDIF -->>{GROUP_NAME}</b><!-- ENDIF --><input name="group_name" type="<!-- IF S_SPECIAL_GROUP -->hidden<!-- ELSE -->text" class="inputbox<!-- ENDIF -->" id="group_name" value="{GROUP_INTERNAL_NAME}" /></td>
 	</tr>
 	<tr>
 		<td class="bg1" width="35%"><b><label for="group_desc">{L_GROUP_DESC}{L_COLON}</label></b></td>
@@ -41,22 +41,21 @@
 			</td>
 		</tr>
 	<!-- ELSE -->
-		<tr style="display:none"><td><input name="group_type" type="hidden" value="{GROUP_TYPE_SPECIAL}" /></td></tr>
+		<tr style="display: none"><td colspan="2"><input name="group_type" type="hidden" value="{GROUP_TYPE_SPECIAL}" /></td></tr>
 	<!-- ENDIF -->
-
 	<tr>
 		<th colspan="2">{L_GROUP_SETTINGS_SAVE}</th>
 	</tr>
 	<tr>
 		<td class="bg1" width="35%"><b><label for="group_colour">{L_GROUP_COLOR}{L_COLON}</label></b><br />{L_GROUP_COLOR_EXPLAIN}</td>
 		<td class="bg2">
-			<input name="group_colour" type="text" class="inputbox" id="group_colour" value="{GROUP_COLOUR}" size="6" maxlength="6" /></td>
+			<input name="group_colour" type="text" class="inputbox" id="group_colour" value="{GROUP_COLOUR}" size="6" maxlength="6" />
+		</td>
 	</tr>
 	<tr>
 		<td class="bg1" width="35%"><b><label for="group_rank">{L_GROUP_RANK}{L_COLON}</label></b></td>
 		<td class="bg2"><select name="group_rank" id="group_rank">{S_RANK_OPTIONS}</select></td>
 	</tr>
-
 	<tr>
 		<th colspan="2">{L_GROUP_AVATAR}</th>
 	</tr>
@@ -70,7 +69,7 @@
 
 <!-- ELSEIF S_LIST -->
 
-	<h2>{L_GROUP_MEMBERS}</h2>
+	<h3>{L_GROUP_MEMBERS}</h3><br />
 
 	<p>{L_GROUP_MEMBERS_EXPLAIN}</p>
 
@@ -83,35 +82,35 @@
 		<th>{L_MARK}</th>
 	</tr>
 
-	<tr>
-		<td class="bg3" colspan="5"><b>{L_GROUP_LEAD}</b></td>
+	<tr class="bg3">
+		<td colspan="5"><b class="bigger">{L_GROUP_LEAD}</b></td>
 	</tr>
 	<!-- BEGIN leader -->
-		<!-- IF leader.S_ROW_COUNT is even --><tr class="bg1"><!-- ELSE --><tr class="bg2"><!-- ENDIF -->
-			<td>{leader.USERNAME_FULL}</td>
-			<td align="center"><!-- IF leader.S_GROUP_DEFAULT -->{L_YES}<!-- ELSE -->{L_NO}<!-- ENDIF --></td>
-			<td align="center">{leader.JOINED}</td>
-			<td align="center">{leader.USER_POSTS}</td>
-			<td align="center"></td>
+		<tr class="bigger"><!-- IF leader.S_ROW_COUNT is even --><!-- DEFINE $BG = 'bg1' --><!-- ELSE --><!-- DEFINE $BG = 'bg2' --><!-- ENDIF -->
+			<td class="{$BG}">{leader.USERNAME_FULL}</td>
+			<td align="center" class="{$BG}"><!-- IF leader.S_GROUP_DEFAULT -->{L_YES}<!-- ELSE -->{L_NO}<!-- ENDIF --></td>
+			<td align="center" class="{$BG}">{leader.JOINED}</td>
+			<td align="center" class="{$BG}">{leader.USER_POSTS}</td>
+			<td align="center" class="{$BG}"></td>
 		</tr>
 	<!-- END leader -->
 
 	<!-- BEGIN member -->
 		<!-- IF member.S_PENDING -->
-			<tr>
-				<td class="bg3" colspan="5"><b>{L_GROUP_PENDING}</b></td>
+			<tr class="bg3">
+				<td colspan="5"><b class="bigger">{L_GROUP_PENDING}</b></td>
 			</tr>
 		<!-- ELSEIF member.S_APPROVED -->
-			<tr>
-				<td class="bg3" colspan="5"><b>{L_GROUP_APPROVED}</b></td>
+			<tr class="bg3">
+				<td colspan="5"><b class="bigger">{L_GROUP_APPROVED}</b></td>
 			</tr>
 		<!-- ELSE -->
-			<!-- IF member.S_ROW_COUNT is even --><tr class="bg1"><!-- ELSE --><tr class="bg2"><!-- ENDIF -->
-				<td>{member.USERNAME_FULL}</td>
-				<td align="center"><!-- IF member.S_GROUP_DEFAULT -->{L_YES}<!-- ELSE -->{L_NO}<!-- ENDIF --></td>
-				<td align="center">{member.JOINED}</td>
-				<td align="center">{member.USER_POSTS}</td>
-				<td align="center"><input type="checkbox" name="mark[]" value="{member.USER_ID}" /></td>
+			<tr class="bigger"><!-- IF member.S_ROW_COUNT is even --><!-- DEFINE $BG = 'bg1' --><!-- ELSE --><!-- DEFINE $BG = 'bg2' --><!-- ENDIF -->
+				<td class="{$BG}">{member.USERNAME_FULL}</td>
+				<td align="center" class="{$BG}"><!-- IF member.S_GROUP_DEFAULT -->{L_YES}<!-- ELSE -->{L_NO}<!-- ENDIF --></td>
+				<td align="center" class="{$BG}">{member.JOINED}</td>
+				<td align="center" class="{$BG}">{member.USER_POSTS}</td>
+				<td align="center" class="{$BG}"><input type="checkbox" name="mark[]" value="{member.USER_ID}" /></td>
 			</tr>
 		<!-- ENDIF -->
 	<!-- BEGINELSE -->
@@ -124,33 +123,25 @@
 	</tr>
 	</table>
 
-	<div align="{S_CONTENT_FLOW_END}" style="padding-top:2px">
-		<!-- IF .pagination -->
-			<!-- INCLUDE pagination.html -->
-		<!-- ELSE -->
-			<b>{PAGE_NUMBER}</b>
-		<!-- ENDIF -->
-	</div>
-
-	<div align="{S_CONTENT_FLOW_END}"<!-- IF .pagination --> style="padding-top: 4px"<!-- ENDIF -->>
-		<b><a href="#" onclick="marklist('ucp', 'mark', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('ucp', 'mark', false); return false;">{L_UNMARK_ALL}</a></b>
-	</div>
-
-	<h2>{L_ADD_USERS}</h2>
-
-	<p>{L_ADD_USERS_UCP_EXPLAIN}</p>
+	<table width="100%" cellspacing="2">
+		<tr><td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('ucp', 'mark', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('ucp', 'mark', false); return false;">{L_UNMARK_ALL}</a></b></td></tr>
+		<!-- IF .pagination --><tr><td align="{S_CONTENT_FLOW_END}"><!-- INCLUDE pagination.html --></td></tr><!-- ENDIF -->
+	</table>
 
 	<table class="main" width="100%" cellspacing="1">
 	<tr>
 		<th colspan="2">{L_ADD_USERS}</th>
 	</tr>
 	<tr>
-		<td class="bg1"><b><label for="default">{L_USER_GROUP_DEFAULT}{L_COLON}</label></b><br />{L_USER_GROUP_DEFAULT_EXPLAIN}</td>
-		<td class="bg2"><input name="default" type="radio" value="1" /> {L_YES} &nbsp;<input name="default" type="radio" id="default" value="0" checked="checked" /> {L_NO}</td>
+		<td class="bg3" colspan="2"><span class="bigger">{L_ADD_USERS_UCP_EXPLAIN}</span></td>
 	</tr>
 	<tr>
-		<td class="bg1"><b><label for="usernames">{L_USERNAME}{L_COLON}</label></b><br />{L_USERNAMES_EXPLAIN}</td>
-		<td class="bg2"><textarea id="usernames" name="usernames" cols="40" rows="5"></textarea><br />[ <a href="{U_FIND_USERNAME}" onclick="find_username(this.href); return false;">{L_FIND_USERNAME}</a> ]</td>
+		<td class="bg1"><span class="bigger"><b><label for="default">{L_USER_GROUP_DEFAULT}{L_COLON}</label></b><br />{L_USER_GROUP_DEFAULT_EXPLAIN}</span></td>
+		<td class="bg2"><input name="default" type="radio" value="1" /> <span class="bigger">{L_YES}</span> &nbsp;<input name="default" type="radio" id="default" value="0" checked="checked" /> <span class="bigger">{L_NO}</span></td>
+	</tr>
+	<tr>
+		<td class="bg1"><span class="bigger"><b><label for="usernames">{L_USERNAME}{L_COLON}</label></b><br />{L_USERNAMES_EXPLAIN}</span></td>
+		<td class="bg2"><textarea id="usernames" name="usernames" cols="40" rows="5"></textarea><br /><span class="bigger">[ <a href="{U_FIND_USERNAME}" onclick="find_username(this.href); return false;">{L_FIND_USERNAME}</a> ]</span></td>
 	</tr>
 	<tr>
 		<td class="cat" colspan="2" align="center"><input class="button1" type="submit" name="addusers" value="{L_SUBMIT}" /></td>
@@ -164,33 +155,27 @@
 		<th colspan="3">{L_USERGROUPS}</th>
 	</tr>
 	<tr>
-		<td class="bg1" colspan="3"><span class="genmed">{L_GROUPS_EXPLAIN}</span></td>
+		<td class="bg1" colspan="3"><span class="bigger">{L_GROUPS_EXPLAIN}</span></td>
 	</tr>
 
 	<tr>
 		<th>{L_GROUP_DETAILS}</th>
 		<th colspan="2">{L_OPTIONS}</th>
 	</tr>
-	<tr>
-		<td class="bg3" colspan="3"><b class="genmed">{L_GROUP_LEADER}</b></td>
+	<tr class="bg3">
+		<td colspan="3"><b class="bigger">{L_GROUP_LEADER}</b></td>
 	</tr>
 	<!-- BEGIN leader -->
-		<!-- IF leader.S_ROW_COUNT is odd --><tr class="bg1"><!-- ELSE --><tr class="bg2"><!-- ENDIF -->
-
-		<td><b class="genmed"<!-- IF leader.GROUP_COLOUR --> style="color: #{leader.GROUP_COLOUR}"<!-- ENDIF -->>{leader.GROUP_NAME}</b><!-- IF leader.GROUP_DESC --><p class="forumdesc">{leader.GROUP_DESC}</p><!-- ENDIF --></td>
-		<td align="center"><a href="{leader.U_EDIT}">{L_EDIT}</a></td>
-		<td align="center"><a href="{leader.U_LIST}">{L_GROUP_LIST}</a></td>
-
-	</tr>
+		<tr><!-- IF leader.S_ROW_COUNT is odd --><!-- DEFINE $BG = 'bg1' --><!-- ELSE --><!-- DEFINE $BG = 'bg2' --><!-- ENDIF -->
+			<td class="{$BG}"><b class="bigger" style="<!-- IF leader.GROUP_COLOUR -->color: #{leader.GROUP_COLOUR}; <!-- ENDIF -->margin: 0"><a href="{leader.U_EDIT}">{leader.GROUP_NAME}</a></b><!-- IF leader.GROUP_DESC --><br /><span class="forumdesc">{leader.GROUP_DESC}</span><!-- ENDIF --></td>
+			<td align="center" class="{$BG}"><a class="bigger" href="{leader.U_EDIT}">{L_EDIT}</a></td>
+			<td align="center" class="{$BG}"><a class="bigger" href="{leader.U_LIST}">{L_GROUP_LIST}</a></td>
+		</tr>
 	<!-- BEGINELSE -->
 		<tr>
-			<td class="bg2" align="center" colspan="3"><b class="genmed">{L_NO_LEADERS}</b></td>
+			<td align="center" class="bg2" colspan="3"><b class="bigger">{L_NO_LEADERS}</b></td>
 		</tr>
 	<!-- END leader -->
-
-	<tr>
-		<td class="cat" align="{S_CONTENT_FLOW_END}" colspan="3">&nbsp;</td>
-	</tr>
 	</table>
 
 <!-- ENDIF -->

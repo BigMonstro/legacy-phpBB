@@ -5,7 +5,7 @@
 		<th colspan="{NOTIFICATION_TYPES_COLS}">{TITLE}</th>
 	</tr>
 	<tr>
-		<td class="bg1" colspan="{NOTIFICATION_TYPES_COLS}" align="center"><span class="genmed">{TITLE_EXPLAIN}</span></td>
+		<td class="bg1" colspan="{NOTIFICATION_TYPES_COLS}" align="center"><span class="bigger">{TITLE_EXPLAIN}</span></td>
 	</tr>
 	<tr>
 		<th>{L_NOTIFICATION_TYPE}</th>
@@ -17,16 +17,17 @@
 	<!-- BEGIN notification_types -->
 		<!-- IF notification_types.GROUP_NAME -->
 			<tr>
-				<td class="bg3" colspan="{NOTIFICATION_TYPES_COLS}"><span class="genmed">{notification_types.GROUP_NAME}</span></td>
+				<td class="bg3" colspan="{NOTIFICATION_TYPES_COLS}"><span class="bigger">{notification_types.GROUP_NAME}</span></td>
 			</tr>
 		<!-- ELSE -->
-			<!-- IF notification_types.S_ROW_COUNT is even --><tr class="bg1"><!-- ELSE --><tr class="bg2"><!-- ENDIF -->
+			<tr class="<!-- IF notification_types.S_ROW_COUNT is even -->bg1<!-- ELSE -->bg2<!-- ENDIF -->">
 				<td>
-					<span class="genmed">{notification_types.NAME}
-</span>					<!-- IF notification_types.EXPLAIN --><br /><span class="genmed">&nbsp; &nbsp;{notification_types.EXPLAIN}</span><!-- ENDIF -->
+					<span class="bigger">{notification_types.NAME}
+						<!-- IF notification_types.EXPLAIN --><br />&nbsp; &nbsp;{notification_types.EXPLAIN}<!-- ENDIF -->
+					</span>
 				</td>
 				<!-- BEGIN notification_methods -->
-					<td align="center"><input type="checkbox" name="{notification_types.TYPE}_{notification_methods.METHOD}"<!-- IF notification_methods.SUBSCRIBED --> checked="checked"<!-- ENDIF --> /></td>
+					<td align="center"><input type="checkbox" name="{notification_types.TYPE}_{notification_types.notification_methods.METHOD}"<!-- IF notification_types.notification_methods.AVAILABLE and notification_types.notification_methods.SUBSCRIBED --> checked="checked"<!-- ENDIF --><!-- IF not notification_types.notification_methods.AVAILABLE --> disabled="disabled"<!-- ENDIF --> /></td>
 				<!-- END notification_methods -->
 			</tr>
 		<!-- ENDIF -->
@@ -44,32 +45,30 @@
 	<table cellspacing="1" width="100%">
 		<tr>
 			<!-- IF TOTAL_COUNT -->
-				<td nowrap="nowrap"><b>{PAGE_NUMBER}</b> &nbsp;[ {TOTAL_COUNT} {L_NOTIFICATIONS}]</td>
+				<td><b class="nowrap">{PAGE_NUMBER}</b> <span class="nowrap">[ {TOTAL_COUNT} {L_NOTIFICATIONS}]</span></td>
 			<!-- ENDIF -->
 			<td align="{S_CONTENT_FLOW_END}"><!-- IF U_MARK_ALL and .notifications --><b><a href="{U_MARK_ALL}">{L_NOTIFICATIONS_MARK_ALL_READ}</a></b><!-- IF .pagination --> | <!-- ENDIF --><!-- ENDIF --><!-- INCLUDE pagination.html --></td>
 		</tr>
 	</table>
 
-	<div>
 		<table cellspacing="1" class="main" width="100%">
 			<tr>
 				<th>{L_NOTIFICATIONS}</th>
 				<th width="15%">{L_MARK_READ}</th>
 			</tr>
 			<!-- BEGIN notification_list -->
-				<tr class="<!-- IF notification_list.UNREAD -->bg3<!-- ELSE -->bg1<!-- ENDIF -->">
-					<td valign="top">
-						<p class="forumdesc"><!-- IF notification_list.UNREAD --><b>&#187; </b><!-- ENDIF -->
+				<tr class="forumdesc"><!-- IF notification_list.UNREAD --><!-- DEFINE $BG = 'bg3' --><!-- ELSE --><!-- DEFINE $BG = 'bg1' --><!-- ENDIF -->
+					<td class="{$BG}">
+						<!-- IF notification_list.UNREAD --><b>&#187; </b><!-- ENDIF -->
 						<!-- IF notification_list.URL --><a href="<!-- IF notification_list.UNREAD -->{notification_list.U_MARK_READ}<!-- ELSE -->{notification_list.URL}<!-- ENDIF -->">
 						{notification_list.FORMATTED_TITLE}<!-- IF notification_list.REFERENCE --> {notification_list.REFERENCE}<!-- ENDIF -->
 						</a><!-- ELSE -->{notification_list.FORMATTED_TITLE}<!-- IF notification_list.REFERENCE --> {notification_list.REFERENCE}<!-- ENDIF -->
 						<!-- ENDIF --><br />
 						<!-- IF notification_list.FORUM -->{notification_list.FORUM}<br /><!-- ENDIF -->
 						<!-- IF notification_list.REASON -->{notification_list.REASON}<br /><!-- ENDIF -->
-							<span class="small">{notification_list.TIME}</span>
-						</p>
+						<span class="small">{notification_list.TIME}</span>
 					</td>
-					<td align="center">
+					<td align="center" class="{$BG}">
 						<input type="checkbox" name="mark[]" value="{notification_list.NOTIFICATION_ID}"<!-- IF not notification_list.UNREAD --> disabled="disabled"<!-- ENDIF --> />
 					</td>
 				</tr>
@@ -82,20 +81,18 @@
 					<input class="button1" type="submit" name="submit" value="{L_MARK_READ}" />
 					{S_FORM_TOKEN}
 				<!-- ELSE -->
-					<b class="genmed">{L_NO_NOTIFICATIONS}</b>
+					<b class="bigger">{L_NO_NOTIFICATIONS}</b>
 				<!-- ENDIF -->
 				</td>
 			</tr>
 		</table>
-	</div>
-
-	<!-- IF .pagination -->
-		<div align="{S_CONTENT_FLOW_END}" style="padding-top: 2px"><!-- INCLUDE pagination.html --></div>
-	<!-- ENDIF -->
 <!-- ENDIF -->
 
-<!-- IF .notifications or MODE == 'notification_options' -->
-<div align="{S_CONTENT_FLOW_END}"<!-- IF .pagination --> style="padding-top: 4px"<!-- ENDIF -->><b><a href="#" onclick="marklist('ucp', '<!-- IF MODE == 'notification_options' -->notification.type<!-- ELSE -->mark[]<!-- ENDIF -->', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('ucp', '<!-- IF MODE == 'notification_options' -->notification.type<!-- ELSE -->mark[]<!-- ENDIF -->', false); return false;">{L_UNMARK_ALL}</a></b></div>
+<!-- IF .notifications or MODE == 'notification_options' or (.pagination and not MODE == 'notification_options') -->
+	<table width="100%" cellspacing="2">
+		<!-- IF .notifications or MODE == 'notification_options' --><tr><td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('ucp', '<!-- IF MODE == 'notification_options' -->notification.type<!-- ELSE -->mark[]<!-- ENDIF -->', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('ucp', '<!-- IF MODE == 'notification_options' -->notification.type<!-- ELSE -->mark[]<!-- ENDIF -->', false); return false;">{L_UNMARK_ALL}</a></b></td></tr><!-- ENDIF -->
+		<!-- IF .pagination and not MODE == 'notification_options' --><tr><td align="{S_CONTENT_FLOW_END}"><!-- INCLUDE pagination.html --></td></tr><!-- ENDIF -->
+	</table>
 <!-- ENDIF -->
 
 </form>

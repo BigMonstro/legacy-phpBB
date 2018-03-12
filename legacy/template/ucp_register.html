@@ -30,31 +30,31 @@
 
 <!-- IF L_REG_COND -->
 	<tr>
-		<td class="bg2" colspan="2"><span class="genmed">{L_REG_COND}</span></td>
+		<td class="bg2" colspan="2"><span class="bigger">{L_REG_COND}</span></td>
 	</tr>
 <!-- ENDIF -->
 
 <!-- EVENT ucp_register_credentials_before -->
 <tr>
-	<td class="bg1" width="38%"><b class="genmed">{L_USERNAME}{L_COLON} </b><br /><span class="genmed">{L_USERNAME_EXPLAIN}</span></td>
+	<td class="bg1" width="38%"><b class="bigger">{L_USERNAME}{L_COLON} </b><br /><span class="bigger">{L_USERNAME_EXPLAIN}</span></td>
 	<td class="bg2"><input type="text" class="inputbox" name="username" size="25" value="{USERNAME}" /></td>
 </tr>
 <tr>
-	<td class="bg1"><b class="genmed">{L_EMAIL_ADDRESS}{L_COLON} </b></td>
-	<td class="bg2"><input type="email" class="inputbox" name="email" size="25" maxlength="100" value="{EMAIL}" autocomplete="off" /></td>
+	<td class="bg1"><b class="bigger">{L_EMAIL_ADDRESS}{L_COLON} </b></td>
+	<td class="bg2"><input type="text" class="inputbox" name="email" size="25" maxlength="100" value="{EMAIL}" autocomplete="off" /></td>
 </tr>
 <tr>
-	<td class="bg1"><b class="genmed">{L_PASSWORD}{L_COLON} </b><br /><span class="genmed">{L_PASSWORD_EXPLAIN}</span></td>
+	<td class="bg1"><b class="bigger">{L_PASSWORD}{L_COLON} </b><br /><span class="bigger">{L_PASSWORD_EXPLAIN}</span></td>
 	<td class="bg2"><input type="password" class="inputbox" name="new_password" size="25" value="{PASSWORD}" autocomplete="off" /></td>
 </tr>
 <tr>
-	<td class="bg1"><b class="genmed">{L_CONFIRM_PASSWORD}{L_COLON} </b></td>
+	<td class="bg1"><b class="bigger">{L_CONFIRM_PASSWORD}{L_COLON} </b></td>
 	<td class="bg2"><input type="password" class="inputbox" name="password_confirm" size="25" value="{PASSWORD_CONFIRM}" autocomplete="off" /></td>
 </tr>
 <!-- EVENT ucp_register_credentials_after -->
 <!-- EVENT ucp_register_options_before -->
 <tr>
-	<td class="bg1"><b class="genmed">{L_LANGUAGE}{L_COLON} </b></td>
+	<td class="bg1"><b class="bigger">{L_LANGUAGE}{L_COLON} </b></td>
 	<td class="bg2"><select name="lang" onchange="change_language(this.value); return false;">{S_LANG_OPTIONS}</select></td>
 </tr>
 
@@ -63,14 +63,14 @@
 <!-- EVENT ucp_register_profile_fields_before -->
 <!-- IF .profile_fields -->
 	<tr>
-		<td class="bg2" colspan="2"><span class="genmed">{L_ITEMS_REQUIRED}</span></td>
+		<td class="bg2" colspan="2"><span class="bigger">{L_ITEMS_REQUIRED}</span></td>
 	</tr>
 <!-- BEGIN profile_fields -->
 	<tr>
 		<td class="bg1" width="35%">
-			<b class="genmed">{profile_fields.LANG_NAME}{L_COLON} </b>
+			<b class="bigger">{profile_fields.LANG_NAME}{L_COLON} </b>
 			<!-- IF profile_fields.S_REQUIRED --><b>*</b><!-- ENDIF -->
-			<!-- IF profile_fields.LANG_EXPLAIN --><br /><span class="genmed">{profile_fields.LANG_EXPLAIN}</span><!-- ENDIF -->
+			<!-- IF profile_fields.LANG_EXPLAIN --><br /><span class="bigger">{profile_fields.LANG_EXPLAIN}</span><!-- ENDIF -->
 		</td>
 		<td class="bg2">{profile_fields.FIELD}<!-- IF profile_fields.ERROR --><p class="error">{profile_fields.ERROR}</p><!-- ENDIF --></td>
 	</tr>
@@ -87,7 +87,7 @@
 		<th colspan="2">{L_COPPA_COMPLIANCE}</th>
 	</tr>
 	<tr>
-		<td class="bg2" colspan="2"><span class="genmed">{L_COPPA_EXPLAIN}</span></td>
+		<td class="bg2" colspan="2"><span class="bigger">{L_COPPA_EXPLAIN}</span></td>
 	</tr>
 <!-- ENDIF -->
 
@@ -97,11 +97,5 @@
 </table>
 {S_FORM_TOKEN}
 </form>
-
-<br clear="all" />
-
-<!-- INCLUDE breadcrumbs.html -->
-
-<br clear="all" />
 
 <!-- INCLUDE overall_footer.html -->
