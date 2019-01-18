@@ -27,13 +27,21 @@ function jumpto(page, per_page, base_url) {
 }
 
 function marklist(id, name, state) {
-	var parent = document.getElementById(id) || document.all(id);
+	if (document.getElementById) {
+		var parent = document.getElementById(id) || document[id];
+	} else if (document.all) {
+		var parent = document.all(id);
+	}
 
 	if (!parent) {
 		return;
 	}
 
-	var rb = parent.getElementsByTagName('input') || parent.document.all.tags('input');
+	if (document.getElementsByTagName) {
+		var rb = parent.getElementsByTagName('input');
+	} else if (document.all) {
+		var rb = parent.document.all.tags('input');
+	}
 
 	for (var r = 0; r < rb.length; r++) {
 		if (rb[r].name.substr(0, name.length) == name && rb[r].disabled !== true) {
@@ -278,7 +286,7 @@ if (document.documentElement && (document.documentElement.className.indexOf('dro
 }
 
 /**
-* Change the global class to .hasjs
+* Change the global class to hasjs
 */
 
 if (document.documentElement) {
