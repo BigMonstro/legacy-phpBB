@@ -24,7 +24,7 @@
 		</tr>
 		<!-- ENDIF -->
 		<tr>
-			<td align="center"><b class="big"<!-- IF USER_COLOR --> style="color: {USER_COLOR}"<!-- ENDIF -->>{USERNAME}</b>
+			<td align="center"><!-- EVENT memberlist_view_username_prepend --><b class="big"<!-- IF USER_COLOR --> style="color: {USER_COLOR}"<!-- ENDIF -->>{USERNAME}</b><!-- EVENT memberlist_view_username_append -->
 			<!-- IF U_USER_BAN or U_USER_ADMIN --><span class="bigger"><!-- ENDIF -->
 			<!-- IF U_USER_ADMIN --> [&nbsp;<a href="{U_USER_ADMIN}">{L_USER_ADMIN}</a><!-- ENDIF -->
 			<!-- IF U_USER_ADMIN and U_USER_BAN --> | <!-- ELSEIF U_USER_ADMIN and not U_USER_BAN -->&nbsp;] <!-- ELSEIF U_USER_BAN and not U_USER_ADMIN --> [&nbsp;<!-- ENDIF -->

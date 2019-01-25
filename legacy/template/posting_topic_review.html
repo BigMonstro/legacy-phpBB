@@ -50,7 +50,7 @@
 					<table cellspacing="5" width="100%">
 					<tr>
 						<td<!-- IF topic_review_row.U_MCP_DETAILS --> colspan="2"<!-- ENDIF -->>
-							<div class="postbody"><span class="content">{topic_review_row.MESSAGE}</span></div>
+							<div class="postbody"><div class="content">{topic_review_row.MESSAGE}</div><!-- EVENT posting_topic_review_row_content_after --></div>
 
 							<!-- IF topic_review_row.S_HAS_ATTACHMENTS -->
 								<br />

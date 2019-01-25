@@ -17,7 +17,7 @@
 	</tr>
 	<tr>
 		<td class="bg1"><b class="big">{L_REPORTED}{L_COLON} </b></td>
-		<td class="bg2"><span class="bigger">{REPORT_DATE}</span></td>
+		<td class="bg2"><span class="bigger">{REPORT_DATE}<!-- IF S_REPORT_CLOSED --> | <b class="error">{L_REPORT_CLOSED}</b><!-- ENDIF --></span></td>
 	</tr>
 	<!-- IF REPORT_TEXT -->
 		<tr>
@@ -28,7 +28,12 @@
 		</tr>
 	<!-- ENDIF -->
 	<tr>
-		<td class="cat" align="center" colspan="2"><!-- IF not S_REPORT_CLOSED --><input class="button1" type="submit" value="{L_CLOSE_REPORT}" name="action[close]" /><!-- ELSE --><span class="bigger">{L_REPORT_CLOSED}</span><!-- ENDIF --> &nbsp;<input class="button2" type="submit" value="{L_DELETE_REPORT}" name="action[delete]" /></td>
+		<td class="cat" align="center" colspan="2">
+			<!-- EVENT mcp_post_report_buttons_top_before -->
+			<!-- IF not S_REPORT_CLOSED --><input class="button1" type="submit" value="{L_CLOSE_REPORT}" name="action[close]" /> &nbsp;<!-- ENDIF -->
+			<input class="button2" type="submit" value="{L_DELETE_REPORT}" name="action[delete]" />
+			<!-- EVENT mcp_post_report_buttons_top_after -->
+		</td>
 	</tr>
 	</table>
 
@@ -79,7 +84,7 @@
 		<td class="bg1"><b class="big">{L_TO}{L_COLON}</b></td>
 		<td class="bg2"><span class="big">
 		<!-- BEGIN to_recipient -->
-			<!-- IF to_recipient.IS_GROUP --><b><a href="{to_recipient.U_VIEW}">{to_recipient.NAME}</a></b><!-- ELSE -->{to_recipient.NAME_FULL}<!-- ENDIF -->&nbsp;
+			<!-- IF to_recipient.IS_GROUP --><b><a href="{to_recipient.U_VIEW}"<!-- IF to_recipient.COLOUR --> style="color: {to_recipient.COLOUR}"<!-- ENDIF -->>{to_recipient.NAME}</a></b><!-- ELSE -->{to_recipient.NAME_FULL}<!-- ENDIF -->&nbsp;
 		<!-- END to_recipient -->
 		</span></td>
 	</tr>
@@ -90,7 +95,7 @@
 		<td class="bg1"><b class="big">{L_BCC}{L_COLON}</b></td>
 		<td class="bg2"><span class="big">
 		<!-- BEGIN bcc_recipient -->
-			<!-- IF bcc_recipient.IS_GROUP --><b><a href="{bcc_recipient.U_VIEW}">{bcc_recipient.NAME}</a></b><!-- ELSE -->{bcc_recipient.NAME_FULL}<!-- ENDIF -->&nbsp;
+			<!-- IF bcc_recipient.IS_GROUP --><b><a href="{bcc_recipient.U_VIEW}"<!-- IF bcc_recipient.COLOUR --> style="color: {bcc_recipient.COLOUR}"<!-- ENDIF -->>{bcc_recipient.NAME}</a></b><!-- ELSE -->{bcc_recipient.NAME_FULL}<!-- ENDIF -->&nbsp;
 		<!-- END bcc_recipient -->
 		</span></td>
 	</tr>
@@ -118,6 +123,26 @@
 			</tr>
 		<!-- END attachment -->
 		</table>
+	<!-- ENDIF -->
+
+	<!-- IF DELETED_MESSAGE or DELETE_REASON -->
+		<br /><br />
+		<!-- IF DELETE_REASON -->
+			<table class="main" width="100%" cellspacing="1">
+			<tr>
+				<td class="bg3">{DELETED_MESSAGE}</td>
+			</tr>
+			<tr>
+				<td class="bg2"><span class="bigger">{DELETE_REASON}</span></td>
+			</tr>
+			</table>
+		<!-- ELSE -->
+			{DELETED_MESSAGE}
+		<!-- ENDIF -->
+	<!-- ENDIF -->
+
+	<!-- IF SIGNATURE -->
+		<span class="postbody"><span class="signature"><p>_________________</p>{SIGNATURE}</span></span>
 	<!-- ENDIF -->
 
 	</td></tr></table></td>

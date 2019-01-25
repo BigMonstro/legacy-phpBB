@@ -46,7 +46,7 @@
 			<td valign="top">
 				<table cellspacing="5" width="100%">
 				<tr>
-					<td colspan="2"><div class="postbody"><!-- IF history_row.MESSAGE --><span class="content">{history_row.MESSAGE}</span><!-- ELSE --><p class="error">{L_MESSAGE_REMOVED_FROM_OUTBOX}</p><!-- ENDIF --></div><div id="message_{history_row.MSG_ID}" data-content="{history_row.DECODED_MESSAGE}" style="display: none"></div></td>
+					<td colspan="2"><div class="postbody"><!-- IF history_row.MESSAGE --><div class="content">{history_row.MESSAGE}</div><!-- ELSE --><p class="error">{L_MESSAGE_REMOVED_FROM_OUTBOX}</p><!-- ENDIF --></div><div id="message_{history_row.MSG_ID}" data-content="{history_row.DECODED_MESSAGE}" style="display: none"></div></td>
 				</tr>
 				<tr class="bigger">
 					<td><a href="{history_row.U_VIEW_MESSAGE}">{L_VIEW_PM}</a></td>

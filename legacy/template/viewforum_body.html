@@ -153,11 +153,11 @@
 			<!-- IF topicrow.S_POST_GLOBAL and FORUM_ID != topicrow.FORUM_ID --><div class="bigger">{L_IN} <a href="{topicrow.U_VIEW_FORUM}">{topicrow.FORUM_NAME}</a></div><!-- ENDIF -->
 			<!-- EVENT topiclist_row_append -->
 		</td>
-		<td align="center" class="bg2"><p>{topicrow.TOPIC_AUTHOR_FULL}</p></td>
+		<td align="center" class="bg2"><p><!-- EVENT viewforum_body_topic_author_username_prepend -->{topicrow.TOPIC_AUTHOR_FULL}<!-- EVENT viewforum_body_topic_author_username_append --></p></td>
 		<td align="center" class="bg1"><p>{topicrow.REPLIES}</p></td>
 		<td align="center" class="bg2"><p>{topicrow.VIEWS}</p></td>
 		<td align="center" class="bg1" nowrap="nowrap">
-			<p>{topicrow.LAST_POST_TIME}<br />{topicrow.LAST_POST_AUTHOR_FULL}<!-- IF not S_IS_BOT and topicrow.U_LAST_POST --> <a href="{topicrow.U_LAST_POST}"><img src="{T_THEME_PATH}/images/icon_topic_latest.gif" width="18" height="9" alt="&gt;" border="0" title="{L_GOTO_LAST_POST}" /></a><!-- ENDIF --></p>
+			<p>{topicrow.LAST_POST_TIME}<br /><!-- EVENT viewforum_body_last_post_author_username_prepend -->{topicrow.LAST_POST_AUTHOR_FULL}<!-- EVENT viewforum_body_last_post_author_username_append --><!-- IF not S_IS_BOT and topicrow.U_LAST_POST --> <a href="{topicrow.U_LAST_POST}"><img src="{T_THEME_PATH}/images/icon_topic_latest.gif" width="18" height="9" alt="&gt;" border="0" title="{L_GOTO_LAST_POST}" /></a><!-- ENDIF --></p>
 		</td>
 		<!-- EVENT viewforum_body_topic_row_append -->
 	</tr>

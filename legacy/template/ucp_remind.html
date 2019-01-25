@@ -6,20 +6,24 @@
 <tr>
 	<th>{L_SEND_PASSWORD}</th>
 </tr>
+<!-- IF USERNAME_REQUIRED -->
+	<tr class="bigger">
+		<td align="center" class="bg3" colspan="2">{L_EMAIL_NOT_UNIQUE}</td>
+	</tr>
+<!-- ENDIF -->
 <tr>
 	<td class="bg2">
 		<table cellspacing="1" width="100%">
-		<tr>
-			<td width="50%"><b class="bigger">{L_USERNAME}{L_COLON}</b></td>
-			<td><input type="text" class="inputbox" name="username" size="25" value="{USERNAME}" /></td>
-		</tr>
 		<tr valign="top">
-			<td width="50%"><b class="bigger">{L_EMAIL_ADDRESS}{L_COLON}</b></td>
-			<td rowspan="2"><input type="text" class="inputbox" name="email" size="25" maxlength="100" /></td>
+			<td width="50%"><b class="bigger">{L_EMAIL_ADDRESS}{L_COLON}</b><br /><span class="bigger">{L_EMAIL_REMIND}</span></td>
+			<td><input type="text" class="inputbox" name="email" size="25" maxlength="100" value="{EMAIL}" /></td>
 		</tr>
-		<tr>
-			<td class="bigger">{L_EMAIL_REMIND}</td>
-		</tr>
+		<!-- IF USERNAME_REQUIRED -->
+			<tr>
+				<td width="50%"><b class="bigger">{L_USERNAME}{L_COLON}</b></td>
+				<td><input type="text" class="inputbox" name="username" size="25" value="{USERNAME}" /></td>
+			</tr>
+		<!-- ENDIF -->
 		</table>
 	</td>
 </tr>
