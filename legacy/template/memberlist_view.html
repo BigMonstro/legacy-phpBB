@@ -121,7 +121,7 @@
 				<td width="78%"><a class="bigger" href="{U_PM}">{L_SEND_PRIVATE_MESSAGE}</a></td>
 			</tr>
 		<!-- ENDIF -->
-		<!-- IF S_JABBER_ENABLED -->
+		<!-- IF S_JABBER_ENABLED and (U_JABBER or USER_JABBER) -->
 		<tr valign="top">
 			<td align="{S_CONTENT_FLOW_END}"><span class="big">{L_JABBER}{L_COLON}</span></td>
 			<td width="78%"><!-- IF U_JABBER --><a class="bigger" href="{U_JABBER}" onclick="popup(this.href, 550, 320); return false">{L_SEND_JABBER_MESSAGE}</a><!-- ELSEIF USER_JABBER --><span class="bigger">{USER_JABBER}</span><!-- ENDIF --></td>

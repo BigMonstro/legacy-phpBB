@@ -56,9 +56,9 @@
 {S_FORM_TOKEN}
 </form>
 
-<table width="100%" cellspacing="1"><tr>
-	<!-- IF .postrow --><td nowrap="nowrap"><b>{PAGE_NUMBER}</b> [ {TOTAL_REPORTS} ]</td>
-	<td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('mcp', '', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('mcp', '', false); return false;">{L_UNMARK_ALL}</a></b></td><!-- IF .pagination --></tr><tr><!-- ENDIF --><!-- ENDIF -->
+<table width="100%" cellspacing="2"><tr>
+	<!-- IF .postrow --><td nowrap="nowrap"><b>{PAGE_NUMBER}</b> &nbsp;[ {TOTAL_REPORTS} ]</td>
+	<td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('mcp', 'report_id_list', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('mcp', 'report_id_list', false); return false;">{L_UNMARK_ALL}</a></b></td><!-- IF .pagination --></tr><tr><!-- ENDIF --><!-- ENDIF -->
 	<!-- IF .pagination --><td align="{S_CONTENT_FLOW_END}"<!-- IF .postrow --> colspan="2"<!-- ENDIF -->><!-- INCLUDE pagination.html --></td><!-- ENDIF -->
 </tr></table>
 

@@ -1,6 +1,6 @@
 <!-- INCLUDE overall_header.html -->
 
-<form name="confirm" action="{S_CONFIRM_ACTION}" method="post" onkeydown="if ((window.ActiveXObject || !document.getElementById) && event.keyCode==13) {return false;}">
+<form name="confirm" action="{S_CONFIRM_ACTION}" method="post">
 
 <table class="main" width="100%" cellspacing="1">
 <tr>
@@ -26,7 +26,7 @@
 
 			<tr valign="top">
 				<td align="{S_CONTENT_FLOW_END}" class="big" rowspan="2" width="22%"><b>{L_DELETE_REASON}{L_COLON}</b></td>
-				<td align="{S_CONTENT_FLOW_BEGIN}" width="78%"><input type="text" class="inputbox" name="delete_reason" value="" maxlength="120" size="45" /></td>
+				<td align="{S_CONTENT_FLOW_BEGIN}" width="78%"><input type="text" class="inputbox" name="delete_reason" value="" maxlength="120" size="45" onkeydown="if (window.ActiveXObject && (event.keyCode==13)) {return false;}" /></td>
 			</tr>
 			<tr valign="top">
 				<td align="{S_CONTENT_FLOW_BEGIN}" class="bigger">{L_DELETE_REASON_EXPLAIN}</td>

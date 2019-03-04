@@ -43,10 +43,10 @@
 {S_FORM_TOKEN}
 </form>
 
-<table width="100%" cellspacing="1"><tr>
-	<td nowrap="nowrap"><b>{PAGE_NUMBER}</b> [ {TOTAL} ]</td>
-	<!-- IF S_CLEAR_ALLOWED and S_LOGS --><td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('mcp', '', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('mcp', '', false); return false;">{L_UNMARK_ALL}</a></b></td><!-- IF .pagination --></tr><tr><!-- ENDIF --><!-- ENDIF -->
-	<!-- IF .pagination --><td align="{S_CONTENT_FLOW_END}"<!-- IF S_CLEAR_ALLOWED and S_LOGS --> colspan="2"<!-- ENDIF -->><!-- INCLUDE pagination.html --></td><!-- ENDIF -->
+<table width="100%" cellspacing="2"><tr>
+	<td nowrap="nowrap"><b>{PAGE_NUMBER}</b> &nbsp;[ {TOTAL} ]</td>
+	<!-- IF S_CLEAR_ALLOWED and S_LOGS --><td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('mcp', 'mark', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('mcp', 'mark', false); return false;">{L_UNMARK_ALL}</a></b></td><!-- IF .pagination --></tr><tr><!-- ENDIF --><!-- ENDIF -->
+	<!-- IF .pagination --><td align="{S_CONTENT_FLOW_END}" <!-- IF S_CLEAR_ALLOWED and S_LOGS -->colspan="2"<!-- ELSE -->width="100%"<!-- ENDIF -->><!-- INCLUDE pagination.html --></td><!-- ENDIF -->
 </tr></table>
 
 <!-- INCLUDE mcp_footer.html -->

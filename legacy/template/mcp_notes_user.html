@@ -49,7 +49,7 @@
 	<td class="bg1" align="center"><textarea name="usernote" rows="3" cols="76"></textarea></td>
 </tr>
 <tr>
-	<td class="cat" align="center"><input class="button2" type="reset" value="{L_RESET}" />&nbsp; <input class="button1" type="submit" name="action[add_feedback]" value="{L_SUBMIT}" /></td>
+	<td class="cat" align="center"><input class="button2" type="reset" value="{L_RESET}" /> &nbsp;<input class="button1" type="submit" name="action[add_feedback]" value="{L_SUBMIT}" /></td>
 </tr>
 </table>
 
@@ -93,7 +93,7 @@
 
 	<!-- IF S_CLEAR_ALLOWED -->
 		<tr>
-			<td align="{S_CONTENT_FLOW_END}" class="cat" colspan="5"><input class="button2" type="submit" name="action[del_all]" value="{L_DELETE_ALL}" />&nbsp; <input class="button2" type="submit" name="action[del_marked]" value="{L_DELETE_MARKED}" /></td>
+			<td align="{S_CONTENT_FLOW_END}" class="cat" colspan="5"><input class="button2" type="submit" name="action[del_all]" value="{L_DELETE_ALL}" /> &nbsp;<input class="button2" type="submit" name="action[del_marked]" value="{L_DELETE_MARKED}" /></td>
 		</tr>
 	<!-- ENDIF -->
 
@@ -104,10 +104,10 @@
 <!-- ENDIF -->
 </table>
 
-<table width="100%" cellspacing="1"><tr>
-	<td nowrap="nowrap"><b>{PAGE_NUMBER}</b> [ {TOTAL_REPORTS} ]</td>
-	<!-- IF S_CLEAR_ALLOWED and S_USER_NOTES --><td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('mcp', '', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('mcp', '', false); return false;">{L_UNMARK_ALL}</a></b></td><!-- IF .pagination --></tr><tr><!-- ENDIF --><!-- ENDIF -->
-	<!-- IF .pagination --><td align="{S_CONTENT_FLOW_END}"<!-- IF S_CLEAR_ALLOWED and S_USER_NOTES --> colspan="2"<!-- ENDIF -->><!-- INCLUDE pagination.html --></td><!-- ENDIF -->
+<table width="100%" cellspacing="2"><tr>
+	<td nowrap="nowrap"><b>{PAGE_NUMBER}</b> &nbsp;[ {TOTAL_REPORTS} ]</td>
+	<!-- IF S_CLEAR_ALLOWED and S_USER_NOTES --><td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('mcp', 'marknote', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('mcp', 'marknote', false); return false;">{L_UNMARK_ALL}</a></b></td><!-- IF .pagination --></tr><tr><!-- ENDIF --><!-- ENDIF -->
+	<!-- IF .pagination --><td align="{S_CONTENT_FLOW_END}" <!-- IF S_CLEAR_ALLOWED and S_USER_NOTES -->colspan="2"<!-- ELSE -->width="100%"<!-- ENDIF -->><!-- INCLUDE pagination.html --></td><!-- ENDIF -->
 </tr></table>
 
 {S_FORM_TOKEN}

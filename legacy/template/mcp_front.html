@@ -24,7 +24,7 @@
 		</tr>
 	<!-- END unapproved -->
 	<tr>
-		<td class="bg3" colspan="4"><table cellspacing="0" width="100%"><tr><td class="bigger">{L_UNAPPROVED_TOTAL}</td><!-- IF .unapproved --><td align="{S_CONTENT_FLOW_END}">{S_HIDDEN_FIELDS}<input class="button2" type="submit" name="action[disapprove]" value="{L_DISAPPROVE}" />&nbsp; <input class="button1" type="submit" name="action[approve]" value="{L_APPROVE}" /></td><!-- ENDIF --></tr></table></td>
+		<td class="bg3" colspan="4"><table cellspacing="0" width="100%"><tr><td class="bigger">{L_UNAPPROVED_TOTAL}</td><!-- IF .unapproved --><td align="{S_CONTENT_FLOW_END}">{S_HIDDEN_FIELDS}<input class="button2" type="submit" name="action[disapprove]" value="{L_DISAPPROVE}" /> &nbsp;<input class="button1" type="submit" name="action[approve]" value="{L_APPROVE}" /></td><!-- ENDIF --></tr></table></td>
 	</tr>
 	</table>
 	{S_FORM_TOKEN}
@@ -32,10 +32,12 @@
 
 	<!-- IF .unapproved -->
 		<table width="100%" cellspacing="2"><tr>
-		<td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('mcp_queue', '', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('mcp_queue', '', false); return false;">{L_UNMARK_ALL}</a></b></td>
+		<td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('mcp_queue', 'post_id_list', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('mcp_queue', 'post_id_list', false); return false;">{L_UNMARK_ALL}</a></b></td>
 		</tr></table>
+	<!-- ELSE -->
+		<br />
 	<!-- ENDIF -->
-	<br clear="all" /><br />
+	<br clear="all" />
 <!-- ENDIF -->
 
 <!-- EVENT mcp_front_latest_reported_before -->

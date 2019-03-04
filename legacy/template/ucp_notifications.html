@@ -36,7 +36,7 @@
 		<td class="cat" colspan="{NOTIFICATION_TYPES_COLS}" align="center">
 			<input type="hidden" name="form_time" value="{FORM_TIME}" />
 			{S_HIDDEN_FIELDS}
-			<input class="button2" type="reset" value="{L_RESET}" name="reset" />&nbsp; <input class="button1" type="submit" name="submit" value="{L_SUBMIT}" />
+			<input class="button2" type="reset" value="{L_RESET}" name="reset" /> &nbsp;<input class="button1" type="submit" name="submit" value="{L_SUBMIT}" />
 			{S_FORM_TOKEN}
 		</td>
 	</tr>
@@ -74,16 +74,18 @@
 				</tr>
 			<!-- END notification_list -->
 			<tr>
-				<td class="cat" colspan="2" align="{S_CONTENT_FLOW_END}">
 				<!-- IF .notification_list -->
-					<input type="hidden" name="form_time" value="{FORM_TIME}" />
-					{S_HIDDEN_FIELDS}
-					<input class="button1" type="submit" name="submit" value="{L_MARK_READ}" />
-					{S_FORM_TOKEN}
+					<td align="{S_CONTENT_FLOW_END}" class="cat" colspan="2">
+						<input type="hidden" name="form_time" value="{FORM_TIME}" />
+						{S_HIDDEN_FIELDS}
+						<input class="button1" type="submit" name="submit" value="{L_MARK_READ}" />
+						{S_FORM_TOKEN}
+					</td>
 				<!-- ELSE -->
-					<b class="bigger">{L_NO_NOTIFICATIONS}</b>
+					<td align="center" class="bg1" colspan="2">
+						<b class="bigger">{L_NO_NOTIFICATIONS}</b>
+					</td>
 				<!-- ENDIF -->
-				</td>
 			</tr>
 		</table>
 <!-- ENDIF -->
@@ -94,7 +96,5 @@
 		<!-- IF .pagination and not MODE == 'notification_options' --><tr><td align="{S_CONTENT_FLOW_END}"><!-- INCLUDE pagination.html --></td></tr><!-- ENDIF -->
 	</table>
 <!-- ENDIF -->
-
-</form>
 
 <!-- INCLUDE ucp_footer.html -->

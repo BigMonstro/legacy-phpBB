@@ -34,10 +34,10 @@
 
 		<table class="main" width="100%" cellspacing="1">
 		<tr>
-			<td class="cat"><h4><a href="{U_LOGIN_LOGOUT}">{L_LOGIN_LOGOUT}</a><!-- IF S_REGISTER_ENABLED -->&nbsp;| <a href="{U_REGISTER}">{L_REGISTER}</a><!-- ENDIF --></h4></h4></td>
+			<td class="cat"><h4><a href="{U_LOGIN_LOGOUT}">{L_LOGIN_LOGOUT}</a><!-- IF S_REGISTER_ENABLED --> :: <a href="{U_REGISTER}">{L_REGISTER}</a><!-- ENDIF --></h4></h4></td>
 		</tr>
 		<tr>
-			<td class="bg1" align="center"><span class="bigger">{L_USERNAME}{L_COLON}</span> <input type="text" class="inputbox" name="username" size="10" />&nbsp; <span class="bigger">{L_PASSWORD}{L_COLON}</span> <input type="password" class="inputbox" name="password" size="10" autocomplete="off" />&nbsp; <!-- IF S_AUTOLOGIN_ENABLED --><span class="nowrap"><span class="bigger">{L_LOG_ME_IN}</span> <input type="checkbox" name="autologin" /></span>&nbsp; <!-- ENDIF --><input type="submit" class="button1" name="login" value="{L_LOGIN}" /></td>
+			<td class="bg1" align="center"><span class="bigger">{L_USERNAME}{L_COLON}</span> <input type="text" class="inputbox" name="username" size="10" /> &nbsp;<span class="bigger">{L_PASSWORD}{L_COLON}</span> <input type="password" class="inputbox" name="password" size="10" autocomplete="off" /> <!-- IF S_AUTOLOGIN_ENABLED -->&nbsp;<span class="nowrap"><span class="bigger">{L_LOG_ME_IN}</span> <input type="checkbox" name="autologin" /></span> <!-- ENDIF -->&nbsp;<input type="submit" class="button1" name="login" value="{L_LOGIN}" /></td>
 		</tr>
 		</table>
 		{S_LOGIN_REDIRECT}
@@ -127,15 +127,15 @@
 		<td class="bg1">
 			<!-- EVENT topiclist_row_prepend -->
 			<!-- IF topicrow.S_UNREAD_TOPIC --><a href="{topicrow.U_NEWEST_POST}"><img src="{T_THEME_PATH}/images/icon_topic_newest.gif" width="18" height="9" alt="&gt;&gt;&gt;" border="0" title="{L_UNREAD_POSTS}" /></a><!-- ENDIF -->
-			<!-- IF topicrow.ATTACH_ICON_IMG --><img src="{T_THEME_PATH}/images/icon_topic_attach.gif" width="14" height="18" alt="(*)" title="{L_TOTAL_ATTACHMENTS}" /><!-- ENDIF --><!-- IF topicrow.S_HAS_POLL or topicrow.S_TOPIC_MOVED --><b>{topicrow.TOPIC_TYPE} </b><!-- ENDIF --><!-- IF topicrow.U_VIEW_TOPIC --><a title="{L_POSTED}{L_COLON} {topicrow.FIRST_POST_TIME}" href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a><!-- ELSE -->{topicrow.TOPIC_TITLE}<!-- ENDIF -->
+			<!-- IF topicrow.ATTACH_ICON_IMG --><img src="{T_THEME_PATH}/images/icon_topic_attach.gif" width="14" height="18" alt="(*)" title="{L_TOTAL_ATTACHMENTS}" /><!-- ENDIF --><!-- IF topicrow.S_HAS_POLL or topicrow.S_TOPIC_MOVED --><b>{topicrow.TOPIC_TYPE} </b><!-- ENDIF --><!-- IF topicrow.U_VIEW_TOPIC --><a title="{L_POSTED}{L_COLON} {topicrow.FIRST_POST_TIME}" href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a><!-- ELSE --><span class="bigger">{topicrow.TOPIC_TITLE}</span><!-- ENDIF -->
 			<!-- IF topicrow.S_TOPIC_UNAPPROVED or topicrow.S_POSTS_UNAPPROVED -->
-				<a href="{topicrow.U_MCP_QUEUE}"><img src="{T_THEME_PATH}/images/icon_topic_unapproved.gif" width="19" height="18" alt="(?)" border="0" title="<!-- IF topicrow.S_TOPIC_UNAPPROVED -->{L_TOPIC_UNAPPROVED}<!-- ELSE -->{L_POSTS_UNAPPROVED}<!-- ENDIF -->" /></a>&nbsp;
+				<a href="{topicrow.U_MCP_QUEUE}"><img src="{T_THEME_PATH}/images/icon_topic_unapproved.gif" width="19" height="18" alt="(?)" border="0" title="<!-- IF topicrow.S_TOPIC_UNAPPROVED -->{L_TOPIC_UNAPPROVED}<!-- ELSE -->{L_POSTS_UNAPPROVED}<!-- ENDIF -->" /></a>
 			<!-- ENDIF -->
 			<!-- IF topicrow.S_TOPIC_DELETED -->
-				<a href="{topicrow.U_MCP_QUEUE}"><img src="{T_THEME_PATH}/images/icon_topic_deleted.gif" width="14" height="14" alt="(X)" border="0" title="{L_TOPIC_DELETED}" /></a>&nbsp;
+				<a href="{topicrow.U_MCP_QUEUE}"><img src="{T_THEME_PATH}/images/icon_topic_deleted.gif" width="14" height="14" alt="(X)" border="0" title="{L_TOPIC_DELETED}" /></a>
 			<!-- ENDIF -->
 			<!-- IF topicrow.S_TOPIC_REPORTED -->
-				<a href="{topicrow.U_MCP_REPORT}"><img src="{T_THEME_PATH}/images/icon_topic_reported.gif" width="19" height="18" alt="(!)" border="0" title="{L_TOPIC_REPORTED}" /></a>&nbsp;
+				<a href="{topicrow.U_MCP_REPORT}"><img src="{T_THEME_PATH}/images/icon_topic_reported.gif" width="19" height="18" alt="(!)" border="0" title="{L_TOPIC_REPORTED}" /></a>
 			<!-- ENDIF -->
 			<!-- EVENT topiclist_row_topic_title_after -->
 			<!-- IF .topicrow.pagination -->
@@ -172,7 +172,7 @@
 <!-- BEGINELSE -->
 	<!-- IF S_IS_POSTABLE -->
 		<table class="main" width="100%" cellspacing="1"><tr><td class="bg1" align="center"><span class="big"><!-- IF not S_SORT_DAYS -->{L_NO_TOPICS}<!-- ELSE -->{L_NO_TOPICS_TIME_FRAME}<!-- ENDIF --></span></td></tr></table>
-	<!-- ELSE IF not S_HAS_SUBFORUM -->
+	<!-- ELSEIF not S_HAS_SUBFORUM -->
 		<table class="main" width="100%" cellspacing="1"><tr><td class="bg1" align="center"><span class="big">{L_NO_FORUMS_IN_CATEGORY}</span></td></tr></table>
 	<!-- ENDIF -->
 <!-- END topicrow -->

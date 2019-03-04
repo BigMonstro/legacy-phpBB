@@ -224,7 +224,7 @@
 			<!-- IF S_TYPE_TOGGLE -->
 				<tr>
 					<td></td>
-					<td class="big"><!-- IF S_EDIT_POST -->{L_CHANGE_TOPIC_TO}<!-- ELSE -->{L_POST_TOPIC_AS}<!-- ENDIF -->{L_COLON} <!-- BEGIN topic_type --><input type="radio" name="topic_type" value="{topic_type.VALUE}"{topic_type.S_CHECKED} /> {topic_type.L_TOPIC_TYPE}&nbsp; <!-- END topic_type --></td>
+					<td class="big"><!-- IF S_EDIT_POST -->{L_CHANGE_TOPIC_TO}<!-- ELSE -->{L_POST_TOPIC_AS}<!-- ENDIF -->{L_COLON} <!-- BEGIN topic_type --><input type="radio" name="topic_type" value="{topic_type.VALUE}"{topic_type.S_CHECKED} /> {topic_type.L_TOPIC_TYPE} &nbsp;<!-- END topic_type --></td>
 				</tr>
 			<!-- ENDIF -->
 		<!-- ENDIF -->
@@ -275,11 +275,7 @@
 <!-- IF S_SHOW_ATTACH_BOX or S_SHOW_POLL_BOX -->
 	<tr>
 		<td class="cat" colspan="2" align="center">
-			<!-- IF S_HAS_DRAFTS --><input class="button2" type="submit" tabindex="8" name="load" value="{L_LOAD_DRAFT}" />&nbsp;<!-- ENDIF -->
-			<!-- IF S_SAVE_ALLOWED --> <input class="button2" type="submit" tabindex="7" name="save" value="{L_SAVE_DRAFT}" />&nbsp;<!-- ENDIF -->
-			<input class="button1" type="submit" tabindex="5" name="preview" value="{L_PREVIEW}" />&nbsp;
-			<input class="button1" type="submit" accesskey="s" tabindex="6" name="post" value="{L_SUBMIT}" />&nbsp;
-			<input class="button2" type="submit" tabindex="9" name="cancel" value="{L_CANCEL}" />
+			<!-- IF S_HAS_DRAFTS --><input class="button2" type="submit" tabindex="8" name="load" value="{L_LOAD_DRAFT}" /> &nbsp;<!-- ENDIF --><!-- IF S_SAVE_ALLOWED --><input class="button2" type="submit" tabindex="7" name="save" value="{L_SAVE_DRAFT}" /> &nbsp;<!-- ENDIF --><input class="button1" type="submit" tabindex="5" name="preview" value="{L_PREVIEW}" /> &nbsp;<input class="button1" type="submit" accesskey="s" tabindex="6" name="post" value="{L_SUBMIT}" /> &nbsp;<input class="button2" type="submit" tabindex="9" name="cancel" value="{L_CANCEL}" />
 		</td>
 	</tr>
 <!-- ENDIF -->
@@ -291,13 +287,7 @@
 <tr>
 	<td class="cat" colspan="2" align="center">{S_HIDDEN_FIELDS}
 		<!-- IF not S_SHOW_ATTACH_BOX and not S_SHOW_POLL_BOX -->
-			<!-- IF S_HAS_DRAFTS --><input class="button2" type="submit" tabindex="13" name="load" value="{L_LOAD_DRAFT}" />&nbsp;<!-- ENDIF -->
-			<!-- IF S_SAVE_ALLOWED --> <input class="button2" type="submit" tabindex="12" name="save" value="{L_SAVE_DRAFT}" />&nbsp;<!-- ENDIF -->
-		<!-- ENDIF -->
-		<input class="button1" type="submit" tabindex="10" name="preview" value="{L_PREVIEW}" />&nbsp;
-		<input class="button1" type="submit" accesskey="s" tabindex="11" name="post" value="{L_SUBMIT}" />&nbsp;
-		<!-- EVENT posting_editor_submit_buttons -->
-		<input class="button2" type="submit" tabindex="14" name="cancel" value="{L_CANCEL}" />
+			<!-- IF S_HAS_DRAFTS --><input class="button2" type="submit" tabindex="13" name="load" value="{L_LOAD_DRAFT}" /> &nbsp;<!-- ENDIF --><!-- IF S_SAVE_ALLOWED --><input class="button2" type="submit" tabindex="12" name="save" value="{L_SAVE_DRAFT}" /> &nbsp;<!-- ENDIF --><!-- ENDIF --><input class="button1" type="submit" tabindex="10" name="preview" value="{L_PREVIEW}" /> &nbsp;<input class="button1" type="submit" accesskey="s" tabindex="11" name="post" value="{L_SUBMIT}" /> <!-- EVENT posting_editor_submit_buttons -->&nbsp;<input class="button2" type="submit" tabindex="14" name="cancel" value="{L_CANCEL}" />
 	</td>
 </tr>
 </table>

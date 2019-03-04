@@ -19,7 +19,7 @@
 			ban_give_reason['{bans.BAN_ID}'] = '{bans.A_GIVE_REASON}';
 		<!-- ELSE -->		ban_give_reason['{bans.BAN_ID}'] = '';	<!-- ENDIF -->
 	<!-- END bans -->
-	
+
 	function display_details(option)
 	{
 		getStuff('mcp_ban').unbanlength.value = ban_length[option];
@@ -65,7 +65,7 @@
 </tr>
 <!-- EVENT mcp_ban_fields_after -->
 <tr>
-	<td class="cat" colspan="2" align="center"><input type="reset" value="{L_RESET}" class="button2" onclick="getStuff('banlengthuntil').className = 'noscript';" />&nbsp; <input type="submit" name="bansubmit" value="{L_SUBMIT}" class="button1" /></td>
+	<td class="cat" colspan="2" align="center"><input type="reset" value="{L_RESET}" class="button2" onclick="getStuff('banlengthuntil').className = 'noscript';" /> &nbsp;<input type="submit" name="bansubmit" value="{L_SUBMIT}" class="button1" /></td>
 </tr>
 </table>
 
@@ -90,15 +90,15 @@
 	</tr>
 	<tr>
 		<td class="bg1" valign="top"><b class="bigger">{L_BAN_REASON}{L_COLON}</b></td>
-		<td class="bg2"><textarea style="background: transparent; border: 0; width: 98%" name="unbanreason" readonly="readonly" rows="5" cols="80">&nbsp;</textarea></td>
+		<td class="bg2"><textarea style="background: transparent; border: 0; width: 98%" name="unbanreason" readonly="readonly" rows="5" cols="76">&nbsp;</textarea></td>
 	</tr>
 	<tr>
 		<td class="bg1" valign="top"><b class="bigger">{L_BAN_GIVE_REASON}{L_COLON}</b></td>
-		<td class="bg2"><textarea style="background: transparent; border: 0; width: 98%" name="unbangivereason" readonly="readonly" rows="5" cols="80">&nbsp;</textarea></td>
+		<td class="bg2"><textarea style="background: transparent; border: 0; width: 98%" name="unbangivereason" readonly="readonly" rows="5" cols="76">&nbsp;</textarea></td>
 	</tr>
 	<!-- EVENT mcp_ban_unban_after -->
 	<tr>
-		<td class="cat" colspan="2" align="center"><input type="reset" value="{L_RESET}" class="button2" onclick="getStuff('banlengthuntil').className = 'noscript';" />&nbsp; <input type="submit" name="unbansubmit" value="{L_SUBMIT}" class="button1" /></td>
+		<td class="cat" colspan="2" align="center"><input type="reset" value="{L_RESET}" class="button2" onclick="getStuff('banlengthuntil').className = 'noscript';" /> &nbsp;<input type="submit" name="unbansubmit" value="{L_SUBMIT}" class="button1" /></td>
 	</tr>
 <!-- ELSE -->
 	<tr>

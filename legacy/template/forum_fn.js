@@ -277,6 +277,7 @@ if (document.documentElement && (document.documentElement.className.indexOf('dro
 			if (document.getElementById('notification_list') && document.getElementById('notification_link')) {
 				var nfl = document.getElementById('notification_list'); removeComment(nfl); nfl.onclick = function(e) {if (e) {e.stopPropagation();} else {window.event.cancelBubble = true;}};
 				document.getElementById('notification_link').onclick = function(e) {if (e) {e.stopPropagation();} else {window.event.cancelBubble = true;} toggleLists(nfl, this, parentBar); return false;};
+				if (document.uniqueID && !document.compatMode) {nfl.style.width="278px";} else {nfl.style.width="274px";}
 			}
 
 			var usl = document.getElementById('user_list'); removeComment(usl); usl.onclick = function(e) {if (e) {e.stopPropagation();} else {window.event.cancelBubble = true;}};

@@ -189,10 +189,10 @@ if (document.documentElement && (document.documentElement.className.indexOf('dro
 			<tr>
 				<td>
 					<table cellspacing="0"><tr>
-						<!-- IF postrow.POST_ICON_IMG --><td><img src="{T_ICONS_PATH}{postrow.POST_ICON_IMG}" width="{postrow.POST_ICON_IMG_WIDTH}" height="{postrow.POST_ICON_IMG_HEIGHT}" alt="" title="{postrow.POST_ICON_IMG_ALT}" /></td><!-- ENDIF --><td><b>{L_POST_SUBJECT}{L_COLON}</b> <a href="#p{postrow.POST_ID}">{postrow.POST_SUBJECT}</a></td>
+						<!-- IF postrow.POST_ICON_IMG --><td><img src="{T_ICONS_PATH}{postrow.POST_ICON_IMG}" width="{postrow.POST_ICON_IMG_WIDTH}" height="{postrow.POST_ICON_IMG_HEIGHT}" alt="" title="{postrow.POST_ICON_IMG_ALT}" /></td><!-- ENDIF --><td class="bigger"><b>{L_POST_SUBJECT}{L_COLON}</b> <a href="#p{postrow.POST_ID}">{postrow.POST_SUBJECT}</a></td>
 					</tr></table>
 				</td>
-				<td align="{S_CONTENT_FLOW_END}">
+				<td align="{S_CONTENT_FLOW_END}" class="bigger">
 					<!-- IF S_IS_BOT --><img src="{T_THEME_PATH}/images/icon_post_target.gif" width="12" height="9" alt="" /><!-- ELSE --><a href="{postrow.U_MINI_POST}"><img src="{T_THEME_PATH}/images/icon_post_target<!-- IF postrow.S_UNREAD_POST -->_unread<!-- ENDIF -->.gif" width="12" height="9" alt="<!-- IF postrow.S_UNREAD_POST -->+ " title="{L_UNREAD_POST}<!-- ENDIF -->" border="0" /></a><!-- ENDIF --><b>{L_POSTED}{L_COLON}</b> {postrow.POST_DATE}
 				</td>
 			</tr>

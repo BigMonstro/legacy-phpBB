@@ -57,8 +57,8 @@
 		<!-- IF S_DISPLAY_SEARCH and not S_IN_SEARCH -->
 			<div class="search-box">
 				<form action="{U_SEARCH}" method="get" name="global_search">
-					<input type="text" class="inputbox" name="keywords" value="{L_SEARCH_MINI}" title="{L_SEARCH_KEYWORDS}" onfocus="if (typeof this.flag == 'undefined') {this.flag = true; this.value='';}" />
-					<input type="image" src="{T_THEME_PATH}/images/icon_mini_search.gif" width="12" height="13" alt="*" title="{L_SEARCH}" style="margin-bottom: -3px" onclick="var h = document.forms['global_search'].elements[0]; if (h.value == '' || typeof h.flag == 'undefined') {h.focus(); return false;}" />
+					<input type="text" class="inputbox" name="keywords" size="20" title="{L_SEARCH_KEYWORDS}" value="<!-- IF SEARCH_WORDS -->{SEARCH_WORDS}<!-- ELSE -->{L_SEARCH_MINI}<!-- ENDIF -->" onfocus="if (this.value == '{LA_SEARCH_MINI}') {this.value='';}" />
+					<input type="image" src="{T_THEME_PATH}/images/icon_mini_search.gif" width="12" height="13" alt="*" title="{L_SEARCH}" style="margin-bottom: -3px" onclick="var h = document.forms['global_search'].elements[0]; if (h.value == '' || h.value == '{LA_SEARCH_MINI}') {h.focus(); return false;}" />
 					{S_SEARCH_HIDDEN_FIELDS}
 				</form>
 				<p><a href="{U_SEARCH}">{L_SEARCH_ADV}</a></p>
@@ -113,9 +113,9 @@
 			</div>
 
 			<!-- IF S_NOTIFICATIONS_DISPLAY -->
-				<div id="notification_list" style="border-width: 0; display: none; width: 270px"><!--
+				<div id="notification_list" style="border-width: 0; display: none"><!--
 					<div align="{S_CONTENT_FLOW_BEGIN}"><div style="overflow: hidden; padding: 4px 0">
-						<b style="float: {S_CONTENT_FLOW_BEGIN}; padding: 0 10px">{L_NOTIFICATIONS}</b>
+						<table align="{S_CONTENT_FLOW_BEGIN}" cellspacing="0"><tr><td style="padding: 0 10px"><b>{L_NOTIFICATIONS}</b></td></tr></table>
 						<div align="{S_CONTENT_FLOW_END}" style="padding: 0 10px"><a href="{U_NOTIFICATION_SETTINGS}">{L_SETTINGS}</a></div>
 					</div>
 					<!-- BEGIN notifications -->
