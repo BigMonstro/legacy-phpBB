@@ -1,13 +1,13 @@
 <!-- INCLUDE mcp_header.html -->
 
+<form name="mcp" id="mcp" method="post" action="{S_MCP_ACTION}">
+
 <table width="100%" cellspacing="1">
 <tr>
-	<td nowrap="nowrap"><b>{PAGE_NUMBER}</b> [ {TOTAL} ]</td>
+	<td nowrap="nowrap"><b>{PAGE_NUMBER}</b> &nbsp;[ {TOTAL} ]</td>
 	<!-- IF .pagination --><td width="100%" align="{S_CONTENT_FLOW_END}"><!-- INCLUDE pagination.html --></td><!-- ENDIF -->
 </tr>
 </table>
-
-<form name="mcp" id="mcp" method="post" action="{S_MCP_ACTION}">
 
 <table width="100%" class="main" cellspacing="1">
 <tr>
@@ -65,7 +65,7 @@
 {S_FORM_TOKEN}
 </form>
 
-<table width="100%" cellspacing="2"><tr>
+<table width="100%" cellspacing="1"><tr>
 	<!-- IF .postrow --><td nowrap="nowrap"><b>{PAGE_NUMBER}</b> &nbsp;[ {TOTAL} ]</td>
 	<td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('mcp', '<!-- IF S_TOPICS -->topic<!-- ELSE -->post<!-- ENDIF -->_id_list', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('mcp', '<!-- IF S_TOPICS -->topic<!-- ELSE -->post<!-- ENDIF -->_id_list', false); return false;">{L_UNMARK_ALL}</a></b></td><!-- IF .pagination --></tr><tr><!-- ENDIF --><!-- ENDIF -->
 	<!-- IF .pagination --><td align="{S_CONTENT_FLOW_END}"<!-- IF .postrow --> colspan="2"<!-- ENDIF -->><!-- INCLUDE pagination.html --></td><!-- ENDIF -->

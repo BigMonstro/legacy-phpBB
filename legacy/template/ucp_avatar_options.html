@@ -4,7 +4,7 @@
 	</tr>
 <!-- ENDIF -->
 <tr>
-	<td class="bg1" width="35%"><b class="bigger">{L_CURRENT_IMAGE}{L_COLON} </b><br /><span class="bigger">{L_AVATAR_EXPLAIN}</span></td>
+	<td class="bg1" width="35%"><b class="bigger">{L_CURRENT_IMAGE}{L_COLON}</b><br /><span class="bigger">{L_AVATAR_EXPLAIN}</span></td>
 	<td class="bg2"><br />
 	<!-- IF AVATAR -->
 		<span class="bigger">{AVATAR}</span><br /><br /><input type="checkbox" name="avatar_delete" /> <span class="bigger">{L_DELETE_AVATAR}</span>
@@ -15,7 +15,7 @@
 </tr>
 <!-- IF not S_AVATARS_ENABLED -->
 	<tr>
-		<td class="bg3" colspan="2" align="center"><span class="bigger">{L_AVATAR_FEATURES_DISABLED}</span></td>
+		<td class="bg1" colspan="2" align="center"><b class="bigger">{L_AVATAR_FEATURES_DISABLED}</b></td>
 	</tr>
 <!-- ENDIF -->
 <tr>
@@ -25,7 +25,7 @@
 	<!-- IF avatar_drivers.SELECTED --><!-- DEFINE $DEFINED_AVATAR = 1 --><!-- ENDIF -->
 <!-- END avatar_drivers -->
 <tr>
-	<td class="bg1" width="35%"><b class="bigger">{L_AVATAR_TYPE}{L_COLON}</b></td>
+	<td class="bg1"><b class="bigger">{L_AVATAR_TYPE}{L_COLON}</b></td>
 	<td class="bg2">
 		<select name="avatar_driver" id="avatar_driver"<!-- IF .avatar_drivers --> onchange="ChangeAvatarType();"<!-- ENDIF -->>
 			<!-- BEGIN avatar_drivers -->

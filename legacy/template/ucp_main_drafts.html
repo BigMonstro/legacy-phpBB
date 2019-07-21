@@ -42,7 +42,7 @@
 			<td class="cat" colspan="3" align="{S_CONTENT_FLOW_END}"><input class="button2" type="submit" name="delete" value="{L_DELETE_MARKED}" /></td>
 		</tr>
 	</table>
-	<table width="100%" cellspacing="2"><tr>
+	<table width="100%" cellspacing="1"><tr>
 		<td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('ucp', '', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('ucp', '', false); return false;">{L_UNMARK_ALL}</a></b></td>
 	</tr></table>
 	<!-- ELSE -->
@@ -59,7 +59,7 @@
 
 	<tr>
 		<td class="bg1" width="22%"><b class="bigger">{L_SUBJECT}{L_COLON}</b></td>
-		<td class="bg2" width="78%">
+		<td class="bg2">
 			<!-- EVENT posting_editor_subject_prepend -->
 			<input type="text" class="inputbox" name="subject" size="60" maxlength="<!-- IF S_NEW_MESSAGE -->120<!-- ELSE -->124<!-- ENDIF -->" tabindex="2" value="{DRAFT_SUBJECT}" />
 			<!-- EVENT posting_editor_subject_append -->
@@ -67,14 +67,11 @@
 	</tr>
 	<tr valign="top"> 
 		<td class="bg1">
-			<b class="bigger">{L_MESSAGE}{L_COLON} </b><br /><span class="bigger">{L_EDIT_DRAFT_EXPLAIN}</span>
+			<b class="bigger">{L_MESSAGE}{L_COLON}</b><br /><span class="bigger">{L_EDIT_DRAFT_EXPLAIN}</span><br /><br /><b><a href="{S_UCP_ACTION}">{L_BACK_TO_DRAFTS}</a></b>
 		</td>
 		<td class="bg2">
 			<!-- INCLUDE posting_editor.html -->
 		</td>
-	</tr>
-	<tr class="bg1">
-		<td class="bigger" colspan="2"><b><a href="{S_UCP_ACTION}">{L_BACK_TO_DRAFTS}</a></b></td>
 	</tr>
 	<tr>
 		<td class="cat" colspan="2" align="center">{S_HIDDEN_FIELDS}<input class="button2" type="reset" value="{L_RESET}" name="reset" /> &nbsp;<input class="button1" type="submit" name="submit" value="{L_SAVE}" /></td>

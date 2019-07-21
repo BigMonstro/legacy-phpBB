@@ -7,13 +7,13 @@
 
 	<table class="main" width="100%" cellspacing="1">
 	<tr>
-		<td class="bg3" colspan="4" align="center"><b class="big">{L_LATEST_UNAPPROVED}</b></td>
-	</tr>
-	<tr>
-		<th>{L_POST}</th>
+		<th>{L_LATEST_UNAPPROVED}</th>
 		<th width="20%">{L_AUTHOR}</th>
 		<th width="20%">{L_POST_TIME}</th>
 		<th width="5%">{L_MARK}</th>
+	</tr>
+	<tr>
+		<td class="<!-- IF .unapproved -->bg3<!-- ELSE -->bg1" align="center<!-- ENDIF -->" colspan="4"><span class="<!-- IF .unapproved -->bigger<!-- ELSE -->big<!-- ENDIF -->">{L_UNAPPROVED_TOTAL}</span></td>
 	</tr>
 	<!-- BEGIN unapproved -->
 		<tr><!-- IF unapproved.S_ROW_COUNT is even --><!-- DEFINE $BG = 'bg1' --><!-- ELSE --><!-- DEFINE $BG = 'bg2' --><!-- ENDIF -->
@@ -23,20 +23,26 @@
 			<td class="{$BG}" align="center"><input type="checkbox" name="post_id_list[]" value="{unapproved.POST_ID}" /></td>
 		</tr>
 	<!-- END unapproved -->
-	<tr>
-		<td class="bg3" colspan="4"><table cellspacing="0" width="100%"><tr><td class="bigger">{L_UNAPPROVED_TOTAL}</td><!-- IF .unapproved --><td align="{S_CONTENT_FLOW_END}">{S_HIDDEN_FIELDS}<input class="button2" type="submit" name="action[disapprove]" value="{L_DISAPPROVE}" /> &nbsp;<input class="button1" type="submit" name="action[approve]" value="{L_APPROVE}" /></td><!-- ENDIF --></tr></table></td>
-	</tr>
+
+	<!-- IF .unapproved -->
+		<tr>
+			<td align="{S_CONTENT_FLOW_END}" class="cat" colspan="4">{S_HIDDEN_FIELDS}<input class="button2" type="submit" name="action[disapprove]" value="{L_DISAPPROVE}" /> &nbsp;<input class="button1" type="submit" name="action[approve]" value="{L_APPROVE}" /></td>
+		</tr>
+	<!-- ENDIF -->
 	</table>
 	{S_FORM_TOKEN}
 	</form>
 
 	<!-- IF .unapproved -->
-		<table width="100%" cellspacing="2"><tr>
-		<td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('mcp_queue', 'post_id_list', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('mcp_queue', 'post_id_list', false); return false;">{L_UNMARK_ALL}</a></b></td>
-		</tr></table>
+		<table width="100%" cellspacing="1">
+		<tr>
+			<td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('mcp_queue', 'post_id_list', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('mcp_queue', 'post_id_list', false); return false;">{L_UNMARK_ALL}</a></b></td>
+		</tr>
+		</table>
 	<!-- ELSE -->
 		<br />
 	<!-- ENDIF -->
+
 	<br clear="all" />
 <!-- ENDIF -->
 
@@ -45,12 +51,12 @@
 <!-- IF S_SHOW_REPORTS -->
 	<table class="main" width="100%" cellspacing="1">
 	<tr>
-		<td class="bg3" colspan="3" align="center"><b class="big">{L_LATEST_REPORTED}</b></td>
-	</tr>
-	<tr>
-		<th>{L_POST}</th>
+		<th>{L_LATEST_REPORTED}</th>
 		<th width="23%">{L_REPORTER}</th>
 		<th width="22%">{L_REPORT_TIME}</th>
+	</tr>
+	<tr>
+		<td class="<!-- IF .report -->bg3<!-- ELSE -->bg1" align="center<!-- ENDIF -->" colspan="3"><span class="<!-- IF .report -->bigger<!-- ELSE -->big<!-- ENDIF -->">{L_REPORTS_TOTAL}</span></td>
 	</tr>
 	<!-- BEGIN report -->
 		<tr><!-- IF report.S_ROW_COUNT is even --><!-- DEFINE $BG = 'bg1' --><!-- ELSE --><!-- DEFINE $BG = 'bg2' --><!-- ENDIF -->
@@ -59,9 +65,6 @@
 			<td class="{$BG}" align="center"><span class="bigger">{report.REPORT_TIME}</span></td>
 		</tr>
 	<!-- END report -->
-		<tr>
-			<td class="bg3" colspan="3"><table cellspacing="0" width="100%"><tr><td class="bigger">{L_REPORTS_TOTAL}</td></tr></table></td>
-		</tr>
 	</table>
 
 	<br clear="all" /><br />
@@ -72,12 +75,12 @@
 <!-- IF S_SHOW_PM_REPORTS -->
 	<table class="main" width="100%" cellspacing="1">
 	<tr>
-		<td class="bg3" colspan="3" align="center"><b class="big">{L_LATEST_REPORTED_PMS}</b></td>
-	</tr>
-	<tr>
-		<th>{L_PM}</th>
+		<th>{L_LATEST_REPORTED_PMS}</th>
 		<th width="23%">{L_REPORTER}</th>
 		<th width="22%">{L_REPORT_TIME}</th>
+	</tr>
+	<tr>
+		<td class="<!-- IF .pm_report -->bg3<!-- ELSE -->bg1" align="center<!-- ENDIF -->" colspan="3"><span class="<!-- IF .pm_report -->bigger<!-- ELSE -->big<!-- ENDIF -->">{L_PM_REPORTS_TOTAL}</span></td>
 	</tr>
 	<!-- BEGIN pm_report -->
 		<tr><!-- IF pm_report.S_ROW_COUNT is even --><!-- DEFINE $BG = 'bg1' --><!-- ELSE --><!-- DEFINE $BG = 'bg2' --><!-- ENDIF -->
@@ -86,9 +89,6 @@
 			<td class="{$BG}" align="center"><span class="bigger">{pm_report.REPORT_TIME}</span></td>
 		</tr>
 	<!-- END pm_report -->
-		<tr>
-			<td class="bg3" colspan="3"><table cellspacing="0" width="100%"><tr><td class="bigger">{L_PM_REPORTS_TOTAL}</td></tr></table></td>
-		</tr>
 	</table>
 
 	<br clear="all" /><br />
@@ -99,13 +99,10 @@
 <!-- IF S_SHOW_LOGS -->
 	<table class="main" width="100%" cellspacing="1">
 	<tr>
-		<td class="bg3" colspan="4" align="center"><b class="big">{L_LATEST_LOGS}</b></td>
-	</tr>
-	<tr>
 		<th align="{S_CONTENT_FLOW_BEGIN}" width="15%">{L_USERNAME}</th>
 		<th width="10%">{L_IP}</th>
 		<th width="15%">{L_TIME}</th>
-		<th>{L_ACTION}</th>
+		<th>{L_LATEST_LOGS}</th>
 	</tr>
 	<!-- BEGIN log -->
 		<tr class="bigger"><!-- IF log.S_ROW_COUNT is even --><!-- DEFINE $BG = 'bg1' --><!-- ELSE --><!-- DEFINE $BG = 'bg2' --><!-- ENDIF -->

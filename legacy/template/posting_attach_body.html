@@ -2,7 +2,7 @@
 	<th colspan="2">{L_ADD_ATTACHMENT}</th>
 </tr>
 <tr>
-	<td class="bg3" colspan="2"><span class="bigger">{L_ADD_ATTACHMENT_EXPLAIN}</span></td>
+	<td class="bg1" colspan="2"><span class="bigger">{L_ADD_ATTACHMENT_EXPLAIN}</span></td>
 </tr>
 
 <tr>
@@ -26,13 +26,14 @@
 		</table>
 	</td>
 </tr>
-
+<!-- EVENT posting_attach_body_file_list_before -->
 <!-- IF S_HAS_ATTACHMENTS -->
 	<tr>
 		<th colspan="2">{L_POSTED_ATTACHMENTS}</th>
 	</tr>
-
+	<!-- EVENT posting_attach_body_attach_row_before -->
 	<!-- BEGIN attach_row -->
+		<!-- EVENT posting_attach_body_attach_row_prepend -->
 		<tr>
 			<td class="bg1"><b class="bigger">{L_FILENAME}</b></td>
 			<td class="bg2"><a class="bigger" href="{attach_row.U_VIEW_ATTACHMENT}" target="_blank">{attach_row.FILENAME}</a></td>
@@ -54,6 +55,8 @@
 				</table>
 			</td>
 		</tr>
+		<!-- EVENT posting_attach_body_attach_row_append -->
 	<!-- END attach_row -->
-
+	<!-- EVENT posting_attach_body_attach_row_after -->
 <!-- ENDIF -->
+<!-- EVENT posting_attach_body_file_list_after -->

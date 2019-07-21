@@ -1,3 +1,32 @@
+<!-- IF S_HAS_POLL_OPTIONS -->
+	<table class="main" width="100%" cellspacing="1">
+	<tr>
+		<td class="bg2">
+			<table cellspacing="1" align="center">
+			<tr>
+				<td align="center"><span class="big"><b>{POLL_QUESTION}</b></span><!-- IF L_POLL_LENGTH --><br /><span class="bigger">{L_POLL_LENGTH}</span><!-- ENDIF --></td>
+			</tr>
+			<tr>
+				<td>
+					<table align="center" cellspacing="1">
+					<!-- BEGIN poll_option -->
+						<tr>
+							<td><input type="<!-- IF S_IS_MULTI_CHOICE -->checkbox<!-- ELSE -->radio<!-- ENDIF -->" name="vote_id" value="" /></td>
+							<td class="big">{poll_option.POLL_OPTION_CAPTION}</td>
+						</tr>
+					<!-- END poll_option -->
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td align="center">{L_MAX_VOTES}</td>
+			</tr>
+			</table>
+		</td>
+	</tr>
+	</table>
+<!-- ENDIF -->
+<!-- EVENT posting_preview_poll_after -->
 <table class="main" width="100%" cellspacing="1">
 <tr>
 	<th align="{S_CONTENT_FLOW_BEGIN}">{L_PREVIEW}</th>
@@ -14,39 +43,6 @@
 		</table>
 	</td>
 </tr>
-<!-- IF S_HAS_POLL_OPTIONS -->
-	<tr>
-		<td class="bg2" align="center"><br clear="all" />
-			<table cellspacing="0" align="center">
-			<tr>
-				<td align="center"><span class="big"><b>{POLL_QUESTION}</b></span><!-- IF L_POLL_LENGTH --><br /><span class="bigger">{L_POLL_LENGTH}</span><!-- ENDIF --></td>
-			</tr>
-			<tr>
-				<td align="center">
-					<table cellspacing="0">
-					<!-- BEGIN poll_option -->
-						<tr>
-							<td>
-							<!-- IF S_IS_MULTI_CHOICE -->
-								<input type="checkbox" name="vote_id" value="" />
-							<!-- ELSE -->
-								<input type="radio" name="vote_id" value="" />
-							<!-- ENDIF -->
-							</td>
-							<td class="big">{poll_option.POLL_OPTION_CAPTION}</td>
-						</tr>
-					<!-- END poll_option -->
-					</table>
-				</td>
-			</tr>
-			<tr>
-				<td align="center" class="bigger">{L_MAX_VOTES}</td>
-			</tr>
-			</table>
-		</td>
-	</tr>
-<!-- ENDIF -->
-<!-- EVENT posting_preview_poll_after -->
 <tr class="bg1">
 	<td>
 		<table cellspacing="5" width="100%">

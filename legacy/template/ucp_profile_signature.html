@@ -13,7 +13,7 @@
 
 <tr valign="top">
 	<td class="bg1" width="22%">
-	<span class="bigger">{L_SIGNATURE_EXPLAIN}</span><br /><br />
+	<div><p>{L_SIGNATURE_EXPLAIN}</p></div>
 	<!-- EVENT posting_editor_smilies_before -->
 	<!-- IF S_SMILIES_ALLOWED and (.smiley or S_SHOW_SMILEY_LINK) -->
 		<table cellspacing="5" width="100%">
@@ -38,7 +38,7 @@
 	<!-- ENDIF -->
 	<!-- EVENT posting_editor_smilies_after -->
 	</td>
-	<td class="bg2" width="78%">
+	<td class="bg2">
 	<!-- DEFINE $SIG_EDIT = 1 -->
 	<!-- INCLUDE posting_editor.html -->
 	</td>
@@ -67,6 +67,7 @@
 	</td>
 	<!-- EVENT posting_editor_bbcode_status_after -->
 	<td class="bg2">
+		<!-- EVENT ucp_profile_signature_posting_editor_options_prepend -->
 		<table cellspacing="2">
 		<!-- IF S_BBCODE_ALLOWED -->
 			<tr>

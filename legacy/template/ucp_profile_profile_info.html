@@ -10,18 +10,12 @@
 	</tr>
 <!-- ENDIF -->
 <tr>
-	<td class="bg1" colspan="2"><span class="bigger">{L_PROFILE_INFO_NOTICE}</span></td>
+	<td align="center" class="bg1" colspan="2"><span class="bigger">{L_PROFILE_INFO_NOTICE}</span></td>
 </tr>
 <!-- EVENT ucp_profile_profile_info_before -->
-<!-- IF S_JABBER_ENABLED -->
-<tr>
-	<td class="bg1" width="35%"><b class="bigger">{L_UCP_JABBER}{L_COLON} </b></td>
-	<td class="bg2"><input type="text" class="inputbox" name="jabber" size="30" maxlength="255" value="{JABBER}" /></td>
-</tr>
-<!-- ENDIF -->
 <!-- IF S_BIRTHDAYS_ENABLED -->
 	<tr>
-		<td class="bg1" width="35%"><b class="bigger">{L_BIRTHDAY}{L_COLON} </b><br /><span class="bigger">{L_BIRTHDAY_EXPLAIN}</span></td>
+		<td class="bg1" width="35%"><b class="bigger">{L_BIRTHDAY}{L_COLON}</b><br /><span class="bigger">{L_BIRTHDAY_EXPLAIN}</span></td>
 		<td class="bg2">
 			<span class="nowrap"><span class="bigger">{L_DAY}{L_COLON}</span> <select name="bday_day">{S_BIRTHDAY_DAY_OPTIONS}</select></span>
 			<span class="nowrap"><span class="bigger">{L_MONTH}{L_COLON}</span> <select name="bday_month">{S_BIRTHDAY_MONTH_OPTIONS}</select></span>
@@ -29,10 +23,16 @@
 		</td>
 	</tr>
 <!-- ENDIF -->
+<!-- IF S_JABBER_ENABLED -->
+	<tr>
+		<td class="bg1" width="35%"><b class="bigger">{L_UCP_JABBER}{L_COLON}</b></td>
+		<td class="bg2"><input type="text" class="inputbox" name="jabber" size="30" maxlength="255" value="{JABBER}" /></td>
+	</tr>
+<!-- ENDIF -->
 <!-- BEGIN profile_fields -->
 	<tr>
 		<td class="bg1" width="35%">
-			<b class="bigger">{profile_fields.LANG_NAME}{L_COLON} </b>
+			<b class="bigger">{profile_fields.LANG_NAME}{L_COLON}</b>
 			<!-- IF profile_fields.S_REQUIRED --><b>*</b><!-- ENDIF -->
 			<!-- IF profile_fields.LANG_EXPLAIN --><br /><span class="bigger">{profile_fields.LANG_EXPLAIN}</span><!-- ENDIF -->
 		</td>

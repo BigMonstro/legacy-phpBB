@@ -11,20 +11,20 @@
 <tr>
 	<th>{L_LOGIN}</th>
 </tr>
-<tr class="bigger">
-	<td class="bg3" align="center">{L_LOGIN_FORUM}</td>
-</tr>
 <tr>
-	<td class="bg1" align="center">
+	<td class="bg1">
 
-		<table cellspacing="1">
+		<table cellspacing="2" width="100%">
+		<tr>
+			<td colspan="2" align="center"><span class="bigger">{L_LOGIN_FORUM}</span></td>
+		</tr>
 		<!-- IF LOGIN_ERROR -->
 			<tr>
 				<td colspan="2" align="center"><p class="error">{LOGIN_ERROR}</p></td>
 			</tr>
 		<!-- ENDIF -->
 		<tr>
-			<td class="bigger"><b>{L_PASSWORD}{L_COLON}</b></td>
+			<td class="bigger" align="{S_CONTENT_FLOW_END}" width="50%"><b>{L_PASSWORD}{L_COLON}</b></td>
 			<td><input type="password" class="inputbox" name="password" size="25" tabindex="2" autocomplete="off" /></td>
 		</tr>
 		</table>

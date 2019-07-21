@@ -17,21 +17,33 @@
 
 <!-- EVENT overall_footer_page_body_after -->
 
-<table cellspacing="2" width="100%" class="copyright">
-	<tr><td align="center">
-		<!-- EVENT overall_footer_copyright_prepend -->
-		<div>{CREDIT_LINE}<!-- IF TRANSLATION_INFO --><br />{TRANSLATION_INFO}<!-- ENDIF --></div>
-		<!-- EVENT overall_footer_copyright_append -->
-	</td></tr>
-	<tr><td align="center">
-		<a href="{U_PRIVACY}">{L_PRIVACY_LINK}</a> | <a href="{U_TERMS_USE}">{L_TERMS_LINK}</a>
-	</td></tr>
-	<!-- IF DEBUG_OUTPUT or U_ACP -->
-		<tr><td align="center">
-			<!-- IF DEBUG_OUTPUT -->{DEBUG_OUTPUT}<!-- IF U_ACP --><br /><!-- ENDIF --><!-- ENDIF --><!-- IF U_ACP --><b><a href="{U_ACP}">{L_ACP}</a></b><!-- ENDIF -->
-		</td></tr>
+<div align="center" class="copyright">
+	<!-- EVENT overall_footer_copyright_prepend -->
+	<p class="footer-row">
+		{CREDIT_LINE}
+	</p>
+	<!-- IF TRANSLATION_INFO -->
+		<p class="footer-row">
+			{TRANSLATION_INFO}
+		</p>
 	<!-- ENDIF -->
-</table><!-- IF not S_IS_BOT -->{RUN_CRON_TASK}<!-- ENDIF -->
+	<!-- EVENT overall_footer_copyright_append -->
+
+	<p class="footer-row">
+		<a href="{U_PRIVACY}">{L_PRIVACY_LINK}</a> | <a href="{U_TERMS_USE}">{L_TERMS_LINK}</a>
+	</p>
+
+	<!-- IF DEBUG_OUTPUT -->
+		<p class="footer-row">
+			{DEBUG_OUTPUT}
+		</p>
+	<!-- ENDIF -->
+	<!-- IF U_ACP -->
+		<p class="footer-row">
+			<b><a href="{U_ACP}">{L_ACP}</a></b>
+		</p>
+	<!-- ENDIF -->
+</div><!-- IF not S_IS_BOT -->{RUN_CRON_TASK}<!-- ENDIF -->
 
 <!-- IF S_COOKIE_NOTICE -->
 <script type="text/javascript"><!--

@@ -11,7 +11,7 @@
 <!-- ENDIF -->
 
 <!-- IF S_FORUM_RULES -->
-	<div style="margin: 10px 0; padding: 4px">
+	<div style="margin: 14px 4px">
 		<h4 class="forumrules">{L_FORUM_RULES}</h4>
 		<p class="forumdesc"><!-- IF U_FORUM_RULES --><a href="{U_FORUM_RULES}"><b>{L_FORUM_RULES_LINK}</b></a><!-- ELSE -->{FORUM_RULES}<!-- ENDIF --></p>
 	</div>
@@ -56,7 +56,7 @@
 		<td class="bg2">
 			<table width="100%" cellspacing="0">
 			<tr>
-				<td><span class="nowrap"><input type="radio" name="icon" value="0"{S_NO_ICON_CHECKED} tabindex="1" /> <span class="bigger"><!-- IF S_SHOW_TOPIC_ICONS -->{L_NO_TOPIC_ICON}<!-- ELSE -->{L_NO_PM_ICON}<!-- ENDIF --></span></span> &nbsp; <!-- BEGIN topic_icon --><span class="nowrap"><input type="radio" name="icon" value="{topic_icon.ICON_ID}"{topic_icon.S_ICON_CHECKED} tabindex="1" /> <img src="{topic_icon.ICON_IMG}" width="{topic_icon.ICON_WIDTH}" height="{topic_icon.ICON_HEIGHT}" alt="{topic_icon.ICON_ALT}" title="{topic_icon.ICON_ALT}" /></span> &nbsp; <!-- END topic_icon --></td>
+				<td><span class="nowrap"><input type="radio" name="icon" value="0"{S_NO_ICON_CHECKED} tabindex="1" /> <span class="bigger"><!-- IF S_SHOW_TOPIC_ICONS -->{L_NO_TOPIC_ICON}<!-- ELSE -->{L_NO_PM_ICON}<!-- ENDIF --></span></span> &nbsp; <!-- BEGIN topic_icon --><span class="nowrap"><input type="radio" name="icon" value="{topic_icon.ICON_ID}" {topic_icon.S_ICON_CHECKED} tabindex="1" /> <img src="{topic_icon.ICON_IMG}" width="{topic_icon.ICON_WIDTH}" height="{topic_icon.ICON_HEIGHT}" alt="{topic_icon.ICON_ALT}" title="{topic_icon.ICON_ALT}" /></span> &nbsp; <!-- END topic_icon --></td>
 			</tr>
 			</table>
 		</td>
@@ -98,9 +98,9 @@
 <!-- EVENT posting_editor_subject_before -->
 <tr>
 	<td class="bg1" width="22%"><b class="bigger">{L_SUBJECT}{L_COLON}</b></td>
-	<td class="bg2" width="78%">
+	<td class="bg2">
 		<!-- EVENT posting_editor_subject_prepend -->
-		<input type="text" class="inputbox" name="subject" size="60" maxlength="<!-- IF S_NEW_MESSAGE -->120<!-- ELSE -->124<!-- ENDIF -->" tabindex="2" value="{SUBJECT}" />
+		<input type="text" class="inputbox" name="subject" size="<!-- IF S_PRIVMSGS -->40<!-- ELSE -->60<!-- ENDIF -->" maxlength="<!-- IF S_NEW_MESSAGE -->120<!-- ELSE -->124<!-- ENDIF -->" tabindex="2" value="{SUBJECT}" />
 		<!-- EVENT posting_editor_subject_append -->
 	</td>
 </tr>
@@ -254,7 +254,7 @@
 
 <!-- IF S_TOPIC_TYPE_ANNOUNCE or S_TOPIC_TYPE_STICKY -->
 	<tr>
-		<td class="bg1"><b class="bigger">{L_STICK_TOPIC_FOR}{L_COLON}</b><br /><span class="bigger">{L_STICKY_ANNOUNCE_TIME_LIMIT}</span></td>
+		<td class="bg1"><b class="bigger">{L_STICK_TOPIC_FOR}{L_COLON}</b></td>
 		<td class="bg2"><input type="text" class="inputbox" size="3" maxlength="3" name="topic_time_limit" value="{TOPIC_TIME_LIMIT}" />&nbsp;<b class="big">{L_DAYS}</b> <span class="bigger">{L_STICK_TOPIC_FOR_EXPLAIN}</span></td>
 	</tr>
 <!-- ENDIF -->

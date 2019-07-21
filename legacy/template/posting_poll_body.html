@@ -3,7 +3,7 @@
 	<th colspan="2">{L_ADD_POLL}</th>
 </tr>
 <tr>
-	<td class="bg3" colspan="2"><span class="bigger">{L_ADD_POLL_EXPLAIN}</span></td>
+	<td class="bg1" colspan="2"><span class="bigger">{L_ADD_POLL_EXPLAIN}</span></td>
 </tr>
 <tr>
 	<td class="bg1"><b class="bigger">{L_POLL_QUESTION}{L_COLON}</b></td>
@@ -14,8 +14,8 @@
 	<td class="bg2"><textarea name="poll_option_text" rows="5" cols="50">{POLL_OPTIONS}</textarea></td>
 </tr>
 <tr>
-	<td class="bg1"><b class="bigger">{L_POLL_MAX_OPTIONS}{L_COLON}</b><br /><span class="bigger">{L_POLL_MAX_OPTIONS_EXPLAIN}</span></td>
-	<td class="bg2"><input type="text" class="inputbox" size="3" maxlength="3" name="poll_max_options" value="{POLL_MAX_OPTIONS}" /></td>
+	<td class="bg1"><b class="bigger">{L_POLL_MAX_OPTIONS}{L_COLON}</b></td>
+	<td class="bg2"><input type="text" class="inputbox" size="3" maxlength="3" name="poll_max_options" value="{POLL_MAX_OPTIONS}" /> <span class="bigger">{L_POLL_MAX_OPTIONS_EXPLAIN}</span></td>
 </tr>
 <tr>
 	<td class="bg1"><b class="bigger">{L_POLL_FOR}{L_COLON}</b></td>
@@ -23,8 +23,8 @@
 </tr>
 	<!-- IF S_POLL_VOTE_CHANGE -->
 	<tr>
-		<td class="bg1"><b class="bigger">{L_POLL_VOTE_CHANGE}{L_COLON}</b><br /><span class="bigger">{L_POLL_VOTE_CHANGE_EXPLAIN}</span></td>
-		<td class="bg2"><input type="checkbox" name="poll_vote_change"{VOTE_CHANGE_CHECKED} /></td>
+		<td class="bg1"><b class="bigger">{L_POLL_VOTE_CHANGE}{L_COLON}</b></td>
+		<td class="bg2"><input type="checkbox" name="poll_vote_change"{VOTE_CHANGE_CHECKED} /> <span class="bigger">{L_POLL_VOTE_CHANGE_EXPLAIN}</span></td>
 	</tr>
 	<!-- ENDIF -->
 <!-- ENDIF -->

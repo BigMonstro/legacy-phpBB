@@ -2,14 +2,12 @@
 
 <table width="100%" cellspacing="1"><tr>
 	<td class="bigger" nowrap="nowrap"><!-- IF U_VIEW_FORUM_LOGS --><b><a href="{U_VIEW_FORUM_LOGS}">{L_VIEW_FORUM_LOGS}</a></b><!-- ENDIF --></td>
-	<td width="100%" align="{S_CONTENT_FLOW_END}"><span class="nowrap">[ {TOTAL_TOPICS} ]</span> <!-- INCLUDE pagination.html --></td>
+	<td align="{S_CONTENT_FLOW_END}" width="100%"><!-- INCLUDE pagination.html --></td>
 </tr></table>
 
 <form method="post" id="mcp" action="{S_MCP_ACTION}">
+
 <table class="main" width="100%" cellspacing="1">
-<tr>
-	<td class="cat" colspan="<!-- IF S_MERGE_SELECT -->5<!-- ELSE -->6<!-- ENDIF -->"><!-- INCLUDE display_options.html --></td>
-</tr>
 <!-- BEGIN topicrow -->
 	<!-- IF topicrow.S_FIRST_ROW -->
 		<tr>
@@ -55,41 +53,53 @@
 	</tr>
 <!-- BEGINELSE -->
 	<tr>
-		<td class="bg1" colspan="<!-- IF S_MERGE_SELECT -->5<!-- ELSE -->6<!-- ENDIF -->" align="center"><span class="big">{L_NO_TOPICS}</span></td>
+		<th>{L_INFORMATION}</th>
+	</tr>
+	<tr>
+		<td class="bg1" align="center"><span class="big">{L_NO_TOPICS}</span></td>
 	</tr>
 <!-- END topicrow -->
+</table>
 <!-- EVENT mcp_forum_actions_before -->
-<!-- IF .topicrow and not S_MERGE_SELECT -->
+
+<table cellspacing="0" width="100%">
 <tr>
-	<td class="cat" colspan="<!-- IF S_MERGE_SELECT -->5<!-- ELSE -->6<!-- ENDIF -->" align="{S_CONTENT_FLOW_END}">
-		<select name="action">
-			<option value="" selected="selected">{L_SELECT_ACTION}</option>
-			<!-- IF S_CAN_DELETE --><option value="delete_topic">{L_DELETE}</option><!-- ENDIF -->
-			<!-- IF S_CAN_RESTORE --><option value="restore_topic">{L_RESTORE}</option><!-- ENDIF -->
-			<!-- IF S_CAN_MERGE --><option value="merge_topics">{L_MERGE}</option><!-- ENDIF -->
-			<!-- IF S_CAN_MOVE --><option value="move">{L_MOVE}</option><!-- ENDIF -->
-			<!-- IF S_CAN_FORK --><option value="fork">{L_FORK}</option><!-- ENDIF -->
-			<!-- IF S_CAN_LOCK --><option value="lock">{L_LOCK}</option><option value="unlock">{L_UNLOCK}</option><!-- ENDIF -->
-			<!-- IF S_CAN_SYNC --><option value="resync">{L_RESYNC}</option><!-- ENDIF -->
-			<!-- IF S_CAN_MAKE_NORMAL --><option value="make_normal">{L_MAKE_NORMAL}</option><!-- ENDIF -->
-			<!-- IF S_CAN_MAKE_STICKY --><option value="make_sticky">{L_MAKE_STICKY}</option><!-- ENDIF -->
-			<!-- IF S_CAN_MAKE_ANNOUNCE --><option value="make_announce">{L_MAKE_ANNOUNCE}</option><!-- ENDIF -->
-			<!-- IF S_CAN_MAKE_ANNOUNCE_GLOBAL --><option value="make_global">{L_MAKE_GLOBAL}</option><!-- ENDIF -->
-			<!-- EVENT mcp_forum_actions_append -->
-		</select>
-		<input class="button1" type="submit" value="{L_SUBMIT}" />
+	<td class="cat">
+		<table width="100%" cellspacing="0"><tr>
+			<td><!-- INCLUDE display_options.html --></td>
+			<!-- IF not S_MERGE_SELECT -->
+				<td align="{S_CONTENT_FLOW_END}">
+					<select name="action">
+						<option value="" selected="selected">{L_SELECT_ACTION}</option>
+						<!-- IF S_CAN_DELETE --><option value="delete_topic">{L_DELETE}</option><!-- ENDIF -->
+						<!-- IF S_CAN_RESTORE --><option value="restore_topic">{L_RESTORE}</option><!-- ENDIF -->
+						<!-- IF S_CAN_MERGE --><option value="merge_topics">{L_MERGE}</option><!-- ENDIF -->
+						<!-- IF S_CAN_MOVE --><option value="move">{L_MOVE}</option><!-- ENDIF -->
+						<!-- IF S_CAN_FORK --><option value="fork">{L_FORK}</option><!-- ENDIF -->
+						<!-- IF S_CAN_LOCK --><option value="lock">{L_LOCK}</option><option value="unlock">{L_UNLOCK}</option><!-- ENDIF -->
+						<!-- IF S_CAN_SYNC --><option value="resync">{L_RESYNC}</option><!-- ENDIF -->
+						<!-- IF S_CAN_MAKE_NORMAL --><option value="make_normal">{L_MAKE_NORMAL}</option><!-- ENDIF -->
+						<!-- IF S_CAN_MAKE_STICKY --><option value="make_sticky">{L_MAKE_STICKY}</option><!-- ENDIF -->
+						<!-- IF S_CAN_MAKE_ANNOUNCE --><option value="make_announce">{L_MAKE_ANNOUNCE}</option><!-- ENDIF -->
+						<!-- IF S_CAN_MAKE_ANNOUNCE_GLOBAL --><option value="make_global">{L_MAKE_GLOBAL}</option><!-- ENDIF -->
+						<!-- EVENT mcp_forum_actions_append -->
+					</select>
+					<input class="button1" type="submit" value="{L_SUBMIT}" />
+				</td>
+			<!-- ENDIF -->
+		</tr></table>
 	</td>
 </tr>
-<!-- ENDIF -->
 </table>
+
 {S_FORM_TOKEN}
 <!-- EVENT mcp_forum_actions_after -->
 </form>
 
-<table width="100%" cellspacing="2"><tr>
+<table width="100%" cellspacing="1"><tr>
 	<td nowrap="nowrap"><b>{PAGE_NUMBER}</b> &nbsp;[ {TOTAL_TOPICS} ]</td>
 	<!-- IF not S_MERGE_SELECT --><td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('mcp', 'topic_id_list', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('mcp', 'topic_id_list', false); return false;">{L_UNMARK_ALL}</a></b></td><!-- IF .pagination --></tr><tr><!-- ENDIF --><!-- ENDIF -->
-	<!-- IF .pagination --><td align="{S_CONTENT_FLOW_END}"<!-- IF not S_MERGE_SELECT --> colspan="2"<!-- ENDIF -->><!-- INCLUDE pagination.html --></td><!-- ENDIF -->
+	<!-- IF .pagination --><td align="{S_CONTENT_FLOW_END}" <!-- IF not S_MERGE_SELECT -->colspan="2"<!-- ELSE -->width="100%"<!-- ENDIF -->><!-- INCLUDE pagination.html --></td><!-- ENDIF -->
 </tr></table>
 
 <!-- INCLUDE mcp_footer.html -->

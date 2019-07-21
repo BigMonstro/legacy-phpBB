@@ -12,11 +12,11 @@
 	</tr>
 <!-- ENDIF -->
 <tr>
-	<td class="bg3" colspan="2"><span class="bigger"><!-- IF S_REPORT_POST -->{L_REPORT_POST_EXPLAIN}<!-- ELSE -->{L_REPORT_MESSAGE_EXPLAIN}<!-- ENDIF --></span></td>
+	<td class="bg1" colspan="2"><span class="bigger"><!-- IF S_REPORT_POST -->{L_REPORT_POST_EXPLAIN}<!-- ELSE -->{L_REPORT_MESSAGE_EXPLAIN}<!-- ENDIF --></span></td>
 </tr>
 <tr>
 	<td class="bg1" width="22%"><b class="big">{L_REASON}{L_COLON}</b></td>
-	<td class="bg2" width="78%"><select name="reason_id" class="bigger">
+	<td class="bg2"><select name="reason_id" class="bigger">
 		<!-- BEGIN reason --><option value="{reason.ID}"<!-- IF reason.S_SELECTED --> selected="selected"<!-- ENDIF -->>{reason.TITLE} &#187; {reason.DESCRIPTION}</option><!-- END reason -->
 	</select></td>
 </tr>

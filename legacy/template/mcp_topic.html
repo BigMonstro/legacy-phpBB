@@ -12,7 +12,7 @@
 	</tr>
 	<!-- EVENT mcp_topic_options_before -->
 	<tr>
-		<td class="bg1" width="20%"><b class="bigger">{L_SPLIT_SUBJECT}{L_COLON}</b></td>
+		<td class="bg1"><b class="bigger">{L_SPLIT_SUBJECT}{L_COLON}</b></td>
 		<td class="bg2"><input type="text" class="inputbox" size="45" maxlength="124" name="subject" value="{SPLIT_SUBJECT}" /></td>
 	</tr>
 	<!-- EVENT mcp_topic_options_after -->
@@ -26,7 +26,7 @@
 			<td class="bg2">
 				<table width="100%" cellspacing="0">
 				<tr>
-					<td class="bigger"><span class="nowrap"><input type="radio" name="icon" value="0"<!-- IF not S_TOPIC_ICON --> checked="checked"<!-- ENDIF --> /> <span class="bigger">{L_NO_TOPIC_ICON}</span></span> &nbsp; <!-- BEGIN topic_icon --><span class="nowrap"><input type="radio" name="icon" value="{topic_icon.ICON_ID}"<!-- IF topic_icon.S_CHECKED --> checked="checked"<!-- ENDIF --> /> <img src="{topic_icon.ICON_IMG}" width="{topic_icon.ICON_WIDTH}" height="{topic_icon.ICON_HEIGHT}" alt="{topic_icon.ICON_ALT}" title="{topic_icon.ICON_ALT}" /></span> &nbsp; <!-- END topic_icon --></td>
+					<td class="bigger"><span class="nowrap"><input type="radio" name="icon" value="0"<!-- IF not S_TOPIC_ICON --> checked="checked"<!-- ENDIF --> /> <span class="bigger">{L_NO_TOPIC_ICON}</span></span> &nbsp; <!-- BEGIN topic_icon --><span class="nowrap"><input type="radio" name="icon" value="{topic_icon.ICON_ID}" {topic_icon.S_ICON_CHECKED} /> <img src="{topic_icon.ICON_IMG}" width="{topic_icon.ICON_WIDTH}" height="{topic_icon.ICON_HEIGHT}" alt="{topic_icon.ICON_ALT}" title="{topic_icon.ICON_ALT}" /></span> &nbsp; <!-- END topic_icon --></td>
 				</tr>
 				</table>
 			</td>
@@ -42,7 +42,7 @@
 		<td class="bg2" colspan="2"><span class="bigger">{L_MERGE_TOPIC_EXPLAIN}</span></td>
 	</tr>
 	<tr>
-		<td class="bg1" width="20%"><b class="bigger">{L_MERGE_TOPIC_ID}{L_COLON}</b></td>
+		<td class="bg1"><b class="bigger">{L_MERGE_TOPIC_ID}{L_COLON}</b></td>
 		<td class="bg2"><input type="text" class="inputbox" size="6" maxlength="10" name="to_topic_id" value="{TO_TOPIC_ID}" /> <a href="{U_SELECT_TOPIC}" class="bigger">{L_SELECT_TOPIC}</a></td>
 	</tr>
 	<!-- IF TO_TOPIC_INFO -->
@@ -59,7 +59,8 @@
 	<td class="bg2"><input type="text" class="inputbox" size="6" maxlength="6" name="posts_per_page" value="{POSTS_PER_PAGE}" /></td>
 </tr>
 <tr>
-	<td class="cat" colspan="2"><!-- INCLUDE display_options.html --></td>
+	<td class="bg1"><b class="bigger">{L_DISPLAY_POSTS}{L_COLON}</b></td>
+	<td class="bg2">{S_SELECT_SORT_DAYS} <span class="bigger">{L_SORT_BY}</span> {S_SELECT_SORT_KEY} {S_SELECT_SORT_DIR} <input class="button2" type="submit" name="sort" value="{L_GO}" /></td>
 </tr>
 </table>
 
@@ -148,7 +149,7 @@
 {S_FORM_TOKEN}
 </form>
 
-<table width="100%" cellspacing="2"><tr>
+<table width="100%" cellspacing="1"><tr>
 	<td nowrap="nowrap"><b>{PAGE_NUMBER}</b> &nbsp;[ {TOTAL_POSTS} ]</td>
 	<td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('mcp', 'post', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('mcp', 'post', false); return false;">{L_UNMARK_ALL}</a></b></td>
 	<!-- IF .pagination --></tr><tr><td align="{S_CONTENT_FLOW_END}" colspan="2"><!-- INCLUDE pagination.html --></td><!-- ENDIF -->

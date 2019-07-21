@@ -7,8 +7,8 @@
 	<th>{L_SEND_PASSWORD}</th>
 </tr>
 <!-- IF USERNAME_REQUIRED -->
-	<tr class="bigger">
-		<td align="center" class="bg3" colspan="2">{L_EMAIL_NOT_UNIQUE}</td>
+	<tr>
+		<td align="center" class="bg2" colspan="2"><p class="error">{L_EMAIL_NOT_UNIQUE}</p></td>
 	</tr>
 <!-- ENDIF -->
 <tr>
@@ -20,7 +20,7 @@
 		</tr>
 		<!-- IF USERNAME_REQUIRED -->
 			<tr>
-				<td width="50%"><b class="bigger">{L_USERNAME}{L_COLON}</b></td>
+				<td><b class="bigger">{L_USERNAME}{L_COLON}</b></td>
 				<td><input type="text" class="inputbox" name="username" size="25" value="{USERNAME}" /></td>
 			</tr>
 		<!-- ENDIF -->

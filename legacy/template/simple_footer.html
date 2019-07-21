@@ -1,12 +1,18 @@
-<br clear="all" />
-
-<table cellspacing="2" width="100%" class="copyright">
-	<tr><td align="center">
+<div align="center" class="copyright">
+	<p class="footer-row">
 		{CREDIT_LINE}
-		<!-- IF TRANSLATION_INFO --><br />{TRANSLATION_INFO}<!-- ENDIF -->
-		<!-- IF DEBUG_OUTPUT --><br />{DEBUG_OUTPUT}<!-- ENDIF -->
-	</td></tr>
-</table>
+	</p>
+	<!-- IF TRANSLATION_INFO -->
+		<p class="footer-row">
+			{TRANSLATION_INFO}
+		</p>
+	<!-- ENDIF -->
+	<!-- IF DEBUG_OUTPUT -->
+		<p class="footer-row">
+			{DEBUG_OUTPUT}
+		</p>
+	<!-- ENDIF -->
+</div>
 
 <!-- EVENT simple_footer_after -->
 <!-- EVENT simple_footer_body_after -->
