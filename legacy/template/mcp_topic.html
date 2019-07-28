@@ -8,22 +8,22 @@
 		<th colspan="2" align="{S_CONTENT_FLOW_BEGIN}">{L_SPLIT_TOPIC}</th>
 	</tr>
 	<tr>
-		<td class="bg2" colspan="2"><span class="bigger">{L_SPLIT_TOPIC_EXPLAIN}</span></td>
+		<td class="bg1" colspan="2"><span class="bigger">{L_SPLIT_TOPIC_EXPLAIN}</span></td>
 	</tr>
 	<!-- EVENT mcp_topic_options_before -->
 	<tr>
 		<td class="bg1"><b class="bigger">{L_SPLIT_SUBJECT}{L_COLON}</b></td>
-		<td class="bg2"><input type="text" class="inputbox" size="45" maxlength="124" name="subject" value="{SPLIT_SUBJECT}" /></td>
+		<td class="bg1"><input type="text" class="inputbox" size="45" maxlength="124" name="subject" value="{SPLIT_SUBJECT}" /></td>
 	</tr>
 	<!-- EVENT mcp_topic_options_after -->
 	<tr>
 		<td class="bg1"><b class="bigger">{L_SPLIT_FORUM}{L_COLON}</b></td>
-		<td class="bg2"><select name="to_forum_id">{S_FORUM_SELECT}</select></td>
+		<td class="bg1"><select name="to_forum_id">{S_FORUM_SELECT}</select></td>
 	</tr>
 	<!-- IF S_SHOW_TOPIC_ICONS -->
 		<tr>
 			<td class="bg1"><b class="bigger">{L_TOPIC_ICON}{L_COLON}</b></td>
-			<td class="bg2">
+			<td class="bg1">
 				<table width="100%" cellspacing="0">
 				<tr>
 					<td class="bigger"><span class="nowrap"><input type="radio" name="icon" value="0"<!-- IF not S_TOPIC_ICON --> checked="checked"<!-- ENDIF --> /> <span class="bigger">{L_NO_TOPIC_ICON}</span></span> &nbsp; <!-- BEGIN topic_icon --><span class="nowrap"><input type="radio" name="icon" value="{topic_icon.ICON_ID}" {topic_icon.S_ICON_CHECKED} /> <img src="{topic_icon.ICON_IMG}" width="{topic_icon.ICON_WIDTH}" height="{topic_icon.ICON_HEIGHT}" alt="{topic_icon.ICON_ALT}" title="{topic_icon.ICON_ALT}" /></span> &nbsp; <!-- END topic_icon --></td>
@@ -39,15 +39,15 @@
 		<th colspan="2" align="{S_CONTENT_FLOW_BEGIN}">{L_MERGE_POSTS}</th>
 	</tr>
 	<tr>
-		<td class="bg2" colspan="2"><span class="bigger">{L_MERGE_TOPIC_EXPLAIN}</span></td>
+		<td class="bg1" colspan="2"><span class="bigger">{L_MERGE_TOPIC_EXPLAIN}</span></td>
 	</tr>
 	<tr>
 		<td class="bg1"><b class="bigger">{L_MERGE_TOPIC_ID}{L_COLON}</b></td>
-		<td class="bg2"><input type="text" class="inputbox" size="6" maxlength="10" name="to_topic_id" value="{TO_TOPIC_ID}" /> <a href="{U_SELECT_TOPIC}" class="bigger">{L_SELECT_TOPIC}</a></td>
+		<td class="bg1"><input type="text" class="inputbox" size="6" maxlength="10" name="to_topic_id" value="{TO_TOPIC_ID}" /> <a href="{U_SELECT_TOPIC}" class="bigger">{L_SELECT_TOPIC}</a></td>
 	</tr>
 	<!-- IF TO_TOPIC_INFO -->
 		<tr>
-			<td class="bg2" colspan="2"><b class="bigger">{TO_TOPIC_INFO}</b></td>
+			<td class="bg1" colspan="2"><b class="bigger">{TO_TOPIC_INFO}</b></td>
 		</tr>
 	<!-- ENDIF -->
 <!-- ENDIF -->
@@ -56,11 +56,11 @@
 </tr>
 <tr>
 	<td class="bg1" width="20%"><b class="bigger">{L_POSTS_PER_PAGE}{L_COLON}</b><br /><span class="bigger">{L_POSTS_PER_PAGE_EXPLAIN}</span></td>
-	<td class="bg2"><input type="text" class="inputbox" size="6" maxlength="6" name="posts_per_page" value="{POSTS_PER_PAGE}" /></td>
+	<td class="bg1"><input type="text" class="inputbox" size="6" maxlength="6" name="posts_per_page" value="{POSTS_PER_PAGE}" /></td>
 </tr>
 <tr>
 	<td class="bg1"><b class="bigger">{L_DISPLAY_POSTS}{L_COLON}</b></td>
-	<td class="bg2">{S_SELECT_SORT_DAYS} <span class="bigger">{L_SORT_BY}</span> {S_SELECT_SORT_KEY} {S_SELECT_SORT_DIR} <input class="button2" type="submit" name="sort" value="{L_GO}" /></td>
+	<td class="bg1">{S_SELECT_SORT_DAYS} <span class="bigger">{L_SORT_BY}</span> {S_SELECT_SORT_KEY} {S_SELECT_SORT_DIR} <input class="button2" type="submit" name="sort" value="{L_GO}" /></td>
 </tr>
 </table>
 
@@ -115,7 +115,7 @@
 						</tr>
 						<!-- BEGIN attachment -->
 							<tr class="postbody">
-								<td class="bg1">{postrow.attachment.DISPLAY_ATTACHMENT}</td>
+								<td class="bg2">{postrow.attachment.DISPLAY_ATTACHMENT}</td>
 							</tr>
 						<!-- END attachment -->
 						</table>

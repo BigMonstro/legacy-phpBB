@@ -21,30 +21,23 @@
 <!-- ENDIF -->
 
 <!-- IF S_NO_READ_ACCESS -->
+	<!-- IF not S_USER_LOGGED_IN and not S_IS_BOT --><form method="post" action="{S_LOGIN_ACTION}"><!-- ENDIF -->
 	<table class="main" width="100%" cellspacing="1" style="margin: 8px 0">
 	<tr>
-		<th>{L_INFORMATION}</th>
+		<th><!-- IF not S_USER_LOGGED_IN and not S_IS_BOT -->{L_LOGIN}<!-- ELSE -->{L_INFORMATION}<!-- ENDIF --></th>
 	</tr>
 	<tr>
-		<td class="bg1" align="center"><span class="big">{L_NO_READ_ACCESS}</span></td>
+		<td class="bg1" align="center"><span class="big">{L_NO_READ_ACCESS}</span>
+		<!-- IF not S_USER_LOGGED_IN and not S_IS_BOT -->
+			<br /><div style="margin-top: 8px"><span class="bigger">{L_USERNAME}{L_COLON}</span> <input type="text" class="inputbox" name="username" size="10" /> &nbsp;<span class="bigger">{L_PASSWORD}{L_COLON}</span> <input type="password" class="inputbox" name="password" size="10" autocomplete="off" /> <!-- IF S_AUTOLOGIN_ENABLED -->&nbsp;<span class="nowrap"><span class="bigger">{L_LOG_ME_IN}</span> <input type="checkbox" name="autologin" /></span> <!-- ENDIF -->&nbsp;<input type="submit" class="button1" name="login" value="{L_LOGIN}" /></div>
+		<!-- ENDIF -->
+		</td>
 	</tr>
 	</table>
-
 	<!-- IF not S_USER_LOGGED_IN and not S_IS_BOT -->
-
-		<form method="post" action="{S_LOGIN_ACTION}">
-
-		<table class="main" width="100%" cellspacing="1" style="margin: 8px 0">
-		<tr>
-			<td class="cat"><h4><a href="{U_LOGIN_LOGOUT}">{L_LOGIN_LOGOUT}</a><!-- IF S_REGISTER_ENABLED --> :: <a href="{U_REGISTER}">{L_REGISTER}</a><!-- ENDIF --></h4></h4></td>
-		</tr>
-		<tr>
-			<td class="bg1" align="center"><span class="bigger">{L_USERNAME}{L_COLON}</span> <input type="text" class="inputbox" name="username" size="10" /> &nbsp;<span class="bigger">{L_PASSWORD}{L_COLON}</span> <input type="password" class="inputbox" name="password" size="10" autocomplete="off" /> <!-- IF S_AUTOLOGIN_ENABLED -->&nbsp;<span class="nowrap"><span class="bigger">{L_LOG_ME_IN}</span> <input type="checkbox" name="autologin" /></span> <!-- ENDIF -->&nbsp;<input type="submit" class="button1" name="login" value="{L_LOGIN}" /></td>
-		</tr>
-		</table>
 		{S_LOGIN_REDIRECT}
+		{S_FORM_TOKEN_LOGIN}
 		</form>
-
 	<!-- ENDIF -->
 <!-- ENDIF -->
 

@@ -51,27 +51,27 @@
 </tr>
 <tr>
 	<td class="bg1"><b class="bigger">{L_USERNAME}{L_COLON}</b></td>
-	<td class="bg2"><input type="text" class="inputbox" name="username" value="{USERNAME}" /></td>
+	<td class="bg1"><input type="text" class="inputbox" name="username" value="{USERNAME}" /></td>
 	<!-- IF S_EMAIL_SEARCH_ALLOWED -->
 		<td class="bg1"><b class="bigger">{L_EMAIL}{L_COLON}</b></td>
-		<td class="bg2"><input type="text" class="inputbox" name="email" value="{EMAIL}" /></td>
+		<td class="bg1"><input type="text" class="inputbox" name="email" value="{EMAIL}" /></td>
 	<!-- ELSE -->
 		<td colspan="2" class="bg1">&nbsp;</td>
 	<!-- ENDIF -->
 </tr>
 <tr>
 	<td class="bg1"><b class="bigger">{L_JOINED}{L_COLON}</b></td>
-	<td class="bg2"><select name="joined_select">{S_JOINED_TIME_OPTIONS}</select> <input type="text" class="inputbox" name="joined" value="{JOINED}" /></td>
+	<td class="bg1"><select name="joined_select">{S_JOINED_TIME_OPTIONS}</select> <input type="text" class="inputbox" name="joined" value="{JOINED}" /></td>
 	<td class="bg1"><b class="bigger">{L_POSTS}{L_COLON}</b></td>
-	<td class="bg2"><select name="count_select">{S_COUNT_OPTIONS}</select> <input type="text" class="inputbox" name="count" value="{COUNT}" /></td>
+	<td class="bg1"><select name="count_select">{S_COUNT_OPTIONS}</select> <input type="text" class="inputbox" name="count" value="{COUNT}" /></td>
 </tr>
 <!-- IF S_VIEWONLINE -->
 <tr>
 	<td class="bg1"><b class="bigger">{L_LAST_ACTIVE}{L_COLON}</b></td>
-	<td class="bg2"><select name="active_select">{S_ACTIVE_TIME_OPTIONS}</select> <input type="text" class="inputbox" name="active" value="{ACTIVE}" /></td>
+	<td class="bg1"><select name="active_select">{S_ACTIVE_TIME_OPTIONS}</select> <input type="text" class="inputbox" name="active" value="{ACTIVE}" /></td>
 	<!-- IF S_IP_SEARCH_ALLOWED -->
 		<td class="bg1"><b class="bigger">{L_POST_IP}{L_COLON}</b></td>
-		<td class="bg2"><input type="text" class="inputbox" name="ip" value="{IP}" /></td>
+		<td class="bg1"><input type="text" class="inputbox" name="ip" value="{IP}" /></td>
 	<!-- ELSE -->
 		<td colspan="2" class="bg1">&nbsp;</td>
 	<!-- ENDIF -->
@@ -79,10 +79,10 @@
 <!-- ENDIF -->
 <tr>
 	<td class="bg1"><b class="bigger">{L_GROUP}{L_COLON}</b></td>
-	<td class="bg2"><select name="search_group_id">{S_GROUP_SELECT}</select></td>
+	<td class="bg1"><select name="search_group_id">{S_GROUP_SELECT}</select></td>
 	<!-- IF S_JABBER_ENABLED -->
 		<td class="bg1"><b class="bigger">{L_JABBER}{L_COLON}</b></td>
-		<td class="bg2"><input type="text" class="inputbox" name="jabber" value="{JABBER}" /></td>
+		<td class="bg1"><input type="text" class="inputbox" name="jabber" value="{JABBER}" /></td>
 	<!-- ELSE -->
 		<td colspan="2" class="bg1">&nbsp;</td>
 	<!-- ENDIF -->
@@ -90,7 +90,7 @@
 <!-- EVENT memberlist_search_sorting_options_before -->
 <tr>
 	<td class="bg1"><b class="bigger">{L_SORT_BY}{L_COLON}</b></td>
-	<td class="bg2"><select id="sk1" name="sk">{S_SORT_OPTIONS}</select>&nbsp;<select id="sd1" name="sd">{S_ORDER_SELECT}</select></td>
+	<td class="bg1"><select id="sk1" name="sk">{S_SORT_OPTIONS}</select>&nbsp;<select id="sd1" name="sd">{S_ORDER_SELECT}</select></td>
 	<td colspan="2" class="bg1">&nbsp;</td>
 </tr>
 <tr>

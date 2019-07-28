@@ -7,6 +7,7 @@
 <!-- ENDIF -->
 
 <form name="login_forum" method="post" action="{S_LOGIN_ACTION}">
+{S_FORM_TOKEN}
 <table class="main" width="100%" cellspacing="1">
 <tr>
 	<th>{L_LOGIN}</th>
@@ -34,8 +35,8 @@
 	<td class="cat" align="center">{S_HIDDEN_FIELDS}<input type="submit" name="login" class="button1" value="{L_LOGIN}" tabindex="3" /></td>
 </tr>
 </table>
-{S_FORM_TOKEN}
 {S_LOGIN_REDIRECT}
+{S_FORM_TOKEN_LOGIN}
 </form>
 
 <!-- IF S_DISPLAY_JUMPBOX --><div style="margin: 8px 0"><!-- INCLUDE jumpbox.html --></div><!-- ENDIF -->

@@ -46,14 +46,14 @@
 
 <!-- IF ERROR -->
 	<tr>
-		<td class="bg2" colspan="2" align="center"><p class="error">{ERROR}</p></td>
+		<td class="bg1" colspan="2" align="center"><p class="error">{ERROR}</p></td>
 	</tr>
 <!-- ENDIF -->
 
 <!-- IF S_SHOW_TOPIC_ICONS or S_SHOW_PM_ICONS -->
 	<tr>
 		<td class="bg1"><b class="bigger">{L_ICON}{L_COLON}</b></td>
-		<td class="bg2">
+		<td class="bg1">
 			<table width="100%" cellspacing="0">
 			<tr>
 				<td><span class="nowrap"><input type="radio" name="icon" value="0"{S_NO_ICON_CHECKED} tabindex="1" /> <span class="bigger"><!-- IF S_SHOW_TOPIC_ICONS -->{L_NO_TOPIC_ICON}<!-- ELSE -->{L_NO_PM_ICON}<!-- ENDIF --></span></span> &nbsp; <!-- BEGIN topic_icon --><span class="nowrap"><input type="radio" name="icon" value="{topic_icon.ICON_ID}" {topic_icon.S_ICON_CHECKED} tabindex="1" /> <img src="{topic_icon.ICON_IMG}" width="{topic_icon.ICON_WIDTH}" height="{topic_icon.ICON_HEIGHT}" alt="{topic_icon.ICON_ALT}" title="{topic_icon.ICON_ALT}" /></span> &nbsp; <!-- END topic_icon --></td>
@@ -66,14 +66,14 @@
 <!-- IF not S_PRIVMSGS and S_DISPLAY_USERNAME -->
 	<tr>
 		<td class="bg1"><b class="bigger">{L_USERNAME}{L_COLON}</b></td>
-		<td class="bg2"><input type="text" class="inputbox" tabindex="1" name="username" size="25" value="{USERNAME}" /></td>
+		<td class="bg1"><input type="text" class="inputbox" tabindex="1" name="username" size="25" value="{USERNAME}" /></td>
 	</tr>
 <!-- ENDIF -->
 
 <!-- IF S_PRIVMSGS -->
 	<tr>
 		<td class="bg1"><b class="bigger">{L_TO}{L_COLON}</b></td>
-		<td class="bg2">
+		<td class="bg1">
 			{S_HIDDEN_ADDRESS_FIELD}
 		<!-- BEGIN to_recipient -->
 			<span class="bigger"><!-- IF to_recipient.IS_GROUP --><b><a href="{to_recipient.U_VIEW}" style="color: {to_recipient.COLOUR}">{to_recipient.NAME}</a></b><!-- ELSE -->{to_recipient.NAME_FULL}<!-- ENDIF -->&nbsp;</span><!-- IF not S_EDIT_POST --><input class="button2" type="submit" name="remove_{to_recipient.TYPE}[{to_recipient.UG_ID}]" value="{L_REMOVE}" />&nbsp;<!-- ENDIF -->
@@ -85,7 +85,7 @@
 	<!-- IF S_ALLOW_MASS_PM -->
 	<tr>
 		<td class="bg1"><b class="bigger">{L_BCC}{L_COLON}</b></td>
-		<td class="bg2">
+		<td class="bg1">
 		<!-- BEGIN bcc_recipient -->
 			<span class="bigger"><!-- IF bcc_recipient.IS_GROUP --><b><a href="{bcc_recipient.U_VIEW}" style="color: {bcc_recipient.COLOUR}">{bcc_recipient.NAME}</a></b><!-- ELSE -->{bcc_recipient.NAME_FULL}<!-- ENDIF -->&nbsp;</span><!-- IF not S_EDIT_POST --><input class="button2" type="submit" name="remove_{bcc_recipient.TYPE}[{bcc_recipient.UG_ID}]" value="{L_REMOVE}" />&nbsp;<!-- ENDIF -->
 		<!-- BEGINELSE -->
@@ -98,7 +98,7 @@
 <!-- EVENT posting_editor_subject_before -->
 <tr>
 	<td class="bg1" width="22%"><b class="bigger">{L_SUBJECT}{L_COLON}</b></td>
-	<td class="bg2">
+	<td class="bg1">
 		<!-- EVENT posting_editor_subject_prepend -->
 		<input type="text" class="inputbox" name="subject" size="<!-- IF S_PRIVMSGS -->40<!-- ELSE -->60<!-- ENDIF -->" maxlength="<!-- IF S_NEW_MESSAGE -->120<!-- ELSE -->124<!-- ENDIF -->" tabindex="2" value="{SUBJECT}" />
 		<!-- EVENT posting_editor_subject_append -->
@@ -132,7 +132,7 @@
 	<!-- ENDIF -->
 	<!-- EVENT posting_editor_smilies_after -->
 	</td>
-	<td class="bg2">
+	<td class="bg1">
 		<!-- INCLUDE posting_editor.html -->
 	</td>
 </tr>
@@ -140,7 +140,7 @@
 <!-- IF S_INLINE_ATTACHMENT_OPTIONS -->
 	<tr>
 		<td class="bg1"><b class="bigger">{L_ATTACHMENTS}{L_COLON}</b></td>
-		<td class="bg2"><select name="attachments">{S_INLINE_ATTACHMENT_OPTIONS}</select>&nbsp;<input type="button" class="button2" accesskey="a" value="{L_PLACE_INLINE}" name="attachinline" onclick="attach_form = document.forms[form_name].elements['attachments']; attachInline(attach_form.value, attach_form.options[attach_form.selectedIndex].text);" onmouseover="helpline('a')" onmouseout="helpline('tip')" /></td>
+		<td class="bg1"><select name="attachments">{S_INLINE_ATTACHMENT_OPTIONS}</select>&nbsp;<input type="button" class="button2" accesskey="a" value="{L_PLACE_INLINE}" name="attachinline" onclick="attach_form = document.forms[form_name].elements['attachments']; attachInline(attach_form.value, attach_form.options[attach_form.selectedIndex].text);" onmouseover="helpline('a')" onmouseout="helpline('tip')" /></td>
 	</tr>
 <!-- ENDIF -->
 
@@ -167,7 +167,7 @@
 		</table>
 	</td>
 	<!-- EVENT posting_editor_bbcode_status_after -->
-	<td class="bg2">
+	<td class="bg1">
 		<!-- EVENT posting_editor_add_panel_tab -->
 		<table cellspacing="2">
 		<!-- EVENT posting_editor_options_prepend -->
@@ -235,7 +235,7 @@
 <!-- IF S_SOFTDELETE_ALLOWED or S_DELETE_ALLOWED -->
 	<tr>
 		<td class="bg1" valign="top"><b class="bigger">{L_DELETE_POST}{L_COLON}</b></td>
-		<td class="bg2">
+		<td class="bg1">
 			<table cellspacing="2">
 				<tr>
 					<td><input type="checkbox" name="delete" /></td>
@@ -255,14 +255,14 @@
 <!-- IF S_TOPIC_TYPE_ANNOUNCE or S_TOPIC_TYPE_STICKY -->
 	<tr>
 		<td class="bg1"><b class="bigger">{L_STICK_TOPIC_FOR}{L_COLON}</b></td>
-		<td class="bg2"><input type="text" class="inputbox" size="3" maxlength="3" name="topic_time_limit" value="{TOPIC_TIME_LIMIT}" />&nbsp;<b class="big">{L_DAYS}</b> <span class="bigger">{L_STICK_TOPIC_FOR_EXPLAIN}</span></td>
+		<td class="bg1"><input type="text" class="inputbox" size="3" maxlength="3" name="topic_time_limit" value="{TOPIC_TIME_LIMIT}" />&nbsp;<b class="big">{L_DAYS}</b> <span class="bigger">{L_STICK_TOPIC_FOR_EXPLAIN}</span></td>
 	</tr>
 <!-- ENDIF -->
 
 <!-- IF S_EDIT_REASON -->
 	<tr>
 		<td class="bg1" valign="top"><b class="bigger">{L_EDIT_REASON}{L_COLON}</b></td>
-		<td class="bg2"><input type="text" class="inputbox" name="edit_reason" size="50" value="{EDIT_REASON}" /></td>
+		<td class="bg1"><input type="text" class="inputbox" name="edit_reason" size="50" value="{EDIT_REASON}" /></td>
 	</tr>
 <!-- ENDIF -->
 

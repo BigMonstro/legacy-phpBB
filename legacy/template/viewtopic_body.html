@@ -89,7 +89,7 @@ if (document.documentElement && (document.documentElement.className.indexOf('dro
 <!-- IF S_HAS_POLL -->
 	<table class="main" width="100%" cellspacing="1">
 	<tr>
-		<td class="bg2">
+		<td class="bg1">
 			<form method="post" action="{S_POLL_ACTION}">
 			<table cellspacing="1" align="center">
 			<tr>
@@ -200,7 +200,7 @@ if (document.documentElement && (document.documentElement.className.indexOf('dro
 			<!-- EVENT viewtopic_body_postrow_rank_before -->
 			<!-- IF postrow.RANK_TITLE or postrow.RANK_IMG -->
 				<tr>
-					<td class="bigger"><!-- IF postrow.RANK_TITLE -->{postrow.RANK_TITLE}<!-- ENDIF --><!-- IF postrow.RANK_IMG --><img src="{postrow.RANK_IMG_SRC}" alt="" /><!-- ENDIF --></td>
+					<td class="bigger"><!-- IF postrow.RANK_TITLE -->{postrow.RANK_TITLE}<!-- IF postrow.RANK_IMG --><br /><!-- ENDIF --><!-- ENDIF --><!-- IF postrow.RANK_IMG --><img src="{postrow.RANK_IMG_SRC}" alt="" /><!-- ENDIF --></td>
 				</tr>
 			<!-- ENDIF -->
 			<!-- EVENT viewtopic_body_postrow_rank_after -->
@@ -276,7 +276,7 @@ if (document.documentElement && (document.documentElement.className.indexOf('dro
 					</tr>
 					<!-- BEGIN attachment -->
 						<tr class="postbody">
-							<td class="bg1">{postrow.attachment.DISPLAY_ATTACHMENT}</td>
+							<td class="bg2">{postrow.attachment.DISPLAY_ATTACHMENT}</td>
 						</tr>
 					<!-- END attachment -->
 					</table>
@@ -287,7 +287,7 @@ if (document.documentElement && (document.documentElement.className.indexOf('dro
 					<br /><p class="error">{L_DOWNLOAD_NOTICE}</p>
 				<!-- ENDIF -->
 				<!-- IF postrow.DELETED_MESSAGE or postrow.DELETE_REASON -->
-					<br /><br />
+					<br />
 					<!-- IF postrow.DELETE_REASON -->
 						<table class="main" width="100%" cellspacing="1">
 						<tr>
@@ -301,7 +301,7 @@ if (document.documentElement && (document.documentElement.className.indexOf('dro
 						{postrow.DELETED_MESSAGE}
 					<!-- ENDIF -->
 				<!-- ELSEIF postrow.EDITED_MESSAGE or postrow.EDIT_REASON -->
-					<br /><br />
+					<br />
 					<!-- IF postrow.EDIT_REASON -->
 						<table class="main" width="100%" cellspacing="1">
 						<tr>
@@ -317,7 +317,7 @@ if (document.documentElement && (document.documentElement.className.indexOf('dro
 				<!-- ENDIF -->
 
 				<!-- IF postrow.BUMPED_MESSAGE -->
-					<br /><br />{postrow.BUMPED_MESSAGE}
+					<br />{postrow.BUMPED_MESSAGE}
 				<!-- ENDIF -->
 				<!-- EVENT viewtopic_body_postrow_post_notices_after -->
 				<!-- IF postrow.SIGNATURE -->

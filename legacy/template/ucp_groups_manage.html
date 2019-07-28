@@ -15,17 +15,17 @@
 	</tr>
 	<tr>
 		<td class="bg1" width="35%"><b class="bigger">{L_GROUP_NAME}{L_COLON}</b></td>
-		<td class="bg2"><!-- IF S_SPECIAL_GROUP --><b class="bigger"<!-- IF GROUP_COLOUR --> style="color: #{GROUP_COLOUR}"<!-- ENDIF -->>{GROUP_NAME}</b><!-- ENDIF --><input name="group_name" type="<!-- IF S_SPECIAL_GROUP -->hidden<!-- ELSE -->text" class="inputbox<!-- ENDIF -->" value="{GROUP_INTERNAL_NAME}" /></td>
+		<td class="bg1"><!-- IF S_SPECIAL_GROUP --><b class="bigger"<!-- IF GROUP_COLOUR --> style="color: #{GROUP_COLOUR}"<!-- ENDIF -->>{GROUP_NAME}</b><!-- ENDIF --><input name="group_name" type="<!-- IF S_SPECIAL_GROUP -->hidden<!-- ELSE -->text" class="inputbox<!-- ENDIF -->" value="{GROUP_INTERNAL_NAME}" /></td>
 	</tr>
 	<tr>
 		<td class="bg1"><b class="bigger">{L_GROUP_DESC}{L_COLON}</b></td>
-		<td class="bg2"><textarea name="group_desc" rows="5" cols="45">{GROUP_DESC}</textarea>
+		<td class="bg1"><textarea name="group_desc" rows="5" cols="45">{GROUP_DESC}</textarea>
 			<br /><input type="checkbox" name="desc_parse_bbcode"<!-- IF S_DESC_BBCODE_CHECKED --> checked="checked"<!-- ENDIF --> /> <span class="bigger">{L_PARSE_BBCODE}</span> &nbsp;<input type="checkbox" name="desc_parse_smilies"<!-- IF S_DESC_SMILIES_CHECKED --> checked="checked"<!-- ENDIF --> /> <span class="bigger">{L_PARSE_SMILIES}</span> &nbsp;<input type="checkbox" name="desc_parse_urls"<!-- IF S_DESC_URLS_CHECKED --> checked="checked"<!-- ENDIF --> /> <span class="bigger">{L_PARSE_URLS}</span>
 		</td>
 	</tr>
 	<tr>
 		<td class="bg1"><span class="bigger"><b>{L_GROUP_TYPE}{L_COLON}</b><br />{L_GROUP_TYPE_EXPLAIN}</span></td>
-		<td class="bg2">
+		<td class="bg1">
 			<!-- IF S_SPECIAL_GROUP -->
 				<b class="bigger">{L_GROUP_IS_SPECIAL}</b> <input name="group_type" type="hidden" value="{GROUP_TYPE_SPECIAL}" />
 			<!-- ELSE -->
@@ -41,13 +41,13 @@
 	</tr>
 	<tr>
 		<td class="bg1"><span class="bigger"><b>{L_GROUP_COLOR}{L_COLON}</b><br />{L_GROUP_COLOR_EXPLAIN}</span></td>
-		<td class="bg2">
+		<td class="bg1">
 			<input name="group_colour" type="text" class="inputbox" value="{GROUP_COLOUR}" size="6" maxlength="6" />
 		</td>
 	</tr>
 	<tr>
 		<td class="bg1"><b class="bigger">{L_GROUP_RANK}{L_COLON}</b></td>
-		<td class="bg2"><select name="group_rank">{S_RANK_OPTIONS}</select></td>
+		<td class="bg1"><select name="group_rank">{S_RANK_OPTIONS}</select></td>
 	</tr>
 	<tr>
 		<th colspan="2">{L_GROUP_AVATAR}</th>
@@ -124,11 +124,11 @@
 	</tr>
 	<tr>
 		<td class="bg1"><span class="bigger"><b>{L_USER_GROUP_DEFAULT}{L_COLON}</b><br />{L_USER_GROUP_DEFAULT_EXPLAIN}</span></td>
-		<td class="bg2"><input name="default" type="radio" value="1" /> <span class="bigger">{L_YES}</span> &nbsp;<input name="default" type="radio" value="0" checked="checked" /> <span class="bigger">{L_NO}</span></td>
+		<td class="bg1"><input name="default" type="radio" value="1" /> <span class="bigger">{L_YES}</span> &nbsp;<input name="default" type="radio" value="0" checked="checked" /> <span class="bigger">{L_NO}</span></td>
 	</tr>
 	<tr>
 		<td class="bg1"><span class="bigger"><b>{L_USERNAME}{L_COLON}</b><br />{L_USERNAMES_EXPLAIN}</span></td>
-		<td class="bg2"><textarea name="usernames" cols="40" rows="5"></textarea><br /><span class="bigger">[ <a href="{U_FIND_USERNAME}" onclick="find_username(this.href); return false;">{L_FIND_USERNAME}</a> ]</span></td>
+		<td class="bg1"><textarea name="usernames" cols="40" rows="5"></textarea><br /><span class="bigger">[ <a href="{U_FIND_USERNAME}" onclick="find_username(this.href); return false;">{L_FIND_USERNAME}</a> ]</span></td>
 	</tr>
 	<tr>
 		<td class="cat" colspan="2" align="center"><input class="button1" type="submit" name="addusers" value="{L_SUBMIT}" /></td>

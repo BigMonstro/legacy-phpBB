@@ -1,11 +1,11 @@
 <!-- IF ERROR -->
 	<tr>
-		<td class="bg2" colspan="2" align="center"><p class="error">{ERROR}</p></td>
+		<td class="bg1" colspan="2" align="center"><p class="error">{ERROR}</p></td>
 	</tr>
 <!-- ENDIF -->
 <tr>
 	<td class="bg1" width="35%"><b class="bigger">{L_CURRENT_IMAGE}{L_COLON}</b><br /><span class="bigger">{L_AVATAR_EXPLAIN}</span></td>
-	<td class="bg2"><br />
+	<td class="bg1"><br />
 	<!-- IF AVATAR -->
 		<span class="bigger">{AVATAR}</span><br /><br /><input type="checkbox" name="avatar_delete" /> <span class="bigger">{L_DELETE_AVATAR}</span>
 	<!-- ELSE -->
@@ -26,7 +26,7 @@
 <!-- END avatar_drivers -->
 <tr>
 	<td class="bg1"><b class="bigger">{L_AVATAR_TYPE}{L_COLON}</b></td>
-	<td class="bg2">
+	<td class="bg1">
 		<select name="avatar_driver" id="avatar_driver"<!-- IF .avatar_drivers --> onchange="ChangeAvatarType();"<!-- ENDIF -->>
 			<!-- BEGIN avatar_drivers -->
 			<option value="{avatar_drivers.DRIVER}" id="{avatar_drivers.DRIVER}_0"<!-- IF avatar_drivers.SELECTED or (avatar_drivers.S_FIRST_ROW and not $DEFINED_AVATAR) --> selected="selected"<!-- ENDIF -->>{avatar_drivers.L_TITLE}</option>

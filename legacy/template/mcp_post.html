@@ -9,15 +9,15 @@
 	</tr>
 	<tr>
 		<td class="bg1"><b class="bigger">{L_REPORT_REASON}{L_COLON}</b></td>
-		<td class="bg2"><span class="big">{REPORT_REASON_TITLE} &#187; {REPORT_REASON_DESCRIPTION}</span></td>
+		<td class="bg1"><span class="big">{REPORT_REASON_TITLE} &#187; {REPORT_REASON_DESCRIPTION}</span></td>
 	</tr>
 	<tr>
 		<td class="bg1" width="20%"><b class="bigger">{L_REPORTER}{L_COLON}</b></td>
-		<td class="bg2"><span class="big">{REPORTER_FULL}<!-- IF S_USER_NOTES --> [ <a href="{U_MCP_REPORTER_NOTES}">{L_VIEW_NOTES}</a> | <a href="{U_MCP_WARN_REPORTER}">{L_WARN_USER}</a> ]<!-- ENDIF --></span></td>
+		<td class="bg1"><span class="big">{REPORTER_FULL}<!-- IF S_USER_NOTES --> [ <a href="{U_MCP_REPORTER_NOTES}">{L_VIEW_NOTES}</a> | <a href="{U_MCP_WARN_REPORTER}">{L_WARN_USER}</a> ]<!-- ENDIF --></span></td>
 	</tr>
 	<tr>
 		<td class="bg1"><b class="bigger">{L_REPORTED}{L_COLON}</b></td>
-		<td class="bg2"><span class="bigger">{REPORT_DATE}<!-- IF S_REPORT_CLOSED --> | <b class="error">{L_REPORT_CLOSED}</b><!-- ENDIF --></span></td>
+		<td class="bg1"><span class="bigger">{REPORT_DATE}<!-- IF S_REPORT_CLOSED --> | <b class="error">{L_REPORT_CLOSED}</b><!-- ENDIF --></span></td>
 	</tr>
 	<!-- IF REPORT_TEXT -->
 		<tr>
@@ -52,7 +52,7 @@
 </tr>
 <tr>
 	<td class="bg1"><b class="bigger"><!-- IF S_PM -->{L_PM_SUBJECT}<!-- ELSE -->{L_POST_SUBJECT}<!-- ENDIF -->{L_COLON}</b></td>
-	<td class="bg2">
+	<td class="bg1">
 		<span class="big"><!-- IF not S_PM --><a href="{U_VIEW_POST}"><!-- ENDIF -->{POST_SUBJECT}<!-- IF not S_PM --></a><!-- ENDIF --></span>
 		<!-- IF S_POST_UNAPPROVED and not S_MCP_QUEUE --> - <b class="bigger"><a href="{U_MCP_APPROVE}" class="postapprove">{L_POST_UNAPPROVED}</a></b><!-- ENDIF -->
 		<!-- IF S_POST_DELETED and not S_MCP_QUEUE --> - <b class="bigger"><a href="{U_MCP_APPROVE}" class="postapprove">{L_POST_DELETED}</a></b><!-- ENDIF -->
@@ -61,12 +61,12 @@
 </tr>
 <tr>
 	<td class="bg1" width="20%"><b class="bigger"><!-- IF S_PM -->{L_PM_FROM}<!-- ELSE -->{L_POSTER}<!-- ENDIF -->{L_COLON}</b></td>
-	<td class="bg2"><span class="big">{POST_AUTHOR_FULL}<!-- IF S_USER_NOTES --> [ <a href="{U_MCP_USER_NOTES}">{L_VIEW_NOTES}</a><!-- IF U_MCP_WARN_USER --> | <a href="{U_MCP_WARN_USER}">{L_WARN_USER}</a><!-- ENDIF --> ]<!-- ENDIF --></span></td>
+	<td class="bg1"><span class="big">{POST_AUTHOR_FULL}<!-- IF S_USER_NOTES --> [ <a href="{U_MCP_USER_NOTES}">{L_VIEW_NOTES}</a><!-- IF U_MCP_WARN_USER --> | <a href="{U_MCP_WARN_USER}">{L_WARN_USER}</a><!-- ENDIF --> ]<!-- ENDIF --></span></td>
 </tr>
 <!-- IF S_CAN_VIEWIP -->
 	<tr>
 		<td class="bg1"><b class="bigger"><!-- IF S_PM -->{L_THIS_PM_IP}<!-- ELSE -->{L_THIS_POST_IP}<!-- ENDIF -->{L_COLON}</b></td>
-		<td class="bg2"><span class="big">
+		<td class="bg1"><span class="big">
 			<!-- IF U_WHOIS -->
 				<a href="{U_WHOIS}"><!-- IF POST_IPADDR -->{POST_IPADDR}<!-- ELSE -->{POST_IP}<!-- ENDIF --></a> (<!-- IF POST_IPADDR -->{POST_IP}<!-- ELSE --><a href="{U_LOOKUP_IP}">{L_LOOKUP_IP}</a><!-- ENDIF -->)
 			<!-- ELSE -->
@@ -77,12 +77,12 @@
 <!-- ENDIF -->
 <tr>
 	<td class="bg1"><b class="bigger"><!-- IF S_PM -->{L_SENT_AT}<!-- ELSE -->{L_POSTED}<!-- ENDIF -->{L_COLON}</b></td>
-	<td class="bg2"><span class="bigger">{POST_DATE}</span></td>
+	<td class="bg1"><span class="bigger">{POST_DATE}</span></td>
 </tr>
 <!-- IF S_TO_RECIPIENT -->
 	<tr>
 		<td class="bg1"><b class="bigger">{L_TO}{L_COLON}</b></td>
-		<td class="bg2"><span class="big">
+		<td class="bg1"><span class="big">
 		<!-- BEGIN to_recipient -->
 			<!-- IF to_recipient.IS_GROUP --><b><a href="{to_recipient.U_VIEW}"<!-- IF to_recipient.COLOUR --> style="color: {to_recipient.COLOUR}"<!-- ENDIF -->>{to_recipient.NAME}</a></b><!-- ELSE -->{to_recipient.NAME_FULL}<!-- ENDIF -->&nbsp;
 		<!-- END to_recipient -->
@@ -93,7 +93,7 @@
 <!-- IF S_BCC_RECIPIENT -->
 	<tr>
 		<td class="bg1"><b class="bigger">{L_BCC}{L_COLON}</b></td>
-		<td class="bg2"><span class="big">
+		<td class="bg1"><span class="big">
 		<!-- BEGIN bcc_recipient -->
 			<!-- IF bcc_recipient.IS_GROUP --><b><a href="{bcc_recipient.U_VIEW}"<!-- IF bcc_recipient.COLOUR --> style="color: {bcc_recipient.COLOUR}"<!-- ENDIF -->>{bcc_recipient.NAME}</a></b><!-- ELSE -->{bcc_recipient.NAME_FULL}<!-- ENDIF -->&nbsp;
 		<!-- END bcc_recipient -->
@@ -123,14 +123,14 @@
 		</tr>
 		<!-- BEGIN attachment -->
 			<tr class="postbody">
-				<td class="bg1">{attachment.DISPLAY_ATTACHMENT}</td>
+				<td class="bg2">{attachment.DISPLAY_ATTACHMENT}</td>
 			</tr>
 		<!-- END attachment -->
 		</table>
 	<!-- ENDIF -->
 
 	<!-- IF DELETED_MESSAGE or DELETE_REASON -->
-		<br /><br />
+		<br />
 		<!-- IF DELETE_REASON -->
 			<table class="main" width="100%" cellspacing="1">
 			<tr>
@@ -183,7 +183,7 @@
 		<!-- IF S_CAN_CHGPOSTER -->
 			<tr>
 				<td class="bg1" width="20%"><b class="bigger">{L_CHANGE_POSTER}</b></td>
-				<td class="bg2"><form method="post" name="mcp_chgposter" action="{U_POST_ACTION}"><input type="text" class="inputbox" name="username" value="" /> <input class="button1" type="submit" value="{L_CONFIRM}" name="action[chgposter]" /><br /><span class="bigger">[ <a href="{U_FIND_USERNAME}" onclick="find_username(this.href); return false;">{L_FIND_USERNAME}</a> ]</span><!-- IF S_USER_SELECT --><br /><select name="u">{S_USER_SELECT}</select> <input type="submit" class="button1" name="action[chgposter_ip]" value="{L_CONFIRM}" /><!-- ENDIF -->{S_FORM_TOKEN}</form></td>
+				<td class="bg1"><form method="post" name="mcp_chgposter" action="{U_POST_ACTION}"><input type="text" class="inputbox" name="username" value="" /> <input class="button1" type="submit" value="{L_CONFIRM}" name="action[chgposter]" /><br /><span class="bigger">[ <a href="{U_FIND_USERNAME}" onclick="find_username(this.href); return false;">{L_FIND_USERNAME}</a> ]</span><!-- IF S_USER_SELECT --><br /><select name="u">{S_USER_SELECT}</select> <input type="submit" class="button1" name="action[chgposter_ip]" value="{L_CONFIRM}" /><!-- ENDIF -->{S_FORM_TOKEN}</form></td>
 			</tr>
 		<!-- ENDIF -->
 
@@ -192,7 +192,7 @@
 		<!-- IF S_CAN_LOCK_POST or S_CAN_DELETE_POST -->
 			<tr>
 				<td class="bg1" width="20%"><b class="bigger">{L_MOD_OPTIONS}</b></td>
-				<td class="bg2"><form method="post" name="mcp" action="{U_MCP_ACTION}"><select name="action"><!-- IF S_CAN_LOCK_POST --><!-- IF S_POST_LOCKED --><option value="unlock_post">{L_UNLOCK_POST} [{L_UNLOCK_POST_EXPLAIN}]</option><!-- ELSE --><option value="lock_post">{L_LOCK_POST} [{L_LOCK_POST_EXPLAIN}]</option><!-- ENDIF --><!-- ENDIF --><!-- IF S_CAN_DELETE_POST --><option value="delete_post">{L_DELETE_POST}</option><!-- ENDIF --></select> <input class="button1" type="submit" value="{L_SUBMIT}" />	{S_FORM_TOKEN}</form></td>
+				<td class="bg1"><form method="post" name="mcp" action="{U_MCP_ACTION}"><select name="action"><!-- IF S_CAN_LOCK_POST --><!-- IF S_POST_LOCKED --><option value="unlock_post">{L_UNLOCK_POST} [{L_UNLOCK_POST_EXPLAIN}]</option><!-- ELSE --><option value="lock_post">{L_LOCK_POST} [{L_LOCK_POST_EXPLAIN}]</option><!-- ENDIF --><!-- ENDIF --><!-- IF S_CAN_DELETE_POST --><option value="delete_post">{L_DELETE_POST}</option><!-- ENDIF --></select> <input class="button1" type="submit" value="{L_SUBMIT}" />	{S_FORM_TOKEN}</form></td>
 			</tr>
 		<!-- ENDIF -->
 		</table>
