@@ -1,5 +1,7 @@
 <!-- INCLUDE ucp_header.html -->
 
+<form name="ucp" id="ucp" method="post" action="{S_UCP_ACTION}"{S_FORM_ENCTYPE}>
+
 <table class="main" width="100%" cellspacing="1">
 <tr>
 	<th colspan="3">{L_USERGROUPS}</th>
@@ -106,5 +108,8 @@
 	</tr>
 <!-- ENDIF -->
 </table>
+
+{S_FORM_TOKEN}
+</form>
 
 <!-- INCLUDE ucp_footer.html -->

@@ -31,7 +31,7 @@
 
 		function insert_single(user)
 		{
-			opener.document.forms['{S_FORM_NAME}'].{S_FIELD_NAME}.value = user;
+			insert_user(user);
 			self.close();
 		}
 	// ]]>
@@ -39,7 +39,6 @@
 <!-- ENDIF -->
 
 <form method="post" action="{S_MODE_ACTION}" name="search">
-
 
 <!-- EVENT memberlist_search_fields_before -->
 <table class="main" width="100%" cellspacing="1">

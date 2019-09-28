@@ -1,5 +1,7 @@
 <!-- INCLUDE ucp_header.html -->
 
+<form name="ucp" id="ucp" method="post" action="{S_UCP_ACTION}"{S_FORM_ENCTYPE}>
+
 <table class="main" width="100%" cellspacing="1">
 <tr>
 	<th colspan="<!-- IF not S_EDIT_DRAFT -->3<!-- ELSE -->2<!-- ENDIF -->">{L_TITLE}</th>
@@ -78,5 +80,8 @@
 	</tr>
 </table>
 <!-- ENDIF -->
+
+{S_FORM_TOKEN}
+</form>
 
 <!-- INCLUDE ucp_footer.html -->

@@ -1,8 +1,6 @@
 <!-- INCLUDE mcp_header.html -->
 
 <!-- IF S_MCP_REPORT -->
-	<form method="post" name="mcp_report" action="{S_CLOSE_ACTION}">
-
 	<table width="100%" cellspacing="1" class="main">
 	<tr>
 		<th colspan="2"><!-- IF S_PM -->{L_PM_REPORT_DETAILS}<!-- ELSE -->{L_REPORT_DETAILS}<!-- ENDIF --></th>
@@ -17,7 +15,7 @@
 	</tr>
 	<tr>
 		<td class="bg1"><b class="bigger">{L_REPORTED}{L_COLON}</b></td>
-		<td class="bg1"><span class="bigger">{REPORT_DATE}<!-- IF S_REPORT_CLOSED --> | <b class="error">{L_REPORT_CLOSED}</b><!-- ENDIF --></span></td>
+		<td class="bg1"><span class="big">{REPORT_DATE}<!-- IF S_REPORT_CLOSED --> | <b class="error">{L_REPORT_CLOSED}</b><!-- ENDIF --></span></td>
 	</tr>
 	<!-- IF REPORT_TEXT -->
 		<tr>
@@ -29,22 +27,20 @@
 	<!-- ENDIF -->
 	<tr>
 		<td class="cat" align="center" colspan="2">
-			<!-- EVENT mcp_post_report_buttons_top_before -->
-			<!-- IF not S_REPORT_CLOSED --><input class="button1" type="submit" value="{L_CLOSE_REPORT}" name="action[close]" />
-			 &nbsp;<!-- ENDIF --><input class="button2" type="submit" value="{L_DELETE_REPORT}" name="action[delete]" />
-			<!-- EVENT mcp_post_report_buttons_top_after -->
+			<form method="post" name="mcp_report" action="{S_CLOSE_ACTION}">
+				<!-- EVENT mcp_post_report_buttons_top_before -->
+				<!-- IF not S_REPORT_CLOSED --><input class="button1" type="submit" value="{L_CLOSE_REPORT}" name="action[close]" />
+				&nbsp;<!-- ENDIF --><input class="button2" type="submit" value="{L_DELETE_REPORT}" name="action[delete]" />
+				<!-- EVENT mcp_post_report_buttons_top_after -->
+				<input type="hidden" name="report_id_list[]" value="{REPORT_ID}" />
+				{S_FORM_TOKEN}
+			</form>
 		</td>
 	</tr>
 	</table>
 
-	<input type="hidden" name="report_id_list[]" value="{REPORT_ID}" />
-	{S_FORM_TOKEN}
-	</form>
-
 	<br clear="all"/>
 <!-- ENDIF -->
-
-<form method="post" <!-- IF S_MCP_QUEUE -->name="mcp_approve" action="{U_APPROVE_ACTION}"<!-- ELSE -->name="mcp_report_details" action="{S_CLOSE_ACTION}"<!-- ENDIF -->>
 
 <table width="100%" cellspacing="1" class="main">
 <tr>
@@ -53,10 +49,7 @@
 <tr>
 	<td class="bg1"><b class="bigger"><!-- IF S_PM -->{L_PM_SUBJECT}<!-- ELSE -->{L_POST_SUBJECT}<!-- ENDIF -->{L_COLON}</b></td>
 	<td class="bg1">
-		<span class="big"><!-- IF not S_PM --><a href="{U_VIEW_POST}"><!-- ENDIF -->{POST_SUBJECT}<!-- IF not S_PM --></a><!-- ENDIF --></span>
-		<!-- IF S_POST_UNAPPROVED and not S_MCP_QUEUE --> - <b class="bigger"><a href="{U_MCP_APPROVE}" class="postapprove">{L_POST_UNAPPROVED}</a></b><!-- ENDIF -->
-		<!-- IF S_POST_DELETED and not S_MCP_QUEUE --> - <b class="bigger"><a href="{U_MCP_APPROVE}" class="postapprove">{L_POST_DELETED}</a></b><!-- ENDIF -->
-		<!-- IF S_POST_REPORTED and not S_MCP_REPORT --> - <b class="bigger"><a href="{U_MCP_REPORT}" class="postreported">{L_POST_REPORTED}</a></b><!-- ENDIF -->
+		<span class="big"><!-- IF not S_PM --><a href="{U_VIEW_POST}"><!-- ENDIF -->{POST_SUBJECT}<!-- IF not S_PM --></a><!-- ENDIF --><!-- IF U_EDIT --> [ <a href="{U_EDIT}">{L_EDIT_POST}</a> ]<!-- ENDIF --></span>
 	</td>
 </tr>
 <tr>
@@ -68,16 +61,16 @@
 		<td class="bg1"><b class="bigger"><!-- IF S_PM -->{L_THIS_PM_IP}<!-- ELSE -->{L_THIS_POST_IP}<!-- ENDIF -->{L_COLON}</b></td>
 		<td class="bg1"><span class="big">
 			<!-- IF U_WHOIS -->
-				<a href="{U_WHOIS}"><!-- IF POST_IPADDR -->{POST_IPADDR}<!-- ELSE -->{POST_IP}<!-- ENDIF --></a> (<!-- IF POST_IPADDR -->{POST_IP}<!-- ELSE --><a href="{U_LOOKUP_IP}">{L_LOOKUP_IP}</a><!-- ENDIF -->)
+				<a href="{U_WHOIS}"><!-- IF POST_IPADDR -->{POST_IPADDR}<!-- ELSE -->{POST_IP}<!-- ENDIF --></a> <!-- IF POST_IPADDR -->({POST_IP})<!-- ELSE -->[ <a href="{U_LOOKUP_IP}">{L_LOOKUP_IP}</a> ]<!-- ENDIF -->
 			<!-- ELSE -->
-				<!-- IF POST_IPADDR -->{POST_IPADDR} ({POST_IP})<!-- ELSE -->{POST_IP}<!-- IF U_LOOKUP_IP --> (<a href="{U_LOOKUP_IP}">{L_LOOKUP_IP}</a>)<!-- ENDIF --><!-- ENDIF -->
+				<!-- IF POST_IPADDR -->{POST_IPADDR} ({POST_IP})<!-- ELSE -->{POST_IP}<!-- IF U_LOOKUP_IP --> [ <a href="{U_LOOKUP_IP}">{L_LOOKUP_IP}</a> ]<!-- ENDIF --><!-- ENDIF -->
 			<!-- ENDIF -->
 		</span></td>
 	</tr>
 <!-- ENDIF -->
 <tr>
 	<td class="bg1"><b class="bigger"><!-- IF S_PM -->{L_SENT_AT}<!-- ELSE -->{L_POSTED}<!-- ENDIF -->{L_COLON}</b></td>
-	<td class="bg1"><span class="bigger">{POST_DATE}</span></td>
+	<td class="bg1"><span class="big">{POST_DATE}</span></td>
 </tr>
 <!-- IF S_TO_RECIPIENT -->
 	<tr>
@@ -100,13 +93,27 @@
 		</span></td>
 	</tr>
 <!-- ENDIF -->
+
+<!-- IF S_POST_UNAPPROVED -->
+	<tr>
+		<td class="cat" align="center" colspan="2"><form method="post" id="mcp_approve" action="{U_APPROVE_ACTION}"><input class="button2" type="submit" name="action[disapprove]" value="{L_DISAPPROVE}" /> &nbsp;<input class="button1" type="submit" name="action[approve]" value="{L_APPROVE}" /><input type="hidden" name="post_id_list[]" value="{POST_ID}" />{S_FORM_TOKEN}</form></td>
+	</tr>
+	
+<!-- ELSEIF S_POST_DELETED -->
+	<tr>
+		<td class="cat" align="center" colspan="2"><form method="post" id="mcp_approve" action="{U_APPROVE_ACTION}"><input class="button2" type="submit" name="action[delete]" value="{L_DELETE}" /> &nbsp;<input class="button1" type="submit" name="action[restore]" value="{L_RESTORE}" /><input type="hidden" name="post_id_list[]" value="{POST_ID}" />{S_FORM_TOKEN}</form></td>
+	</tr>
+<!-- ENDIF -->
+</table>
+
+<br />
+
+<table width="100%" cellspacing="1" class="main">
 <tr>
-	<th colspan="2">{L_PREVIEW}</th>
+	<th>{L_PREVIEW}</th>
 </tr>
 <tr class="bg1">
-	<td colspan="2"><table cellspacing="5" width="100%"><tr><td>
-
-	<!-- IF U_EDIT --><div align="{S_CONTENT_FLOW_END}"><a class="button" href="{U_EDIT}" title="{L_EDIT_POST}">{L_BUTTON_EDIT}</a></div><!-- ENDIF -->
+	<td><table cellspacing="5" width="100%"><tr><td>
 
 	<!-- EVENT mcp_post_text_before -->
 
@@ -151,24 +158,11 @@
 
 	</td></tr></table></td>
 </tr>
-<!-- IF S_POST_UNAPPROVED and S_MCP_QUEUE -->
-	<tr>
-		<td class="cat" align="center" colspan="2"><input class="button2" type="submit" name="action[disapprove]" value="{L_DISAPPROVE}" /> &nbsp;<input class="button1" type="submit" name="action[approve]" value="{L_APPROVE}" /></td>
-	</tr>
-	<input type="hidden" name="post_id_list[]" value="{POST_ID}" />
-<!-- ELSEIF S_POST_DELETED and S_MCP_QUEUE -->
-	<tr>
-		<td class="cat" align="center" colspan="2"><input class="button2" type="submit" name="action[delete]" value="{L_DELETE}" /> &nbsp;<input class="button1" type="submit" name="action[restore]" value="{L_RESTORE}" /></td>
-	</tr>
-	<input type="hidden" name="post_id_list[]" value="{POST_ID}" />
-<!-- ENDIF -->
 </table>
-{S_FORM_TOKEN}
-</form>
 
 <!-- IF S_MCP_QUEUE or S_MCP_REPORT or RETURN_TOPIC -->
 	<table cellspacing="1" class="main" style="margin-top: 4px" width="100%"><tr><td class="bg1">
-		<p><!-- IF S_MCP_QUEUE -->{RETURN_QUEUE} | {RETURN_TOPIC_SIMPLE} | {RETURN_POST}<!-- ELSEIF S_MCP_REPORT -->{RETURN_REPORTS}<!-- IF not S_PM --> | <a href="{U_VIEW_POST}">{L_VIEW_POST}</a> | <a href="{U_VIEW_TOPIC}">{L_VIEW_TOPIC}</a> | <a href="{U_VIEW_FORUM}">{L_VIEW_FORUM}</a><!-- ENDIF --><!-- ELSE -->{RETURN_TOPIC}<!-- ENDIF --></p>
+		<p><!-- IF S_MCP_QUEUE -->{RETURN_QUEUE} | {RETURN_TOPIC_SIMPLE} | {RETURN_POST}<!-- ELSEIF S_MCP_REPORT -->{RETURN_REPORTS}<!-- IF not S_PM --> | <a href="{U_VIEW_POST}">{L_VIEW_POST}</a> | <a href="{U_VIEW_TOPIC}">{L_VIEW_TOPIC}</a> | <a href="{U_VIEW_FORUM}">{L_VIEW_FORUM}</a><!-- ENDIF --><!-- ELSE -->{RETURN_TOPIC}<!-- IF S_POST_REPORTED --> | <b><a href="{U_MCP_REPORT}" class="postreported">{L_POST_REPORTED}</a></b><!-- ENDIF --><!-- ENDIF --></p>
 	</td></tr></table>
 <!-- ENDIF -->
 

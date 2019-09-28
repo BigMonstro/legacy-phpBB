@@ -1,11 +1,11 @@
 <!-- INCLUDE mcp_header.html -->
 
+<form method="post" id="mcp" action="{S_MCP_ACTION}">
+
 <table width="100%" cellspacing="1"><tr>
 	<td class="bigger" nowrap="nowrap"><!-- IF U_VIEW_FORUM_LOGS --><b><a href="{U_VIEW_FORUM_LOGS}">{L_VIEW_FORUM_LOGS}</a></b><!-- ENDIF --></td>
 	<td align="{S_CONTENT_FLOW_END}" width="100%"><!-- INCLUDE pagination.html --></td>
 </tr></table>
-
-<form method="post" id="mcp" action="{S_MCP_ACTION}">
 
 <table class="main" width="100%" cellspacing="1">
 <!-- BEGIN topicrow -->
@@ -33,7 +33,7 @@
 			<!-- IF topicrow.S_TOPIC_DELETED or topicrow.S_POSTS_DELETED -->
 				<a href="{topicrow.U_MCP_QUEUE}"><img src="{T_THEME_PATH}/images/icon_topic_deleted.gif" width="14" height="14" alt="(X)" border="0" title="{L_TOPIC_DELETED}" /></a>
 			<!-- ENDIF -->
-			<!-- IF topicrow.S_TOPIC_REPORTED and topicrow.U_MCP_REPORT -->
+			<!-- IF topicrow.S_TOPIC_REPORTED -->
 				<a href="{topicrow.U_MCP_REPORT}"><img src="{T_THEME_PATH}/images/icon_topic_reported.gif" width="19" height="18" alt="(!)" border="0" title="{L_TOPIC_REPORTED}" /></a>
 			<!-- ENDIF -->
 			<!-- IF topicrow.S_MOVED_TOPIC and S_CAN_DELETE -->
@@ -92,14 +92,14 @@
 </tr>
 </table>
 
-{S_FORM_TOKEN}
-<!-- EVENT mcp_forum_actions_after -->
-</form>
-
 <table width="100%" cellspacing="1"><tr>
 	<td nowrap="nowrap"><b>{PAGE_NUMBER}</b> &nbsp;[ {TOTAL_TOPICS} ]</td>
 	<!-- IF not S_MERGE_SELECT --><td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('mcp', 'topic_id_list', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('mcp', 'topic_id_list', false); return false;">{L_UNMARK_ALL}</a></b></td><!-- IF .pagination --></tr><tr><!-- ENDIF --><!-- ENDIF -->
 	<!-- IF .pagination --><td align="{S_CONTENT_FLOW_END}" <!-- IF not S_MERGE_SELECT -->colspan="2"<!-- ELSE -->width="100%"<!-- ENDIF -->><!-- INCLUDE pagination.html --></td><!-- ENDIF -->
 </tr></table>
+
+{S_FORM_TOKEN}
+<!-- EVENT mcp_forum_actions_after -->
+</form>
 
 <!-- INCLUDE mcp_footer.html -->

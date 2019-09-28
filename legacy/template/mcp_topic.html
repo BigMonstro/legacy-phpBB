@@ -72,7 +72,7 @@
 	<!-- EVENT mcp_topic_postrow_post_before -->
 	<!-- IF postrow.S_ROW_COUNT is even --><!-- DEFINE $BG = 'bg1' --><!-- ELSE --><!-- DEFINE $BG = 'bg2' --><!-- ENDIF -->
 	<tr class="{$BG}">
-		<td align="center" width="15%"><b>{postrow.POST_AUTHOR_FULL}</b></td>
+		<td align="center" width="15%"><!-- EVENT mcp_topic_post_author_full_prepend --><b>{postrow.POST_AUTHOR_FULL}</b><!-- EVENT mcp_topic_post_author_full_append --></td>
 		<td>
 			<span class="bigger">
 				<!-- EVENT mcp_topic_postrow_post_subject_before -->
@@ -92,9 +92,9 @@
 					<table width="100%" cellspacing="0">
 					<tr class="bigger">
 						<td>
-							<!-- IF postrow.S_POST_UNAPPROVED and postrow.U_MCP_APPROVE --><div><b><a href="{postrow.U_MCP_APPROVE}" class="postapprove"><img src="{T_THEME_PATH}/images/icon_topic_unapproved.gif" width="19" height="18" alt="" border="0" /> {L_POST_UNAPPROVED}</a></b></div><!-- ENDIF -->
-							<!-- IF postrow.S_POST_DELETED and postrow.U_MCP_APPROVE --><div><b><a href="{postrow.U_MCP_APPROVE}" class="postapprove"><img src="{T_THEME_PATH}/images/icon_topic_deleted.gif" width="14" height="14" alt="" border="0" /> {L_POST_DELETED}</a></b></div><!-- ENDIF -->
-							<!-- IF postrow.S_POST_REPORTED and postrow.U_MCP_REPORT --><div><b><a href="{postrow.U_MCP_REPORT}" class="postreported"><img src="{T_THEME_PATH}/images/icon_topic_reported.gif" width="19" height="18" alt="" border="0" /> {L_POST_REPORTED}</a></b></div><!-- ENDIF -->
+							<!-- IF postrow.S_POST_UNAPPROVED --><div><b><a href="{postrow.U_MCP_APPROVE}" class="postapprove"><img src="{T_THEME_PATH}/images/icon_topic_unapproved.gif" width="19" height="18" alt="" border="0" /> {L_POST_UNAPPROVED}</a></b></div><!-- ENDIF -->
+							<!-- IF postrow.S_POST_DELETED --><div><b><a href="{postrow.U_MCP_APPROVE}" class="postapprove"><img src="{T_THEME_PATH}/images/icon_topic_deleted.gif" width="14" height="14" alt="" border="0" /> {L_POST_DELETED}</a></b></div><!-- ENDIF -->
+							<!-- IF postrow.S_POST_REPORTED --><div><b><a href="{postrow.U_MCP_REPORT}" class="postreported"><img src="{T_THEME_PATH}/images/icon_topic_reported.gif" width="19" height="18" alt="" border="0" /> {L_POST_REPORTED}</a></b></div><!-- ENDIF -->
 						</td>
 						<td align="{S_CONTENT_FLOW_END}"><b>{L_POSTED}{L_COLON}</b> {postrow.POST_DATE}</td>
 					</tr>
@@ -145,14 +145,14 @@
 	</select>&nbsp;<input class="button1" type="submit" name="mcp_topic_submit" value="{L_SUBMIT}" /></td>
 </tr>
 </table>
-{S_HIDDEN_FIELDS}
-{S_FORM_TOKEN}
-</form>
 
 <table width="100%" cellspacing="1"><tr>
 	<td nowrap="nowrap"><b>{PAGE_NUMBER}</b> &nbsp;[ {TOTAL_POSTS} ]</td>
 	<td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('mcp', 'post', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('mcp', 'post', false); return false;">{L_UNMARK_ALL}</a></b></td>
 	<!-- IF .pagination --></tr><tr><td align="{S_CONTENT_FLOW_END}" colspan="2"><!-- INCLUDE pagination.html --></td><!-- ENDIF -->
 </tr></table>
+{S_HIDDEN_FIELDS}
+{S_FORM_TOKEN}
+</form>
 
 <!-- INCLUDE mcp_footer.html -->

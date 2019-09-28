@@ -17,7 +17,7 @@
 	</div>
 <!-- ENDIF -->
 
-<!-- IF not S_SHOW_PM_BOX -->
+<!-- IF not S_PRIVMSGS -->
 	<form name="postform" method="post" action="{S_POST_ACTION}"{S_FORM_ENCTYPE}>
 <!-- ENDIF -->
 
@@ -104,6 +104,12 @@
 		<!-- EVENT posting_editor_subject_append -->
 	</td>
 </tr>
+
+<!-- IF CAPTCHA_TEMPLATE and S_CONFIRM_CODE -->
+	<!-- DEFINE $CAPTCHA_TAB_INDEX = 4 -->
+	<!-- INCLUDE {CAPTCHA_TEMPLATE} -->
+<!-- ENDIF -->
+
 <!-- EVENT posting_editor_subject_after -->
 <tr valign="top">
 	<td class="bg1">
@@ -266,12 +272,6 @@
 	</tr>
 <!-- ENDIF -->
 
-		<!-- IF CAPTCHA_TEMPLATE and S_CONFIRM_CODE -->
-		<!-- DEFINE $CAPTCHA_TAB_INDEX = 4 -->
-		<!-- INCLUDE {CAPTCHA_TEMPLATE} -->
-		<!-- ENDIF -->
-
-
 <!-- IF S_SHOW_ATTACH_BOX or S_SHOW_POLL_BOX -->
 	<tr>
 		<td class="cat" colspan="2" align="center">
@@ -291,10 +291,6 @@
 	</td>
 </tr>
 </table>
-<!-- IF not S_PRIVMSGS -->
-	{S_FORM_TOKEN}
-	</form>
-<!-- ENDIF -->
 
 <!-- IF S_DISPLAY_REVIEW --><br clear="all" /><!-- INCLUDE posting_topic_review.html --><!-- ENDIF -->
 
@@ -302,5 +298,7 @@
 	<!-- IF S_DISPLAY_HISTORY --></td></tr></table><br clear="all" /><!-- INCLUDE ucp_pm_history.html --><!-- DEFINE $HISTORY = 1 --><!-- ENDIF -->
 	<!-- INCLUDE ucp_footer.html -->
 <!-- ELSE -->
+	{S_FORM_TOKEN}
+	</form>
 	<!-- INCLUDE overall_footer.html -->
 <!-- ENDIF -->

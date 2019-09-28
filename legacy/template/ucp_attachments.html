@@ -1,5 +1,7 @@
 <!-- INCLUDE ucp_header.html -->
 
+<form name="ucp" id="ucp" method="post" action="{S_UCP_ACTION}"{S_FORM_ENCTYPE}>
+
 <table class="main" width="100%" cellspacing="1">
 <tr>
 	<th colspan="4">{L_TITLE}</th>
@@ -31,7 +33,7 @@
 			<td class="{$BG}"><p><b><a href="{attachrow.U_VIEW_ATTACHMENT}">{attachrow.FILENAME}</a></b> ({attachrow.SIZE}) <br /> <!-- IF attachrow.S_IN_MESSAGE -->{L_PM}{L_COLON}<!-- ELSE -->{L_TOPIC}{L_COLON}<!-- ENDIF --> <a href="{attachrow.U_VIEW_TOPIC}">{attachrow.TOPIC_TITLE}</a></p></td>
 			<td align="center" class="{$BG}"><p>{attachrow.DOWNLOAD_COUNT}</p></td>
 			<td align="center" class="{$BG}"><p>{attachrow.POST_TIME}</p></td>
-			<td align="center" class="{$BG}"><input type="checkbox" name="attachment[{attachrow.ATTACH_ID}]" value="1" /></td>
+			<td align="center" class="{$BG}"><input type="checkbox" name="attachment[{attachrow.ATTACH_ID}]" value="1"<!-- IF attachrow.S_LOCKED --> disabled="disabled" title="{L_ATTACHMENT_LOCKED}"<!-- ENDIF --> /></td>
 		</tr>
 	<!-- END attachrow -->
 	<tr>
@@ -50,5 +52,8 @@
 	</table>
 
 <!-- ENDIF -->
+
+{S_FORM_TOKEN}
+</form>
 
 <!-- INCLUDE ucp_footer.html -->
