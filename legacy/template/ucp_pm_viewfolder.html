@@ -15,8 +15,10 @@
 		<td class="bg1"><b class="bigger">{L_ENCLOSURE}{L_COLON}</b></td>
 		<td class="bg1"><input type="text" class="inputbox" name="enclosure" value="&#034;" /></td>
 	</tr>
+	</table>
+	<table cellspacing="0" width="100%">
 	<tr>
-		<td class="cat" colspan="2" align="center"><input type="hidden" name="export_option" value="CSV" /><input class="button1" type="submit" name="submit_export" value="{L_EXPORT_FOLDER}" /> &nbsp;<input class="button2" type="reset" value="{L_RESET}" name="reset" /></td>
+		<td class="cat" align="center"><input type="hidden" name="export_option" value="CSV" /><input class="button1" type="submit" name="submit_export" value="{L_EXPORT_FOLDER}" /> &nbsp;<input class="button2" type="reset" value="{L_RESET}" name="reset" /></td>
 	</tr>
 	</table>
 	{S_FORM_TOKEN}
@@ -115,7 +117,7 @@
 	<!-- ENDIF -->
 	</table>
 
-	<!-- IF .messagerow -->
+	<!-- IF FOLDER_CUR_MESSAGES neq 0 -->
 		<table cellspacing="0" width="100%">
 		<tr>
 			<td class="cat" align="center">

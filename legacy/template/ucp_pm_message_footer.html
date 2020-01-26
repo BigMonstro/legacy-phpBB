@@ -1,4 +1,4 @@
-<!-- IF S_VIEW_MESSAGE or .messagerow -->
+<!-- IF S_VIEW_MESSAGE or FOLDER_CUR_MESSAGES neq 0 -->
 	<table cellspacing="1" class="main" style="margin-top: 4px" width="100%">
 	<tr>
 		<td class="bg1">
@@ -17,7 +17,7 @@
 						<input type="hidden" name="marked_msg_id[]" value="{MSG_ID}" />
 						<input type="hidden" name="cur_folder_id" value="{CUR_FOLDER_ID}" />
 						<input type="hidden" name="p" value="{MSG_ID}" />
-						<span class="bigger">{L_MOVE_TO_FOLDER}{L_COLON} </span><select name="dest_folder">{S_TO_FOLDER_OPTIONS}</select>&nbsp;<input class="button2" type="submit" name="move_pm" value="{L_GO}" />
+						<span class="bigger">{L_MOVE_TO_FOLDER}{L_COLON} </span><select name="dest_folder">{S_TO_FOLDER_OPTIONS}</select> <input class="button2" type="submit" name="move_pm" value="{L_GO}" />
 					<!-- ENDIF -->
 				</td>
 			<!-- ELSE -->
@@ -31,11 +31,12 @@
 	</table>
 <!-- ENDIF -->
 
-<!-- IF not S_VIEW_MESSAGE and (.messagerow or (FOLDER_CUR_MESSAGES neq 0 and .pagination)) -->
-	<table width="100%" cellspacing="1">
-		<!-- IF .messagerow --><tr><td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('viewfolder', 'marked_msg_id', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('viewfolder', 'marked_msg_id', false); return false;">{L_UNMARK_ALL}</a></b></td></tr><!-- ENDIF -->
-		<!-- IF FOLDER_CUR_MESSAGES neq 0 and .pagination --><tr><td align="{S_CONTENT_FLOW_END}"><!-- INCLUDE pagination.html --></td></tr><!-- ENDIF -->
-	</table>
+<!-- IF not S_VIEW_MESSAGE and FOLDER_CUR_MESSAGES neq 0 -->
+	<table width="100%" cellspacing="1"><tr>
+		<td nowrap="nowrap"><b>{PAGE_NUMBER}</b> &nbsp;<!-- IF FOLDER_MAX_MESSAGES neq 0 -->[ {FOLDER_CUR_MESSAGES}/{FOLDER_MAX_MESSAGES} {L_MESSAGES} ]<!-- ELSE -->[ {TOTAL_MESSAGES} ]<!-- ENDIF --></td>
+		<td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('viewfolder', 'marked_msg_id', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('viewfolder', 'marked_msg_id', false); return false;">{L_UNMARK_ALL}</a></b></td>
+		<!-- IF .pagination --></tr><tr><td align="{S_CONTENT_FLOW_END}" colspan="2"><!-- INCLUDE pagination.html --></td><!-- ENDIF -->
+	</tr></table>
 <!-- ENDIF -->
 
 {S_FORM_TOKEN}

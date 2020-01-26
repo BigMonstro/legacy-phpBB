@@ -2,13 +2,6 @@
 
 <form method="post" name="mcp" action="{U_POST_ACTION}">
 
-<table width="100%" cellspacing="1">
-<tr>
-	<td nowrap="nowrap"><b>{PAGE_NUMBER}</b> &nbsp;[ {TOTAL_USERS} ]</td>
-	<!-- IF .pagination --><td width="100%" align="{S_CONTENT_FLOW_END}"><!-- INCLUDE pagination.html --></td><!-- ENDIF -->
-</tr>
-</table>
-
 <table class="main" width="100%" cellspacing="1">
 <tr>
 	<th width="25%">{L_WARNED_USERS}</th>
@@ -29,8 +22,10 @@
 	</tr>
 <!-- END user -->
 <!-- IF .user -->
+	</table>
+	<table cellspacing="0" width="100%">
 	<tr>
-		<td class="cat" colspan="4"><!-- INCLUDE display_options.html --></td>
+		<td class="cat" align="center"><!-- INCLUDE display_options.html --></td>
 	</tr>
 <!-- ENDIF -->
 </table>

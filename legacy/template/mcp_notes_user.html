@@ -48,6 +48,8 @@
 <tr>
 	<td class="bg1" align="center"><textarea name="usernote" rows="3" cols="76"></textarea></td>
 </tr>
+</table>
+<table cellspacing="0" width="100%">
 <tr>
 	<td class="cat" align="center"><input class="button2" type="reset" value="{L_RESET}" /> &nbsp;<input class="button1" type="submit" name="action[add_feedback]" value="{L_SUBMIT}" /></td>
 </tr>
@@ -56,7 +58,7 @@
 <br clear="all" />
 
 <table width="100%" cellspacing="1"><tr>
-	<td><span class="bigger">{L_SEARCH_KEYWORDS}{L_COLON}</span> <input type="text" class="inputbox" name="keywords" value="{S_KEYWORDS}" />&nbsp;<input type="submit" class="button2" name="filter" value="{L_SEARCH}" /></td>
+	<td><span class="bigger">{L_SEARCH_KEYWORDS}{L_COLON}</span> <input type="text" class="inputbox" name="keywords" value="{S_KEYWORDS}" /> <input type="submit" class="button2" name="filter" value="{L_SEARCH}" /></td>
 	<td align="{S_CONTENT_FLOW_END}"><!-- INCLUDE pagination.html --></td>
 </tr></table>
 
@@ -83,13 +85,11 @@
 			<!-- IF S_CLEAR_ALLOWED --><td align="center" class="{$BG}"><input type="checkbox" name="marknote[]" value="{usernotes.ID}" /></td><!-- ENDIF -->
 		</tr>
 	<!-- END usernotes -->
+	</table>
+	<table cellspacing="0" width="100%">
 	<tr>
-		<td class="cat" colspan="<!-- IF S_CLEAR_ALLOWED -->5<!-- ELSE -->4<!-- ENDIF -->">
-			<table width="100%" cellspacing="0"><tr>
-				<td><!-- INCLUDE display_options.html --></td>
-				<!-- IF S_CLEAR_ALLOWED --><td align="{S_CONTENT_FLOW_END}"><input class="button2" type="submit" name="action[del_all]" value="{L_DELETE_ALL}" /> &nbsp;<input class="button2" type="submit" name="action[del_marked]" value="{L_DELETE_MARKED}" /></td><!-- ENDIF -->
-			</tr></table>
-		</td>
+		<td class="cat"><!-- INCLUDE display_options.html --></td>
+		<!-- IF S_CLEAR_ALLOWED --><td class="cat" align="{S_CONTENT_FLOW_END}"><input class="button2" type="submit" name="action[del_all]" value="{L_DELETE_ALL}" /> &nbsp;<input class="button2" type="submit" name="action[del_marked]" value="{L_DELETE_MARKED}" /></td><!-- ENDIF -->
 	</tr>
 <!-- ELSE -->
 	<tr>

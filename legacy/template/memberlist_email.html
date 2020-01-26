@@ -15,7 +15,7 @@
 <!-- ENDIF -->
 <!-- IF CONTACT_INFO -->
 <tr class="bg1">
-	<td colspan="2"><table cellspacing="5" width="100%"><tr><td><div class="postbody"><span class="content">{CONTACT_INFO}</span></div></td></tr></table></td>
+	<td colspan="2"><table cellspacing="5" width="100%"><tr><td><div class="postbody"><div class="content">{CONTACT_INFO}</div></div></td></tr></table></td>
 </tr>
 <!-- ENDIF -->
 <!-- IF S_SEND_USER -->
@@ -70,8 +70,10 @@
 	<td class="bg1"><input type="checkbox" name="cc_sender" value="1" checked="checked" /> <span class="big">{L_CC_SENDER}</span></td>
 </tr>
 <!-- ENDIF -->
+</table>
+<table cellspacing="0" width="100%">
 <tr>
-	<td class="cat" colspan="2" align="center"><input type="submit" tabindex="6" name="submit" class="button1" value="{L_SEND_EMAIL}" /></td>
+	<td class="cat" align="center"><input type="submit" tabindex="6" name="submit" class="button1" value="{L_SEND_EMAIL}" /></td>
 </tr>
 </table>
 

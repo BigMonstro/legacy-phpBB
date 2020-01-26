@@ -21,7 +21,7 @@
 	</tr>
 	<tr>
 		<td class="bg1"><b class="bigger">{L_GROUP_DESC}{L_COLON}</b></td>
-		<td class="bg1"><textarea name="group_desc" rows="5" cols="45">{GROUP_DESC}</textarea>
+		<td class="bg1"><textarea name="group_desc" cols="35" rows="5">{GROUP_DESC}</textarea>
 			<br /><input type="checkbox" name="desc_parse_bbcode"<!-- IF S_DESC_BBCODE_CHECKED --> checked="checked"<!-- ENDIF --> /> <span class="bigger">{L_PARSE_BBCODE}</span> &nbsp;<input type="checkbox" name="desc_parse_smilies"<!-- IF S_DESC_SMILIES_CHECKED --> checked="checked"<!-- ENDIF --> /> <span class="bigger">{L_PARSE_SMILIES}</span> &nbsp;<input type="checkbox" name="desc_parse_urls"<!-- IF S_DESC_URLS_CHECKED --> checked="checked"<!-- ENDIF --> /> <span class="bigger">{L_PARSE_URLS}</span>
 		</td>
 	</tr>
@@ -57,8 +57,10 @@
 
 	<!-- INCLUDE ucp_avatar_options.html -->
 
+	</table>
+	<table cellspacing="0" width="100%">
 	<tr>
-		<td class="cat" colspan="2" align="center">{S_HIDDEN_FIELDS}<input class="button2" type="reset" name="reset" value="{L_RESET}"<!-- IF .avatar_drivers --> onclick="ResetAvatarType();"<!-- ENDIF --> /> &nbsp;<input class="button1" type="submit" name="update" value="{L_SUBMIT}" /></td>
+		<td class="cat" align="center">{S_HIDDEN_FIELDS}<input class="button2" type="reset" name="reset" value="{L_RESET}"<!-- IF .avatar_drivers --> onclick="ResetAvatarType();"<!-- ENDIF --> /> &nbsp;<input class="button1" type="submit" name="update" value="{L_SUBMIT}" /></td>
 	</tr>
 
 <!-- ELSEIF S_LIST -->
@@ -66,9 +68,9 @@
 	<tr>
 		<th>{L_USERNAME}</th>
 		<th>{L_GROUP_DEFAULT}</th>
-		<th>{L_JOINED}</th>
-		<th>{L_POSTS}</th>
-		<th>{L_MARK}</th>
+		<th width="15%">{L_JOINED}</th>
+		<th width="10%">{L_POSTS}</th>
+		<th width="5%">{L_MARK}</th>
 	</tr>
 
 	<tr class="bg3">
@@ -103,8 +105,10 @@
 			</tr>
 		<!-- ENDIF -->
 	<!-- END member -->
+	</table>
+	<table cellspacing="0" width="100%">
 	<tr>
-		<td align="{S_CONTENT_FLOW_END}" class="cat" colspan="5"><select name="action"><option value="">{L_SELECT_OPTION}</option>{S_ACTION_OPTIONS}</select> <input class="button1" type="submit" name="update" value="{L_SUBMIT}" /></td>
+		<td class="cat" align="{S_CONTENT_FLOW_END}"><select name="action"><option value="">{L_SELECT_OPTION}</option>{S_ACTION_OPTIONS}</select> <input class="button1" type="submit" name="update" value="{L_SUBMIT}" /></td>
 	</tr>
 	</table>
 
@@ -130,10 +134,12 @@
 	</tr>
 	<tr>
 		<td class="bg1"><span class="bigger"><b>{L_USERNAME}{L_COLON}</b><br />{L_USERNAMES_EXPLAIN}</span></td>
-		<td class="bg1"><textarea name="usernames" cols="40" rows="5"></textarea><br /><span class="bigger">[ <a href="{U_FIND_USERNAME}" onclick="find_username(this.href); return false;">{L_FIND_USERNAME}</a> ]</span></td>
+		<td class="bg1"><textarea name="usernames" cols="35" rows="5"></textarea><br /><span class="bigger">[ <a href="{U_FIND_USERNAME}" onclick="find_username(this.href); return false;">{L_FIND_USERNAME}</a> ]</span></td>
 	</tr>
+	</table>
+	<table cellspacing="0" width="100%">
 	<tr>
-		<td class="cat" colspan="2" align="center"><input class="button1" type="submit" name="addusers" value="{L_SUBMIT}" /></td>
+		<td class="cat" align="center"><input class="button1" type="submit" name="addusers" value="{L_SUBMIT}" /></td>
 	</tr>
 
 <!-- ELSE -->

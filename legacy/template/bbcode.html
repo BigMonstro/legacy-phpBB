@@ -46,7 +46,11 @@
 	<xsl:value-of select="$L_COLON"/>
 	<xsl:if test="@post_url">
 		<xsl:text> </xsl:text>
-		<a href="{@post_url}" data-post-id="{@post_id}">*</a>
+		<a href="{@post_url}">*</a>
+	</xsl:if>
+	<xsl:if test="@msg_url">
+		<xsl:text> </xsl:text>
+		<a href="{@msg_url}">*</a>
 	</xsl:if>
 	</td>
 	<xsl:if test="@date">

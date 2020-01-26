@@ -64,8 +64,10 @@
 	<td class="bg1"><select name="banlength" onchange="var expire_date = getStuff('banlengthuntil'); if (this.value==-1) {expire_date.className = '';} else {expire_date.className = 'noscript';}">{S_BAN_END_OPTIONS}</select><br /><div id="banlengthuntil" class="noscript"><input type="text" class="inputbox" name="banlengthother" /> {L_YEAR_MONTH_DAY}</div></td>
 </tr>
 <!-- EVENT mcp_ban_fields_after -->
+</table>
+<table cellspacing="0" width="100%">
 <tr>
-	<td class="cat" colspan="2" align="center"><input type="reset" value="{L_RESET}" class="button2" onclick="getStuff('banlengthuntil').className = 'noscript';" /> &nbsp;<input type="submit" name="bansubmit" value="{L_SUBMIT}" class="button1" /></td>
+	<td class="cat" align="center"><input type="reset" value="{L_RESET}" class="button2" onclick="getStuff('banlengthuntil').className = 'noscript';" /> &nbsp;<input type="submit" name="bansubmit" value="{L_SUBMIT}" class="button1" /></td>
 </tr>
 </table>
 
@@ -97,8 +99,10 @@
 		<td class="bg1"><table cellspacing="0"><tr><td width="100%"><table class="fixed"><tr><td><b class="bigger" id="unbangivereason"></b></td></tr></table></td><td>&nbsp;</td></tr></table></td>
 	</tr>
 	<!-- EVENT mcp_ban_unban_after -->
+	</table>
+	<table cellspacing="0" width="100%">
 	<tr>
-		<td class="cat" colspan="2" align="center"><input type="reset" value="{L_RESET}" class="button2" onclick="getStuff('banlengthuntil').className = 'noscript';" /> &nbsp;<input type="submit" name="unbansubmit" value="{L_SUBMIT}" class="button1" /></td>
+		<td class="cat" align="center"><input type="reset" value="{L_RESET}" class="button2" onclick="getStuff('banlengthuntil').className = 'noscript';" /> &nbsp;<input type="submit" name="unbansubmit" value="{L_SUBMIT}" class="button1" /></td>
 	</tr>
 <!-- ELSE -->
 	<tr>

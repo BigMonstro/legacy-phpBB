@@ -87,14 +87,15 @@
 		<!-- IF $QUICKLINKS -->
 			<div id="quick_links_list" style="border-width: 0; display: none; {S_CONTENT_FLOW_BEGIN}: 0"><!--
 				<div><!-- IF U_ACP and not U_RESTORE_PERMISSIONS --><a href="{U_ACP}" title="{L_ACP}">{L_ACP_SHORT}</a><br /><!-- IF not U_MCP --><div class="separator"></div><!-- ENDIF --><!-- ENDIF -->
-				<!-- IF U_MCP --><a href="{U_MCP}" title="{L_MCP}">{L_MCP_SHORT}</a><br /><div class="separator"></div><!-- ENDIF -->
+				<!-- IF U_MCP --><a href="{U_MCP}" title="{L_MCP}">{L_MCP_SHORT}</a><br /><div class="separator"></div><!-- ENDIF --><!-- EVENT navbar_header_quick_links_before -->
 				<!-- IF S_DISPLAY_SEARCH -->
 					<!-- IF S_REGISTERED_USER --><a href="{U_SEARCH_SELF}">{L_SEARCH_SELF}</a><br /><!-- ENDIF -->
 					<!-- IF S_USER_LOGGED_IN --><a href="{U_SEARCH_NEW}">{L_SEARCH_NEW}</a><br /><!-- ENDIF -->
 					<!-- IF S_LOAD_UNREADS --><a href="{U_SEARCH_UNREAD}">{L_SEARCH_UNREAD}</a><br /><!-- ENDIF -->
 					<a href="{U_SEARCH_UNANSWERED}">{L_SEARCH_UNANSWERED}</a><br /><a href="{U_SEARCH_ACTIVE_TOPICS}">{L_SEARCH_ACTIVE_TOPICS}</a><br /><div class="separator"></div><a href="{U_SEARCH}">{L_SEARCH}</a>
 				<!-- ENDIF -->
-				<!-- IF S_DISPLAY_MEMBERLIST and not S_IS_BOT --><!-- IF S_DISPLAY_SEARCH --><br /><div class="separator"></div><!-- ENDIF --><a href="{U_MEMBERLIST}">{L_MEMBERLIST}</a><!-- IF U_TEAM --><br /><a href="{U_TEAM}">{L_THE_TEAM}</a><!-- ENDIF --><!-- ENDIF --></div>
+				<!-- IF S_DISPLAY_MEMBERLIST and not S_IS_BOT --><!-- IF S_DISPLAY_SEARCH --><br /><div class="separator"></div><!-- ENDIF --><a href="{U_MEMBERLIST}">{L_MEMBERLIST}</a><!-- IF U_TEAM --><br /><a href="{U_TEAM}">{L_THE_TEAM}</a><!-- ENDIF --><!-- ENDIF -->
+				<!-- EVENT navbar_header_quick_links_after --></div>
 			--></div>
 		<!-- ENDIF -->
 	</td>
@@ -137,11 +138,11 @@
 
 			<div id="user_list" style="border-width: 0; display: none; {S_CONTENT_FLOW_END}: 0"><!--
 				<div align="{S_CONTENT_FLOW_BEGIN}"><!-- IF U_RESTORE_PERMISSIONS --><a href="{U_RESTORE_PERMISSIONS}">{L_RESTORE_PERMISSIONS}</a><br /><!-- ENDIF -->
-				<a href="{U_PROFILE}">{L_PROFILE}</a><!-- IF U_USER_PROFILE --><br />
+				<!-- EVENT navbar_header_profile_list_before --> <a href="{U_PROFILE}">{L_PROFILE}</a><!-- IF U_USER_PROFILE --><br />
 				<a href="{U_USER_PROFILE}">{L_READ_PROFILE}</a><!-- ENDIF -->
-				<br /><div class="separator"></div><a href="{U_LOGIN_LOGOUT}">{L_LOGIN_LOGOUT}</a></div>
+				<br /><!-- EVENT navbar_header_profile_list_after --><div class="separator"></div><a href="{U_LOGIN_LOGOUT}">{L_LOGIN_LOGOUT}</a></div>
 			--></div>
-		<!-- ELSE -->
+		<!-- ELSE IF not S_IS_BOT -->
 			<div align="{S_CONTENT_FLOW_END}" style="padding: 4px 2px">
 				<!-- EVENT navbar_header_logged_out_content -->
 
@@ -157,16 +158,6 @@
 		<tr class="bigger"><td colspan="2"><b class="error">{L_BOARD_DISABLED}</b></td></tr>
 	<!-- ENDIF -->
 </table></div>
-
-<!-- EVENT navbar_header_quick_links_before -->
-<!-- EVENT navbar_header_quick_links_after -->
-
-<!-- IF S_REGISTERED_USER -->
-	<!-- EVENT navbar_header_username_prepend -->
-	<!-- EVENT navbar_header_profile_list_before -->
-	<!-- EVENT navbar_header_profile_list_after -->
-	<!-- EVENT navbar_header_username_append -->
-<!-- ENDIF -->
 
 <script type="text/javascript" src="{T_TEMPLATE_PATH}/forum_fn.js?assets_version={T_ASSETS_VERSION}"></script>
 
@@ -201,9 +192,9 @@
 <table cellspacing="1" width="100%" class="main" style="margin: 4px 0 8px">
 <tr class="bg1"><td><table cellspacing="0" width="100%"><tr class="breadcrumbs">
 	<td><!-- EVENT overall_header_breadcrumbs_before -->
-		<b><span itemscope itemtype="http://schema.org/BreadcrumbList"><!-- IF U_SITE_HOME --><span {$MICRODATA}><a href="{U_SITE_HOME}" itemtype="https://schema.org/Thing" itemprop="item" data-navbar-reference="home"><span itemprop="name">{L_SITE_HOME}</span></a><meta itemprop="position" content="{{ navlink_position }}<!-- SET navlink_position = navlink_position + 1 -->" /></span> <b>&#187;</b> <!-- ENDIF -->
-		<!-- EVENT overall_header_breadcrumb_prepend --><span {$MICRODATA}><a href="{U_INDEX}" itemtype="https://schema.org/Thing" itemprop="item" data-navbar-reference="index"><span itemprop="name">{L_INDEX}</span></a><meta itemprop="position" content="{{ navlink_position }}<!-- SET navlink_position = navlink_position + 1 -->" /></span>
-		<!-- BEGIN navlinks --><!-- EVENT overall_header_navlink_prepend --> &#187; <span {$MICRODATA}<!-- IF navlinks.MICRODATA --> {navlinks.MICRODATA}<!-- ENDIF -->><a href="{navlinks.U_VIEW_FORUM}" itemtype="https://schema.org/Thing" itemprop="item"><span itemprop="name">{navlinks.FORUM_NAME}</span></a><meta itemprop="position" content="{{ navlink_position }}<!-- SET navlink_position = navlink_position + 1 -->" /></span><!-- EVENT overall_header_navlink_append --><!-- END navlinks -->
+		<b><span itemscope itemtype="http://schema.org/BreadcrumbList"><!-- IF U_SITE_HOME --><span {$MICRODATA}><a href="{U_SITE_HOME}" itemtype="https://schema.org/Thing" itemscope itemprop="item" data-navbar-reference="home"><span itemprop="name">{L_SITE_HOME}</span></a><meta itemprop="position" content="{{ navlink_position }}<!-- SET navlink_position = navlink_position + 1 -->" /></span> <b>&#187;</b> <!-- ENDIF -->
+		<!-- EVENT overall_header_breadcrumb_prepend --><span {$MICRODATA}><a href="{U_INDEX}" itemtype="https://schema.org/Thing" itemscope itemprop="item" data-navbar-reference="index"><span itemprop="name">{L_INDEX}</span></a><meta itemprop="position" content="{{ navlink_position }}<!-- SET navlink_position = navlink_position + 1 -->" /></span>
+		<!-- BEGIN navlinks --><!-- EVENT overall_header_navlink_prepend --> &#187; <span {$MICRODATA}<!-- IF navlinks.MICRODATA --> {navlinks.MICRODATA}<!-- ENDIF -->><a href="{navlinks.U_VIEW_FORUM}" itemtype="https://schema.org/Thing" itemscope itemprop="item"><span itemprop="name">{navlinks.FORUM_NAME}</span></a><meta itemprop="position" content="{{ navlink_position }}<!-- SET navlink_position = navlink_position + 1 -->" /></span><!-- EVENT overall_header_navlink_append --><!-- END navlinks -->
 		<!-- EVENT overall_header_breadcrumb_append --></span></b>
 		<!-- EVENT overall_header_breadcrumbs_after -->
 	</td>
