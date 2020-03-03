@@ -424,12 +424,12 @@ function colorPalette() {
 				html += '</td>';
 			}
 
-				html += '</tr>';
+			html += '</tr>';
 		}
 	}
 
 	html += '</table>';
-	document.write(html);
+	return html;
 }
 
 /**

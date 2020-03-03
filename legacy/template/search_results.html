@@ -105,7 +105,7 @@
 		<tr class="{$BG}">
 		<!-- EVENT search_results_post_before -->
 		<!-- IF searchresults.S_IGNORE_POST -->
-			<td align="center" class="member"<!-- IF searchresults.S_FIRST_ROW or searchresults.S_LAST_ROW --> colspan="2"<!-- ENDIF -->>{searchresults.L_IGNORE_POST}</td>
+			<td align="center" class="member"<!-- IF searchresults.S_FIRST_ROW --> colspan="2"<!-- ENDIF -->>{searchresults.L_IGNORE_POST}</td>
 		<!-- ELSE -->
 			<td align="center"><b><!-- EVENT search_results_post_author_username_prepend -->{searchresults.POST_AUTHOR_FULL}<!-- EVENT search_results_post_author_username_append --></b></td>
 			<td width="100%">

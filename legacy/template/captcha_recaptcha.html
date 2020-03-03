@@ -1,20 +1,66 @@
-	<!-- IF S_TYPE == 1 -->
-		<tr>
-			<th colspan="2">{L_CONFIRMATION}</th>
-		</tr>
-		<tr>
-			<td class="bg1" colspan="2"><span class="bigger">{L_CONFIRM_EXPLAIN}</span></td>
-		</tr>
-	<!-- ENDIF -->
-	<!-- IF S_RECAPTCHA_AVAILABLE -->
-		<tr>
-			<td class="bg1" valign="top"><span class="bigger"><b>{L_CONFIRM_CODE}{L_COLON}</b><br />{L_RECAPTCHA_EXPLAIN}</span></td>
-			<td class="bg1">
-				<p class="error"><noscript>{L_RECAPTCHA_NOSCRIPT}</noscript></p>
-				<script src="{RECAPTCHA_SERVER}.js?hl={LA_RECAPTCHA_LANG}" async defer></script>
-				<div class="g-recaptcha" data-sitekey="{RECAPTCHA_PUBKEY}" data-tabindex="<!-- IF $CAPTCHA_TAB_INDEX -->{$CAPTCHA_TAB_INDEX}<!-- ELSE -->10<!-- ENDIF -->"></div>
-			</td>
-		</tr>
-	<!-- ELSE -->
-		<tr><td class="bg1" colspan="2"><p class="error">{L_RECAPTCHA_NOT_AVAILABLE}</p></td></tr>
-	<!-- ENDIF -->
+<tr class="bigger"><td align="center" colspan="2" class="bg1" style="padding: 0 4px">
+<!-- IF S_RECAPTCHA_AVAILABLE -->
+	<noscript>{L_RECAPTCHA_NOSCRIPT}</noscript>
+	<div class="g-recaptcha" data-sitekey="{RECAPTCHA_PUBKEY}" data-callback="phpbbRecaptchaOnSubmit" data-size="invisible"<!-- IF $CAPTCHA_TAB_INDEX --> data-tabindex="{$CAPTCHA_TAB_INDEX}"<!-- ENDIF -->></div>
+<script type="text/javascript"><!--
+var grc = {};
+
+function recaptchaGetForm() {
+	var set = document.getElementsByClassName('g-recaptcha');
+	var el = set[set.length-1];
+
+	while (el && el.parentNode) {
+		el = el.parentNode;
+		if (el.tagName && el.tagName.toLowerCase() == 'form') {
+			return el;
+		}
+	}
+	return null;
+}
+
+var submitButton = null;
+var programaticallySubmitted = false;
+var recaptchaForm = recaptchaGetForm();
+
+var rcpthd1 = function() {
+	submitButton = this;
+};
+
+var rcpthd2 = function(e) {
+	if (!programaticallySubmitted) {
+		grecaptcha.execute();
+		e.preventDefault();
+	}
+};
+
+grc.recaptchaOnLoad = function() {
+	var input = document.querySelectorAll('input[type="submit"]');
+	for (var i = 0; i < input.length; i++) {input[i].addEventListener('click', rcpthd1, false);}
+	recaptchaForm.addEventListener('submit', rcpthd2, false);
+}
+
+grc.recaptchaOnSubmit = function() {
+	programaticallySubmitted = true;
+	if (submitButton) {
+		submitButton.click();
+	} else {
+		if (typeof recaptchaForm.submit !== 'function') {
+			recaptchaForm.submit.name = 'submit_btn';
+		}
+		recaptchaForm.submit();
+	}
+}
+
+window.phpbbRecaptchaOnLoad = function() {
+	grc.recaptchaOnLoad();
+}
+
+window.phpbbRecaptchaOnSubmit = function() {
+	grc.recaptchaOnSubmit();
+}
+//--></script>
+	<script type="text/javascript" src="{RECAPTCHA_SERVER}.js?onload=phpbbRecaptchaOnLoad&hl={L_RECAPTCHA_LANG}"></script>
+<!-- ELSE -->
+	<div class="error">{L_RECAPTCHA_NOT_AVAILABLE}</div>
+<!-- ENDIF -->
+</td></tr>

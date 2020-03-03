@@ -37,13 +37,15 @@
 
 <!-- DEFINE $LAST_LOGIN = (S_VIEWONLINE and U_SORT_ACTIVE) -->
 
-<!-- IF S_EMAIL_SEARCH_ALLOWED -->
-	<!-- DEFINE $EMAIL_VISIBLE = 1 -->
-<!-- ELSE -->
-	<!-- BEGIN memberrow --><!-- IF memberrow.U_EMAIL --><!-- DEFINE $EMAIL_VISIBLE = 1 --><!-- ENDIF --><!-- END memberrow -->
+<!-- IF not S_IN_SEARCH_POPUP -->
+	<!-- IF S_EMAIL_SEARCH_ALLOWED -->
+		<!-- DEFINE $EMAIL_VISIBLE = 1 -->
+	<!-- ELSE -->
+		<!-- BEGIN memberrow --><!-- IF memberrow.U_EMAIL --><!-- DEFINE $EMAIL_VISIBLE = 1 --><!-- ENDIF --><!-- END memberrow -->
+	<!-- ENDIF -->
 <!-- ENDIF -->
 
-<form method="post" <!-- IF S_IN_SEARCH_POPUP -->name="results" action="{S_MODE_ACTION}" onsubmit="insert_marked(this.user);return false"<!-- ELSE -->action="{S_MODE_ACTION}"<!-- ENDIF -->>
+<form method="post" action="{S_MODE_ACTION}"<!-- IF S_IN_SEARCH_POPUP --> name="results" onsubmit="insert_marked(this.user);return false"<!-- ENDIF -->>
 
 <!-- IF .memberrow -->
 	<table cellspacing="1" class="main" width="100%">
@@ -54,7 +56,7 @@
 		<th width="<!-- IF $LAST_LOGIN -->15<!-- ELSE -->20<!-- ENDIF -->%"><a href="{U_SORT_JOINED}">{L_JOINED}</a></th>
 		<!-- IF $LAST_LOGIN --><th width="15%"><a href="{U_SORT_ACTIVE}">{L_LAST_ACTIVE}</a></th><!-- SET CS = CS + 1 --><!-- ENDIF -->
 		<!-- IF .custom_fields --><th width="25%"><!-- BEGIN custom_fields --><!-- IF not custom_fields.S_FIRST_ROW -->{L_COMMA_SEPARATOR} <!-- ENDIF -->{custom_fields.PROFILE_FIELD_NAME}<!-- END custom_fields --></th><!-- SET CS = CS + 1 --><!-- ENDIF -->
-		<!-- IF $EMAIL_VISIBLE --><th width="2%"><a href="{U_SORT_EMAIL}">{L_EMAIL}</a></th><!-- SET CS = CS + 1 --><!-- ENDIF -->
+		<!-- IF $EMAIL_VISIBLE --><th width="5%"><a href="{U_SORT_EMAIL}">{L_CONTACT}</a></th><!-- SET CS = CS + 1 --><!-- ENDIF -->
 		<!-- EVENT memberlist_body_memberlist_after -->
 	</tr>
 

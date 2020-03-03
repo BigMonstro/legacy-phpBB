@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="nojs" dir="{S_CONTENT_DIRECTION}" lang="{S_USER_LANG}">
+<html dir="{S_CONTENT_DIRECTION}" lang="{S_USER_LANG}">
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -36,12 +36,12 @@
 
 <!-- EVENT overall_header_stylesheets_after -->
 
-<script type="text/javascript"><!--
-	if (document.fireEvent || window.XMLHttpRequest) {document.documentElement.className += " dropdown-enabled";}
-//--></script>
 </head>
+<body class="{S_CONTENT_DIRECTION}">
 
-<body class="{S_CONTENT_DIRECTION}" marginwidth="25">
+<script type="text/javascript"><!--
+	if (document.fireEvent || window.XMLHttpRequest) {document.body.className += " dropdown-enabled";}
+//--></script>
 
 <!-- EVENT overall_header_body_before -->
 
@@ -49,16 +49,16 @@
 
 <!-- EVENT overall_header_headerbar_before -->
 
-<table cellspacing="0" height="100" width="100%"><tr>
-	<td class="site-logo" width="200"><a href="<!-- IF U_SITE_HOME -->{U_SITE_HOME}<!-- ELSE -->{U_INDEX}<!-- ENDIF -->"><img src="{T_THEME_PATH}/images/site_logo.gif" alt="" border="0" /></a></td>
+<table cellspacing="0" width="100%"><tr>
+	<td class="site-logo" height="100" width="200"><a href="<!-- IF U_SITE_HOME -->{U_SITE_HOME}<!-- ELSE -->{U_INDEX}<!-- ENDIF -->"><img src="{T_THEME_PATH}/images/site_logo.gif" alt="" border="0" /></a></td>
 	<td align="center" class="site-description"><h1>{SITENAME}</h1><div class="big">{SITE_DESCRIPTION}</div></td>
 	<td align="{S_CONTENT_FLOW_END}" class="search-header" width="200">
 		<!-- EVENT overall_header_searchbox_before -->
 		<!-- IF S_DISPLAY_SEARCH and not S_IN_SEARCH -->
 			<div class="search-box">
-				<form action="{U_SEARCH}" method="get" name="global_search">
+				<form action="{U_SEARCH}" method="get" name="search">
 					<input type="text" class="inputbox" name="keywords" size="20" title="{L_SEARCH_KEYWORDS}" value="<!-- IF SEARCH_WORDS -->{SEARCH_WORDS}<!-- ELSE -->{L_SEARCH_MINI}<!-- ENDIF -->" onfocus="if (this.value == '{LA_SEARCH_MINI}') {this.value='';}" />
-					<input type="image" src="{T_THEME_PATH}/images/icon_mini_search.gif" width="12" height="13" alt="*" title="{L_SEARCH}" style="margin-bottom: -3px" onclick="var h = document.forms['global_search'].elements[0]; if (h.value == '' || h.value == '{LA_SEARCH_MINI}') {h.focus(); return false;}" />
+					<input type="image" src="{T_THEME_PATH}/images/icon_mini_search.gif" alt="*" title="{L_SEARCH}" style="height: 13px; margin-bottom: -3px; width: 12px" onclick="var h = document.forms['search'].elements[0]; if (h.value == '' || h.value == '{LA_SEARCH_MINI}') {h.focus(); return false;}" />
 					{S_SEARCH_HIDDEN_FIELDS}
 				</form>
 				<p><a href="{U_SEARCH}">{L_SEARCH_ADV}</a></p>
@@ -142,7 +142,7 @@
 				<a href="{U_USER_PROFILE}">{L_READ_PROFILE}</a><!-- ENDIF -->
 				<br /><!-- EVENT navbar_header_profile_list_after --><div class="separator"></div><a href="{U_LOGIN_LOGOUT}">{L_LOGIN_LOGOUT}</a></div>
 			--></div>
-		<!-- ELSE IF not S_IS_BOT -->
+		<!-- ELSEIF not S_IS_BOT -->
 			<div align="{S_CONTENT_FLOW_END}" style="padding: 4px 2px">
 				<!-- EVENT navbar_header_logged_out_content -->
 
@@ -194,7 +194,7 @@
 	<td><!-- EVENT overall_header_breadcrumbs_before -->
 		<b><span itemscope itemtype="http://schema.org/BreadcrumbList"><!-- IF U_SITE_HOME --><span {$MICRODATA}><a href="{U_SITE_HOME}" itemtype="https://schema.org/Thing" itemscope itemprop="item" data-navbar-reference="home"><span itemprop="name">{L_SITE_HOME}</span></a><meta itemprop="position" content="{{ navlink_position }}<!-- SET navlink_position = navlink_position + 1 -->" /></span> <b>&#187;</b> <!-- ENDIF -->
 		<!-- EVENT overall_header_breadcrumb_prepend --><span {$MICRODATA}><a href="{U_INDEX}" itemtype="https://schema.org/Thing" itemscope itemprop="item" data-navbar-reference="index"><span itemprop="name">{L_INDEX}</span></a><meta itemprop="position" content="{{ navlink_position }}<!-- SET navlink_position = navlink_position + 1 -->" /></span>
-		<!-- BEGIN navlinks --><!-- EVENT overall_header_navlink_prepend --> &#187; <span {$MICRODATA}<!-- IF navlinks.MICRODATA --> {navlinks.MICRODATA}<!-- ENDIF -->><a href="{navlinks.U_VIEW_FORUM}" itemtype="https://schema.org/Thing" itemscope itemprop="item"><span itemprop="name">{navlinks.FORUM_NAME}</span></a><meta itemprop="position" content="{{ navlink_position }}<!-- SET navlink_position = navlink_position + 1 -->" /></span><!-- EVENT overall_header_navlink_append --><!-- END navlinks -->
+		<!-- IF not S_IN_MCP and not S_IN_UCP --><!-- BEGIN navlinks --><!-- SET NAVLINK_NAME = navlinks.BREADCRUMB_NAME | default(navlinks.FORUM_NAME) --><!-- SET NAVLINK_LINK = navlinks.U_BREADCRUMB | default(navlinks.U_VIEW_FORUM) --><!-- EVENT overall_header_navlink_prepend --> &#187; <span {$MICRODATA}<!-- IF navlinks.MICRODATA --> {navlinks.MICRODATA}<!-- ENDIF -->><a href="{NAVLINK_LINK}" itemtype="https://schema.org/Thing" itemscope itemprop="item"><span itemprop="name">{NAVLINK_NAME}</span></a><meta itemprop="position" content="{{ navlink_position }}<!-- SET navlink_position = navlink_position + 1 -->" /></span> <!-- EVENT overall_header_navlink_append --> <!-- END navlinks --><!-- ENDIF -->
 		<!-- EVENT overall_header_breadcrumb_append --></span></b>
 		<!-- EVENT overall_header_breadcrumbs_after -->
 	</td>

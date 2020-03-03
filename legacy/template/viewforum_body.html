@@ -86,13 +86,13 @@
 	</div>
 
 	<!-- IF U_WATCH_FORUM_LINK and not S_IS_BOT -->
+		<div class="hidden_links"><table width="100%" cellspacing="1"><tr class="bigger"><td><a href="{U_WATCH_FORUM_LINK}">{S_WATCH_FORUM_TITLE}</a></td></tr></table></div>
+
 		<script type="text/javascript"><!--
-			if (document.documentElement && (document.documentElement.className.indexOf('dropdown-enabled') > -1)) {
+			if (document.body.className.indexOf('dropdown-enabled') > -1) {
 				document.getElementById('subscribe_link').href = document.getElementById('subscribe_link').name;
 			}
 		//--></script>
-
-		<div class="hidden_links"><table width="100%" cellspacing="1"><tr class="bigger"><td><a href="{U_WATCH_FORUM_LINK}">{S_WATCH_FORUM_TITLE}</a></td></tr></table></div>
 	<!-- ENDIF -->
 <!-- ENDIF -->
 
@@ -219,7 +219,7 @@
 	<table cellspacing="0" width="100%"<!-- IF $ALT_MARGIN --> style="margin: 8px 0"<!-- ENDIF -->><tr valign="top">
 	<td><!-- IF S_DISPLAY_SEARCHBOX -->
 			<div class="search-box">
-				<form action="{S_SEARCHBOX_ACTION}" method="get" name="search">
+				<form action="{S_SEARCHBOX_ACTION}" method="get" name="forum-search">
 					<input type="text" class="inputbox" name="keywords" size="20" value="{L_SEARCH_FORUM}" onfocus="if (this.value == '{LA_SEARCH_FORUM}') {this.value='';}" />
 					<input type="submit" class="button2" title="{L_SEARCH}" value="{L_GO}" onclick="var h = this.form.elements[0]; if (h.value == '' || h.value == '{LA_SEARCH_FORUM}') {h.focus(); return false;}" />
 					{S_SEARCH_LOCAL_HIDDEN_FIELDS}

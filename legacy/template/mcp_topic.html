@@ -104,11 +104,10 @@
 			</tr>
 			<tr>
 				<td>
-					<div class="postbody"><div class="content">{postrow.MESSAGE}</div>
-					<!-- EVENT mcp_topic_postrow_attachments_before --></div>
+					<div class="postbody"><div class="content">{postrow.MESSAGE}</div></div>
+					<!-- IF postrow.S_HAS_ATTACHMENTS --><br /><!-- ENDIF -->	
+					<!-- EVENT mcp_topic_postrow_attachments_before -->
 					<!-- IF postrow.S_HAS_ATTACHMENTS -->
-						<br />
-
 						<table class="main" width="100%" cellspacing="1">
 						<tr>
 							<td class="bg3"><b class="bigger">{L_ATTACHMENTS}</b></td>

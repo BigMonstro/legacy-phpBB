@@ -63,8 +63,6 @@
 </tr>
 
 <!-- IF CAPTCHA_TEMPLATE and S_CONFIRM_CODE -->
-</table>
-<table class="main" width="100%" cellspacing="1">
 	<!-- DEFINE $CAPTCHA_TAB_INDEX = 4 -->
 	<!-- INCLUDE {CAPTCHA_TEMPLATE} -->
 <!-- ENDIF -->
@@ -80,7 +78,7 @@
 </form>
 
 <script type="text/javascript"><!--
-	if (typeof getStuff === 'function') {getStuff("<!-- IF S_ADMIN_AUTH -->focus_password<!-- ELSE -->focus_username<!-- ENDIF -->").focus();}
+	if (typeof getStuff === 'function') {getStuff("<!-- IF USERNAME eq '' -->focus_username<!-- ELSE -->focus_password<!-- ENDIF -->").focus();}
 //--></script>
 
 <!-- INCLUDE overall_footer.html -->

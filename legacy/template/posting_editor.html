@@ -17,6 +17,7 @@
 	</tr>
 	<!-- EVENT posting_editor_subject_after -->
 	<!-- IF CAPTCHA_TEMPLATE and S_CONFIRM_CODE -->
+		<!-- DEFINE $CAPTCHA_EDITOR = 1 -->
 		<!-- DEFINE $CAPTCHA_TAB_INDEX = 4 -->
 		<!-- INCLUDE {CAPTCHA_TEMPLATE} -->
 	<!-- ENDIF -->
@@ -63,14 +64,14 @@
 		<table cellspacing="0" width="100%">
 			<tr valign="top">
 				<td style="padding: 2px" width="100%">
-					<table cellspacing="0" style="*table-layout: fixed" width="100%"><tr><td style="padding: 2px; padding-{S_CONTENT_FLOW_BEGIN}: 0; padding-{S_CONTENT_FLOW_END}: 6px">
-					<textarea name="<!-- IF $SIG_EDIT -->signature<!-- ELSE -->message<!-- ENDIF -->" rows="15" cols="<!-- IF S_IN_UCP or S_IN_MCP -->35<!-- ELSE -->50<!-- ENDIF -->" tabindex="3" onselect="storeCaret(this);" onclick="storeCaret(this);" onkeyup="storeCaret(this);" onfocus="initInsertions();" style="height: 270px; width: 100%; width: 230px\9; min-width: 100%\9; max-width: 100%\9; *width: 100%">{MESSAGE}{DRAFT_MESSAGE}{SIGNATURE}</textarea>
+					<table cellspacing="0" class="message-box" width="100%"><tr><td>
+					<textarea name="<!-- IF $SIG_EDIT -->signature<!-- ELSE -->message<!-- ENDIF -->" rows="15" cols="<!-- IF S_IN_UCP or S_IN_MCP -->35<!-- ELSE -->50<!-- ENDIF -->" tabindex="3" onselect="storeCaret(this);" onclick="storeCaret(this);" onkeyup="storeCaret(this);" onfocus="initInsertions();" style="height: 270px">{MESSAGE}{DRAFT_MESSAGE}{SIGNATURE}</textarea>
 					</td></tr></table>
 				</td>
 				<!-- IF S_BBCODE_ALLOWED -->
 					<td style="padding: 4px; padding-{S_CONTENT_FLOW_END}: 0">
 					<script type="text/javascript"><!--
-						if (typeof colorPalette === 'function') {colorPalette();}
+						if (typeof colorPalette === 'function') { document.write(colorPalette());}
 					//--></script>
 					</td>
 				<!-- ENDIF -->

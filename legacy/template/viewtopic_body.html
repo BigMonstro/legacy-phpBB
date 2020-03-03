@@ -67,15 +67,6 @@
 </div>
 
 <!-- IF $TOPICTOOLS -->
-<script type="text/javascript"><!--
-if (document.documentElement && (document.documentElement.className.indexOf('dropdown-enabled') > -1 && typeof removeComment === 'function')) {
-	var ttl = document.getElementById('topictools_list'); removeComment(ttl); ttl.onclick = function(e) {if (e) {e.stopPropagation();} else {window.event.cancelBubble = true;}};
-	if (document.uniqueID && !document.querySelector) {ttl.parentNode.style.position = 'relative'; if (document.documentElement.dir == 'ltr') {ttl.style.left = '0';} else {ttl.style.right = '0';}}
-	document.getElementById('topictools_link').onclick = function(e) {if (e) {e.stopPropagation();} else {window.event.cancelBubble = true;} toggleLists(ttl, this, ttl.parentNode); return false;};
-	document.getElementById('topictools_link').href = document.getElementById('topictools_link').name;
-}
-//--></script>
-
 	<div class="hidden_links"><table width="100%" cellspacing="1"><tr class="bigger"><td>
 		<!-- IF U_WATCH_TOPIC --><a href="{U_WATCH_TOPIC}">{S_WATCH_TOPIC_TITLE}</a><!-- IF U_BOOKMARK_TOPIC or U_PRINT_TOPIC or U_EMAIL_TOPIC or U_BUMP_TOPIC --> | <!-- ENDIF --><!-- ENDIF -->
 		<!-- IF U_BOOKMARK_TOPIC --><a href="{U_BOOKMARK_TOPIC}">{S_BOOKMARK_TOPIC}</a><!-- IF U_PRINT_TOPIC or U_EMAIL_TOPIC or U_BUMP_TOPIC --> | <!-- ENDIF --><!-- ENDIF -->
@@ -83,6 +74,14 @@ if (document.documentElement && (document.documentElement.className.indexOf('dro
 		<!-- IF U_EMAIL_TOPIC --><a href="{U_EMAIL_TOPIC}">{L_EMAIL_TOPIC}</a><!-- IF U_BUMP_TOPIC --> | <!-- ENDIF --><!-- ENDIF -->
 		<!-- IF U_BUMP_TOPIC --><a href="{U_BUMP_TOPIC}">{L_BUMP_TOPIC}</a><!-- ENDIF -->
 	</td></tr></table></div>
+
+	<script type="text/javascript"><!--
+		if (document.body.className.indexOf('dropdown-enabled') > -1 && typeof removeComment === 'function') {
+			var ttl = document.getElementById('topictools_list'); removeComment(ttl); ttl.onclick = function(e) {if (e) {e.stopPropagation();} else {window.event.cancelBubble = true;}};
+			document.getElementById('topictools_link').onclick = function(e) {if (e) {e.stopPropagation();} else {window.event.cancelBubble = true;} toggleLists(ttl, this, ttl.parentNode); return false;};
+			document.getElementById('topictools_link').href = document.getElementById('topictools_link').name;
+		}
+	//--></script>
 <!-- ENDIF -->
 
 <!-- EVENT viewtopic_body_poll_before -->
@@ -252,8 +251,15 @@ if (document.documentElement && (document.documentElement.className.indexOf('dro
 					<table width="100%" cellspacing="0">
 					<tr>
 						<td class="bigger">
-							<!-- IF postrow.S_POST_UNAPPROVED --><div><b><a href="{postrow.U_MCP_APPROVE}" class="postapprove"><img src="{T_THEME_PATH}/images/icon_topic_unapproved.gif" width="19" height="18" alt="" border="0" /> {L_POST_UNAPPROVED}</a></b></div><!-- ENDIF -->
-							<!-- IF postrow.S_POST_DELETED --><div><b><a href="{postrow.U_MCP_APPROVE}" class="postapprove"><img src="{T_THEME_PATH}/images/icon_topic_deleted.gif" width="14" height="14" alt="" border="0" /> {L_POST_DELETED}</a></b></div><!-- ENDIF -->
+							<!-- IF postrow.S_POST_UNAPPROVED -->
+								<!-- IF postrow.S_CAN_APPROVE -->
+								<div><b><a href="{postrow.U_MCP_APPROVE}" class="postapprove"><img src="{T_THEME_PATH}/images/icon_topic_unapproved.gif" width="19" height="18" alt="" border="0" /> {L_POST_UNAPPROVED}</a></b></div>
+								<!-- ELSE -->
+								<div><b class="error"><img src="{T_THEME_PATH}/images/icon_topic_reported.gif" width="19" height="18" alt="" border="0" /> {L_POST_UNAPPROVED_EXPLAIN}</b></div>
+								<!-- ENDIF -->
+							<!-- ELSEIF postrow.S_POST_DELETED -->
+								<div><b><a href="{postrow.U_MCP_APPROVE}" class="postapprove"><img src="{T_THEME_PATH}/images/icon_topic_deleted.gif" width="14" height="14" alt="" border="0" /> {L_POST_DELETED}</a></b></div>
+							<!-- ENDIF -->
 							<!-- IF postrow.S_POST_REPORTED --><div><b><a href="{postrow.U_MCP_REPORT}" class="postreported"><img src="{T_THEME_PATH}/images/icon_topic_reported.gif" width="19" height="18" alt="" border="0" /> {L_POST_REPORTED}</a></b></div><!-- ENDIF -->
 						</td>
 					</tr>
@@ -430,7 +436,7 @@ if (document.documentElement && (document.documentElement.className.indexOf('dro
 		</div>
 	<!-- ENDIF --><!-- IF S_DISPLAY_SEARCHBOX -->
 		<div class="search-box">
-			<form action="{S_SEARCHBOX_ACTION}" method="get" name="search">
+			<form action="{S_SEARCHBOX_ACTION}" method="get" name="topic-search">
 				<input type="text" class="inputbox" name="keywords" size="20" value="{L_SEARCH_TOPIC}" onfocus="if (this.value == '{LA_SEARCH_TOPIC}') {this.value='';}" />
 				<input type="submit" class="button2" title="{L_SEARCH}" value="{L_GO}" onclick="var h = this.form.elements[0]; if (h.value == '' || h.value == '{LA_SEARCH_TOPIC}') {h.focus(); return false;}" />
 				{S_SEARCH_LOCAL_HIDDEN_FIELDS}
