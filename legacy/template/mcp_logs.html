@@ -17,11 +17,11 @@
 </tr>
 <!-- IF S_LOGS -->
 	<!-- BEGIN log -->
-		<tr class="bigger"><!-- IF log.S_ROW_COUNT is even --><!-- DEFINE $BG = 'bg1' --><!-- ELSE --><!-- DEFINE $BG = 'bg2' --><!-- ENDIF -->
-			<td class="{$BG}">{log.USERNAME}</td>
-			<td align="center" class="{$BG}">{log.IP}</td>
-			<td align="center" class="{$BG}">{log.DATE}</td>
-			<td class="{$BG}">{log.ACTION}<br />{log.DATA}</td>
+		<tr><!-- IF log.S_ROW_COUNT is even --><!-- DEFINE $BG = 'bg1' --><!-- ELSE --><!-- DEFINE $BG = 'bg2' --><!-- ENDIF -->
+			<td class="{$BG}"><span class="bigger">{log.USERNAME}</span></td>
+			<td align="center" class="{$BG}"><p>{log.IP}</p></td>
+			<td align="center" class="{$BG}"><p>{log.DATE}</p></td>
+			<td class="{$BG}"><p>{log.ACTION}<br />{log.DATA}</p></td>
 			<!-- IF S_CLEAR_ALLOWED --><td align="center" class="{$BG}"><input type="checkbox" name="mark[]" value="{log.ID}" /></td><!-- ENDIF -->
 		</tr>
 	<!-- END log -->
@@ -32,8 +32,8 @@
 		<!-- IF S_CLEAR_ALLOWED --><td align="{S_CONTENT_FLOW_END}" class="cat"><input class="button2" type="submit" name="action[del_all]" value="{L_DELETE_ALL}" /> &nbsp;<input class="button2" type="submit" name="action[del_marked]" value="{L_DELETE_MARKED}" /></td><!-- ENDIF -->
 	</tr>
 <!-- ELSE -->
-	<tr>
-		<td align="center" class="bg1" colspan="<!-- IF S_CLEAR_ALLOWED -->5<!-- ELSE -->4<!-- ENDIF -->"><span class="big">{L_NO_ENTRIES}</span></td>
+	<tr class="big">
+		<td align="center" class="bg1" colspan="<!-- IF S_CLEAR_ALLOWED -->5<!-- ELSE -->4<!-- ENDIF -->">{L_NO_ENTRIES}</td>
 	</tr>
 <!-- ENDIF -->
 </table>

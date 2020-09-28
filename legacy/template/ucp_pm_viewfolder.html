@@ -32,17 +32,15 @@
 		<tr>
 			<th>{L_INFORMATION}</th>
 		</tr>
-		<tr>
-			<td align="center" class="bg1">
-				<span class="big">
-					<!-- IF NUM_REMOVED -->
-						{RULE_REMOVED_MESSAGES}
-						<!-- IF NUM_NOT_MOVED --><br /><!-- ENDIF -->
-					<!-- ENDIF -->
-					<!-- IF NUM_NOT_MOVED -->
-						{NOT_MOVED_MESSAGES}<br />{RELEASE_MESSAGE_INFO}
-					<!-- ENDIF -->
-				</span>
+		<tr class="big">
+			<td class="bg1" align="center">
+				<!-- IF NUM_REMOVED -->
+					{RULE_REMOVED_MESSAGES}
+					<!-- IF NUM_NOT_MOVED --><br /><!-- ENDIF -->
+				<!-- ENDIF -->
+				<!-- IF NUM_NOT_MOVED -->
+					{NOT_MOVED_MESSAGES}<br />{RELEASE_MESSAGE_INFO}
+				<!-- ENDIF -->
 			</td>
 		</tr>
 		</table>
@@ -64,7 +62,7 @@
 					<!-- IF messagerow.S_PM_UNREAD and not messagerow.S_PM_DELETED --><a href="{messagerow.U_VIEW_PM}"><!-- ENDIF --><img src="{T_THEME_PATH}/images/topic_<!-- IF messagerow.S_PM_UNREAD -->un<!-- ENDIF -->read.gif" width="19" height="18" alt="<!-- IF messagerow.S_PM_UNREAD -->+" border="0" title="{L_UNREAD_POST}<!-- ENDIF -->" /><!-- IF messagerow.S_PM_UNREAD and not messagerow.S_PM_DELETED --></a><!-- ENDIF -->
 				</td>
 				<!-- IF S_PM_ICONS -->
-					<td align="center" width="25">{messagerow.PM_ICON_IMG}</td>
+					<td align="center" width="24"><!-- IF messagerow.PM_ICON_URL --><img src="{messagerow.PM_ICON_URL}" width="16" height="16" alt="" /><!-- ENDIF --></td>
 				<!-- ENDIF -->
 				<td>
 					<!-- IF messagerow.ATTACH_ICON_IMG --><img src="{T_THEME_PATH}/images/icon_topic_attach.gif" width="14" height="18" alt="(*)" title="{L_TOTAL_ATTACHMENTS}" /><!-- ENDIF -->
@@ -92,23 +90,15 @@
 		<tr>
 			<th>{L_UCP_PM_COMPOSE}</th>
 		</tr>
-		<tr>
-			<td align="center" class="bg1">
-				<span class="big">
-					<!-- IF S_USER_NEW -->{L_USER_NEW_PERMISSION_DISALLOWED}<!-- ELSE -->{L_NO_AUTH_SEND_MESSAGE}<!-- ENDIF -->
-				</span>
-			</td>
+		<tr class="big">
+			<td class="bg1" align="center"><!-- IF S_USER_NEW -->{L_USER_NEW_PERMISSION_DISALLOWED}<!-- ELSE -->{L_NO_AUTH_SEND_MESSAGE}<!-- ENDIF --></td>
 		</tr>
 	<!-- ELSE -->
 		<tr>
 			<th>{L_INFORMATION}</th>
 		</tr>
-		<tr>
-			<td align="center" class="bg1">
-				<span class="big">
-						{L_NO_MESSAGES}
-				</span>
-			</td>
+		<tr class="big">
+			<td class="bg1" align="center">{L_NO_MESSAGES}</td>
 		</tr>
 	<!-- ENDIF -->
 	</table>
@@ -122,8 +112,26 @@
 			</td>
 		</tr>
 		</table>
-	<!-- ENDIF -->
 
+		<table cellspacing="1" class="main" style="margin-top: 4px" width="100%">
+		<tr>
+			<td class="bg1">
+				<table cellspacing="0" width="100%">
+				<tr>
+					<td><select name="export_option"><option value="CSV">{L_EXPORT_AS_CSV}</option><option value="CSV_EXCEL">{L_EXPORT_AS_CSV_EXCEL}</option><option value="XML">{L_EXPORT_AS_XML}</option></select> <input class="button2" type="submit" name="submit_export" value="{L_GO}" /></td>
+					<td align="{S_CONTENT_FLOW_END}"><select name="mark_option">{S_MARK_OPTIONS}{S_MOVE_MARKED_OPTIONS}</select> <input class="button2" type="submit" name="submit_mark" value="{L_GO}" /></td>
+				</tr>
+				</table>
+			</td>
+		</tr>
+		</table>
+
+		<table width="100%" cellspacing="1"><tr>
+			<td nowrap="nowrap"><b>{PAGE_NUMBER}</b> &nbsp;<!-- IF FOLDER_MAX_MESSAGES neq 0 -->[ {FOLDER_CUR_MESSAGES}/{FOLDER_MAX_MESSAGES} {L_MESSAGES} ]<!-- ELSE -->[ {TOTAL_MESSAGES} ]<!-- ENDIF --></td>
+			<td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('viewfolder', 'marked_msg_id', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('viewfolder', 'marked_msg_id', false); return false;">{L_UNMARK_ALL}</a></b></td>
+			<!-- IF .pagination --></tr><tr><td align="{S_CONTENT_FLOW_END}" colspan="2"><!-- INCLUDE pagination.html --></td><!-- ENDIF -->
+		</tr></table>
+	<!-- ENDIF -->
 	<!-- INCLUDE ucp_pm_message_footer.html -->
 <!-- ENDIF -->
 

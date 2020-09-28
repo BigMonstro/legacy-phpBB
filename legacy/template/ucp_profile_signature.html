@@ -1,17 +1,11 @@
 <!-- INCLUDE ucp_header.html -->
 
-<form name="ucp" id="ucp" method="post" action="{S_UCP_ACTION}"{S_FORM_ENCTYPE}>
+<form name="postform" method="post" action="{S_UCP_ACTION}"{S_FORM_ENCTYPE}>
 
 <table class="main" width="100%" cellspacing="1">
 <tr>
 	<th colspan="2">{L_TITLE}</th>
 </tr>
-
-<!-- IF ERROR -->
-	<tr>
-		<td class="bg1" colspan="2" align="center"><p class="error">{ERROR}</p></td>
-	</tr>
-<!-- ENDIF -->
 
 <!-- DEFINE $SIG_EDIT = 1 -->
 <!-- INCLUDE posting_editor.html -->

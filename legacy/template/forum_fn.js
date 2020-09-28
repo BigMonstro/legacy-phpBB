@@ -12,6 +12,11 @@ function popup(u, w, h, n) {
 		n = '_popup';
 	}
 
+	if (document.all && !window.XMLHttpRequest) {
+		if (screen.availHeight - 30 < h) {h = screen.availHeight - 30;}
+		if (screen.availWidth - 10 < w) {w = screen.availWidth - 10;}
+	}
+
 	window.open(u.replace(/&amp;/g, '&'), n, 'height=' + h + ',resizable=yes,scrollbars=yes,width=' + w);
 	return false;
 }
@@ -287,7 +292,7 @@ if (document.body.className.indexOf('dropdown-enabled') > -1) {
 }
 
 /**
-* Insert a global class
+* Global class insertion
 */
 
 if (document.getElementById) {

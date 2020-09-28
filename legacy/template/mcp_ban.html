@@ -36,8 +36,8 @@
 <tr>
 	<th colspan="2">{L_TITLE}</th>
 </tr>
-<tr>
-	<td class="bg1" colspan="2"><span class="bigger">{L_EXPLAIN}</span></td>
+<tr class="bigger">
+	<td class="bg1" colspan="2" align="center">{L_EXPLAIN}</td>
 </tr>
 <!-- EVENT mcp_ban_fields_before -->
 <tr>
@@ -77,14 +77,14 @@
 <tr>
 	<th colspan="2">{L_UNBAN_TITLE}</th>
 </tr>
-<tr>
-	<td class="bg1" colspan="2"><span class="bigger">{L_UNBAN_EXPLAIN}</span></td>
+<tr class="bigger">
+	<td class="bg1" colspan="2" align="center">{L_UNBAN_EXPLAIN}</td>
 </tr>
 <!-- IF S_BANNED_OPTIONS -->
 	<!-- EVENT mcp_ban_unban_before -->
 	<tr>
 		<td class="bg1" valign="top" width="40%"><b class="bigger">{L_BAN_CELL}{L_COLON}</b></td>
-		<td class="bg1"><select name="unban[]" multiple="multiple" size="10" style="width: 50%" onchange="if (this.selectedIndex > -1) display_details(this.options[this.selectedIndex].value); else display_details(-1);">{BANNED_OPTIONS}</select></td>
+		<td class="bg1"><select name="unban[]" multiple="multiple" size="10" style="width: 100%" onchange="if (this.selectedIndex > -1) display_details(this.options[this.selectedIndex].value); else display_details(-1);">{BANNED_OPTIONS}</select></td>
 	</tr>
 	<tr>
 		<td class="bg1" valign="top"><b class="bigger">{L_BAN_LENGTH}{L_COLON}</b></td>
@@ -110,6 +110,7 @@
 	</tr>
 <!-- ENDIF -->
 </table>
+{S_HIDDEN_FIELDS}
 {S_FORM_TOKEN}
 </form>
 

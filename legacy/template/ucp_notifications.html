@@ -6,8 +6,8 @@
 <tr>
 	<th colspan="<!-- IF MODE == 'notification_options' -->{NOTIFICATION_TYPES_COLS}<!-- ELSE -->2<!-- ENDIF -->">{TITLE}</th>
 </tr>
-<tr>
-	<td class="bg1" colspan="<!-- IF MODE == 'notification_options' -->{NOTIFICATION_TYPES_COLS}<!-- ELSE -->2<!-- ENDIF -->" align="center"><span class="bigger">{TITLE_EXPLAIN}</span></td>
+<tr class="bigger">
+	<td align="center" class="bg1" colspan="<!-- IF MODE == 'notification_options' -->{NOTIFICATION_TYPES_COLS}<!-- ELSE -->2<!-- ENDIF -->">{TITLE_EXPLAIN}</td>
 </tr>
 <!-- IF MODE == 'notification_options' -->
 	<tr>
@@ -29,7 +29,7 @@
 					</span>
 				</td>
 				<!-- BEGIN notification_methods -->
-					<td align="center"><input type="checkbox" name="{notification_types.TYPE}_{notification_types.notification_methods.METHOD}"<!-- IF notification_types.notification_methods.AVAILABLE and notification_types.notification_methods.SUBSCRIBED --> checked="checked"<!-- ENDIF --><!-- IF not notification_types.notification_methods.AVAILABLE --> disabled="disabled"<!-- ENDIF --> /></td>
+					<td align="center"><input type="checkbox" name="{notification_types.TYPE}_{notification_types.notification_methods.METHOD}"<!-- IF notification_types.notification_methods.SUBSCRIBED --> checked="checked"<!-- ENDIF --><!-- IF not notification_types.notification_methods.AVAILABLE --> disabled="disabled"<!-- ENDIF --> /></td>
 				<!-- END notification_methods -->
 			</tr>
 		<!-- ENDIF -->
@@ -88,7 +88,7 @@
 <!-- IF .notification_list or MODE == 'notification_options' -->
 	<table width="100%" cellspacing="1"><tr>
 		<!-- IF MODE != 'notification_options' --><td nowrap="nowrap"><b>{PAGE_NUMBER}</b> &nbsp;[ {TOTAL_COUNT} {L_NOTIFICATIONS} ]</td><!-- ENDIF -->
-		<td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('ucp', '<!-- IF MODE == 'notification_options' -->notification.type<!-- ELSE -->mark[]<!-- ENDIF -->', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('ucp', '<!-- IF MODE == 'notification_options' -->notification.type<!-- ELSE -->mark[]<!-- ENDIF -->', false); return false;">{L_UNMARK_ALL}</a></b></td>
+		<td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('ucp', '', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('ucp', '', false); return false;">{L_UNMARK_ALL}</a></b></td>
 		<!-- IF MODE != 'notification_options' and .pagination --></tr><tr><td align="{S_CONTENT_FLOW_END}" colspan="2"><!-- INCLUDE pagination.html --></td><!-- ENDIF -->
 	</tr></table>
 <!-- ENDIF -->

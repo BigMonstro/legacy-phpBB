@@ -1,13 +1,17 @@
 <!-- IF S_IN_SEARCH_POPUP -->
 	<!-- INCLUDE simple_header.html -->
-<!-- ELSE -->
-	<!-- INCLUDE overall_header.html -->
-<!-- ENDIF -->
-
-<!-- IF S_IN_SEARCH_POPUP or S_SEARCH_USER -->
 	<!-- INCLUDE memberlist_search.html -->
 	<br clear="all" />
+<!-- ELSE -->
+	<!-- INCLUDE overall_header.html -->
+
+	<!-- IF S_SEARCH_USER -->
+		<!-- INCLUDE memberlist_search.html -->
+		<br clear="all" />
+	<!-- ENDIF -->
 <!-- ENDIF -->
+
+<form method="post" action="{S_MODE_ACTION}"<!-- IF S_IN_SEARCH_POPUP --> name="results" onsubmit="insert_marked(this.user);return false"<!-- ENDIF -->>
 
 <!-- EVENT memberlist_body_page_header_after -->
 
@@ -16,7 +20,7 @@
 	<tr>
 		<td valign="top"<!-- IF U_MANAGE --> width="100%"<!-- ENDIF -->><!-- EVENT memberlist_body_group_name_before --><h3<!-- IF GROUP_COLOR --> style="color: #{GROUP_COLOR}"<!-- ENDIF -->>{GROUP_NAME}</h3><!-- EVENT memberlist_body_group_name_after --><div class="forumdesc">{GROUP_DESC} {GROUP_TYPE}</div><!-- EVENT memberlist_body_group_desc_after --></td>
 		<!-- IF U_MANAGE -->
-			<td align="center" valign="bottom" nowrap="nowrap"><a class="bigger" href="{U_MANAGE}">{L_MANAGE_GROUP}</a></td>
+			<td valign="bottom" nowrap="nowrap"><a class="bigger" href="{U_MANAGE}">{L_MANAGE_GROUP}</a></td>
 		<!-- ENDIF -->
 	</tr>
 	</table>
@@ -29,10 +33,10 @@
 	</p>
 <!-- ELSE -->
 	<!-- EVENT memberlist_body_page_title_before -->
-	<form method="post" name="charsearch" action="{S_MODE_ACTION}"><table cellspacing="1" width="100%"><tr>
+	<table cellspacing="1" width="100%"><tr>
 	<td><!-- IF U_FIND_MEMBER and not S_SEARCH_USER --><b class="bigger"><a href="{U_FIND_MEMBER}">{L_FIND_USERNAME}</a></b> | <!-- ELSEIF S_SEARCH_USER and U_HIDE_FIND_MEMBER and not S_IN_SEARCH_POPUP --><b class="bigger"><a href="{U_HIDE_FIND_MEMBER}">{L_HIDE_MEMBER_SEARCH}</a></b> | <!-- ENDIF --><span class="bigger">{L_USERNAME_BEGINS_WITH}{L_COLON} </span><select name="first_char" onchange="this.form.submit();"><!-- BEGIN first_char --><option value="{first_char.VALUE}"<!-- IF first_char.S_SELECTED --> selected="selected"<!-- ENDIF -->>{first_char.DESC}</option><!-- END first_char --></select><span class="noscript"> <input type="submit" name="char" value="{L_DISPLAY}" class="button2" /></span></td>
 	<!-- IF .pagination --><td align="{S_CONTENT_FLOW_END}"><!-- INCLUDE pagination.html --></td><!-- ENDIF -->
-	</tr></table></form>
+	</tr></table>
 <!-- ENDIF -->
 
 <!-- DEFINE $LAST_LOGIN = (S_VIEWONLINE and U_SORT_ACTIVE) -->
@@ -44,8 +48,6 @@
 		<!-- BEGIN memberrow --><!-- IF memberrow.U_EMAIL --><!-- DEFINE $EMAIL_VISIBLE = 1 --><!-- ENDIF --><!-- END memberrow -->
 	<!-- ENDIF -->
 <!-- ENDIF -->
-
-<form method="post" action="{S_MODE_ACTION}"<!-- IF S_IN_SEARCH_POPUP --> name="results" onsubmit="insert_marked(this.user);return false"<!-- ENDIF -->>
 
 <!-- IF .memberrow -->
 	<table cellspacing="1" class="main" width="100%">
@@ -68,14 +70,14 @@
 				<tr class="bg3"><td colspan="{CS}"><b class="bigger">{L_GROUP_MEMBERS}</b></td></tr><!-- DEFINE $S_MEMBER_HEADER = 1 -->
 			<!-- ENDIF -->
 		<!-- ENDIF -->
-		<tr class="<!-- IF memberrow.S_ROW_COUNT is odd -->bg1<!-- ELSE -->bg2<!-- ENDIF -->">
-			<td class="member"><!-- IF S_IN_SEARCH_POPUP and not S_SELECT_SINGLE --><input type="checkbox" name="user" value="{memberrow.USERNAME}" /> <!-- ENDIF --><!-- EVENT memberlist_body_username_prepend -->{memberrow.USERNAME_FULL}<!-- IF memberrow.S_INACTIVE --> <i>({L_INACTIVE})</i><!-- ENDIF --><!-- EVENT memberlist_body_username_append --><!-- IF S_IN_SEARCH_POPUP --><br />[&nbsp;<a href="#" onclick="insert_single('{memberrow.A_USERNAME}'); return false;">{L_SELECT}</a>&nbsp;]<!-- ENDIF --></td>
-			<td align="center" class="member"><!-- EVENT memberlist_body_rank_prepend --><!-- IF memberrow.RANK_IMG -->{memberrow.RANK_IMG}<!-- ELSE -->{memberrow.RANK_TITLE}<!-- ENDIF --><!-- EVENT memberlist_body_rank_append --></td>
-			<td align="center" class="member"><!-- IF memberrow.POSTS and S_DISPLAY_SEARCH --><a href="{memberrow.U_SEARCH_USER}">{memberrow.POSTS}</a><!-- ELSE -->{memberrow.POSTS}<!-- ENDIF --></td>
-			<td align="center" class="member">{memberrow.JOINED}</td>
-			<!-- IF $LAST_LOGIN --><td align="center" class="member">{memberrow.LAST_ACTIVE}</td><!-- ENDIF -->
-			<!-- IF .custom_fields --><td align="center" class="member"><table class="fixed"><tr><td><!-- BEGIN custom_fields --><!-- IF custom_fields.S_PROFILE_CONTACT --><a href="{memberrow.custom_fields.PROFILE_FIELD_CONTACT}"><!-- ENDIF -->{memberrow.custom_fields.PROFILE_FIELD_VALUE}<!-- IF custom_fields.S_PROFILE_CONTACT --></a><!-- ENDIF --><br /><!-- END custom_fields --></td></tr></table></td><!-- ENDIF -->
-			<!-- IF $EMAIL_VISIBLE --><td align="center" class="member"><!-- IF memberrow.U_EMAIL --><a href="{memberrow.U_EMAIL}" title="{memberrow.L_SEND_EMAIL_USER}">{L_EMAIL}</a><!-- ELSE -->&nbsp;<!-- ENDIF --></td><!-- ENDIF -->
+		<tr><!-- IF memberrow.S_ROW_COUNT is odd --><!-- DEFINE $BG = 'bg1' --><!-- ELSE --><!-- DEFINE $BG = 'bg2' --><!-- ENDIF -->
+			<td class="{$BG}"><div class="bigger"><!-- IF S_IN_SEARCH_POPUP and not S_SELECT_SINGLE --><input type="checkbox" name="user" value="{memberrow.USERNAME}" /> <!-- ENDIF --><!-- EVENT memberlist_body_username_prepend -->{memberrow.USERNAME_FULL}<!-- IF memberrow.S_INACTIVE --> <i>({L_INACTIVE})</i><!-- ENDIF --><!-- EVENT memberlist_body_username_append --><!-- IF S_IN_SEARCH_POPUP --><br />[&nbsp;<a href="#" onclick="insert_single('{memberrow.A_USERNAME}'); return false;">{L_SELECT}</a>&nbsp;]<!-- ENDIF --></div></td>
+			<td align="center" class="{$BG}"><p><!-- EVENT memberlist_body_rank_prepend --><!-- IF memberrow.RANK_IMG -->{memberrow.RANK_IMG}<!-- ELSE -->{memberrow.RANK_TITLE}<!-- ENDIF --><!-- EVENT memberlist_body_rank_append --></p></td>
+			<td align="center" class="{$BG}"><p><!-- IF memberrow.POSTS and S_DISPLAY_SEARCH --><a href="{memberrow.U_SEARCH_USER}">{memberrow.POSTS}</a><!-- ELSE -->{memberrow.POSTS}<!-- ENDIF --></p></td>
+			<td align="center" class="{$BG}"><p>{memberrow.JOINED}</p></td>
+			<!-- IF $LAST_LOGIN --><td align="center" class="{$BG}"><p>{memberrow.LAST_ACTIVE}</p></td><!-- ENDIF -->
+			<!-- IF .custom_fields --><td align="center" class="{$BG}"><table class="fixed"><tr><td><p><!-- BEGIN custom_fields --><!-- IF custom_fields.S_PROFILE_CONTACT --><a href="{memberrow.custom_fields.PROFILE_FIELD_CONTACT}"><!-- ENDIF -->{memberrow.custom_fields.PROFILE_FIELD_VALUE}<!-- IF custom_fields.S_PROFILE_CONTACT --></a><!-- ENDIF --><br /><!-- END custom_fields --></p></td></tr></table></td><!-- ENDIF -->
+			<!-- IF $EMAIL_VISIBLE --><td align="center" class="{$BG}"><p><!-- IF memberrow.U_EMAIL --><a href="{memberrow.U_EMAIL}" title="{memberrow.L_SEND_EMAIL_USER}">{L_EMAIL}</a><!-- ELSE -->&nbsp;<!-- ENDIF --></p></td><!-- ENDIF -->
 			<!-- EVENT memberlist_body_memberrow_after -->
 		</tr>
 	<!-- END memberrow -->
@@ -91,8 +93,8 @@
 	<tr>
 		<th>{L_INFORMATION}</th>
 	</tr>
-	<tr>
-		<td align="center" class="bg1"><span class="big"><!-- IF S_SHOW_GROUP -->{L_NO_GROUP_MEMBERS}<!-- ELSE -->{L_NO_MEMBERS}<!-- ENDIF --></span></td>
+	<tr class="big">
+		<td class="bg1" align="center"><!-- IF S_SHOW_GROUP -->{L_NO_GROUP_MEMBERS}<!-- ELSE -->{L_NO_MEMBERS}<!-- ENDIF --></td>
 	</tr>
 	</table>
 <!-- ENDIF -->

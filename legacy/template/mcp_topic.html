@@ -131,17 +131,21 @@
 			<td colspan="3"></td>
 		</tr>
 	<!-- ENDIF -->
+<!-- BEGINELSE -->
+	<tr>
+		<td class="bg1" align="center" colspan="3"><span class="big">{L_NO_POSTS_TIME_FRAME}</span></td>
+	</tr>
 <!-- END postrow -->
 </table>
 <table cellspacing="0" width="100%">
 <tr>
-	<td class="cat" align="{S_CONTENT_FLOW_END}"><select name="action"><option value="" selected="selected">{L_SELECT_ACTION}</option>
+	<td class="cat" align="{S_CONTENT_FLOW_END}"><select name="action"><option value="">{L_SELECT_ACTION}</option>
 		<!-- IF S_CAN_APPROVE --><option value="approve">{L_APPROVE_POSTS}</option><!-- ENDIF -->
 		<!-- IF S_CAN_LOCK --><option value="lock_post">{L_LOCK_POST_POSTS} [{L_LOCK_POST_EXPLAIN}]</option><option value="unlock_post">{L_UNLOCK_POST_POSTS}</option><!-- ENDIF -->
 		<!-- IF S_CAN_DELETE --><option value="delete_post">{L_DELETE_POSTS}</option><!-- ENDIF -->
 		<!-- IF S_CAN_RESTORE --><option value="restore">{L_RESTORE_POSTS}</option><!-- ENDIF -->
-		<!-- IF S_CAN_MERGE --><option value="merge_posts"<!-- IF ACTION eq 'merge' --> selected="selected"<!-- ENDIF -->>{L_MERGE_POSTS}</option><!-- ENDIF -->
-		<!-- IF S_CAN_SPLIT --><option value="split_all"<!-- IF ACTION eq 'split' --> selected="selected"<!-- ENDIF -->>{L_SPLIT_POSTS}</option><option value="split_beyond">{L_SPLIT_AFTER}</option><!-- ENDIF -->
+		<!-- IF S_CAN_MERGE --><option value="merge_posts"<!-- IF S_MERGE_VIEW --> selected="selected"<!-- ENDIF -->>{L_MERGE_POSTS}</option><!-- ENDIF -->
+		<!-- IF S_CAN_SPLIT --><option value="split_all"<!-- IF S_SPLIT_VIEW --> selected="selected"<!-- ENDIF -->>{L_SPLIT_POSTS}</option><option value="split_beyond">{L_SPLIT_AFTER}</option><!-- ENDIF -->
 		<!-- IF S_CAN_SYNC --><option value="resync">{L_RESYNC}</option><!-- ENDIF -->
 	</select> <input class="button1" type="submit" name="mcp_topic_submit" value="{L_SUBMIT}" /></td>
 </tr>

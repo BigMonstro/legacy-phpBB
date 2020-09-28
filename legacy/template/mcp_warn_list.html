@@ -11,14 +11,14 @@
 </tr>
 <!-- BEGIN user -->
 	<tr>
-		<td class="bg1"><span class="big">{user.USERNAME_FULL}</span></td>
-		<td align="center" class="bg2"><span class="bigger">{user.WARNINGS}</span></td>
-		<td align="center" class="bg1"><span class="bigger">{user.WARNING_TIME}</span></td>
+		<td class="bg1"><span class="bigger">{user.USERNAME_FULL}</span></td>
+		<td align="center" class="bg2"><p>{user.WARNINGS}</p></td>
+		<td align="center" class="bg1"><p>{user.WARNING_TIME}</p></td>
 		<td class="bg2"><a class="bigger" href="{user.U_NOTES}">{L_VIEW_NOTES}</a></td>
 	</tr>
 <!-- BEGINELSE -->
-	<tr>
-		<td class="bg1" colspan="4" align="center"><span class="big">{L_NO_WARNINGS}</span></td>
+	<tr class="big">
+		<td class="bg1" colspan="4" align="center">{L_NO_WARNINGS}</td>
 	</tr>
 <!-- END user -->
 <!-- IF .user -->

@@ -9,7 +9,7 @@
 <!-- IF S_FORUM_RULES -->
 	<div style="margin: 14px 4px">
 		<h4 class="forumrules">{L_FORUM_RULES}</h4>
-		<p class="forumdesc"><!-- IF U_FORUM_RULES --><a href="{U_FORUM_RULES}"><b>{L_FORUM_RULES_LINK}</b></a><!-- ELSE -->{FORUM_RULES}<!-- ENDIF --></p>
+		<p class="forumdesc"><!-- IF U_FORUM_RULES --><b><a href="{U_FORUM_RULES}">{L_FORUM_RULES_LINK}</a></b><!-- ELSE -->{FORUM_RULES}<!-- ENDIF --></p>
 	</div>
 <!-- ENDIF -->
 
@@ -61,7 +61,7 @@
 			</tr>
 			</table>
 		</td>
-		<td align="{S_CONTENT_FLOW_END}" valign="middle"><!-- IF U_VIEW_UNREAD_POST and not S_IS_BOT --><b><a href="{U_VIEW_UNREAD_POST}" class="nowrap">{L_VIEW_UNREAD_POST}</a></b><!-- IF .pagination --> | <!-- ENDIF --><!-- ENDIF --><!-- INCLUDE pagination.html --><!-- EVENT viewtopic_body_pagination_top_after --></td>
+		<td align="{S_CONTENT_FLOW_END}" valign="middle"><!-- IF U_VIEW_UNREAD_POST and not S_IS_BOT --><b><a class="nowrap" href="{U_VIEW_UNREAD_POST}">{L_VIEW_UNREAD_POST}</a></b><!-- IF .pagination --> | <!-- ENDIF --><!-- ENDIF --><!-- INCLUDE pagination.html --><!-- EVENT viewtopic_body_pagination_top_after --></td>
 	</tr>
 	</table>
 </div>
@@ -132,8 +132,8 @@
 			</tr>
 		<!-- ENDIF -->
 			</table>
-			{S_HIDDEN_FIELDS}
 			{S_FORM_TOKEN}
+			{S_HIDDEN_FIELDS}
 			</form>
 		</td>
 	</tr>
@@ -173,8 +173,8 @@
 			<b>{postrow.POST_AUTHOR_FULL}</b>
 			<!-- EVENT viewtopic_body_post_author_after -->
 		</td>
-		<td width="100%">
-			<table cellspacing="0" height="20" width="100%">
+		<td height="20" width="100%">
+			<table cellspacing="0" width="100%">
 			<tr>
 				<td>
 					<table cellspacing="0"><tr><!-- EVENT viewtopic_body_post_subject_before -->
@@ -182,7 +182,7 @@
 					</tr></table>
 				</td>
 				<td align="{S_CONTENT_FLOW_END}" class="bigger"><!-- EVENT viewtopic_body_postrow_post_details_before -->
-					<!-- IF S_IS_BOT --><img src="{T_THEME_PATH}/images/icon_post_target.gif" width="12" height="9" alt="" /><!-- ELSE --><a href="{postrow.U_MINI_POST}"><img src="{T_THEME_PATH}/images/icon_post_target<!-- IF postrow.S_UNREAD_POST -->_unread<!-- ENDIF -->.gif" width="12" height="9" alt="<!-- IF postrow.S_UNREAD_POST -->+ " title="{L_UNREAD_POST}<!-- ENDIF -->" border="0" /></a><!-- ENDIF --><b>{L_POSTED}{L_COLON}</b> {postrow.POST_DATE}
+					<!-- IF not S_IS_BOT --><a href="{postrow.U_MINI_POST}"><!-- ENDIF --><img src="{T_THEME_PATH}/images/icon_post_target<!-- IF postrow.S_UNREAD_POST -->_unread<!-- ENDIF -->.gif" width="12" height="9" alt="<!-- IF postrow.S_UNREAD_POST -->+ " title="{L_UNREAD_POST}<!-- ENDIF -->" border="0" /><!-- IF not S_IS_BOT --></a><!-- ENDIF --><b>{L_POSTED}{L_COLON}</b> {postrow.POST_DATE}
 				<!-- EVENT viewtopic_body_postrow_post_details_after --></td>
 			</tr>
 			</table>
@@ -331,8 +331,8 @@
 
 				<br clear="all" /><br />
 
+				<!-- EVENT viewtopic_body_post_buttons_list_before -->
 				<!-- IF (postrow.U_REPORT or postrow.U_INFO or postrow.U_WARN or postrow.U_DELETE) and not S_IS_BOT -->
-					<!-- EVENT viewtopic_body_post_buttons_list_before -->
 					<table width="100%" cellspacing="0">
 					<tr><td align="{S_CONTENT_FLOW_END}">
 						<!-- IF postrow.U_REPORT --><a href="{postrow.U_REPORT}"><img src="{T_THEME_PATH}/images/icon_post_report.gif" width="20" height="20" alt="[!]" border="0" title="{L_REPORT_POST}" /></a> <!-- ENDIF -->
@@ -341,8 +341,8 @@
 						<!-- IF postrow.U_DELETE --><a href="{postrow.U_DELETE}"><img src="{T_THEME_PATH}/images/icon_post_delete.gif" width="20" height="20" alt="[X]" border="0" title="{L_DELETE_POST}" /></a> <!-- ENDIF -->
 					</td></tr>
 					</table>
-					<!-- EVENT viewtopic_body_post_buttons_list_after -->
 				<!-- ENDIF -->
+				<!-- EVENT viewtopic_body_post_buttons_list_after -->
 				</td>
 			</tr>
 			</table>
@@ -351,17 +351,17 @@
 
 		<tr class="{$BG}">
 
-			<td><!-- EVENT viewtopic_body_postrow_back2top_before --><table cellspacing="0"><tr><td><!-- EVENT viewtopic_body_postrow_back2top_prepend --><a class="top" href="#top"><b>{L_BACK_TO_TOP}</b></a><!-- EVENT viewtopic_body_postrow_back2top_append --></td></tr></table><!-- EVENT viewtopic_body_postrow_back2top_after --></td>
+			<td><!-- EVENT viewtopic_body_postrow_back2top_before --><table cellspacing="0"><tr><td><!-- EVENT viewtopic_body_postrow_back2top_prepend --><b><a class="top" href="#top">{L_BACK_TO_TOP}</a></b><!-- EVENT viewtopic_body_postrow_back2top_append --></td></tr></table><!-- EVENT viewtopic_body_postrow_back2top_after --></td>
 			<td>
 			<table width="100%" cellspacing="0"><tr>
 				<!-- IF postrow.U_POST_AUTHOR --><td><a class="button" href="{postrow.U_POST_AUTHOR}" title="{L_READ_PROFILE}{L_COLON} {postrow.POST_AUTHOR}">{L_READ_PROFILE}</a></td><!-- ENDIF -->
 				<td align="{S_CONTENT_FLOW_END}">
-					<!-- EVENT viewtopic_body_post_buttons_before -->
 					<!-- IF not S_IS_BOT -->
+						<!-- EVENT viewtopic_body_post_buttons_before -->
 						<!-- IF postrow.U_EDIT --><a class="button" href="{postrow.U_EDIT}" title="{L_EDIT_POST}">{L_BUTTON_EDIT}</a> <!-- ENDIF -->
 						<!-- IF postrow.U_QUOTE --><a class="button" href="{postrow.U_QUOTE}" title="{L_REPLY_WITH_QUOTE}">{L_BUTTON_QUOTE}</a><!-- ENDIF -->
+						<!-- EVENT viewtopic_body_post_buttons_after -->
 					<!-- ENDIF -->
-					<!-- EVENT viewtopic_body_post_buttons_after -->
 				</td>
 			</tr></table>
 			</td>
@@ -374,7 +374,7 @@
 	<!-- ELSEIF not S_IS_BOT -->
 		<table cellspacing="0" width="100%">
 		<tr>
-			<td class="cat" align="center"><form name="viewtopic" method="post" action="{S_TOPIC_ACTION}"><!-- INCLUDE display_options.html --></form></td>
+			<td class="cat" align="center"><form method="post" action="{S_TOPIC_ACTION}"><!-- INCLUDE display_options.html --></form></td>
 		</tr>
 		</table>
 	<!-- ENDIF -->	
@@ -408,7 +408,7 @@
 			</tr>
 			</table>
 		</td>
-		<td align="{S_CONTENT_FLOW_END}" valign="middle"><b class="nowrap"><a href="{U_VIEW_FORUM}">{L_RETURN_TO_FORUM}</a></b><!-- IF .pagination --> | <!-- ENDIF --><!-- INCLUDE pagination.html --></td>
+		<td align="{S_CONTENT_FLOW_END}" valign="middle"><b><a class="nowrap" href="{U_VIEW_FORUM}">{L_RETURN_TO_FORUM}</a></b><!-- IF .pagination --> | <!-- ENDIF --><!-- INCLUDE pagination.html --></td>
 	</tr>
 	</table>
 </div>
@@ -426,7 +426,7 @@
 	<td><!-- IF .quickmod -->
 		<div class="quickmod"<!-- IF S_DISPLAY_SEARCHBOX --> style="margin-bottom: 7px"<!-- ENDIF -->>
 		<form method="post" action="{S_MOD_ACTION}">
-			<select name="action" id="quick-mod-select" title="{L_QUICK_MOD}">
+			<select name="action" title="{L_QUICK_MOD}">
 				<!-- BEGIN quickmod -->
 				<option value="{quickmod.VALUE}">{quickmod.TITLE}</option>
 				<!-- END quickmod -->
@@ -446,6 +446,8 @@
 	<td><!-- INCLUDE jumpbox.html --></td>
 	</tr></table>
 <!-- ENDIF -->
+
+<!-- EVENT viewtopic_body_online_list_before -->
 
 <!-- IF S_DISPLAY_ONLINE_LIST and U_VIEWONLINE -->
 	<table class="main" width="100%" cellspacing="1" style="margin: 5px 0 8px">

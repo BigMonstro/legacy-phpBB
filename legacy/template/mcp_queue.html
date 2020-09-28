@@ -19,11 +19,11 @@
 	<tr><!-- IF postrow.S_ROW_COUNT is even --><!-- DEFINE $BG = 'bg1' --><!-- ELSE --><!-- DEFINE $BG = 'bg2' --><!-- ENDIF -->
 		<td class="{$BG}">
 			<!-- IF postrow.S_HAS_ATTACHMENTS --><img src="{T_THEME_PATH}/images/icon_topic_attach.gif" width="14" height="18" alt="(*)" title="{L_TOTAL_ATTACHMENTS}" /><!-- ENDIF -->
-			<a href="{postrow.U_VIEW_DETAILS}" class="big">{postrow.POST_SUBJECT}</a>
+			<a href="{postrow.U_VIEW_DETAILS}" class="topictitle">{postrow.POST_SUBJECT}</a>
 			<div class="bigger">{L_FORUM}{L_COLON} <!-- IF postrow.U_VIEWFORUM --><a href="{postrow.U_VIEWFORUM}">{postrow.FORUM_NAME}</a><!-- ELSE -->{postrow.FORUM_NAME}<!-- ENDIF --></div>
 		</td>
-		<td align="center" class="{$BG}"><span class="big">{postrow.POST_AUTHOR_FULL}</span></td>
-		<td align="center" class="{$BG}"><span class="bigger">{postrow.POST_TIME}</span></td>
+		<td align="center" class="{$BG}"><p>{postrow.POST_AUTHOR_FULL}</p></td>
+		<td align="center" class="{$BG}"><p>{postrow.POST_TIME}</p></td>
 		<td align="center" class="{$BG}">
 			<!-- IF S_TOPICS -->
 				<input type="checkbox" name="topic_id_list[]" value="{postrow.TOPIC_ID}" />
@@ -33,15 +33,13 @@
 		</td>
 	</tr>
 <!-- BEGINELSE -->
-	<tr>
+	<tr class="big">
 		<td class="bg1" colspan="4" align="center">
-			<span class="big">
-				<!-- IF S_RESTORE -->
-					<!-- IF S_TOPICS -->{L_NO_TOPICS_DELETED}<!-- ELSE -->{L_NO_POSTS_DELETED}<!-- ENDIF -->
-				<!-- ELSE -->
-					<!-- IF S_TOPICS -->{L_NO_TOPICS_QUEUE}<!-- ELSE -->{L_NO_POSTS_QUEUE}<!-- ENDIF -->
-				<!-- ENDIF -->
-			</span>
+			<!-- IF S_RESTORE -->
+				<!-- IF S_TOPICS -->{L_NO_TOPICS_DELETED}<!-- ELSE -->{L_NO_POSTS_DELETED}<!-- ENDIF -->
+			<!-- ELSE -->
+				<!-- IF S_TOPICS -->{L_NO_TOPICS_QUEUE}<!-- ELSE -->{L_NO_POSTS_QUEUE}<!-- ENDIF -->
+			<!-- ENDIF -->
 		</td>
 	</tr>
 <!-- END postrow -->

@@ -1,16 +1,23 @@
 <!-- INCLUDE ucp_header.html -->
 
-<form name="ucp" id="ucp" method="post" action="{S_UCP_ACTION}"{S_FORM_ENCTYPE}>
+<form name="postform" method="post" action="{S_UCP_ACTION}"{S_FORM_ENCTYPE}>
 
 <table class="main" width="100%" cellspacing="1">
 <tr>
 	<th colspan="<!-- IF not S_EDIT_DRAFT -->3<!-- ELSE -->2<!-- ENDIF -->">{L_TITLE}</th>
 </tr>
 
-<!-- IF not S_EDIT_DRAFT -->
+<!-- IF S_EDIT_DRAFT -->
+	<!-- INCLUDE posting_editor.html -->
 
+	</table>
+	<table cellspacing="0" width="100%">
 	<tr>
-		<td class="bg1" colspan="3" align="center"><span class="bigger">{L_DRAFTS_EXPLAIN}</span></td>
+		<td class="cat" align="center">{S_HIDDEN_FIELDS}<input class="button2" type="reset" value="{L_RESET}" name="reset" /> &nbsp;<input class="button1" type="submit" name="submit" value="{L_SAVE}" /></td>
+	</tr>
+<!-- ELSE -->
+	<tr class="bigger">
+		<td class="bg1" colspan="3" align="center">{L_DRAFTS_EXPLAIN}</td>
 	</tr>
 
 	<!-- IF .draftrow -->
@@ -22,14 +29,14 @@
 	<!-- ENDIF -->
 
 	<!-- BEGIN draftrow -->
-		<tr class="bigger"><!-- IF draftrow.S_ROW_COUNT is even --><!-- DEFINE $BG = 'bg1' --><!-- ELSE --><!-- DEFINE $BG = 'bg2' --><!-- ENDIF -->
+		<tr><!-- IF draftrow.S_ROW_COUNT is even --><!-- DEFINE $BG = 'bg1' --><!-- ELSE --><!-- DEFINE $BG = 'bg2' --><!-- ENDIF -->
 			<td class="{$BG}">
-				<b><a href="{draftrow.U_VIEW_EDIT}">{draftrow.DRAFT_SUBJECT}</a></b>
-				<!-- IF not S_PRIVMSGS --><!-- IF draftrow.S_LINK_TOPIC --><br />{L_TOPIC}{L_COLON} <a href="{draftrow.U_VIEW}">{draftrow.TITLE}</a>
-				<!-- ELSEIF draftrow.S_LINK_FORUM --><br />{L_FORUM}{L_COLON} <a href="{draftrow.U_VIEW}">{draftrow.TITLE}</a>
-				<!-- ELSE --><br />{L_NO_TOPIC_FORUM}<!-- ENDIF --><!-- ENDIF -->
+				<a href="{draftrow.U_VIEW_EDIT}" class="topictitle">{draftrow.DRAFT_SUBJECT}</a>
+				<!-- IF not S_PRIVMSGS --><!-- IF draftrow.S_LINK_TOPIC --><div class="bigger">{L_TOPIC}{L_COLON} <a href="{draftrow.U_VIEW}">{draftrow.TITLE}</a></div>
+				<!-- ELSEIF draftrow.S_LINK_FORUM --><div class="bigger">{L_FORUM}{L_COLON} <a href="{draftrow.U_VIEW}">{draftrow.TITLE}</a></div>
+				<!-- ELSE --><div class="bigger">{L_NO_TOPIC_FORUM}</div><!-- ENDIF --><!-- ENDIF -->
 			</td>
-			<td align="center" class="{$BG}">{draftrow.DATE}<br /><!-- IF draftrow.U_INSERT --><a href="{draftrow.U_INSERT}">{L_LOAD_DRAFT}</a> | <!-- ENDIF --><a href="{draftrow.U_VIEW_EDIT}">{L_VIEW_EDIT}</a></td>
+			<td align="center" class="{$BG}"><p>{draftrow.DATE}<br /><!-- IF draftrow.U_INSERT --><a href="{draftrow.U_INSERT}">{L_LOAD_DRAFT}</a> | <!-- ENDIF --><a href="{draftrow.U_VIEW_EDIT}">{L_VIEW_EDIT}</a></p></td>
 			<td align="center" class="{$BG}"><input type="checkbox" name="d[{draftrow.DRAFT_ID}]" /></td>
 		</tr>
 	<!-- BEGINELSE -->
@@ -46,25 +53,9 @@
 			</tr>
 		</table>
 		<table width="100%" cellspacing="1"><tr>
-			<td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('ucp', '', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('ucp', '', false); return false;">{L_UNMARK_ALL}</a></b></td>
+			<td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('postform', '', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('postform', '', false); return false;">{L_UNMARK_ALL}</a></b></td>
 		</tr>
 	<!-- ENDIF -->
-
-<!-- ELSEIF S_EDIT_DRAFT -->
-
-	<!-- IF ERROR -->
-		<tr>
-			<td class="bg1" colspan="2" align="center"><p class="error">{ERROR}</p></td>
-		</tr>
-	<!-- ENDIF -->
-
-	<!-- INCLUDE posting_editor.html -->
-
-	</table>
-	<table cellspacing="0" width="100%">
-	<tr>
-		<td class="cat" align="center">{S_HIDDEN_FIELDS}<input class="button2" type="reset" value="{L_RESET}" name="reset" /> &nbsp;<input class="button1" type="submit" name="submit" value="{L_SAVE}" /></td>
-	</tr>
 <!-- ENDIF -->
 </table>
 

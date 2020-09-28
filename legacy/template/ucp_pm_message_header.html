@@ -1,6 +1,5 @@
 <form name="viewfolder" method="post" action="{S_PM_ACTION}">
 
-<!-- IF CUR_FOLDER_NAME or U_POST_NEW_TOPIC or S_VIEW_MESSAGE -->
 	<table class="main" width="100%" cellspacing="1" style="margin-bottom: 4px">
 	<tr>
 		<td class="bg1">
@@ -12,7 +11,6 @@
 				<table cellspacing="0" width="100%">
 				<tr>
 					<td class="bigger">
-						<!-- EVENT ucp_pm_viewmessage_options_before -->
 						<!-- IF S_DISPLAY_HISTORY and (U_VIEW_PREVIOUS_HISTORY or U_VIEW_NEXT_HISTORY) -->
 							<!-- IF U_VIEW_PREVIOUS_HISTORY --><a href="{U_VIEW_PREVIOUS_HISTORY}">{L_VIEW_PREVIOUS_HISTORY}</a> | <!-- ENDIF -->
 							<!-- IF U_VIEW_NEXT_HISTORY --><a href="{U_VIEW_NEXT_HISTORY}">{L_VIEW_NEXT_HISTORY}</a> | <!-- ENDIF -->
@@ -44,4 +42,3 @@
 		</td>
 	</tr>
 	</table>
-<!-- ENDIF -->

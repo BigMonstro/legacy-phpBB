@@ -24,18 +24,18 @@
 				<img src="{T_THEME_PATH}/images/icon_topic_attach.gif" width="14" height="18" alt="(*)" title="{L_TOTAL_ATTACHMENTS}" />
 			<!-- ENDIF -->
 			<!-- IF S_PM -->
-				<a href="{postrow.U_VIEW_DETAILS}" class="big">{postrow.PM_SUBJECT}</a> <div class="bigger">{L_MESSAGE_BY_AUTHOR} {postrow.PM_AUTHOR_FULL} &#187; {postrow.PM_TIME}</div> <div class="bigger">{L_MESSAGE_TO} {postrow.RECIPIENTS}</div>
+				<a href="{postrow.U_VIEW_DETAILS}" class="topictitle">{postrow.PM_SUBJECT}</a> <div class="bigger">{L_MESSAGE_BY_AUTHOR} {postrow.PM_AUTHOR_FULL} &#187; {postrow.PM_TIME}</div> <div class="bigger">{L_MESSAGE_TO} {postrow.RECIPIENTS}</div>
 			<!-- ELSE -->
-				<a href="{postrow.U_VIEW_DETAILS}" class="big">{postrow.POST_SUBJECT}</a> <div class="bigger">{L_POSTED} {L_POST_BY_AUTHOR} {postrow.POST_AUTHOR_FULL} &#187; {postrow.POST_TIME}</div> <div class="bigger">{L_FORUM}{L_COLON} <!-- IF postrow.U_VIEWFORUM --><a href="{postrow.U_VIEWFORUM}">{postrow.FORUM_NAME}</a><!-- ELSE -->{postrow.FORUM_NAME}<!-- ENDIF --></div>
+				<a href="{postrow.U_VIEW_DETAILS}" class="topictitle">{postrow.POST_SUBJECT}</a> <div class="bigger">{L_POSTED} {L_POST_BY_AUTHOR} {postrow.POST_AUTHOR_FULL} &#187; {postrow.POST_TIME}</div> <div class="bigger">{L_FORUM}{L_COLON} <!-- IF postrow.U_VIEWFORUM --><a href="{postrow.U_VIEWFORUM}">{postrow.FORUM_NAME}</a><!-- ELSE -->{postrow.FORUM_NAME}<!-- ENDIF --></div>
 			<!-- ENDIF -->
 		</td>
-		<td align="center" class="{$BG}"><span class="big">{postrow.REPORTER_FULL}</span></td>
-		<td align="center" class="{$BG}"><span class="bigger">{postrow.REPORT_TIME}</span></td>
+		<td align="center" class="{$BG}"><p>{postrow.REPORTER_FULL}</p></td>
+		<td align="center" class="{$BG}"><p>{postrow.REPORT_TIME}</p></td>
 		<td align="center" class="{$BG}"><input type="checkbox" name="report_id_list[]" value="{postrow.REPORT_ID}" /></td>
 	</tr>
 <!-- BEGINELSE -->
-	<tr>
-		<td class="bg1" colspan="4" align="center"><span class="big">{L_NO_POSTS}</span></td>
+	<tr class="big">
+		<td class="bg1" colspan="4" align="center">{L_NO_POSTS}</td>
 	</tr>
 <!-- END postrow -->
 
@@ -58,7 +58,7 @@
 		<!-- IF .pagination --><td align="{S_CONTENT_FLOW_END}"<!-- IF .postrow --> colspan="2"<!-- ENDIF -->><!-- INCLUDE pagination.html --></td><!-- ENDIF -->
 	</tr></table>
 <!-- ENDIF -->
-<!-- IF TOPIC_ID --> <table width="100%" cellspacing="1"><tr><td align="center"><input type="checkbox" name="t" value="{TOPIC_ID}" checked="checked" onclick="document.forms['mcp'].submit();" /> <b class="bigger">{L_ONLY_TOPIC}</b></td></tr></table><!-- ENDIF -->
+<!-- IF TOPIC_ID --> <table width="100%" cellspacing="1"><tr><td align="center"><input type="hidden" name="t" value="0" /><input type="checkbox" name="t" value="{TOPIC_ID}" checked="checked" onclick="document.forms['mcp'].submit();" /> <b class="bigger">{L_ONLY_TOPIC}</b></td></tr></table><!-- ENDIF -->
 </form>
 
 <!-- INCLUDE mcp_footer.html -->

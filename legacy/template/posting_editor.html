@@ -1,3 +1,11 @@
+<!-- IF S_EDIT_DRAFT or $SIG_EDIT -->
+	<!-- IF ERROR -->
+		<tr>
+			<td class="bg1" colspan="2" align="center"><p class="error">{ERROR}</p></td>
+		</tr>
+	<!-- ENDIF -->
+<!-- ENDIF -->
+
 <!-- IF not S_PRIVMSGS and S_DISPLAY_USERNAME -->
 	<tr>
 		<td class="bg1"><b class="bigger">{L_USERNAME}{L_COLON}</b></td>
@@ -18,7 +26,7 @@
 	<!-- EVENT posting_editor_subject_after -->
 	<!-- IF CAPTCHA_TEMPLATE and S_CONFIRM_CODE -->
 		<!-- DEFINE $CAPTCHA_EDITOR = 1 -->
-		<!-- DEFINE $CAPTCHA_TAB_INDEX = 4 -->
+		<!-- DEFINE $CAPTCHA_TAB_INDEX = 3 -->
 		<!-- INCLUDE {CAPTCHA_TEMPLATE} -->
 	<!-- ENDIF -->
 <!-- ENDIF -->
@@ -65,7 +73,7 @@
 			<tr valign="top">
 				<td style="padding: 2px" width="100%">
 					<table cellspacing="0" class="message-box" width="100%"><tr><td>
-					<textarea name="<!-- IF $SIG_EDIT -->signature<!-- ELSE -->message<!-- ENDIF -->" rows="15" cols="<!-- IF S_IN_UCP or S_IN_MCP -->35<!-- ELSE -->50<!-- ENDIF -->" tabindex="3" onselect="storeCaret(this);" onclick="storeCaret(this);" onkeyup="storeCaret(this);" onfocus="initInsertions();" style="height: 270px">{MESSAGE}{DRAFT_MESSAGE}{SIGNATURE}</textarea>
+					<textarea name="<!-- IF $SIG_EDIT -->signature<!-- ELSE -->message<!-- ENDIF -->" rows="15" cols="<!-- IF S_IN_UCP or S_IN_MCP -->35<!-- ELSE -->50<!-- ENDIF -->" tabindex="4" onselect="storeCaret(this);" onclick="storeCaret(this);" onkeyup="storeCaret(this);" onfocus="initInsertions();" style="height: 270px">{MESSAGE}{DRAFT_MESSAGE}{SIGNATURE}</textarea>
 					</td></tr></table>
 				</td>
 				<!-- IF S_BBCODE_ALLOWED -->
@@ -85,7 +93,7 @@
 <!-- IF $EXTRA_POSTING_OPTIONS or $SIG_EDIT -->
 
 	<!-- IF not $SIG_EDIT -->
-		<!-- IF S_BBCODE_ALLOWED and S_INLINE_ATTACHMENT_OPTIONS -->
+		<!-- IF S_BBCODE_ALLOWED and S_INLINE_ATTACHMENT_OPTIONS and FILTERS -->
 			<tr>
 				<td class="bg1"><b class="bigger">{L_ATTACHMENTS}{L_COLON}</b></td>
 				<td class="bg1"><select name="attachments">{S_INLINE_ATTACHMENT_OPTIONS}</select> <input type="button" class="button2" accesskey="a" value="{L_PLACE_INLINE}" name="attachinline" onclick="attach_form = document.forms[form_name].elements['attachments']; attachInline(attach_form.value, attach_form.options[attach_form.selectedIndex].text);" title="{L_BBCODE_A_HELP}" /></td>
@@ -126,21 +134,21 @@
 			<!-- IF S_BBCODE_ALLOWED -->
 				<tr>
 					<td><input type="checkbox" name="disable_bbcode"{S_BBCODE_CHECKED} /></td>
-					<td class="big">{L_DISABLE_BBCODE}</td>
+					<td class="bigger">{L_DISABLE_BBCODE}</td>
 				</tr>
 			<!-- ENDIF -->
 
 			<!-- IF S_SMILIES_ALLOWED -->
 				<tr>
 					<td><input type="checkbox" name="disable_smilies"{S_SMILIES_CHECKED} /></td>
-					<td class="big">{L_DISABLE_SMILIES}</td>
+					<td class="bigger">{L_DISABLE_SMILIES}</td>
 				</tr>
 			<!-- ENDIF -->
 
 			<!-- IF S_LINKS_ALLOWED -->
 				<tr>
 					<td><input type="checkbox" name="disable_magic_url"{S_MAGIC_URL_CHECKED} /></td>
-					<td class="big">{L_DISABLE_MAGIC_URL}</td>
+					<td class="bigger">{L_DISABLE_MAGIC_URL}</td>
 				</tr>
 			<!-- ENDIF -->
 
@@ -148,35 +156,35 @@
 				<!-- IF S_SIG_ALLOWED -->
 					<tr>
 						<td><input type="checkbox" name="attach_sig"{S_SIGNATURE_CHECKED} /></td>
-						<td class="big">{L_ATTACH_SIG}</td>
+						<td class="bigger">{L_ATTACH_SIG}</td>
 					</tr>
 				<!-- ENDIF -->
 
 				<!-- IF S_NOTIFY_ALLOWED -->
 					<tr>
 						<td><input type="checkbox" name="notify"{S_NOTIFY_CHECKED} /></td>
-						<td class="big">{L_NOTIFY_REPLY}</td>
+						<td class="bigger">{L_NOTIFY_REPLY}</td>
 					</tr>
 				<!-- ENDIF -->
 
 				<!-- IF S_LOCK_TOPIC_ALLOWED -->
 					<tr>
 						<td><input type="checkbox" name="lock_topic"{S_LOCK_TOPIC_CHECKED} /></td>
-						<td class="big">{L_LOCK_TOPIC}</td>
+						<td class="bigger">{L_LOCK_TOPIC}</td>
 					</tr>
 				<!-- ENDIF -->
 
 				<!-- IF S_LOCK_POST_ALLOWED -->
 					<tr>
 						<td><input type="checkbox" name="lock_post"{S_LOCK_POST_CHECKED} /></td>
-						<td class="big">{L_LOCK_POST} [{L_LOCK_POST_EXPLAIN}]</td>
+						<td class="bigger">{L_LOCK_POST} [{L_LOCK_POST_EXPLAIN}]</td>
 					</tr>
 				<!-- ENDIF -->
 
 				<!-- IF S_TYPE_TOGGLE -->
 					<tr>
 						<td></td>
-						<td class="big"><!-- IF S_EDIT_POST -->{L_CHANGE_TOPIC_TO}<!-- ELSE -->{L_POST_TOPIC_AS}<!-- ENDIF -->{L_COLON} <!-- BEGIN topic_type --><input type="radio" name="topic_type" value="{topic_type.VALUE}"{topic_type.S_CHECKED} /> {topic_type.L_TOPIC_TYPE} &nbsp;<!-- END topic_type --></td>
+						<td class="bigger"><!-- IF S_EDIT_POST -->{L_CHANGE_TOPIC_TO}<!-- ELSE -->{L_POST_TOPIC_AS}<!-- ENDIF -->{L_COLON} <!-- BEGIN topic_type --><input type="radio" name="topic_type" value="{topic_type.VALUE}"{topic_type.S_CHECKED} /> {topic_type.L_TOPIC_TYPE} &nbsp;<!-- END topic_type --></td>
 					</tr>
 				<!-- ENDIF -->
 			<!-- ENDIF -->
@@ -188,7 +196,7 @@
 		<!-- IF S_TOPIC_TYPE_ANNOUNCE or S_TOPIC_TYPE_STICKY -->
 			<tr>
 				<td class="bg1"><b class="bigger">{L_STICK_TOPIC_FOR}{L_COLON}</b></td>
-				<td class="bg1"><input type="text" class="inputbox" size="3" maxlength="3" name="topic_time_limit" value="{TOPIC_TIME_LIMIT}" /> <b class="big">{L_DAYS}</b> <span class="bigger">{L_STICK_TOPIC_FOR_EXPLAIN}</span></td>
+				<td class="bg1"><input type="text" class="inputbox" size="3" maxlength="3" name="topic_time_limit" value="{TOPIC_TIME_LIMIT}" /> <b class="bigger">{L_DAYS}</b> <span class="bigger">{L_STICK_TOPIC_FOR_EXPLAIN}</span></td>
 			</tr>
 		<!-- ENDIF -->
 
@@ -198,13 +206,13 @@
 				<td class="bg1">
 					<table cellspacing="2">
 						<tr>
-							<td><input type="checkbox" name="delete" /></td>
-							<td class="big">{L_DELETE_POST_WARN}</td>
+							<td><input type="checkbox" name="delete" {S_SOFTDELETE_CHECKED} /></td>
+							<td class="bigger">{L_DELETE_POST_WARN}</td>
 						</tr>
 						<!-- IF S_SOFTDELETE_ALLOWED and S_DELETE_ALLOWED -->
 							<tr>
 								<td><input type="checkbox" name="delete_permanent" /></td>
-								<td class="big">{L_DELETE_POST_PERMANENTLY}</td>
+								<td class="bigger">{L_DELETE_POST_PERMANENTLY}</td>
 							</tr>
 						<!-- ENDIF -->
 					</table>
