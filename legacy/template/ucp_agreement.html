@@ -38,17 +38,11 @@
 		<td class="bg1">
 			<table width="90%" cellspacing="2" align="center">
 			<tr>
-				<!-- IF S_SHOW_COPPA -->
-					<td align="center">
-						<br /><div class="big">{L_COPPA_BIRTHDAY}</div><br />
-					</td>
-				<!-- ELSE -->
-					<td>
-						<!-- EVENT ucp_agreement_terms_before -->
-						<br /><div class="bigger">{L_TERMS_OF_USE}</div><br />
-						<!-- EVENT ucp_agreement_terms_after -->
-					</td>
-				<!-- ENDIF -->
+				<td>
+					<!-- EVENT ucp_agreement_terms_before -->
+					<br /><!-- IF S_SHOW_COPPA --><div align="center" class="big">{L_COPPA_BIRTHDAY}</div><!-- ELSE --><div class="forumdesc">{L_TERMS_OF_USE}</div><!-- ENDIF --><br />
+					<!-- EVENT ucp_agreement_terms_after -->
+				</td>
 			</tr>
 			</table>
 		</td>
@@ -80,7 +74,7 @@
 			<table width="90%" cellspacing="2" align="center">
 			<tr>
 				<td>
-					<br /><div class="bigger">{AGREEMENT_TEXT}</div><br />
+					<br /><div class="forumdesc">{AGREEMENT_TEXT}</div><br />
 				</td>
 			</tr>
 			</table>
