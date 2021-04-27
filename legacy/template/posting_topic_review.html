@@ -4,91 +4,83 @@
 // ]]>
 </script>
 
-<table class="main" width="100%" cellspacing="1">
-<tr>
-	<th align="{S_CONTENT_FLOW_BEGIN}">{L_TOPIC_REVIEW} - {TOPIC_TITLE}</th>
-</tr>
-<tr>
-	<td class="bg1"><div style="height: 300px; overflow: auto; width: 100%">
-
-		<table class="main" cellspacing="1">
-		<tr>
-			<th nowrap="nowrap">{L_AUTHOR}</th>
-			<th width="100%">{L_MESSAGE}</th>
-		</tr>
-		<!-- BEGIN topic_review_row -->
-
-			<!-- EVENT posting_topic_review_row_post_details_before -->
-
-			<!-- IF topic_review_row.S_ROW_COUNT is even --><!-- DEFINE $BG = 'bg1' --><!-- ELSE --><!-- DEFINE $BG = 'bg2' --><!-- ENDIF -->
-
-			<tr class="{$BG}">
-
-				<!-- IF topic_review_row.S_IGNORE_POST -->
-				<td class="member" colspan="2">{topic_review_row.L_IGNORE_POST}</td>
-				<!-- ELSEIF topic_review_row.S_POST_DELETED -->
-				<td class="member" colspan="2">{topic_review_row.L_DELETE_POST}</td>
-				<!-- ELSE -->
-				<td rowspan="2" valign="top"><a name="pr{topic_review_row.POST_ID}" class="anchor"></a>
-					<table width="150" cellspacing="0">
-					<tr>
-						<td align="center"><!-- EVENT posting_topic_review_row_post_author_username_prepend --><b>{topic_review_row.POST_AUTHOR_FULL}</b><!-- EVENT posting_topic_review_row_post_author_username_append --></td>
-					</tr>
-					</table>
-				</td>
-				<td width="100%">
-					<table width="100%" cellspacing="0">
-					<tr>
-						<td class="bigger"><b>{L_POST_SUBJECT}{L_COLON}</b> {topic_review_row.POST_SUBJECT}</td>
-						<!-- IF topic_review_row.POSTER_QUOTE and topic_review_row.DECODED_MESSAGE --><td align="{S_CONTENT_FLOW_END}"><a class="button" href="#" onclick="addquote({topic_review_row.POST_ID}, '{topic_review_row.POSTER_QUOTE}', '{LA_WROTE}', {post_id:{topic_review_row.POST_ID},time:{topic_review_row.POST_TIME},user_id:{topic_review_row.USER_ID}}, true); return false;" title="{L_QUOTE} {topic_review_row.POST_AUTHOR}">{L_BUTTON_QUOTE}</a></td><!-- ENDIF -->
-					</tr>
-					</table>
-				</td>
-			</tr>
-			<!-- EVENT posting_topic_review_row_post_details_after -->
-
-			<tr class="{$BG}">
-				<td valign="top">
-					<table cellspacing="5" width="100%">
-					<tr>
-						<td<!-- IF topic_review_row.U_MCP_DETAILS --> colspan="2"<!-- ENDIF -->>
-							<div class="postbody"><div class="content">{topic_review_row.MESSAGE}</div><!-- EVENT posting_topic_review_row_content_after --></div>
-
-							<!-- IF topic_review_row.S_HAS_ATTACHMENTS -->
-								<br />
-
-								<table class="main" width="100%" cellspacing="1">
-								<tr>
-									<td class="bg3"><b class="bigger">{L_ATTACHMENTS}</b></td>
-								</tr>
-								<!-- BEGIN attachment -->
-									<tr class="postbody">
-										<td class="bg2">{topic_review_row.attachment.DISPLAY_ATTACHMENT}</td>
-									</tr>
-								<!-- END attachment -->
-								</table>
-							<!-- ENDIF -->
-
-							<!-- IF topic_review_row.POSTER_QUOTE and topic_review_row.DECODED_MESSAGE -->
-								<div id="message_{topic_review_row.POST_ID}" data-content="{topic_review_row.DECODED_MESSAGE}"></div>
-							<!-- ENDIF -->
-						</td>
-					</tr>
-					<tr class="bigger">
-						<!-- IF topic_review_row.U_MCP_DETAILS --><td><a href="{topic_review_row.U_MCP_DETAILS}">{L_POST_DETAILS}</a></td><!-- ENDIF -->
-						<td align="{S_CONTENT_FLOW_END}"><b>{L_POSTED}{L_COLON}</b> {topic_review_row.POST_DATE}</td>
-					</tr>
-					</table>
-				</td>
-				<!-- ENDIF -->
-			</tr>
-			<!-- IF not topic_review_row.S_LAST_ROW -->
-				<tr class="bg3">
-					<td colspan="2"></td>
-				</tr>
-			<!-- ENDIF -->
-		<!-- END topic_review_row -->
-		</table>
-	</div></td>
+<table width="100%" cellspacing="0">
+<tr class="bigger">
+	<td class="cat"><b>{L_TOPIC_REVIEW} - {TOPIC_TITLE}</b></td>
 </tr>
 </table>
+<div style="height: 300px; overflow: auto; width: 100%">
+	<table class="main" cellspacing="1">
+	<tr>
+		<th nowrap="nowrap">{L_AUTHOR}</th>
+		<th width="100%">{L_MESSAGE}</th>
+	</tr>
+	<!-- BEGIN topic_review_row -->
+		<!-- IF topic_review_row.S_ROW_COUNT is even --><!-- DEFINE $BG = 'bg1' --><!-- ELSE --><!-- DEFINE $BG = 'bg2' --><!-- ENDIF -->
+		<!-- EVENT posting_topic_review_row_post_details_before -->
+		<tr class="{$BG}">
+			<!-- IF topic_review_row.S_IGNORE_POST -->
+			<td class="member" colspan="2">{topic_review_row.L_IGNORE_POST}</td>
+			<!-- ELSEIF topic_review_row.S_POST_DELETED -->
+			<td class="member" colspan="2">{topic_review_row.L_DELETE_POST}</td>
+			<!-- ELSE -->
+			<td rowspan="2" valign="top"><a name="pr{topic_review_row.POST_ID}" class="anchor"></a>
+				<table width="150" cellspacing="0">
+				<tr>
+					<td align="center"><!-- EVENT posting_topic_review_row_post_author_username_prepend --><b>{topic_review_row.POST_AUTHOR_FULL}</b><!-- EVENT posting_topic_review_row_post_author_username_append --></td>
+				</tr>
+				</table>
+			</td>
+			<td width="100%">
+				<table width="100%" cellspacing="0">
+				<tr>
+					<td class="bigger"><b>{L_POST_SUBJECT}{L_COLON}</b> {topic_review_row.POST_SUBJECT}</td>
+					<!-- IF topic_review_row.POSTER_QUOTE and topic_review_row.DECODED_MESSAGE --><td align="{S_CONTENT_FLOW_END}"><a class="button" href="#" onclick="var o = new Object(); o.post_id = {topic_review_row.POST_ID}; o.time = {topic_review_row.POST_TIME}; o.user_id = {topic_review_row.USER_ID}; addquote({topic_review_row.POST_ID}, '{topic_review_row.POSTER_QUOTE}', '{LA_WROTE}', o, true); return false;" title="{L_QUOTE} {topic_review_row.POST_AUTHOR}">{L_BUTTON_QUOTE}</a></td><!-- ENDIF -->
+				</tr>
+				</table>
+			</td>
+		</tr>
+		<!-- EVENT posting_topic_review_row_post_details_after -->
+		<tr class="{$BG}">
+			<td valign="top">
+				<table cellspacing="5" width="100%">
+				<tr>
+					<td<!-- IF topic_review_row.U_MCP_DETAILS --> colspan="2"<!-- ENDIF -->>
+						<div class="postbody"><div class="content">{topic_review_row.MESSAGE}</div><!-- EVENT posting_topic_review_row_content_after --></div>
+
+						<!-- IF topic_review_row.S_HAS_ATTACHMENTS -->
+							<br />
+
+							<table class="main" width="100%" cellspacing="1">
+							<tr>
+								<td class="bg3"><b class="bigger">{L_ATTACHMENTS}</b></td>
+							</tr>
+							<!-- BEGIN attachment -->
+								<tr class="postbody">
+									<td class="bg2">{topic_review_row.attachment.DISPLAY_ATTACHMENT}</td>
+								</tr>
+							<!-- END attachment -->
+							</table>
+						<!-- ENDIF -->
+
+						<!-- IF topic_review_row.POSTER_QUOTE and topic_review_row.DECODED_MESSAGE -->
+							<div id="message_{topic_review_row.POST_ID}" data-content="{topic_review_row.DECODED_MESSAGE}"></div>
+						<!-- ENDIF -->
+					</td>
+				</tr>
+				<tr class="bigger">
+					<!-- IF topic_review_row.U_MCP_DETAILS --><td><a href="{topic_review_row.U_MCP_DETAILS}">{L_POST_DETAILS}</a></td><!-- ENDIF -->
+					<td align="{S_CONTENT_FLOW_END}"><b>{L_POSTED}{L_COLON}</b> {topic_review_row.POST_DATE}</td>
+				</tr>
+				</table>
+			</td>
+			<!-- ENDIF -->
+		</tr>
+		<!-- IF not topic_review_row.S_LAST_ROW -->
+			<tr class="bg3">
+				<td colspan="2"></td>
+			</tr>
+		<!-- ENDIF -->
+	<!-- END topic_review_row -->
+	</table>
+</div>

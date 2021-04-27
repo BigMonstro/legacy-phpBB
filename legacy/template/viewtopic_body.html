@@ -21,7 +21,7 @@
 	</table>
 <!-- ENDIF -->
 
-<div class="action-bar">
+<div id="toolbar"><div class="action-bar">
 	<table width="100%" cellspacing="1">
 	<tr valign="bottom">
 		<td class="bigger">
@@ -40,14 +40,6 @@
 				<!-- IF (U_WATCH_TOPIC or U_BOOKMARK_TOPIC or U_BUMP_TOPIC or U_EMAIL_TOPIC or U_PRINT_TOPIC or S_DISPLAY_TOPIC_TOOLS) and not S_IS_BOT --><!-- DEFINE $TOPICTOOLS = 1 -->
 					<td style="padding: 0">
 						<span class="quicktools"><a class="button" id="topictools_link" name="#topictools" style="background-image: url('{T_THEME_PATH}/images/icon_topic_tools.gif'); background-repeat: no-repeat; background-position: center; display: block; margin: 0 3px; padding-{S_CONTENT_FLOW_BEGIN}: 14px; padding-{S_CONTENT_FLOW_END}: 14px">&nbsp;</a></span>
-
-						<div id="topictools_list" style="border-width: 0; display: none; margin-{S_CONTENT_FLOW_BEGIN}: 2px"><!--
-							<div><!-- EVENT viewtopic_topic_tools_before --> <!-- IF U_WATCH_TOPIC --><a href="{U_WATCH_TOPIC}">{S_WATCH_TOPIC_TITLE}</a><!-- IF U_BOOKMARK_TOPIC or U_BUMP_TOPIC or U_EMAIL_TOPIC or U_PRINT_TOPIC --><br /><!-- ENDIF --><!-- ENDIF -->
-							<!-- IF U_BOOKMARK_TOPIC --><a href="{U_BOOKMARK_TOPIC}">{S_BOOKMARK_TOPIC}</a><!-- IF U_BUMP_TOPIC or U_EMAIL_TOPIC or U_PRINT_TOPIC --><br /><!-- ENDIF --><!-- ENDIF -->
-							<!-- IF U_BUMP_TOPIC --><a href="{U_BUMP_TOPIC}">{L_BUMP_TOPIC}</a><!-- IF U_EMAIL_TOPIC or U_PRINT_TOPIC --><br /><!-- ENDIF --><!-- ENDIF -->
-							<!-- IF U_EMAIL_TOPIC --><a href="{U_EMAIL_TOPIC}">{L_EMAIL_TOPIC}</a><!-- IF U_PRINT_TOPIC --><br /><!-- ENDIF --><!-- ENDIF -->
-							<!-- IF U_PRINT_TOPIC --><a href="{U_PRINT_TOPIC}">{L_PRINT_TOPIC}</a><!-- ENDIF --> <!-- EVENT viewtopic_topic_tools_after --></div>
-						--></div>
 					</td>
 				<!-- ELSE -->
 					<td style="display: none">&nbsp;</td>
@@ -67,21 +59,32 @@
 </div>
 
 <!-- IF $TOPICTOOLS -->
-	<div class="hidden_links"><table width="100%" cellspacing="1"><tr class="bigger"><td>
-		<!-- IF U_WATCH_TOPIC --><a href="{U_WATCH_TOPIC}">{S_WATCH_TOPIC_TITLE}</a><!-- IF U_BOOKMARK_TOPIC or U_PRINT_TOPIC or U_EMAIL_TOPIC or U_BUMP_TOPIC --> | <!-- ENDIF --><!-- ENDIF -->
-		<!-- IF U_BOOKMARK_TOPIC --><a href="{U_BOOKMARK_TOPIC}">{S_BOOKMARK_TOPIC}</a><!-- IF U_PRINT_TOPIC or U_EMAIL_TOPIC or U_BUMP_TOPIC --> | <!-- ENDIF --><!-- ENDIF -->
-		<!-- IF U_PRINT_TOPIC --><a href="{U_PRINT_TOPIC}">{L_PRINT_TOPIC}</a><!-- IF U_EMAIL_TOPIC or U_BUMP_TOPIC --> | <!-- ENDIF --><!-- ENDIF -->
-		<!-- IF U_EMAIL_TOPIC --><a href="{U_EMAIL_TOPIC}">{L_EMAIL_TOPIC}</a><!-- IF U_BUMP_TOPIC --> | <!-- ENDIF --><!-- ENDIF -->
-		<!-- IF U_BUMP_TOPIC --><a href="{U_BUMP_TOPIC}">{L_BUMP_TOPIC}</a><!-- ENDIF -->
-	</td></tr></table></div>
+	<table cellspacing="0" width="100%" style="margin-top: -1px"><tr class="bigger"><td style="padding: 0 2px 1px">
+		<div id="topictools_list" class="links_list" style="border-width: 0; margin: 3px 2px">
+			<div><!-- EVENT viewtopic_topic_tools_before --> <!-- IF U_WATCH_TOPIC --><a href="{U_WATCH_TOPIC}">{S_WATCH_TOPIC_TITLE}</a><!-- IF U_BOOKMARK_TOPIC or U_BUMP_TOPIC or U_EMAIL_TOPIC or U_PRINT_TOPIC --><span class="dropdown_off"> | </span><!-- ENDIF --><!-- ENDIF -->
+			<!-- IF U_BOOKMARK_TOPIC --><a href="{U_BOOKMARK_TOPIC}">{S_BOOKMARK_TOPIC}</a><!-- IF U_BUMP_TOPIC or U_EMAIL_TOPIC or U_PRINT_TOPIC --><span class="dropdown_off"> | </span><!-- ENDIF --><!-- ENDIF -->
+			<!-- IF U_BUMP_TOPIC --><a href="{U_BUMP_TOPIC}">{L_BUMP_TOPIC}</a><!-- IF U_EMAIL_TOPIC or U_PRINT_TOPIC --><span class="dropdown_off"> | </span><!-- ENDIF --><!-- ENDIF -->
+			<!-- IF U_EMAIL_TOPIC --><a href="{U_EMAIL_TOPIC}">{L_EMAIL_TOPIC}</a><!-- IF U_PRINT_TOPIC --><span class="dropdown_off"> | </span><!-- ENDIF --><!-- ENDIF -->
+			<!-- IF U_PRINT_TOPIC --><a href="{U_PRINT_TOPIC}">{L_PRINT_TOPIC}</a><!-- ENDIF --> <!-- EVENT viewtopic_topic_tools_after --></div>
+		</div>
+	</td></tr></table>
+	</div>
 
 	<script type="text/javascript"><!--
-		if (document.body.className.indexOf('dropdown-enabled') > -1 && typeof removeComment === 'function') {
-			var ttl = document.getElementById('topictools_list'); removeComment(ttl); ttl.onclick = function(e) {if (e) {e.stopPropagation();} else {window.event.cancelBubble = true;}};
-			document.getElementById('topictools_link').onclick = function(e) {if (e) {e.stopPropagation();} else {window.event.cancelBubble = true;} toggleLists(ttl, this, ttl.parentNode); return false;};
+		function ttlEvent(e) {cancelBubble(e); toggleLists(ttl, this, topicBar); return false;};
+
+		if (document.body && (document.body.className.indexOf('dropdown-enabled') > -1 && typeof cancelBubble == 'function')) {
+			var topicBar = document.getElementById('toolbar');
+			if (document.uniqueID && !document.querySelector) { topicBar.style.width = '100%';}
+			topicBar.style.position = 'relative';
+
+			var ttl = document.getElementById('topictools_list'); ttl.onclick = cancelBubble;
+			document.getElementById('topictools_link').onclick = ttlEvent;
 			document.getElementById('topictools_link').href = document.getElementById('topictools_link').name;
 		}
 	//--></script>
+<!-- ELSE -->
+	</div>
 <!-- ENDIF -->
 
 <!-- EVENT viewtopic_body_poll_before -->

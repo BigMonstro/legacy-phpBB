@@ -32,22 +32,17 @@
 			<!-- IF S_PRIVMSGS -->
 
 				<!-- BEGIN !folder -->
-					<!-- IF folder.S_FIRST_ROW -->
-						<div class="navigation">
-					<!-- ENDIF -->
-						<div>&#187; <!-- IF folder.S_CUR_FOLDER --><b><!-- ELSE --><a href="{folder.U_FOLDER}"><!-- ENDIF -->{folder.FOLDER_NAME}<!-- IF folder.UNREAD_MESSAGES > 0 --> ({folder.UNREAD_MESSAGES})<!-- ENDIF --><!-- IF folder.S_CUR_FOLDER --></b><!-- ELSE --></a><!-- ENDIF --></div>
+						<div class="cp-item">&#187; <!-- IF folder.S_CUR_FOLDER --><b><!-- ELSE --><a href="{folder.U_FOLDER}"><!-- ENDIF -->{folder.FOLDER_NAME}<!-- IF folder.UNREAD_MESSAGES > 0 --> ({folder.UNREAD_MESSAGES})<!-- ENDIF --><!-- IF folder.S_CUR_FOLDER --></b><!-- ELSE --></a><!-- ENDIF --></div>
 					<!-- IF folder.S_LAST_ROW -->
-						</div><hr />
+						<hr />
 					<!-- ENDIF -->
 				<!-- END !folder -->
 
 			<!-- ENDIF -->
 
-			<div class="navigation">
 			<!-- BEGIN l_block2 -->
-				<div>&#187; <!-- IF l_block1.l_block2.S_SELECTED --><b>{l_block1.l_block2.L_TITLE}</b><!-- ELSE --><a href="{l_block1.l_block2.U_TITLE}">{l_block1.l_block2.L_TITLE}</a><!-- ENDIF --></div>
+				<div class="cp-item">&#187; <!-- IF l_block1.l_block2.S_SELECTED --><b>{l_block1.l_block2.L_TITLE}</b><!-- ELSE --><a href="{l_block1.l_block2.U_TITLE}">{l_block1.l_block2.L_TITLE}</a><!-- ENDIF --></div>
 			<!-- END l_block2 -->
-			</div>
 		<!-- ELSE -->
 			<td class="bg2"><b><a href="{l_block1.U_TITLE}">{l_block1.L_TITLE}</a></b>
 		<!-- ENDIF -->
@@ -88,14 +83,12 @@
 		<div<!-- IF $ONFRIENDS >= 4 or $OFFRIENDS >= 4 or ($ONFRIENDS >= 2 and $OFFRIENDS >= 1) or ($ONFRIENDS >= 1 and $OFFRIENDS >= 2) --> style="height: <!-- IF S_SHOW_PM_BOX -->105px<!-- ELSE -->88px<!-- ENDIF -->; overflow: auto; width: 100%"<!-- ENDIF -->>
 
 		<!-- IF .friends_online -->
-			<div class="navigation">
 				<h4 class="online">{L_FRIENDS_ONLINE}</h4>
 
 			<!-- BEGIN friends_online -->
-					<div<!-- IF S_SHOW_PM_BOX --> style="margin-top: 4px"<!-- ENDIF -->><!-- EVENT ucp_header_friends_online_username_full_prepend -->{friends_online.USERNAME_FULL}<!-- EVENT ucp_header_friends_online_username_full_append --><!-- IF S_SHOW_PM_BOX -->
+					<div class="cp-item"<!-- IF S_SHOW_PM_BOX --> style="margin-top: 4px"<!-- ENDIF -->><!-- EVENT ucp_header_friends_online_username_full_prepend -->{friends_online.USERNAME_FULL}<!-- EVENT ucp_header_friends_online_username_full_append --><!-- IF S_SHOW_PM_BOX -->
 					&nbsp;<input class="button2" type="submit" name="add_to[{friends_online.USER_ID}]" value="{L_ADD}" /><!-- ENDIF --></div>
 			<!-- END friends_online -->
-			</div>
 
 			<!-- IF .friends_offline -->
 				<hr />
@@ -103,14 +96,12 @@
 		<!-- ENDIF -->
 
 		<!-- IF .friends_offline -->
-			<div class="navigation">
 				<h4 class="offline">{L_FRIENDS_OFFLINE}</h4>
 
 			<!-- BEGIN friends_offline -->
-					<div<!-- IF S_SHOW_PM_BOX --> style="margin-top: 4px"<!-- ENDIF -->><!-- EVENT ucp_header_friends_offline_username_full_prepend -->{friends_offline.USERNAME_FULL}<!-- EVENT ucp_header_friends_offline_username_full_append --><!-- IF S_SHOW_PM_BOX -->
+					<div class="cp-item"<!-- IF S_SHOW_PM_BOX --> style="margin-top: 4px"<!-- ENDIF -->><!-- EVENT ucp_header_friends_offline_username_full_prepend -->{friends_offline.USERNAME_FULL}<!-- EVENT ucp_header_friends_offline_username_full_append --><!-- IF S_SHOW_PM_BOX -->
 					&nbsp;<input class="button2" type="submit" name="add_to[{friends_offline.USER_ID}]" value="{L_ADD}" /><!-- ENDIF --></div>
 			<!-- END friends_offline -->
-			</div>
 		<!-- ENDIF -->
 
 		</div></td></tr></table></td><td style="padding: 0">&nbsp;</td></tr></table></td>

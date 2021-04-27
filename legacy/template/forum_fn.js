@@ -68,9 +68,6 @@ function selectCode(c) {
 
 	if (window.getSelection) {
 		s = window.getSelection();
-		if (window.opera && e.innerHTML.substring(e.innerHTML.length - 4) === '<BR>') {
-			e.innerHTML = e.innerHTML + '&nbsp;';
-		}
 		r = document.createRange();
 		r.selectNodeContents(e);
 		s.removeAllRanges();
@@ -111,7 +108,7 @@ function removeComment(d) {
 }
 
 function changeDisplay(d, l, p, focused) {
-	if (d.style.display !== 'none') {
+	if (d.style.display == 'block') {
 		if (document.removeEventListener) {
 			document.removeEventListener('click', handler0, false);
 			window.removeEventListener('resize', handler1, false);
@@ -124,18 +121,18 @@ function changeDisplay(d, l, p, focused) {
 	}
 
 	if (focused) {
-		var show = d.style.display != 'none';
+		var show = d.style.display == 'block';
 		d.style.borderWidth = show ? '' : '2px';
 		d.style.borderStyle = show ? '' : 'solid';
 		d.style.display = show ? 'none' : 'block';
-		if (typeof l === 'object') {l.blur();}
+		if (typeof l == 'object') {l.blur();}
 	} else {
 		d.style.display = 'none';
 		d.style.borderStyle = '';
 		d.style.borderWidth = '';
 	}
 
-	if (d.style.display !== 'none') {
+	if (d.style.display == 'block') {
 		cd = d;
 		cl = l;
 		cp = p;
@@ -155,11 +152,11 @@ function changeDisplay(d, l, p, focused) {
 }
 
 function toggleLists(d, l, p) {
-	if (typeof qkl === 'object' && (d !== qkl)) {changeDisplay(qkl);}
-	if (typeof nfl === 'object' && (d !== nfl)) {changeDisplay(nfl);}
-	if (typeof usl === 'object' && (d !== usl)) {changeDisplay(usl);}
-	if (typeof ttl === 'object' && (d !== ttl)) {changeDisplay(ttl);}
-	if (typeof d === 'object') {changeDisplay(d, l, p, true);}
+	if (typeof qkl == 'object' && (d !== qkl)) {changeDisplay(qkl);}
+	if (typeof nfl == 'object' && (d !== nfl)) {changeDisplay(nfl);}
+	if (typeof usl == 'object' && (d !== usl)) {changeDisplay(usl);}
+	if (typeof ttl == 'object' && (d !== ttl)) {changeDisplay(ttl);}
+	if (typeof d == 'object') {changeDisplay(d, l, p, true);}
 }
 
 function bugFix(d, l, p, refresh) {
@@ -168,12 +165,22 @@ function bugFix(d, l, p, refresh) {
 		d.style.display = 'block';
 	}
 
-	if (typeof l === 'object' && d.offsetParent === p) {
+	if (typeof l == 'object' && d.offsetParent === p) {
 		d.style.top = (l.offsetTop + l.offsetHeight) + 'px';
 	}
 
-	if (typeof nfl === 'object' && (d === nfl)) {
-		if (typeof l === 'object') {
+	if (typeof ttl == 'object' && (d === ttl)) {
+		if (typeof l == 'object') {
+			if (document.documentElement.dir == 'ltr') {
+				d.style.left = l.parentNode.parentNode.offsetLeft + l.offsetLeft + 'px';
+			} else {
+				d.style.right = l.parentNode.parentNode.parentNode.offsetWidth - l.parentNode.parentNode.offsetLeft - l.offsetLeft - l.offsetWidth + 'px';
+			}
+		}
+	}
+
+	if (typeof nfl == 'object' && (d === nfl)) {
+		if (typeof l == 'object') {
 			if (document.documentElement.dir == 'ltr') {
 				if (l.parentNode.offsetWidth - l.offsetLeft - d.offsetWidth > 0) {
 					d.style.right = l.parentNode.offsetWidth - l.offsetLeft - d.offsetWidth + 'px';
@@ -199,7 +206,7 @@ function bugFix(d, l, p, refresh) {
 			var ns = document.getElementById('notification_scroll');
 			ns.style.height = 'auto';
 
-			if (typeof window.innerHeight === 'number') {
+			if (typeof window.innerHeight == 'number') {
 				var TotalHeight = window.innerHeight;
 			} else {
 				var TotalHeight = document.documentElement.offsetHeight;
@@ -227,7 +234,7 @@ function bugFix(d, l, p, refresh) {
 		}
 	}
 
-	if (!refresh && typeof iFrameFix === 'object') {
+	if (!refresh && typeof iFrameFix == 'object') {
 		d.appendChild(iFrameFix);
 		d.style.overflow = 'visible';
 		var b = '-' + d.style.borderWidth;
@@ -241,6 +248,14 @@ function bugFix(d, l, p, refresh) {
 		iFrameFix.style.top = b;
 		iFrameFix.style.height = d.offsetHeight + 'px';
 		iFrameFix.style.width = d.offsetWidth + 'px';
+	}
+}
+
+function cancelBubble(e) {
+	if (e) {
+		e.stopPropagation();
+	} else {
+		window.event.cancelBubble = true;
 	}
 }
 
@@ -264,29 +279,25 @@ if (document.body.className.indexOf('dropdown-enabled') > -1) {
 	}
 
 	if (document.getElementById('menubar')) {
-		if (document.uniqueID && !document.querySelector) {
-			var parentBar = document.getElementById('menubar').childNodes[0];
-		} else {
-			var parentBar = document.getElementById('menubar');
-		}
-
+		var parentBar = document.getElementById('menubar');
+		if (document.uniqueID && !document.querySelector) { parentBar.style.width = '100%';}
 		parentBar.style.position = 'relative';
 		parentBar.style.zIndex = '1';
 
 		if (document.getElementById('quick_links_list') && document.getElementById('quick_link')) {
-			var qkl = document.getElementById('quick_links_list'); removeComment(qkl); qkl.onclick = function(e) {if (e) {e.stopPropagation();} else {window.event.cancelBubble = true;}};
-			document.getElementById('quick_link').onclick = function(e) {if (e) {e.stopPropagation();} else {window.event.cancelBubble = true;} toggleLists(qkl, this, parentBar); return false;};
+			var qkl = document.getElementById('quick_links_list'); removeComment(document.getElementById('member_links')); qkl.onclick = cancelBubble;
+			document.getElementById('quick_link').onclick = function(e) {cancelBubble(e); toggleLists(qkl, this, parentBar); return false;};
 		}
 
 		if (document.getElementById('user_list') && document.getElementById('user_link')) {
 			if (document.getElementById('notification_list') && document.getElementById('notification_link')) {
-				var nfl = document.getElementById('notification_list'); removeComment(nfl); nfl.onclick = function(e) {if (e) {e.stopPropagation();} else {window.event.cancelBubble = true;}};
-				document.getElementById('notification_link').onclick = function(e) {if (e) {e.stopPropagation();} else {window.event.cancelBubble = true;} toggleLists(nfl, this, parentBar); return false;};
+				var nfl = document.getElementById('notification_list'); removeComment(nfl); nfl.onclick = cancelBubble;
+				document.getElementById('notification_link').onclick = function(e) {cancelBubble(e); toggleLists(nfl, this, parentBar); return false;};
 				if (document.uniqueID && !document.compatMode) {nfl.style.width='278px';} else {nfl.style.width='274px';}
 			}
 
-			var usl = document.getElementById('user_list'); removeComment(usl); usl.onclick = function(e) {if (e) {e.stopPropagation();} else {window.event.cancelBubble = true;}};
-			document.getElementById('user_link').onclick = function(e) {if (e) {e.stopPropagation();} else {window.event.cancelBubble = true;} toggleLists(usl, this, parentBar); return false;};
+			var usl = document.getElementById('user_list'); removeComment(document.getElementById('profile_links')); usl.onclick = cancelBubble;
+			document.getElementById('user_link').onclick = function(e) {cancelBubble(e); toggleLists(usl, this, parentBar); return false;};
 		}
 	}
 }

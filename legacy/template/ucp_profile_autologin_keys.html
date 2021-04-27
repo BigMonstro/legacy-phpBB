@@ -1,7 +1,7 @@
 <!-- INCLUDE ucp_header.html -->
 
 <form name="ucp" id="ucp" method="post" action="{S_UCP_ACTION}"{S_FORM_ENCTYPE}>
-<!-- DEFINE COLSPAN = 4 -->
+{% DEFINE COLSPAN = 4 %}
 <table class="main" width="100%" cellspacing="1">
 <tr>
 	<th colspan="{{ definition.COLSPAN }}">{L_TITLE}</th>
@@ -42,9 +42,9 @@
 		<td class="bg1" colspan="{{ definition.COLSPAN }}" align="center">{L_PROFILE_NO_AUTOLOGIN_KEYS}</td>
 	</tr>
 <!-- END sessions -->
+</table>
 
 <!-- IF .sessions -->
-	</table>
 	<table cellspacing="0" width="100%">
 	<tr>
 		<td class="cat" align="{S_CONTENT_FLOW_END}">
@@ -52,10 +52,8 @@
 			{S_FORM_TOKEN}
 		</td>
 	</tr>
-<!-- ENDIF -->
-</table>
+	</table>
 
-<!-- IF .sessions -->
 	<table width="100%" cellspacing="1"><tr>
 		<td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('ucp', '', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('ucp', '', false); return false;">{L_UNMARK_ALL}</a></b></td>
 	</tr></table>

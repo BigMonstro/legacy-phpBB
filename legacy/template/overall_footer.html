@@ -1,6 +1,6 @@
 <!-- EVENT overall_footer_content_after -->
 
-<table cellspacing="1" width="100%" class="main" style="margin: 8px 0">
+<div style="margin: 8px 0"><!-- EVENT overall_footer_page_body_after --><table cellspacing="1" width="100%" class="main">
 <tr class="bg1"><td><table cellspacing="0" width="100%"><tr class="breadcrumbs">
 	<td>
 		<b><!-- IF U_SITE_HOME --><a href="{U_SITE_HOME}" data-navbar-reference="home">{L_SITE_HOME}</a> <b>&#187;</b> <!-- ENDIF -->
@@ -13,9 +13,7 @@
 		<!-- EVENT overall_footer_timezone_before --> {S_TIMEZONE} <!-- EVENT overall_footer_timezone_after -->
 	</td>
 </tr></table></td></tr>
-</table>
-
-<!-- EVENT overall_footer_page_body_after -->
+</table></div>
 
 <div align="center" class="copyright">
 	<!-- EVENT overall_footer_copyright_prepend -->
@@ -47,14 +45,16 @@
 
 <!-- IF S_COOKIE_NOTICE -->
 <script type="text/javascript"><!--
-if (document.body.removeChild && (!/cookieconsent_status=dismiss/i.test(document.cookie))) {
+function AgreeCookies() {var d = new Date(); d.setTime(d.getTime() + 31536000000); document.cookie = "cookieconsent_status=dismiss; expires="+d.toUTCString()+"; path=/"; document.body.removeChild(cookiesconsent);};
+
+if (document.body && (document.body.removeChild && !(new RegExp('cookieconsent_status=dismiss', 'i')).test(document.cookie))) {
 	var cookiesconsent = document.createElement('div');
 	cookiesconsent.innerHTML = "<table cellspacing='4' class='separator' width='100%'><tr class='bigger'><td align='center' style='padding: 2px; padding-{S_CONTENT_FLOW_BEGIN}: 20px' width='100%'><p style='line-height: 140%'><b>{LA_COOKIE_CONSENT_MSG}</b></p></td><td style='padding: 2px; padding-{S_CONTENT_FLOW_END}: 20px'></td></tr></table>";
 	var cookiesbtn = document.createElement('input');
 	cookiesbtn.setAttribute('type', 'button');
 	cookiesbtn.className = 'button1';
 	cookiesbtn.value = "{LA_COOKIE_CONSENT_OK}";
-	cookiesbtn.onclick = function() {var d = new Date(); d.setTime(d.getTime() + 31536000000); document.cookie = "cookieconsent_status=dismiss; expires="+d.toUTCString()+"; path=/"; document.body.removeChild(cookiesconsent);};
+	cookiesbtn.onclick = AgreeCookies;
 	cookiesconsent.childNodes[0].childNodes[0].childNodes[0].childNodes[1].appendChild(cookiesbtn);
 	document.body.insertBefore(cookiesconsent, document.body.firstChild);
 }

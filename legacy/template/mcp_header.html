@@ -6,7 +6,9 @@
 	</div>
 <!-- ENDIF -->
 
-<!-- IF FORUM_NAME and S_DISPLAY_JUMPBOX -->
+<!-- IF $MCP_TOPIC -->
+	<form name="mcp" id="mcp" method="post" action="{S_MCP_ACTION}">
+<!-- ELSEIF FORUM_NAME and S_DISPLAY_JUMPBOX -->
 	<table cellspacing="0" width="100%"><tr valign="top"><td><!-- INCLUDE jumpbox.html --></td></tr></table>
 <!-- ENDIF -->
 
@@ -23,11 +25,9 @@
 			<!-- IF l_block1.S_SELECTED -->
 				<td class="bg1"><b>{l_block1.L_TITLE}</b>
 
-				<div class="navigation">
 				<!-- BEGIN l_block2 -->
-					<div>&#187; <!-- IF l_block1.l_block2.S_SELECTED --><b>{l_block1.l_block2.L_TITLE}</b><!-- ELSE --><a href="{l_block1.l_block2.U_TITLE}">{l_block1.l_block2.L_TITLE}</a><!-- ENDIF --></div>
+					<div class="cp-item">&#187; <!-- IF l_block1.l_block2.S_SELECTED --><b>{l_block1.l_block2.L_TITLE}</b><!-- ELSE --><a href="{l_block1.l_block2.U_TITLE}">{l_block1.l_block2.L_TITLE}</a><!-- ENDIF --></div>
 				<!-- END l_block2 -->
-				</div>
 			<!-- ELSE -->
 				<td class="bg2"><b><a href="{l_block1.U_TITLE}">{l_block1.L_TITLE}</a></b>
 			<!-- ENDIF -->

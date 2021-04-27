@@ -86,10 +86,14 @@
 	</div>
 
 	<!-- IF U_WATCH_FORUM_LINK and not S_IS_BOT -->
-		<div class="hidden_links"><table width="100%" cellspacing="1"><tr class="bigger"><td><a href="{U_WATCH_FORUM_LINK}">{S_WATCH_FORUM_TITLE}</a></td></tr></table></div>
+		<div class="dropdown_off"><table cellspacing="0" width="100%" style="margin-top: -1px"><tr class="bigger"><td style="padding: 0 2px 1px">
+			<div style="margin: 3px 2px">
+				<div><a href="{U_WATCH_FORUM_LINK}">{S_WATCH_FORUM_TITLE}</a></div>
+			</div>
+		</td></tr></table></div>
 
 		<script type="text/javascript"><!--
-			if (document.body.className.indexOf('dropdown-enabled') > -1) {
+			if (document.body && (document.body.className.indexOf('dropdown-enabled') > -1)) {
 				document.getElementById('subscribe_link').href = document.getElementById('subscribe_link').name;
 			}
 		//--></script>
