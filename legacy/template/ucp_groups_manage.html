@@ -23,19 +23,19 @@
 		<td class="bg1"><b class="bigger">{L_GROUP_DESC}{L_COLON}</b></td>
 		<td class="bg1"><textarea name="group_desc" cols="35" rows="5">{GROUP_DESC}</textarea>
 			<br /><input type="checkbox" name="desc_parse_bbcode"<!-- IF S_DESC_BBCODE_CHECKED --> checked="checked"<!-- ENDIF --> /> <span class="bigger">{L_PARSE_BBCODE}</span> &nbsp;<input type="checkbox" name="desc_parse_smilies"<!-- IF S_DESC_SMILIES_CHECKED --> checked="checked"<!-- ENDIF --> /> <span class="bigger">{L_PARSE_SMILIES}</span> &nbsp;<input type="checkbox" name="desc_parse_urls"<!-- IF S_DESC_URLS_CHECKED --> checked="checked"<!-- ENDIF --> /> <span class="bigger">{L_PARSE_URLS}</span>
-	<!-- IF S_SPECIAL_GROUP -->
-			<input name="group_type" type="hidden" value="{GROUP_TYPE_SPECIAL}" />
-	<!-- ELSE -->
 		</td>
 	</tr>
 	<tr>
 		<td class="bg1"><span class="bigger"><b>{L_GROUP_TYPE}{L_COLON}</b><br />{L_GROUP_TYPE_EXPLAIN}</span></td>
 		<td class="bg1">
-			<input name="group_type" type="radio" value="{GROUP_TYPE_FREE}"{GROUP_FREE} /> <span class="bigger">{L_GROUP_OPEN}</span> &nbsp;
-			<input name="group_type" type="radio" value="{GROUP_TYPE_OPEN}"{GROUP_OPEN} /> <span class="bigger">{L_GROUP_REQUEST}</span> &nbsp;
-			<input name="group_type" type="radio" value="{GROUP_TYPE_CLOSED}"{GROUP_CLOSED} /> <span class="bigger">{L_GROUP_CLOSED}</span> &nbsp;
-			<input name="group_type" type="radio" value="{GROUP_TYPE_HIDDEN}"{GROUP_HIDDEN} /> <span class="bigger">{L_GROUP_HIDDEN}</span>
-	<!-- ENDIF -->
+			<!-- IF S_SPECIAL_GROUP -->
+				<b class="bigger">{L_GROUP_IS_SPECIAL}</b> <input name="group_type" type="hidden" value="{GROUP_TYPE_SPECIAL}" />
+			<!-- ELSE -->
+				<input name="group_type" type="radio" value="{GROUP_TYPE_FREE}"{GROUP_FREE} /> <span class="bigger">{L_GROUP_OPEN}</span> &nbsp;
+				<input name="group_type" type="radio" value="{GROUP_TYPE_OPEN}"{GROUP_OPEN} /> <span class="bigger">{L_GROUP_REQUEST}</span> &nbsp;
+				<input name="group_type" type="radio" value="{GROUP_TYPE_CLOSED}"{GROUP_CLOSED} /> <span class="bigger">{L_GROUP_CLOSED}</span> &nbsp;
+				<input name="group_type" type="radio" value="{GROUP_TYPE_HIDDEN}"{GROUP_HIDDEN} /> <span class="bigger">{L_GROUP_HIDDEN}</span>
+			<!-- ENDIF -->
 		</td>
 	</tr>
 	<tr>
@@ -44,7 +44,43 @@
 	<tr>
 		<td class="bg1"><span class="bigger"><b>{L_GROUP_COLOR}{L_COLON}</b><br />{L_GROUP_COLOR_EXPLAIN}</span></td>
 		<td class="bg1">
-			<input name="group_colour" type="text" class="inputbox" value="{GROUP_COLOUR}" size="6" maxlength="6" />
+			<input id="group_colour" name="group_colour" type="text" class="inputbox" value="{GROUP_COLOUR}" maxlength="6" />
+			<br /><br />
+<script type="text/javascript"><!--
+	var r = 0, g = 0, b = 0;
+	var numberList = new Array(6);
+	var color = '';
+	var html = '';
+	var is_ie = ((typeof document.all !== 'undefined') && (typeof window.opera === 'undefined'));
+	var style = (is_ie && !document.querySelector) ? 'cursor: hand' : 'cursor: inherit';
+
+	if (is_ie && !window.XMLHttpRequest) {
+		style += '; overflow: hidden';
+	}
+
+	numberList[0] = '00';
+	numberList[1] = '80';
+	numberList[2] = 'AA';
+	numberList[3] = 'FF';
+
+	html += '<table class="main" cellspacing="1" style="width: 193px">';
+
+	for (r = 0; r < 4; r++) {
+		html += '<tr>';
+		for (g = 0; g < 4; g++) {
+			for (b = 0; b < 4; b++) {
+				color = String(numberList[r]) + String(numberList[g]) + String(numberList[b]);
+				html += '<td style="background-color: #' + color + '; height: 10px; padding: 0; width: 11px">';
+				html += '<a style="display: block; height: 100%; width: 100%" href="#" onclick="getStuff(\'group_colour\').value=\'' + color + '\'; return false;" title="#' + color + '"><div style="height: 100%; width: 100%; ' + style + '"></div></a>';
+				html += '</td>';
+			}
+		}
+		html += '</tr>';
+	}
+	html += '</table>';
+
+document.write(html);
+//--></script>
 		</td>
 	</tr>
 	<tr>
@@ -55,7 +91,7 @@
 	<!-- INCLUDE ucp_avatar_options.html -->
 
 	<tr>
-		<td class="cat" align="center">{S_HIDDEN_FIELDS}<input class="button2" type="reset" name="reset" value="{L_RESET}"<!-- IF .avatar_drivers --> onclick="ResetAvatarType();"<!-- ENDIF --> /> &nbsp;<input class="button1" type="submit" name="update" value="{L_SUBMIT}" />{S_FORM_TOKEN}</td>
+		<td class="cat" align="center">{S_HIDDEN_FIELDS}<input class="button1" type="submit" name="update" value="{L_SUBMIT}" />{S_FORM_TOKEN}</td>
 	</tr>
 
 <!-- ELSEIF S_LIST -->

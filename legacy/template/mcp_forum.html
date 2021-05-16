@@ -40,11 +40,11 @@
 				<span class="bigger">[ <a href="{topicrow.U_DELETE_TOPIC}">{L_DELETE_SHADOW_TOPIC}</a> ]</span>
 			<!-- ENDIF -->
 			<!-- EVENT topiclist_row_topic_title_after -->
-			<div class="bigger">{L_POST_BY_AUTHOR} {topicrow.TOPIC_AUTHOR_FULL} &#187; {topicrow.FIRST_POST_TIME}</div>
+			<div class="bigger">{L_POST_BY_AUTHOR} <!-- EVENT mcp_forum_topic_author_username_prepend -->{topicrow.TOPIC_AUTHOR_FULL}<!-- EVENT mcp_forum_topic_author_username_append --> &#187; {topicrow.FIRST_POST_TIME}</div>
 			<!-- EVENT topiclist_row_append -->
 		</td>
 		<td class="bg1" align="center"><p>{topicrow.REPLIES}</p></td>
-		<td class="bg1" align="center"><p>{topicrow.LAST_POST_TIME}<br />{topicrow.LAST_POST_AUTHOR_FULL}</p></td>
+		<td class="bg1" align="center"><p>{topicrow.LAST_POST_TIME}<br /><!-- EVENT mcp_forum_last_post_author_username_prepend -->{topicrow.LAST_POST_AUTHOR_FULL}<!-- EVENT mcp_forum_last_post_author_username_append --></p></td>
 		<!-- IF not S_MERGE_SELECT -->
 			<td class="bg1" align="center">
 				<!-- IF not topicrow.S_MOVED_TOPIC --><input type="checkbox" name="topic_id_list[]" value="{topicrow.TOPIC_ID}"<!-- IF topicrow.S_TOPIC_CHECKED --> checked="checked"<!-- ENDIF --> /><!-- ELSE -->&nbsp;<!-- ENDIF -->

@@ -57,19 +57,12 @@ function ChangeAvatarType() {
 		getStuff(typeselected+"_1").className="";
 		getStuff(typeselected+"_2").className="";
 }
-
-function ResetAvatarType() {
-	<!-- BEGIN avatar_drivers -->
-		getStuff("{avatar_drivers.DRIVER}_1").className="<!-- IF not (avatar_drivers.SELECTED or (avatar_drivers.S_FIRST_ROW and not $DEFINED_AVATAR)) -->noscript<!-- ENDIF -->";
-		getStuff("{avatar_drivers.DRIVER}_2").className="<!-- IF not (avatar_drivers.SELECTED or (avatar_drivers.S_FIRST_ROW and not $DEFINED_AVATAR)) -->noscript<!-- ENDIF -->";
-	<!-- END avatar_drivers -->
-}
 //--></script>
 <!-- ENDIF -->
 
 <table cellspacing="0" width="100%">
 <!-- IF not S_GROUP_MANAGE -->
 	<tr>
-		<td class="cat" align="center"><input class="button2" type="reset" value="{L_RESET}" name="reset"<!-- IF .avatar_drivers --> onclick="ResetAvatarType();"<!-- ENDIF --> /> &nbsp;<input class="button1" type="submit" name="submit" value="{L_SUBMIT}" /></td>
+		<td class="cat" align="center"><input class="button1" type="submit" name="submit" value="{L_SUBMIT}" /></td>
 	</tr>
 <!-- ENDIF -->

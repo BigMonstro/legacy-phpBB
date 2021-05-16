@@ -40,6 +40,7 @@
 				<th width="50">{L_REPLIES}</th>
 				<th width="50">{L_VIEWS}</th>
 				<th nowrap="nowrap" width="10%">{L_LAST_POST}</th>
+				<!-- EVENT search_results_topic_header_lastpost_after -->
 			</tr>
 		<!-- ENDIF -->
 		<!-- EVENT search_results_topic_before -->
@@ -84,6 +85,7 @@
 			<td class="bg1" align="center" nowrap="nowrap">
 				<p>{searchresults.LAST_POST_TIME}<br /><!-- EVENT search_results_last_post_author_username_prepend -->{searchresults.LAST_POST_AUTHOR_FULL}<!-- EVENT search_results_last_post_author_username_append --><!-- IF not S_IS_BOT --> <a href="{searchresults.U_LAST_POST}"><img src="{T_THEME_PATH}/images/icon_topic_latest.gif" width="18" height="9" alt="&gt;" border="0" title="{L_GOTO_LAST_POST}" /></a><!-- ENDIF --></p>
 			</td>
+			<!-- EVENT search_results_topic_row_lastpost_after -->
 		</tr>
 		<!-- EVENT search_results_topic_after -->
 		<!-- IF searchresults.S_LAST_ROW --></table><!-- ENDIF -->
@@ -108,13 +110,13 @@
 				<table cellspacing="0" width="100%">
 				<tr>
 					<td>
-						<table cellspacing="0" width="100%"><tr><td class="bigger">
+						<table cellspacing="0" width="100%"><tr><td class="bigger"><!-- EVENT search_results_post_subject_before --><div>
 						<!-- IF searchresults.POST_SUBJECT neq "" -->
 							<b>{L_POST_SUBJECT}{L_COLON}</b> <a href="{searchresults.U_VIEW_POST}">{searchresults.POST_SUBJECT}</a>
 						<!-- ELSE -->
 							[ <a href="{searchresults.U_VIEW_POST}">{L_JUMP_TO_POST}</a> ]
 						<!-- ENDIF -->
-						</td>
+						</div></td>
 						<td align="{S_CONTENT_FLOW_END}" class="bigger"><b>{L_POSTED}{L_COLON}</b> {searchresults.POST_DATE}</td></tr></table>
 					</td>
 				</tr>
@@ -172,7 +174,7 @@
 	<td><b><a class="nowrap" href="<!-- IF SEARCH_TOPIC -->{U_SEARCH_TOPIC}">{L_RETURN_TO_TOPIC}<!-- ELSE -->{U_SEARCH}">{L_GO_TO_SEARCH_ADV}<!-- ENDIF --></a></b></td>
 	<td align="{S_CONTENT_FLOW_END}"><span class="nowrap">[ {SEARCH_MATCHES} ]</span> <!-- INCLUDE pagination.html --></td>
 </tr></table>
-
+<!-- EVENT search_results_jumpbox_before -->
 <!-- IF S_DISPLAY_JUMPBOX --><table cellspacing="0" width="100%"><tr><td><!-- INCLUDE jumpbox.html --></td></tr></table><!-- ENDIF -->
 
 <!-- INCLUDE overall_footer.html -->

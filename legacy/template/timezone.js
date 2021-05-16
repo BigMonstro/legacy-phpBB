@@ -14,15 +14,8 @@ function ChangeCurrentTime(this_select) {
 function DefineOption() {
 	for (i = 0 ; i < document.getElementById(RefId).getElementsByTagName('option').length ; i++) {
 		if (document.getElementById(RefId).getElementsByTagName('option')[i].value == RefSelect.options[RefNumber].value) {
-			document.getElementById(RefId).getElementsByTagName('option')[i].selected = 'selected';
+			document.getElementById(RefId).getElementsByTagName('option')[i].setAttribute('selected', true);
 		}
-	}
-}
-
-function ResetTimeZone() {
-	if (typeof RefNumber !== 'undefined' && typeof RefSelect !== 'undefined') {
-		document.getElementById(RefId).innerHTML = '';
-		document.getElementById(RefId).appendChild(RefSelect.options[RefNumber].parentNode.cloneNode(true));
 	}
 }
 
@@ -30,6 +23,7 @@ if (((document.compatMode && !window.opera) || document.getElementsByClassName) 
 	document.getElementById(AltId).style.display = 'block';
 	var RefNumber = document.getElementById(RefId).selectedIndex;
 	var RefSelect = document.getElementById(RefId).cloneNode(true);
-	ResetTimeZone();
+	document.getElementById(RefId).innerHTML = ''; 
+	document.getElementById(RefId).appendChild(RefSelect.options[RefNumber].parentNode.cloneNode(true));
 	DefineOption();
 }
