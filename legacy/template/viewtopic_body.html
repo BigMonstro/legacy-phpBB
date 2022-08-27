@@ -326,9 +326,9 @@
 					<br />{postrow.BUMPED_MESSAGE}
 				<!-- ENDIF -->
 				<!-- EVENT viewtopic_body_postrow_post_notices_after -->
-				<!-- IF postrow.SIGNATURE -->
-					<div class="postbody"><div class="signature"><p>_________________</p>{postrow.SIGNATURE}</div></div>
-				<!-- ENDIF -->
+				<!-- EVENT viewtopic_body_postrow_signature_before -->
+					<!-- IF postrow.SIGNATURE --><div class="postbody"><div class="signature"><p>_________________</p>{postrow.SIGNATURE}</div></div><!-- ENDIF -->
+				<!-- EVENT viewtopic_body_postrow_signature_after -->
 
 				<!-- EVENT viewtopic_body_postrow_post_content_footer -->
 
