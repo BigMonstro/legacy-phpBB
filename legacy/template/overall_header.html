@@ -76,11 +76,11 @@
 	<tr class="bigger" valign="top"><td style="padding: 0">
 		<div style="padding: 4px 2px">
 			<!-- IF (S_DISPLAY_MEMBERLIST and not S_IS_BOT) or (U_TEAM and not S_IS_BOT) or S_DISPLAY_SEARCH or (U_ACP and not U_RESTORE_PERMISSIONS) or U_MCP --><!-- DEFINE $QUICKLINKS = 1 -->
-				<span class="quicktools"><a href="#" id="quick_link"><img src="{T_THEME_PATH}/images/icon_mini_members.gif" width="12" height="13" alt="" /> {L_QUICK_LINKS}</a>&nbsp;</span>
+				<span class="quicktools"><a href="#" id="quick_link"><img src="{T_THEME_PATH}/images/icon_mini_members.gif" width="12" height="13" alt="" border="0" /> {L_QUICK_LINKS}</a>&nbsp;</span>
 			<!-- ENDIF -->
 
 			<!-- EVENT overall_header_navigation_prepend -->
-			<a href="{U_FAQ}"><img src="{T_THEME_PATH}/images/icon_mini_faq.gif" width="12" height="13" alt="" /> {L_FAQ}</a>
+			<a href="{U_FAQ}"><img src="{T_THEME_PATH}/images/icon_mini_faq.gif" width="12" height="13" alt="" border="0" /> {L_FAQ}</a>
 			<!-- EVENT overall_header_navigation_append -->
 		</div>
 	</td>
@@ -88,14 +88,14 @@
 		<!-- IF S_REGISTERED_USER -->
 			<div align="{S_CONTENT_FLOW_END}" style="padding: 4px 2px">
 				<!-- IF S_NOTIFICATIONS_DISPLAY -->
-					<a href="{U_VIEW_ALL_NOTIFICATIONS}" id="notification_link"><img src="{T_THEME_PATH}/images/icon_mini_notification.gif" width="12" height="13" alt="" /> {L_NOTIFICATIONS} [<b>{NOTIFICATIONS_COUNT}</b>]</a>&nbsp;
+					<a href="{U_VIEW_ALL_NOTIFICATIONS}" id="notification_link"><img src="{T_THEME_PATH}/images/icon_mini_notification.gif" width="12" height="13" alt="" border="0" /> {L_NOTIFICATIONS} [<b>{NOTIFICATIONS_COUNT}</b>]</a>&nbsp;
 				<!-- ENDIF -->
 
 				<!-- EVENT navbar_header_user_profile_prepend -->
-				<!-- IF S_DISPLAY_PM --><a href="{U_PRIVATEMSGS}"><img src="{T_THEME_PATH}/images/icon_mini_message.gif" width="12" height="13" alt="" /> {L_PRIVATE_MESSAGES} [<b>{PRIVATE_MESSAGE_COUNT}</b>]</a>&nbsp;<!-- ENDIF -->
+				<!-- IF S_DISPLAY_PM --><a href="{U_PRIVATEMSGS}"><img src="{T_THEME_PATH}/images/icon_mini_message.gif" width="12" height="13" alt="" border="0" /> {L_PRIVATE_MESSAGES} [<b>{PRIVATE_MESSAGE_COUNT}</b>]</a>&nbsp;<!-- ENDIF -->
 				<!-- EVENT navbar_header_user_profile_append -->
 
-				<a href="{U_PROFILE}" id="user_link" style="text-decoration: none"><img src="{T_THEME_PATH}/images/icon_mini_profile.gif" width="12" height="13" alt="" /> {CURRENT_USERNAME_SIMPLE}</a>
+				<a href="{U_PROFILE}" id="user_link" style="text-decoration: none"><img src="{T_THEME_PATH}/images/icon_mini_profile.gif" width="12" height="13" alt="" border="0" /> {CURRENT_USERNAME_SIMPLE}</a>
 			</div>
 
 			<!-- IF S_NOTIFICATIONS_DISPLAY -->
@@ -126,10 +126,10 @@
 				<!-- EVENT navbar_header_logged_out_content -->
 
 				<!-- IF S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) -->
-					<a href="{U_REGISTER}"><img src="{T_THEME_PATH}/images/icon_mini_register.gif" width="12" height="13" alt="" /> {L_REGISTER}</a>&nbsp;
+					<a href="{U_REGISTER}"><img src="{T_THEME_PATH}/images/icon_mini_register.gif" width="12" height="13" alt="" border="0" /> {L_REGISTER}</a>&nbsp;
 				<!-- ENDIF -->
 
-				<a href="{U_LOGIN_LOGOUT}"><img src="{T_THEME_PATH}/images/icon_mini_login.gif" width="12" height="13" alt="" /> {L_LOGIN_LOGOUT}</a>
+				<a href="{U_LOGIN_LOGOUT}"><img src="{T_THEME_PATH}/images/icon_mini_login.gif" width="12" height="13" alt="" border="0" /> {L_LOGIN_LOGOUT}</a>
 			</div>
 		<!-- ENDIF -->
 	</td></tr>
