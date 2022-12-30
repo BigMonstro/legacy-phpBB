@@ -113,9 +113,11 @@
 				<tr>
 					<td class="bigger">{IMG_STATUS}</td>
 				</tr>
+				<!-- IF S_BBCODE_FLASH -->
 				<tr>
 					<td class="bigger">{FLASH_STATUS}</td>
 				</tr>
+				<!-- ENDIF -->
 				<tr>
 					<td class="bigger">{URL_STATUS}</td>
 				</tr>
@@ -124,8 +126,8 @@
 					<td class="bigger">{SMILIES_STATUS}</td>
 				</tr>
 				</table>
-				<!-- EVENT posting_editor_bbcode_status_after -->
 			<!-- ENDIF -->
+			<!-- EVENT posting_editor_bbcode_status_after -->
 		</td>
 		<td class="bg1">
 			<table cellspacing="2">
@@ -205,11 +207,13 @@
 				<td class="bg1" valign="top"><b class="bigger">{L_DELETE_POST}{L_COLON}</b></td>
 				<td class="bg1">
 					<table cellspacing="2">
-						<tr>
-							<td><input type="checkbox" name="delete" {S_SOFTDELETE_CHECKED} /></td>
-							<td class="bigger">{L_DELETE_POST_WARN}</td>
-						</tr>
-						<!-- IF S_SOFTDELETE_ALLOWED and S_DELETE_ALLOWED -->
+						<!-- IF S_SOFTDELETE_ALLOWED -->
+							<tr>
+								<td><input type="checkbox" name="delete" {S_SOFTDELETE_CHECKED} /></td>
+								<td class="bigger">{L_DELETE_POST_WARN}</td>
+							</tr>
+						<!-- ENDIF -->
+						<!-- IF S_DELETE_ALLOWED -->
 							<tr>
 								<td><input type="checkbox" name="delete_permanent" /></td>
 								<td class="bigger">{L_DELETE_POST_PERMANENTLY}</td>

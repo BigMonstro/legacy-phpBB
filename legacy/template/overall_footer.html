@@ -41,7 +41,7 @@
 			<b><a href="{U_ACP}">{L_ACP}</a></b>
 		</p>
 	<!-- ENDIF -->
-</div><!-- IF not S_IS_BOT -->{RUN_CRON_TASK}<!-- ENDIF -->
+</div>{% if not S_IS_BOT %}{{ RUN_CRON_TASK }}{% endif %}
 
 <!-- IF S_COOKIE_NOTICE -->
 <script type="text/javascript"><!--
