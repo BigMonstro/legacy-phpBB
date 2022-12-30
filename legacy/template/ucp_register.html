@@ -70,10 +70,12 @@
 </tr>
 <!-- EVENT ucp_register_credentials_after -->
 <!-- EVENT ucp_register_options_before -->
-<tr>
-	<td class="bg1"><b class="bigger">{L_LANGUAGE}{L_COLON}</b></td>
-	<td class="bg1"><select name="lang" onchange="change_language(this.value); return false;">{S_LANG_OPTIONS}</select></td>
-</tr>
+<!-- IF S_LANG_OPTIONS -->
+	<tr>
+		<td class="bg1"><b class="bigger">{L_LANGUAGE}{L_COLON}</b></td>
+		<td class="bg1"><select name="lang" id="lang" onchange="change_language(this.value); return false;">{S_LANG_OPTIONS}</select></td>
+	</tr>
+<!-- ENDIF -->
 
 <!-- INCLUDE timezone_option.html -->
 
