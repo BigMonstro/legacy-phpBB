@@ -17,7 +17,6 @@
 	</tr>
 	<!-- BEGIN topic_review_row -->
 		<!-- IF topic_review_row.S_ROW_COUNT is even --><!-- DEFINE $BG = 'bg1' --><!-- ELSE --><!-- DEFINE $BG = 'bg2' --><!-- ENDIF -->
-		<!-- EVENT posting_topic_review_row_post_details_before -->
 		<tr class="{$BG}">
 			<!-- IF topic_review_row.S_IGNORE_POST -->
 			<td class="member" colspan="2">{topic_review_row.L_IGNORE_POST}</td>
@@ -40,7 +39,6 @@
 				</table>
 			</td>
 		</tr>
-		<!-- EVENT posting_topic_review_row_post_details_after -->
 		<tr class="{$BG}">
 			<td valign="top">
 				<table cellspacing="5" width="100%">
@@ -70,7 +68,7 @@
 				</tr>
 				<tr class="bigger">
 					<!-- IF topic_review_row.U_MCP_DETAILS --><td><a href="{topic_review_row.U_MCP_DETAILS}">{L_POST_DETAILS}</a></td><!-- ENDIF -->
-					<td align="{S_CONTENT_FLOW_END}"><b>{L_POSTED}{L_COLON}</b> {topic_review_row.POST_DATE}</td>
+					<td align="{S_CONTENT_FLOW_END}"><!-- EVENT posting_topic_review_row_post_details_before --><b>{L_POSTED}{L_COLON}</b> {topic_review_row.POST_DATE}<!-- EVENT posting_topic_review_row_post_details_after --></td>
 				</tr>
 				</table>
 			</td>

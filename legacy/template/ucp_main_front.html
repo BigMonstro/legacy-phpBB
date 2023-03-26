@@ -2,35 +2,36 @@
 
 <table class="main" width="100%" cellspacing="1">
 <tr>
-	<th colspan="3">{L_TITLE}</th>
+	<th colspan="4">{L_TITLE}</th>
 </tr>
 <tr class="bigger">
-	<td class="bg1" colspan="3" align="center">{L_UCP_WELCOME}</td>
+	<td class="bg1" colspan="4" align="center">{L_UCP_WELCOME}</td>
 </tr>
 <!-- IF .topicrow -->
 	<tr>
-		<th colspan="3">{L_IMPORTANT_NEWS}</th>
+		<th colspan="4">{L_IMPORTANT_NEWS}</th>
 	</tr>
 	<!-- BEGIN topicrow -->
 		<tr><!-- IF topicrow.S_ROW_COUNT is even --><!-- DEFINE $BG = 'bg1' --><!-- ELSE --><!-- DEFINE $BG = 'bg2' --><!-- ENDIF -->
-			<td align="center" class="{$BG}" width="25"><!-- IF topicrow.S_UNREAD --><a href="{topicrow.U_NEWEST_POST}"><!-- ENDIF --><img src="{T_THEME_PATH}/images/{topicrow.TOPIC_IMG_STYLE}.gif" width="19" height="18" alt="<!-- IF topicrow.S_UNREAD -->+" border="0<!-- ENDIF -->" title="<!-- IF topicrow.S_UNREAD -->{L_UNREAD_POSTS}<!-- ELSE -->{L_NO_UNREAD_POSTS}<!-- ENDIF -->" /><!-- IF topicrow.S_UNREAD --></a><!-- ENDIF --></td>
-			<td class="{$BG}" width="86%">
+			<td align="center" class="{$BG}" width="1%"><!-- IF topicrow.S_UNREAD --><a href="{topicrow.U_NEWEST_POST}"><!-- ENDIF --><img src="{T_THEME_PATH}/images/{topicrow.TOPIC_IMG_STYLE}.gif" width="19" height="18" alt="<!-- IF topicrow.S_UNREAD -->+" border="0<!-- ENDIF -->" title="<!-- IF topicrow.S_UNREAD -->{L_UNREAD_POSTS}<!-- ELSE -->{L_NO_UNREAD_POSTS}<!-- ENDIF -->" /><!-- IF topicrow.S_UNREAD --></a><!-- ENDIF --></td>
+			<td align="center" class="{$BG}" width="1%"><img src="<!-- IF topicrow.TOPIC_ICON_IMG and topicrow.S_TOPIC_ICONS -->{T_ICONS_PATH}{topicrow.TOPIC_ICON_IMG}<!-- ELSE -->{T_THEME_PATH}/images/spacer.gif<!-- ENDIF -->" width="16" height="16" alt="" /></td>
+			<td class="{$BG}" width="84%">
 				<!-- IF topicrow.S_UNREAD --><a href="{topicrow.U_NEWEST_POST}"><img src="{T_THEME_PATH}/images/icon_topic_newest.gif" width="18" height="9" alt="&gt;&gt;&gt;" border="0" title="{L_UNREAD_POSTS}" /></a><!-- ENDIF -->
 				<!-- IF topicrow.ATTACH_ICON_IMG --><img src="{T_THEME_PATH}/images/icon_topic_attach.gif" width="14" height="18" alt="(*)" title="{L_TOTAL_ATTACHMENTS}" /><!-- ENDIF -->
 				<a title="{L_POSTED}{L_COLON} {topicrow.FIRST_POST_TIME}" href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a>
 			</td>
 			<td align="center" class="{$BG}" width="14%">
-				<p>{topicrow.LAST_POST_TIME}<br />{topicrow.LAST_POST_AUTHOR_FULL} <a href="{topicrow.U_LAST_POST}"><img src="{T_THEME_PATH}/images/icon_topic_latest.gif" width="18" height="9" alt="&gt;" border="0" title="{L_GOTO_LAST_POST}" /></a></p>
+				<p>{topicrow.LAST_POST_TIME}<br />{topicrow.LAST_POST_AUTHOR_FULL} <a href="{topicrow.U_LAST_POST}"><img src="{T_THEME_PATH}/images/icon_topic_latest.gif" width="18" height="9" alt="&gt;" border="0" title="{L_GOTO_LAST_POST}" /></a></p><img src="{T_THEME_PATH}/images/spacer.gif" width="100" height="1" alt="" align="{S_CONTENT_FLOW_BEGIN}" />
 			</td>
 		</tr>
 	<!-- END topicrow -->
 <!-- ENDIF -->
 <tr>
-	<th colspan="3">{L_YOUR_DETAILS}</th>
+	<th colspan="4">{L_YOUR_DETAILS}</th>
 </tr>
-<tr>
 <!-- EVENT ucp_main_front_user_activity_before -->
-	<td class="bg1" colspan="3">
+<tr>
+	<td class="bg1" colspan="4">
 		<!-- EVENT ucp_main_front_user_activity_prepend -->
 		<table width="100%" cellspacing="1">
 		<tr class="bigger" valign="top">
@@ -66,8 +67,8 @@
 		</table>
 		<!-- EVENT ucp_main_front_user_activity_append -->
 	</td>
-<!-- EVENT ucp_main_front_user_activity_after -->
 </tr>
+<!-- EVENT ucp_main_front_user_activity_after -->
 </table>
 
 <!-- INCLUDE ucp_footer.html -->

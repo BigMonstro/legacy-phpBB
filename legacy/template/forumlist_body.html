@@ -5,18 +5,19 @@
 		<tr>
 			<!-- EVENT forumlist_body_category_header_row_prepend -->
 			<th align="{S_CONTENT_FLOW_BEGIN}" class="category" colspan="2"><!-- IF forumrow.S_IS_CAT --><a href="{forumrow.U_VIEWFORUM}">{forumrow.FORUM_NAME}</a><!-- ELSE -->{L_FORUM}<!-- ENDIF --></th>
-			<th width="50">{L_TOPICS}</th>
-			<th width="50">{L_POSTS}</th>
+			<th nowrap="nowrap" width="3%">{L_TOPICS}</th>
+			<th nowrap="nowrap" width="3%">{L_POSTS}</th>
 			<th nowrap="nowrap" width="10%">{L_LAST_POST}</th>
 			<!-- EVENT forumlist_body_category_header_row_append -->
 		</tr>
-		<!-- EVENT forumlist_body_category_header_after -->
 	<!-- ENDIF -->
+	<!-- EVENT forumlist_body_category_header_after -->
+
 	<!-- IF not forumrow.S_IS_CAT -->
 		<!-- EVENT forumlist_body_forum_row_before -->
 		<tr>
 			<!-- EVENT forumlist_body_forum_row_prepend -->
-			<td class="bg1" width="46"><!-- IF forumrow.S_UNREAD_FORUM --><a href="{forumrow.U_VIEWFORUM}"><!-- ENDIF --><img src="{T_THEME_PATH}/images/{forumrow.FORUM_IMG_STYLE}.gif" width="46" height="25" alt="<!-- IF forumrow.S_UNREAD_FORUM -->+" border="0<!-- ENDIF -->" title="<!-- IF forumrow.S_UNREAD_FORUM -->{L_UNREAD_POSTS}<!-- ELSE -->{forumrow.FORUM_FOLDER_IMG_ALT}<!-- ENDIF -->" /><!-- IF forumrow.S_UNREAD_FORUM --></a><!-- ENDIF --></td>
+			<td class="bg1" width="2%" align="center"><!-- IF forumrow.S_UNREAD_FORUM --><a href="{forumrow.U_VIEWFORUM}"><!-- ENDIF --><img src="{T_THEME_PATH}/images/{forumrow.FORUM_IMG_STYLE}.gif" width="46" height="25" alt="<!-- IF forumrow.S_UNREAD_FORUM -->+" border="0<!-- ENDIF -->" title="<!-- IF forumrow.S_UNREAD_FORUM -->{L_UNREAD_POSTS}<!-- ELSE -->{forumrow.FORUM_FOLDER_IMG_ALT}<!-- ENDIF -->" /><!-- IF forumrow.S_UNREAD_FORUM --></a><!-- ENDIF --></td>
 			<td class="bg1">
 				<!-- IF forumrow.FORUM_IMAGE -->
 					<table cellspacing="1"><tr><td><!-- EVENT forumlist_body_forum_image_before --> <!-- EVENT forumlist_body_forum_image_prepend -->{forumrow.FORUM_IMAGE}<!-- EVENT forumlist_body_forum_image_append --> <!-- EVENT forumlist_body_forum_image_after --></td><td>
@@ -71,10 +72,10 @@
 		</tr>
 		<!-- EVENT forumlist_body_forum_row_after -->
 	<!-- ENDIF -->
-	<!-- IF forumrow.S_LAST_ROW --><!-- EVENT forumlist_body_last_row_after --><!-- ENDIF -->
+	<!-- IF forumrow.S_LAST_ROW --></table> <!-- EVENT forumlist_body_last_row_after --><!-- ENDIF -->
 <!-- BEGINELSE -->
 	<tr class="big">
 		<td class="bg1" align="center">{L_NO_FORUMS}</td>
 	</tr>
-<!-- END forumrow -->
 </table>
+<!-- END forumrow -->

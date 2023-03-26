@@ -34,7 +34,7 @@
 				<!-- ELSEIF draftrow.S_LINK_FORUM --><div class="bigger">{L_FORUM}{L_COLON} <a href="{draftrow.U_VIEW}">{draftrow.TITLE}</a></div>
 				<!-- ELSE --><div class="bigger">{L_NO_TOPIC_FORUM}</div><!-- ENDIF --><!-- ENDIF -->
 			</td>
-			<td align="center" class="{$BG}"><p>{draftrow.DATE}<br /><!-- IF draftrow.U_INSERT --><a href="{draftrow.U_INSERT}">{L_LOAD_DRAFT}</a> | <!-- ENDIF --><a href="{draftrow.U_VIEW_EDIT}">{L_VIEW_EDIT}</a></p></td>
+			<td align="center" class="{$BG}"><p>{draftrow.DATE}<br /><!-- IF draftrow.U_INSERT --><a href="{draftrow.U_INSERT}">{L_LOAD_DRAFT}</a> | <!-- ENDIF --><a href="{draftrow.U_VIEW_EDIT}">{L_VIEW_EDIT}</a></p><img src="{T_THEME_PATH}/images/spacer.gif" width="150" height="1" alt="" align="{S_CONTENT_FLOW_BEGIN}" /></td>
 			<td align="center" class="{$BG}"><input type="checkbox" name="d[{draftrow.DRAFT_ID}]" /></td>
 		</tr>
 	<!-- BEGINELSE -->

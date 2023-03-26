@@ -29,7 +29,7 @@
 	<tr>
 		<td class="bg1" align="center"><span class="big">{L_NO_READ_ACCESS}</span>
 		<!-- IF not S_USER_LOGGED_IN and not S_IS_BOT -->
-			<br /><div style="margin-top: 8px"><span class="bigger">{L_USERNAME}{L_COLON}</span> <input type="text" class="inputbox" name="username" size="10" /> &nbsp;<span class="bigger">{L_PASSWORD}{L_COLON}</span> <input type="password" class="inputbox" name="password" size="10" autocomplete="off" /> <!-- IF S_AUTOLOGIN_ENABLED -->&nbsp;<span class="nowrap"><span class="bigger">{L_LOG_ME_IN}</span> <input type="checkbox" name="autologin" /></span> <!-- ENDIF -->&nbsp;<input type="submit" class="button1" name="login" value="{L_LOGIN}" /></div>
+			<br /><div style="margin-top: 8px"><span class="bigger">{L_USERNAME}{L_COLON}</span> <input type="text" class="inputbox" name="username" size="10" tabindex="1" /> &nbsp;<span class="bigger">{L_PASSWORD}{L_COLON}</span> <input type="password" class="inputbox" name="password" size="10" tabindex="2" autocomplete="off" /> <!-- IF S_AUTOLOGIN_ENABLED -->&nbsp;<span class="nowrap"><span class="bigger">{L_LOG_ME_IN}</span> <input type="checkbox" name="autologin" tabindex="3" /></span> <!-- ENDIF -->&nbsp;<input type="submit" class="button1" name="login" tabindex="4" value="{L_LOGIN}" /></div>
 		<!-- ENDIF -->
 		</td>
 	</tr>
@@ -108,8 +108,8 @@
 		<tr>
 			<th align="{S_CONTENT_FLOW_BEGIN}" class="category" colspan="<!-- IF S_TOPIC_ICONS -->3<!-- ELSE -->2<!-- ENDIF -->"><!-- IF S_DISPLAY_ACTIVE -->{L_ACTIVE_TOPICS}<!-- ELSEIF topicrow.S_TOPIC_TYPE_SWITCH and (topicrow.S_POST_ANNOUNCE or topicrow.S_POST_GLOBAL) -->{L_ANNOUNCEMENTS}<!-- ELSE -->{L_TOPICS}<!-- ENDIF --></th>
 			<th width="10%">{L_AUTHOR}</th>
-			<th width="50">{L_REPLIES}</th>
-			<th width="50">{L_VIEWS}</th>
+			<th nowrap="nowrap" width="3%">{L_REPLIES}</th>
+			<th nowrap="nowrap" width="3%">{L_VIEWS}</th>
 			<th nowrap="nowrap" width="10%">{L_LAST_POST}</th>
 		</tr>
 	<!-- ENDIF -->
@@ -117,9 +117,9 @@
 	<!-- EVENT viewforum_body_topicrow_row_before -->
 	<tr>
 		<!-- EVENT viewforum_body_topic_row_prepend -->
-		<td class="bg1" width="25" align="center"><!-- IF topicrow.S_UNREAD_TOPIC and not S_IS_BOT --><a href="{topicrow.U_NEWEST_POST}"><!-- ENDIF --><img src="{T_THEME_PATH}/images/{topicrow.TOPIC_IMG_STYLE}.gif" width="19" height="18" alt="<!-- IF topicrow.S_UNREAD_TOPIC -->+" border="0<!-- ENDIF -->" title="{topicrow.TOPIC_FOLDER_IMG_ALT}" /><!-- IF topicrow.S_UNREAD_TOPIC and not S_IS_BOT --></a><!-- ENDIF --></td>
+		<td class="bg1" width="1%" align="center"><!-- IF topicrow.S_UNREAD_TOPIC and not S_IS_BOT --><a href="{topicrow.U_NEWEST_POST}"><!-- ENDIF --><img src="{T_THEME_PATH}/images/{topicrow.TOPIC_IMG_STYLE}.gif" width="19" height="18" alt="<!-- IF topicrow.S_UNREAD_TOPIC -->+" border="0<!-- ENDIF -->" title="{topicrow.TOPIC_FOLDER_IMG_ALT}" /><!-- IF topicrow.S_UNREAD_TOPIC and not S_IS_BOT --></a><!-- ENDIF --></td>
 		<!-- IF S_TOPIC_ICONS -->
-			<td class="bg1" width="24" align="center"><!-- IF topicrow.TOPIC_ICON_IMG --><img src="{T_ICONS_PATH}{topicrow.TOPIC_ICON_IMG}" width="16" height="16" alt="" /><!-- ENDIF --></td>
+			<td class="bg1" width="1%" align="center"><img src="<!-- IF topicrow.TOPIC_ICON_IMG -->{T_ICONS_PATH}{topicrow.TOPIC_ICON_IMG}<!-- ELSE -->{T_THEME_PATH}/images/spacer.gif<!-- ENDIF -->" width="16" height="16" alt="" /></td>
 		<!-- ENDIF -->
 		<td class="bg1">
 			<!-- EVENT topiclist_row_prepend -->
@@ -135,7 +135,7 @@
 			<!-- IF topicrow.S_TOPIC_REPORTED -->
 				<a href="{topicrow.U_MCP_REPORT}"><img src="{T_THEME_PATH}/images/icon_topic_reported.gif" width="19" height="18" alt="(!)" border="0" title="{L_TOPIC_REPORTED}" /></a>
 			<!-- ENDIF -->
-			<!-- EVENT topiclist_row_topic_title_after -->
+			<br /><!-- EVENT topiclist_row_topic_title_after -->
 			<!-- IF .topicrow.pagination -->
 				<div class="bigger"> [ <img src="{T_THEME_PATH}/images/icon_post_target.gif" width="12" height="9" alt="" />{L_GOTO_PAGE}{L_COLON}
 				<!-- BEGIN pagination -->
@@ -159,6 +159,7 @@
 		</td>
 		<!-- EVENT viewforum_body_topic_row_append -->
 	</tr>
+	<!-- EVENT viewforum_body_topic_row_after -->
 	<!-- IF topicrow.S_LAST_ROW -->
 		</table>
 		<!-- IF S_SELECT_SORT_DAYS and not S_IS_BOT and not S_DISPLAY_ACTIVE -->
@@ -184,9 +185,7 @@
 	<!-- ENDIF -->
 <!-- END topicrow -->
 
-<!-- EVENT viewforum_body_topic_row_after -->
-
-<!-- IF (S_DISPLAY_POST_INFO and not S_IS_BOT) or .pagination or TOTAL_TOPICS -->
+<!-- IF .topicrow and not S_DISPLAY_ACTIVE -->
 	<div class="action-bar">
 		<table width="100%" cellspacing="1">
 		<tr valign="top">

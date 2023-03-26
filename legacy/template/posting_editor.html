@@ -13,8 +13,9 @@
 	</tr>
 <!-- ENDIF -->
 
+<!-- EVENT posting_editor_subject_before -->
+
 <!-- IF S_POST_ACTION or S_PRIVMSGS or S_EDIT_DRAFT -->
-	<!-- EVENT posting_editor_subject_before -->
 	<tr>
 		<td class="bg1"><b class="bigger">{L_SUBJECT}{L_COLON}</b></td>
 		<td class="bg1">
@@ -23,13 +24,14 @@
 			<!-- EVENT posting_editor_subject_append -->
 		</td>
 	</tr>
-	<!-- EVENT posting_editor_subject_after -->
 	<!-- IF CAPTCHA_TEMPLATE and S_CONFIRM_CODE -->
 		<!-- DEFINE $CAPTCHA_EDITOR = 1 -->
 		<!-- DEFINE $CAPTCHA_TAB_INDEX = 3 -->
 		<!-- INCLUDE {CAPTCHA_TEMPLATE} -->
 	<!-- ENDIF -->
 <!-- ENDIF -->
+
+<!-- EVENT posting_editor_subject_after -->
 
 <tr valign="top">
 	<td class="bg1" width="22%">
@@ -38,7 +40,7 @@
 	<!-- ELSEIF S_EDIT_DRAFT -->
 		<span class="bigger"><b>{L_MESSAGE}{L_COLON}</b><br />{L_EDIT_DRAFT_EXPLAIN}
 		<br /><br /><b><a href="{S_UCP_ACTION}">{L_BACK_TO_DRAFTS}</a></b></span><br />
-	<!-- ELSE -->
+	<!-- ELSEIF not S_SMILIES_ALLOWED or not .smiley -->
 		<b class="bigger">{L_MESSAGE_BODY}{L_COLON}</b><br />
 	<!-- ENDIF -->
 	<!-- EVENT posting_editor_smilies_before -->

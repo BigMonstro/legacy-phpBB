@@ -88,6 +88,7 @@
 <!-- ENDIF -->
 
 <!-- EVENT viewtopic_body_poll_before -->
+
 <!-- IF S_HAS_POLL -->
 	<table class="main" width="100%" cellspacing="1">
 	<tr>
@@ -142,9 +143,11 @@
 	</tr>
 	</table>
 <!-- ENDIF -->
+
 <!-- EVENT viewtopic_body_poll_after -->
 
 <!-- BEGIN postrow -->
+	<!-- EVENT viewtopic_body_postrow_post_before -->
 	<table class="main" width="100%" cellspacing="1">
 	<!-- IF postrow.S_FIRST_ROW -->
 		<tr>
@@ -152,7 +155,6 @@
 			<th width="100%">{L_MESSAGE}</th>
 		</tr>
 	<!-- ENDIF -->
-	<!-- EVENT viewtopic_body_postrow_post_before -->
 	<!-- IF postrow.S_ROW_COUNT is even --><!-- DEFINE $BG = 'bg1' --><!-- ELSE --><!-- DEFINE $BG = 'bg2' --><!-- ENDIF -->
 	<tr class="{$BG}">
 	<!-- IF postrow.S_POST_HIDDEN -->
@@ -176,11 +178,11 @@
 			<b>{postrow.POST_AUTHOR_FULL}</b>
 			<!-- EVENT viewtopic_body_post_author_after -->
 		</td>
-		<td height="20" width="100%">
+		<td height="20" width="100%"><!-- EVENT viewtopic_body_post_subject_before -->
 			<table cellspacing="0" width="100%">
 			<tr>
 				<td>
-					<table cellspacing="0"><tr><!-- EVENT viewtopic_body_post_subject_before -->
+					<table cellspacing="0"><tr>
 						<!-- IF postrow.POST_ICON_IMG --><td><img src="{T_ICONS_PATH}{postrow.POST_ICON_IMG}" width="{postrow.POST_ICON_IMG_WIDTH}" height="{postrow.POST_ICON_IMG_HEIGHT}" alt="" title="{postrow.POST_ICON_IMG_ALT}" /></td><!-- ENDIF --><td class="bigger"><b>{L_POST_SUBJECT}{L_COLON}</b> <a href="{postrow.U_MINI_POST}">{postrow.POST_SUBJECT}</a></td>
 					</tr></table>
 				</td>
@@ -327,22 +329,27 @@
 				<!-- ENDIF -->
 				<!-- EVENT viewtopic_body_postrow_post_notices_after -->
 				<!-- EVENT viewtopic_body_postrow_signature_before -->
-					<!-- IF postrow.SIGNATURE --><div class="postbody"><div class="signature"><p>_________________</p>{postrow.SIGNATURE}</div></div><!-- ENDIF -->
+					<!-- IF postrow.SIGNATURE --><div class="postbody"><p>_________________</p><div class="signature">{postrow.SIGNATURE}</div></div><!-- ENDIF -->
 				<!-- EVENT viewtopic_body_postrow_signature_after -->
 
 				<!-- EVENT viewtopic_body_postrow_post_content_footer -->
 
 				<br clear="all" /><br />
 
+				<!-- DEFINE $SHOW_POST_BUTTONS = (postrow.U_EDIT or postrow.U_DELETE or postrow.U_REPORT or postrow.U_WARN or postrow.U_INFO or postrow.U_QUOTE) -->
 				<!-- EVENT viewtopic_body_post_buttons_list_before -->
-				<!-- IF (postrow.U_REPORT or postrow.U_INFO or postrow.U_WARN or postrow.U_DELETE) and not S_IS_BOT -->
+				<!-- IF $SHOW_POST_BUTTONS and not S_IS_BOT -->
 					<table width="100%" cellspacing="0">
-					<tr><td align="{S_CONTENT_FLOW_END}">
-						<!-- IF postrow.U_REPORT --><a href="{postrow.U_REPORT}"><img src="{T_THEME_PATH}/images/icon_post_report.gif" width="20" height="20" alt="[!]" border="0" title="{L_REPORT_POST}" /></a> <!-- ENDIF -->
-						<!-- IF postrow.U_INFO --><a href="{postrow.U_INFO}"><img src="{T_THEME_PATH}/images/icon_post_info.gif" width="20" height="20" alt="[?]" border="0" title="{L_INFORMATION}" /></a> <!-- ENDIF -->
-						<!-- IF postrow.U_WARN --><a href="{postrow.U_WARN}"><img src="{T_THEME_PATH}/images/icon_user_warn.gif" width="20" height="20" alt="[O]" border="0" title="{L_WARN_USER}" /></a> <!-- ENDIF -->
-						<!-- IF postrow.U_DELETE --><a href="{postrow.U_DELETE}"><img src="{T_THEME_PATH}/images/icon_post_delete.gif" width="20" height="20" alt="[X]" border="0" title="{L_DELETE_POST}" /></a> <!-- ENDIF -->
-					</td></tr>
+					<tr>
+						<td align="{S_CONTENT_FLOW_END}">
+							<!-- EVENT viewtopic_body_post_buttons_before -->
+							<!-- IF postrow.U_REPORT --><a href="{postrow.U_REPORT}"><img src="{T_THEME_PATH}/images/icon_post_report.gif" width="20" height="20" alt="[!]" border="0" title="{L_REPORT_POST}" /></a> <!-- ENDIF -->
+							<!-- IF postrow.U_INFO --><a href="{postrow.U_INFO}"><img src="{T_THEME_PATH}/images/icon_post_info.gif" width="20" height="20" alt="[?]" border="0" title="{L_INFORMATION}" /></a> <!-- ENDIF -->
+							<!-- IF postrow.U_WARN --><a href="{postrow.U_WARN}"><img src="{T_THEME_PATH}/images/icon_user_warn.gif" width="20" height="20" alt="[O]" border="0" title="{L_WARN_USER}" /></a> <!-- ENDIF -->
+							<!-- IF postrow.U_DELETE --><a href="{postrow.U_DELETE}"><img src="{T_THEME_PATH}/images/icon_post_delete.gif" width="20" height="20" alt="[X]" border="0" title="{L_DELETE_POST}" /></a> <!-- ENDIF -->
+							<!-- EVENT viewtopic_body_post_buttons_after -->
+						</td>
+					</tr>
 					</table>
 				<!-- ENDIF -->
 				<!-- EVENT viewtopic_body_post_buttons_list_after -->
@@ -360,17 +367,14 @@
 				<!-- IF postrow.U_POST_AUTHOR --><td><a class="button" href="{postrow.U_POST_AUTHOR}" title="{L_READ_PROFILE}{L_COLON} {postrow.POST_AUTHOR}">{L_READ_PROFILE}</a></td><!-- ENDIF -->
 				<td align="{S_CONTENT_FLOW_END}">
 					<!-- IF not S_IS_BOT -->
-						<!-- EVENT viewtopic_body_post_buttons_before -->
 						<!-- IF postrow.U_EDIT --><a class="button" href="{postrow.U_EDIT}" title="{L_EDIT_POST}">{L_BUTTON_EDIT}</a> <!-- ENDIF -->
 						<!-- IF postrow.U_QUOTE --><a class="button" href="{postrow.U_QUOTE}" title="{L_REPLY_WITH_QUOTE}">{L_BUTTON_QUOTE}</a><!-- ENDIF -->
-						<!-- EVENT viewtopic_body_post_buttons_after -->
 					<!-- ENDIF -->
 				</td>
 			</tr></table>
 			</td>
 	<!-- ENDIF -->
 		</tr>
-		<!-- EVENT viewtopic_body_postrow_post_after -->
 	</table>
 	<!-- IF not postrow.S_LAST_ROW -->
 		<div class="spacer"></div>
@@ -381,6 +385,7 @@
 		</tr>
 		</table>
 	<!-- ENDIF -->	
+	<!-- EVENT viewtopic_body_postrow_post_after -->
 <!-- END postrow -->
 
 <!-- EVENT viewtopic_body_topic_actions_before -->

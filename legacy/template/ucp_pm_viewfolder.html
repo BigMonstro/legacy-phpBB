@@ -56,13 +56,13 @@
 		</tr>
 
 		<!-- BEGIN messagerow -->
-			<!-- IF messagerow.PM_CLASS eq 'pm_message_reported_colour' --><!-- DEFINE $CLASS = 'pm-reported-colour' --><!-- ELSEIF messagerow.PM_CLASS eq 'pm_marked_colour' --><!-- DEFINE $CLASS = 'pm-marked-colour' --><!-- ELSEIF messagerow.PM_CLASS eq 'pm_replied_colour' --><!-- DEFINE $CLASS = 'pm-replied-colour' --><!-- ELSEIF messagerow.PM_CLASS eq 'pm_friend_colour' --><!-- DEFINE $CLASS = 'pm-friend-colour' --><!-- ELSEIF messagerow.PM_CLASS eq 'pm_foe_colour' --><!-- DEFINE $CLASS = 'pm-foe-colour' --><!-- ELSE --><!-- DEFINE $CLASS = '{messagerow.PM_CLASS}' --><!-- ENDIF -->
+			{% set SCLASS = messagerow.PM_CLASS|replace({'_': '-'}) %}
 			<tr class="pm-row">
-				<td align="center" width="25"<!-- IF messagerow.PM_CLASS --> class="{$CLASS}" style="border-{S_CONTENT_FLOW_BEGIN}-style: solid; padding-{S_CONTENT_FLOW_BEGIN}: 0"<!-- ENDIF -->>
-					<!-- IF messagerow.S_PM_UNREAD and not messagerow.S_PM_DELETED --><a href="{messagerow.U_VIEW_PM}"><!-- ENDIF --><img src="{T_THEME_PATH}/images/topic_<!-- IF messagerow.S_PM_UNREAD -->un<!-- ENDIF -->read.gif" width="19" height="18" alt="<!-- IF messagerow.S_PM_UNREAD -->+" border="0" title="{L_UNREAD_POST}<!-- ENDIF -->" /><!-- IF messagerow.S_PM_UNREAD and not messagerow.S_PM_DELETED --></a><!-- ENDIF -->
+				<td align="center" width="1%"<!-- IF messagerow.PM_CLASS --> class="{SCLASS}" style="border-{S_CONTENT_FLOW_BEGIN}-style: solid; padding-{S_CONTENT_FLOW_BEGIN}: 0"<!-- ENDIF -->>
+					<!-- IF messagerow.S_PM_UNREAD and not messagerow.S_PM_DELETED --><a href="{messagerow.U_VIEW_PM}"><!-- ENDIF --><img src="{T_THEME_PATH}/images/{messagerow.FOLDER_IMG_STYLE}.gif" width="25" height="18" alt="<!-- IF messagerow.S_PM_UNREAD -->+" border="0" title="{L_UNREAD_POST}<!-- ENDIF -->" /><!-- IF messagerow.S_PM_UNREAD and not messagerow.S_PM_DELETED --></a><!-- ENDIF -->
 				</td>
 				<!-- IF S_PM_ICONS -->
-					<td align="center" width="24"><!-- IF messagerow.PM_ICON_URL --><img src="{messagerow.PM_ICON_URL}" width="16" height="16" alt="" /><!-- ENDIF --></td>
+					<td align="center" width="1%"><img src="<!-- IF messagerow.PM_ICON_URL -->{messagerow.PM_ICON_URL}<!-- ELSE -->{T_THEME_PATH}/images/spacer.gif<!-- ENDIF -->" width="16" height="16" alt="" /></td>
 				<!-- ENDIF -->
 				<td>
 					<!-- IF messagerow.ATTACH_ICON_IMG --><img src="{T_THEME_PATH}/images/icon_topic_attach.gif" width="14" height="18" alt="(*)" title="{L_TOTAL_ATTACHMENTS}" /><!-- ENDIF -->
@@ -81,7 +81,7 @@
 				</td>
 				<td align="center"><p><!-- IF S_SHOW_RECIPIENTS -->{messagerow.RECIPIENTS}<!-- ELSE -->{messagerow.MESSAGE_AUTHOR_FULL}<!-- ENDIF --></p></td>
 				<td align="center"><p>{messagerow.SENT_TIME}</p></td>
-				<td align="center"<!-- IF messagerow.PM_CLASS --> class="{$CLASS}" style="border-{S_CONTENT_FLOW_END}-style: solid; padding-{S_CONTENT_FLOW_END}: 0"<!-- ENDIF -->>
+				<td align="center"<!-- IF messagerow.PM_CLASS --> class="{SCLASS}" style="border-{S_CONTENT_FLOW_END}-style: solid; padding-{S_CONTENT_FLOW_END}: 0"<!-- ENDIF -->>
 					<input type="checkbox" name="marked_msg_id[]" value="{messagerow.MESSAGE_ID}" />
 				</td>
 			</tr>

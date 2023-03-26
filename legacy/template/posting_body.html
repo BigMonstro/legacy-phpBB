@@ -62,6 +62,7 @@
 <!-- EVENT posting_editor_topic_icons_after -->
 
 <!-- IF S_PRIVMSGS -->
+	<!-- EVENT posting_pm_layout_include_pm_header_before -->
 	<!-- IF not S_EDIT_POST or S_GROUP_OPTIONS -->
 		<tr>
 			<td class="bg1"><b class="bigger">{L_PM_TO}{L_COLON}</b></td>
@@ -122,6 +123,7 @@
 			</td>
 		</tr>
 	<!-- ENDIF -->
+	<!-- EVENT posting_pm_layout_include_pm_header_after -->
 <!-- ENDIF -->
 
 <!-- DEFINE $EXTRA_POSTING_OPTIONS = 1 -->
@@ -134,8 +136,8 @@
 </tr>
 
 <!-- IF S_SHOW_ATTACH_BOX and FILTERS --><!-- INCLUDE posting_attach_body.html --><!-- ENDIF -->
-<!-- IF (S_SHOW_POLL_BOX or S_POLL_DELETE) and not S_PRIVMSGS --><!-- INCLUDE posting_poll_body.html --><!-- ENDIF -->
-<!-- EVENT posting_layout_include_panel_body -->
+
+<!-- IF not S_PRIVMSGS --><!-- IF S_SHOW_POLL_BOX or S_POLL_DELETE --><!-- INCLUDE posting_poll_body.html --><!-- ENDIF --><!-- EVENT posting_layout_include_panel_body --><!-- ENDIF -->
 
 <!-- IF (S_SHOW_ATTACH_BOX and FILTERS) or (S_SHOW_POLL_BOX and not S_PRIVMSGS) -->
 	<tr>

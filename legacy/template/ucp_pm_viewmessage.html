@@ -70,19 +70,26 @@
 					{EDITED_MESSAGE}
 				<!-- ENDIF -->
 				<!-- IF SIGNATURE -->
-					<div class="postbody"><div class="signature"><p>_________________</p>{SIGNATURE}</div></div>
+					<div class="postbody"><p>_________________</p><div class="signature">{SIGNATURE}</div></div>
 				<!-- ENDIF -->
 
 				<br clear="all" /><br />
 
-				<table width="100%" cellspacing="0">
-				<tr>
-					<td align="{S_CONTENT_FLOW_END}">
-						<!-- IF U_DELETE --><a href="{U_DELETE}"><img src="{T_THEME_PATH}/images/icon_post_delete.gif" width="20" height="20" alt="[X]" border="0" title="{L_DELETE_MESSAGE}" /></a> <!-- ENDIF -->
-						<!-- IF U_REPORT --><a href="{U_REPORT}"><img src="{T_THEME_PATH}/images/icon_post_report.gif" width="20" height="20" alt="[!]" border="0" title="{L_REPORT_PM}" /></a> <!-- ENDIF -->
-					</td>
-				</tr>
-				</table>
+				<!-- DEFINE $SHOW_PM_POST_BUTTONS = (U_EDIT or U_DELETE or U_REPORT or U_QUOTE) -->
+				<!-- EVENT ucp_pm_viewmessage_post_buttons_list_before -->
+				<!-- IF $SHOW_PM_POST_BUTTONS -->
+					<table width="100%" cellspacing="0">
+					<tr>
+						<td align="{S_CONTENT_FLOW_END}">
+							<!-- EVENT ucp_pm_viewmessage_post_buttons_before -->
+							<!-- IF U_DELETE --><a href="{U_DELETE}"><img src="{T_THEME_PATH}/images/icon_post_delete.gif" width="20" height="20" alt="[X]" border="0" title="{L_DELETE_MESSAGE}" /></a> <!-- ENDIF -->
+							<!-- IF U_REPORT --><a href="{U_REPORT}"><img src="{T_THEME_PATH}/images/icon_post_report.gif" width="20" height="20" alt="[!]" border="0" title="{L_REPORT_PM}" /></a> <!-- ENDIF -->
+							<!-- EVENT ucp_pm_viewmessage_post_buttons_after -->
+						</td>
+					</tr>
+					</table>
+				<!-- ENDIF -->
+				<!-- EVENT ucp_pm_viewmessage_post_buttons_list_after -->
 			</td>
 		</tr>
 		</table>
@@ -94,11 +101,9 @@
 		<table width="100%" cellspacing="0"><tr>
 			<!-- IF U_MESSAGE_AUTHOR --><td><a class="button" href="{U_MESSAGE_AUTHOR}" title="{L_READ_PROFILE}{L_COLON} {MESSAGE_AUTHOR}">{L_READ_PROFILE}</a></td><!-- ENDIF -->
 			<td align="{S_CONTENT_FLOW_END}">
-				<!-- EVENT ucp_pm_viewmessage_post_buttons_before -->
 				<!-- IF U_EDIT --><a class="button" href="{U_EDIT}" title="{L_POST_EDIT_PM}">{L_BUTTON_EDIT}</a> <!-- ENDIF -->
 				<!-- IF U_QUOTE --><a class="button" href="{U_QUOTE}" title="{L_POST_QUOTE_PM}">{L_BUTTON_QUOTE}</a> <!-- ENDIF -->
 				<!-- IF U_POST_REPLY_PM --><a class="button" href="{U_POST_REPLY_PM}" title="{L_POST_REPLY_PM}">{L_BUTTON_PM_REPLY}</a><!-- ENDIF -->
-				<!-- EVENT ucp_pm_viewmessage_post_buttons_after -->
 			</td>
 		</tr></table>
 	</td>

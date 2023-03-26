@@ -45,11 +45,7 @@
 
 <!-- EVENT overall_header_body_before -->
 
-<a name="top" class="anchor"></a>
-
-<!-- EVENT overall_header_headerbar_before -->
-
-<table cellspacing="0" width="100%"><tr>
+<div id="headerbar"><a name="top" class="anchor"></a><!-- EVENT overall_header_headerbar_before --><table cellspacing="0" width="100%"><tr>
 	<td class="site-logo" height="100" width="200"><a href="<!-- IF U_SITE_HOME -->{U_SITE_HOME}<!-- ELSE -->{U_INDEX}<!-- ENDIF -->"><img src="{T_THEME_PATH}/images/site_logo.gif" alt="" border="0" /></a></td>
 	<td align="center" class="site-description"><h1>{SITENAME}</h1><div class="big">{SITE_DESCRIPTION}</div></td>
 	<td align="{S_CONTENT_FLOW_END}" class="search-header" width="200">
@@ -66,9 +62,7 @@
 		<!-- ENDIF -->
 		<!-- EVENT overall_header_searchbox_after -->
 	</td>
-</tr></table>
-
-<!-- EVENT overall_header_headerbar_after -->
+</tr></table><!-- EVENT overall_header_headerbar_after --></div>
 
 <!-- EVENT overall_header_navbar_before -->
 
@@ -171,14 +165,14 @@
 <!-- ENDIF -->
 </div>
 
-<script type="text/javascript" src="{T_TEMPLATE_PATH}/forum_fn.js?assets_version={T_ASSETS_VERSION}"></script>
+<script type="text/javascript" src="{ROOT_PATH}styles/legacy/template/forum_fn.js?assets_version={T_ASSETS_VERSION}"></script>
 
 <!-- DEFINE $MICRODATA = 'itemtype="http://schema.org/ListItem" itemprop="itemListElement" itemscope' -->
 <!-- SET navlink_position = 1 -->
 <div style="margin: 3px 0 8px"><table cellspacing="1" width="100%" class="main">
 <tr class="bg1"><td><table cellspacing="0" width="100%"><tr class="breadcrumbs">
 	<td><!-- EVENT overall_header_breadcrumbs_before -->
-		<b><span itemscope itemtype="http://schema.org/BreadcrumbList"><!-- IF U_SITE_HOME --><span {$MICRODATA}><a itemprop="item" href="{U_SITE_HOME}" data-navbar-reference="home"><span itemprop="name">{L_SITE_HOME}</span></a><meta itemprop="position" content="{{ navlink_position }}<!-- SET navlink_position = navlink_position + 1 -->" /></span> <b>&#187;</b> <!-- ENDIF -->
+		<b><span itemscope itemtype="http://schema.org/BreadcrumbList"><!-- IF U_SITE_HOME --><span {$MICRODATA}><a itemprop="item" href="{U_SITE_HOME}" data-navbar-reference="home"><span itemprop="name">{L_SITE_HOME}</span></a><meta itemprop="position" content="{{ navlink_position }}<!-- SET navlink_position = navlink_position + 1 -->" /></span> &#187; <!-- ENDIF -->
 		<!-- EVENT overall_header_breadcrumb_prepend --><span {$MICRODATA}><a itemprop="item" href="{U_INDEX}" data-navbar-reference="index"><span itemprop="name">{L_INDEX}</span></a><meta itemprop="position" content="{{ navlink_position }}<!-- SET navlink_position = navlink_position + 1 -->" /></span>
 		<!-- IF not S_IN_MCP and not S_IN_UCP --><!-- BEGIN navlinks --><!-- SET NAVLINK_NAME = navlinks.BREADCRUMB_NAME | default(navlinks.FORUM_NAME) --><!-- SET NAVLINK_LINK = navlinks.U_BREADCRUMB | default(navlinks.U_VIEW_FORUM) --><!-- EVENT overall_header_navlink_prepend --> &#187; <span {$MICRODATA}<!-- IF navlinks.MICRODATA --> {navlinks.MICRODATA}<!-- ENDIF -->><a itemprop="item" href="{NAVLINK_LINK}"><span itemprop="name">{NAVLINK_NAME}</span></a><meta itemprop="position" content="{{ navlink_position }}<!-- SET navlink_position = navlink_position + 1 -->" /></span> <!-- EVENT overall_header_navlink_append --> <!-- END navlinks --><!-- ENDIF -->
 		<!-- EVENT overall_header_breadcrumb_append --></span></b>

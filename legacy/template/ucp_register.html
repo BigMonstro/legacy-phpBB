@@ -54,26 +54,26 @@
 <!-- EVENT ucp_register_credentials_before -->
 <tr>
 	<td class="bg1" width="50%"><b class="bigger">{L_USERNAME}{L_COLON}</b><br /><span class="bigger">{L_USERNAME_EXPLAIN}</span></td>
-	<td class="bg1"><input type="text" class="inputbox" name="username" size="25" value="{USERNAME}" /></td>
+	<td class="bg1"><input type="text" class="inputbox" name="username" size="25" value="{USERNAME}" tabindex="1" /></td>
 </tr>
 <tr>
 	<td class="bg1"><b class="bigger">{L_PASSWORD}{L_COLON}</b><br /><span class="bigger">{L_PASSWORD_EXPLAIN}</span></td>
-	<td class="bg1"><input type="password" class="inputbox" name="new_password" size="25" value="{PASSWORD}" autocomplete="off" /></td>
+	<td class="bg1"><input type="password" class="inputbox" name="new_password" size="25" value="{PASSWORD}" tabindex="2" autocomplete="off" /></td>
 </tr>
 <tr>
 	<td class="bg1"><b class="bigger">{L_CONFIRM_PASSWORD}{L_COLON}</b></td>
-	<td class="bg1"><input type="password" class="inputbox" name="password_confirm" size="25" value="{PASSWORD_CONFIRM}" autocomplete="off" /></td>
+	<td class="bg1"><input type="password" class="inputbox" name="password_confirm" size="25" value="{PASSWORD_CONFIRM}" tabindex="3" autocomplete="off" /></td>
 </tr>
 <tr>
 	<td class="bg1"><b class="bigger">{L_EMAIL_ADDRESS}{L_COLON}</b></td>
-	<td class="bg1"><input type="text" class="inputbox" name="email" size="25" maxlength="100" value="{EMAIL}" autocomplete="off" /></td>
+	<td class="bg1"><input type="text" class="inputbox" name="email" size="25" maxlength="100" value="{EMAIL}" tabindex="4" autocomplete="off" /></td>
 </tr>
 <!-- EVENT ucp_register_credentials_after -->
 <!-- EVENT ucp_register_options_before -->
 <!-- IF S_LANG_OPTIONS -->
 	<tr>
 		<td class="bg1"><b class="bigger">{L_LANGUAGE}{L_COLON}</b></td>
-		<td class="bg1"><select name="lang" id="lang" onchange="change_language(this.value); return false;">{S_LANG_OPTIONS}</select></td>
+		<td class="bg1"><select name="lang" id="lang" onchange="change_language(this.value); return false;" tabindex="6">{S_LANG_OPTIONS}</select></td>
 	</tr>
 <!-- ENDIF -->
 
@@ -82,7 +82,7 @@
 <!-- EVENT ucp_register_profile_fields_before -->
 <!-- IF .profile_fields -->
 	<tr>
-		<td class="bg1" colspan="2"><span class="bigger">{L_ITEMS_REQUIRED}</span></td>
+		<td class="bg1" colspan="2"><b class="bigger">{L_ITEMS_REQUIRED}</b></td>
 	</tr>
 <!-- BEGIN profile_fields -->
 	<tr>
@@ -99,6 +99,7 @@
 <!-- EVENT ucp_register_profile_fields_after -->
 
 <!-- IF CAPTCHA_TEMPLATE -->
+	<!-- DEFINE $CAPTCHA_TAB_INDEX = 8 -->
 	<!-- INCLUDE {CAPTCHA_TEMPLATE} -->
 <!-- ENDIF -->
 
@@ -111,9 +112,10 @@
 	</tr>
 <!-- ENDIF -->
 </table>
+<!-- EVENT ucp_register_buttons_before -->
 <table cellspacing="0" width="100%">
 <tr>
-	<td class="cat" align="center"><!-- EVENT ucp_register_buttons_before -->{S_HIDDEN_FIELDS}<input class="button1" type="submit" name="submit" id="submit" value="{L_SUBMIT}" /></td>
+	<td class="cat" align="center">{S_HIDDEN_FIELDS}<input class="button1" type="submit" name="submit" id="submit" value="{L_SUBMIT}" tabindex="9" /></td>
 </tr>
 </table>
 {S_FORM_TOKEN}

@@ -40,7 +40,6 @@
 
 <form method="post" action="{S_MODE_ACTION}" name="search_memberlist">
 
-<!-- EVENT memberlist_search_fields_before -->
 <table class="main" width="100%" cellspacing="1">
 <tr>
 	<th colspan="4">{L_FIND_USERNAME}</th>
@@ -48,6 +47,7 @@
 <tr>
 	<td class="bg1" colspan="4"><span class="bigger">{L_FIND_USERNAME_EXPLAIN}</span></td>
 </tr>
+<!-- EVENT memberlist_search_fields_before -->
 <tr>
 	<td class="bg1"><b class="bigger">{L_USERNAME}{L_COLON}</b></td>
 	<td class="bg1"><input type="text" class="inputbox" name="username" value="{USERNAME}" /></td>
@@ -92,12 +92,12 @@
 	<td class="bg1"><select name="sk">{S_SORT_OPTIONS}</select> <select name="sd">{S_ORDER_SELECT}</select></td>
 	<td colspan="2" class="bg1">&nbsp;</td>
 </tr>
+<!-- EVENT memberlist_search_fields_after -->
 </table>
 <table cellspacing="0" width="100%">
 <tr>
 	<td class="cat" align="center"><input class="button1" type="submit" name="submit" value="{L_SEARCH}" /></td>
 </tr>
 </table>
-<!-- EVENT memberlist_search_fields_after -->
 {S_FORM_TOKEN}
 </form>
