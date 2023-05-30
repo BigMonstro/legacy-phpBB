@@ -36,7 +36,7 @@ function initInsertions() {
 
 	if (document.forms[form_name]) {
 		// Allow to use tab character when typing code
-		if (window.InstallTrigger || (!window.matchMedia && window.opera)) {
+		if ((window.InstallTrigger && typeof globalThis !== 'object') || (!window.matchMedia && window.opera)) {
 			textarea.onkeypress = function(event) {
 				if ((event.keyCode==9 || event.which==9) && inCodeTag() && !event.altKey && !event.ctrlKey && !event.shiftKey && !event.metaKey) {
 					event.preventDefault ? event.preventDefault() : (event.returnValue = false); bbfontstyle('\t','',true);

@@ -122,6 +122,7 @@ function changeDisplay(d, l, p, focused) {
 
 	if (focused) {
 		var show = d.style.display == 'block';
+		if (typeof $ == 'object' && !show) {d.style.visibility = 'hidden';}
 		d.style.borderWidth = show ? '' : '2px';
 		d.style.borderStyle = show ? '' : 'solid';
 		d.style.display = show ? 'none' : 'block';
@@ -272,10 +273,11 @@ if (document.body.className.indexOf('dropdown-enabled') > -1) {
 	if (document.uniqueID && !window.XMLHttpRequest) {
 		var iFrameFix = document.createElement('iframe');
 		iFrameFix.scrolling = 'no';
-		iFrameFix.src = "javascript:'<html></html>';";
+		iFrameFix.frameBorder = '0';
+		$ = document.getElementsByTagName('script'); for (var I = 0; I < $.length; I++) {if ($[I].src.search("/forum_fn.js") > -1) {iFrameFix.src = $[I].src.substring(0, $[I].src.lastIndexOf("/")) + '/iframe.htm'; break;}}	
+		iFrameFix.style.visibility = 'hidden';
 		iFrameFix.style.position = 'absolute';
 		iFrameFix.style.zIndex = '-1';
-		iFrameFix.style.filter = 'mask()';
 	}
 
 	if (document.getElementById('menubar')) {

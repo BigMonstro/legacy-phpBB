@@ -1,0 +1,14 @@
+<html><body><script>
+function frameStyle() {
+	document.body.style.backgroundColor = frameElement.parentNode.currentStyle.backgroundColor;
+	document.body.style.border = "2px solid " + frameElement.parentNode.currentStyle.borderColor;
+}
+
+if (typeof frameElement == "object" && (frameElement != null)) {
+	frameStyle();
+	window.attachEvent("onresize", frameStyle);
+	frameElement.style.visibility = "visible";
+	frameElement.parentNode.style.visibility = "visible";
+	parent.$ = false;
+}
+</script></body></html>

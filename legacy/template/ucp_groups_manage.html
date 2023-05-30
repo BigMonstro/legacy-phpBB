@@ -45,6 +45,7 @@
 		<td class="bg1"><span class="bigger"><b>{L_GROUP_COLOR}{L_COLON}</b><br />{L_GROUP_COLOR_EXPLAIN}</span></td>
 		<td class="bg1">
 			<input id="group_colour" name="group_colour" type="text" class="inputbox" value="{GROUP_COLOUR}" maxlength="6" />
+			<span style="background-color: #{GROUP_COLOUR};">&nbsp;&nbsp;&nbsp;</span>
 			<br /><br />
 <script type="text/javascript"><!--
 	var r = 0, g = 0, b = 0;
@@ -71,7 +72,7 @@
 			for (b = 0; b < 4; b++) {
 				color = String(numberList[r]) + String(numberList[g]) + String(numberList[b]);
 				html += '<td style="background-color: #' + color + '; height: 10px; padding: 0; width: 11px">';
-				html += '<a style="display: block; height: 100%; width: 100%" href="#" onclick="getStuff(\'group_colour\').value=\'' + color + '\'; return false;" title="#' + color + '"><div style="height: 100%; width: 100%; ' + style + '"></div></a>';
+				html += '<a style="display: block; height: 100%; width: 100%" href="#" onclick="document.forms[\'ucp\'].elements[\'group_colour\'].value=\'' + color + '\'; return false;" title="#' + color + '"><div style="height: 100%; width: 100%; ' + style + '"></div></a>';
 				html += '</td>';
 			}
 		}

@@ -98,7 +98,7 @@
 		<!-- IF S_BBCODE_ALLOWED and S_INLINE_ATTACHMENT_OPTIONS and FILTERS -->
 			<tr>
 				<td class="bg1"><b class="bigger">{L_ATTACHMENTS}{L_COLON}</b></td>
-				<td class="bg1"><select name="attachments">{S_INLINE_ATTACHMENT_OPTIONS}</select> <input type="button" class="button2" accesskey="a" value="{L_PLACE_INLINE}" name="attachinline" onclick="attach_form = document.forms[form_name].elements['attachments']; attachInline(attach_form.value, attach_form.options[attach_form.selectedIndex].text);" title="{L_BBCODE_A_HELP}" /></td>
+				<td class="bg1"><select name="attachments"><!-- BEGIN attach_row --><option value="{attach_row.ASSOC_INDEX}">{{ attach_row.FILENAME|split('.')|slice(0,-1)|join('.')|slice(0,32) }}.{{ attach_row.FILENAME|split('.')|last }}</option><!-- END attach_row --></select> <input type="button" class="button2" accesskey="a" value="{L_PLACE_INLINE}" name="attachinline" onclick="attach_form = document.forms[form_name].elements['attachments']; attachInline(attach_form.value, attach_form.options[attach_form.selectedIndex].text);" title="{L_BBCODE_A_HELP}" /></td>
 			</tr>
 		<!-- ENDIF -->
 	<!-- ENDIF -->

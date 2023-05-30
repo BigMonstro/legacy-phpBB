@@ -2,34 +2,70 @@
 	<th colspan="2">{L_ADD_ATTACHMENT}</th>
 </tr>
 <tr>
-	<td class="bg1" colspan="2"><span class="bigger">{L_ADD_ATTACHMENT_EXPLAIN}<!-- IF MAX_ATTACHMENT_FILESIZE is not empty --><br />{MAX_ATTACHMENT_FILESIZE}<!-- ENDIF --></span></td>
-</tr>
-<tr>
-	<td class="bg1"><b class="bigger">{L_FILENAME}</b></td>
-	<td class="bg1">
-		<div class="bigger" id="upload_progress" style="font-weight: bold"></div>
-		<input type="file" class="inputbox" name="fileupload" id="fileupload" />
-		<input class="button2" type="submit" name="add_file" value="{L_ADD_FILE}" onclick="getStuff('upload_progress').innerHTML = '{LA_UPLOAD_IN_PROGRESS}';" />
+	<td class="bg1" colspan="2">
+		<span class="bigger">{L_ADD_ATTACHMENT_EXPLAIN}<!-- IF MAX_ATTACHMENT_FILESIZE is not empty --><br />{MAX_ATTACHMENT_FILESIZE}<!-- ENDIF --></span>
+		<script type="text/javascript"><!--
+		var upload = false;
+		var tooMany = false;
+
+		function checkUpload() {
+			var Input = this.elements['fileupload'];
+			var Source = Input.value;
+
+			if (Source == '') {return true;}
+			if (!upload) {Input.disabled="disabled"; return true;}
+			upload = false; // reset for the next time (if terminated by returning false)
+
+			var Path = Source.replace(new RegExp('\\\\', 'g'), '/').split('/');
+			var Name = Path[Path.length - 1];
+			var Ext = (Name.indexOf('.') > -1) ? Name.substring(Name.lastIndexOf('.')+1).toLowerCase() : '';
+			var Allow = Input.accept.replace(new RegExp('\\.', 'g'), '');
+			var Array = Allow.split(',');
+
+			var isValid = false;
+			for (var i = 0; i < Array.length; i++) {if (Array[i] == Ext) {isValid = true;}}
+			if (!isValid) {alert('{LA_DISALLOWED_EXTENSION}'.replace('%s',Ext) + '\n\n' + '{LA_ALLOWED}{LA_COLON} ' + Allow.replace(new RegExp(',', 'g'), ', ')); return false;}
+
+			if (tooMany) {alert('{LA_TOO_MANY_ATTACHMENTS}'); return false;}
+
+			if (Input.flag == 1) {
+				Input.flag++; var uplMsg = "{LA_UPLOAD_IN_PROGRESS}";
+				if (document.body.insertAdjacentHTML) {Input.insertAdjacentHTML("beforebegin", "<h4>" + uplMsg + "</h4>");}
+				else {var uplH4 = document.createElement('h4'); uplH4.innerHTML = uplMsg; Input.parentNode.insertBefore(uplH4, Input.parentNode.firstChild);}
+			}
+		}
+		//--></script>
 	</td>
 </tr>
 <tr>
-	<td class="bg1"><b class="bigger">{L_FILE_COMMENT}</b></td>
+	<td class="bg1"><b class="bigger">{L_FILENAME}{L_COLON}</b></td>
+	<td class="bg1">
+		<input type="file" class="inputbox" name="fileupload" id="fileupload" accept="{{ ALLOWED_ATTACHMENTS }}" style="max-width: 25em" onfocus="if (typeof this.flag != 'number') {this.flag = 1; this.form.onsubmit = checkUpload;}" onkeyup="if (typeof this.flag != 'number') {this.focus();}" />
+		<input class="button2" type="submit" name="add_file" value="{L_ADD_FILE}" onclick="upload = true;" />
+	</td>
+</tr>
+<tr>
+	<td class="bg1"><b class="bigger">{L_FILE_COMMENT}{L_COLON}</b></td>
 	<td class="bg1">
 		<textarea name="filecomment" rows="3" cols="35">{FILE_COMMENT}</textarea>
 	</td>
 </tr>
 <!-- EVENT posting_attach_body_file_list_before -->
 <!-- IF .attach_row -->
-	<tr>
-		<th colspan="2">{L_POSTED_ATTACHMENTS}</th>
-	</tr>
 	<!-- EVENT posting_attach_body_attach_row_before -->
 	<!-- BEGIN attach_row -->
+		<tr class="bg3">
+			<td colspan="2">
+				<!-- IF attach_row.S_FIRST_ROW and MAX_ATTACHMENTS --><script type="text/javascript"><!--
+				if ({attach_row.S_NUM_ROWS} >= {MAX_ATTACHMENTS}) {tooMany = true;}
+				//--></script><!-- ENDIF -->
+			</td>
+		</tr>
 		<!-- EVENT posting_attach_body_attach_row_prepend -->
 		<tr>
 			<td class="bg1"><b class="bigger">{L_FILENAME}</b></td>
 			<td class="bg1">
-				<a class="bigger" href="{attach_row.U_VIEW_ATTACHMENT}" target="_blank">{attach_row.FILENAME}</a>
+				<a class="bigger" href="{attach_row.U_VIEW_ATTACHMENT}" target="_blank">{{ attach_row.FILENAME|split('.')|slice(0,-1)|join('.')|slice(0,32) }}.{{ attach_row.FILENAME|split('.')|last }}</a>
 				<!-- EVENT posting_attach_body_attach_row_controls_prepend -->
 				<input class="button2" name="delete_file[{attach_row.ASSOC_INDEX}]" type="submit" value="{L_DELETE_FILE}" />
 				<!-- EVENT posting_attach_body_attach_row_controls_append -->
