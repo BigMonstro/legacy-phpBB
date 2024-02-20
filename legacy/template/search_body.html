@@ -11,7 +11,7 @@
 <!-- EVENT search_body_search_query_prepend -->
 <tr>
 	<td class="bg1" colspan="2" width="50%"><span class="bigger"><b>{L_SEARCH_KEYWORDS}{L_COLON}</b><br />{L_SEARCH_KEYWORDS_EXPLAIN}</span></td>
-	<td class="bg2" colspan="2" valign="top"><input type="text" class="inputbox" id="focus_keywords" name="keywords" size="40" style="width: 85%" /><div class="bigger"><input type="radio" name="terms" value="all" checked="checked" /> {L_SEARCH_ALL_TERMS}</div><div class="bigger"><input type="radio" name="terms" value="any" /> {L_SEARCH_ANY_TERMS}</div></td>
+	<td class="bg2" colspan="2" valign="top"><input type="text" class="inputbox" name="keywords" size="40" style="width: 85%" /><div class="bigger"><input type="radio" name="terms" value="all" checked="checked" /> {L_SEARCH_ALL_TERMS}</div><div class="bigger"><input type="radio" name="terms" value="any" /> {L_SEARCH_ANY_TERMS}</div></td>
 </tr>
 <tr>
 	<td class="bg1" colspan="2"><span class="bigger"><b>{L_SEARCH_AUTHOR}{L_COLON}</b><br />{L_SEARCH_AUTHOR_EXPLAIN}</span></td>
@@ -80,7 +80,15 @@
 <!-- EVENT search_body_recent_search_after -->
 
 <script type="text/javascript"><!--
-	if (typeof getStuff == 'function') {getStuff("focus_keywords").focus();}
+	for (var f = 0; f < document.forms.length; f++) {
+		for (var j = 0; j < document.forms[f].elements.length; j++) {
+			if (document.forms[f].elements[j].name == "keywords") {
+				document.forms[f].elements[j].focus();
+				f = document.forms.length;
+				break;
+			}
+		}
+	}
 //--></script>
 
 <!-- INCLUDE overall_footer.html -->

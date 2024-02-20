@@ -6,6 +6,10 @@
 	<!-- EVENT viewforum_forum_title_after -->
 </div>
 
+<!-- IF MODERATORS -->
+	<p style="margin-bottom: 4px"><!-- IF S_SINGLE_MODERATOR -->{L_MODERATOR}<!-- ELSE -->{L_MODERATORS}<!-- ENDIF -->{L_COLON} {MODERATORS}</p>
+<!-- ENDIF -->
+
 <!-- IF S_FORUM_RULES -->
 	<div style="margin: 14px 4px">
 		<h4 class="forumrules">{L_FORUM_RULES}</h4>
@@ -41,15 +45,7 @@
 	<!-- ENDIF -->
 <!-- ENDIF -->
 
-<!-- IF MODERATORS or (S_DISPLAY_POST_INFO and not S_IS_BOT) or .pagination or TOTAL_TOPICS or (U_WATCH_FORUM_LINK and not S_IS_BOT) -->
-	<!-- IF MODERATORS -->
-		<table width="100%" cellspacing="1">
-			<tr>
-				<td class="bigger" colspan="2"><!-- IF S_SINGLE_MODERATOR -->{L_MODERATOR}<!-- ELSE -->{L_MODERATORS}<!-- ENDIF -->{L_COLON} {MODERATORS}</td>
-			</tr>
-		</table>
-	<!-- ENDIF -->
-
+<!-- IF (S_DISPLAY_POST_INFO and not S_IS_BOT) or .pagination or TOTAL_TOPICS or (U_WATCH_FORUM_LINK and not S_IS_BOT) -->
 	<div class="action-bar">
 		<table width="100%" cellspacing="1">
 		<tr valign="bottom">

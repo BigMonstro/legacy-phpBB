@@ -3,44 +3,31 @@
 <form action="{S_LOGIN_ACTION}" method="post">
 <table class="main" width="100%" cellspacing="1">
 <tr>
-	<!-- IF not S_ADMIN_AUTH -->
-		<th<!-- IF S_REGISTER_ENABLED --> colspan="2"<!-- ENDIF -->>{L_LOGIN}</th>
-	<!-- ELSE -->
-		<th>{LOGIN_EXPLAIN}</th>
-	<!-- ENDIF -->
+	<th colspan="2"><!-- IF not S_ADMIN_AUTH -->{L_LOGIN}<!-- ELSE -->{LOGIN_EXPLAIN}<!-- ENDIF --></th>
 </tr>
 <tr>
-	<!-- IF not S_ADMIN_AUTH and S_REGISTER_ENABLED -->
-		<td class="bg1" width="50%">
-			<div class="bigger">{L_LOGIN_INFO}</div>
-			<div class="bigger" align="center"><a href="{U_TERMS_USE}">{L_TERMS_USE}</a> | <a href="{U_PRIVACY}">{L_PRIVACY}</a></div>
-		</td>
-	<!-- ENDIF -->
-	<td class="bg2">
-		<table cellspacing="2" width="100%">
-			<!-- IF LOGIN_ERROR or (not S_ADMIN_AUTH and LOGIN_EXPLAIN) -->
-				<tr>
-					<td colspan="2"<!-- IF S_ADMIN_AUTH or not S_REGISTER_ENABLED --> align="center"<!-- ENDIF -->>
-						<!-- IF LOGIN_ERROR --><p class="error">{LOGIN_ERROR}</p><!-- ENDIF -->
-						<!-- IF not S_ADMIN_AUTH and LOGIN_EXPLAIN --><p class="error">{LOGIN_EXPLAIN}</p><!-- ENDIF -->
-					</td>
-				</tr>
-			<!-- ENDIF -->
+	<td class="bg1" <!-- IF not S_ADMIN_AUTH and S_REGISTER_ENABLED -->width="50%"<!-- ELSE -->colspan="2"<!-- ENDIF -->>
+		<!-- IF LOGIN_ERROR or (not S_ADMIN_AUTH and LOGIN_EXPLAIN) -->
+			<table cellspacing="2" align="center"><tr><td>
+			<!-- IF LOGIN_ERROR --><p class="error">{LOGIN_ERROR}</p><!-- ENDIF -->
+			<!-- IF not S_ADMIN_AUTH and LOGIN_EXPLAIN --><p class="error">{LOGIN_EXPLAIN}</p><!-- ENDIF -->
+			</td></tr></table>
+		<!-- ENDIF -->
+		<table cellspacing="2" align="center">
 		<tr>
-			<td class="bigger" valign="top"<!-- IF S_ADMIN_AUTH or not S_REGISTER_ENABLED --> align="{S_CONTENT_FLOW_END}" width="50%"<!-- ENDIF -->><b>{L_USERNAME}{L_COLON}</b></td>
+			<td class="bigger" valign="top"><b>{L_USERNAME}{L_COLON}</b></td>
 			<td>
-				<input type="text" class="inputbox" id="focus_username" name="{USERNAME_CREDENTIAL}" size="25" value="{USERNAME}" tabindex="1" />
-				<!-- IF not S_ADMIN_AUTH and S_REGISTER_ENABLED -->
-					<br /><a class="bigger" href="{U_REGISTER}">{L_REGISTER}</a>
-				<!-- ENDIF -->
+				<input type="text" class="inputbox" name="{USERNAME_CREDENTIAL}" size="25" value="{USERNAME}" tabindex="1" />
 			</td>
 		</tr>
 		<tr>
-			<td class="bigger" valign="top"<!-- IF S_ADMIN_AUTH or not S_REGISTER_ENABLED --> align="{S_CONTENT_FLOW_END}"<!-- ENDIF -->><b>{L_PASSWORD}{L_COLON}</b></td>
+			<td class="bigger" valign="top"><b>{L_PASSWORD}{L_COLON}</b></td>
 			<td>
-				<input type="password" class="inputbox" id="focus_password" name="{PASSWORD_CREDENTIAL}" size="25" tabindex="2" autocomplete="off" />
-				<!-- IF U_SEND_PASSWORD --><br /><a class="bigger" href="{U_SEND_PASSWORD}">{L_FORGOT_PASS}</a><!-- ENDIF -->
-				<!-- IF U_RESEND_ACTIVATION and not S_ADMIN_AUTH --><br /><a class="bigger" href="{U_RESEND_ACTIVATION}">{L_RESEND_ACTIVATION}</a><!-- ENDIF -->
+				<input type="password" class="inputbox" name="{PASSWORD_CREDENTIAL}" size="25" tabindex="2" autocomplete="off" />
+				<!-- IF S_DISPLAY_FULL_LOGIN and (U_SEND_PASSWORD or U_RESEND_ACTIVATION) -->
+					<!-- IF U_SEND_PASSWORD --><br /><a class="bigger" href="{U_SEND_PASSWORD}">{L_FORGOT_PASS}</a><!-- ENDIF -->
+					<!-- IF U_RESEND_ACTIVATION --><br /><a class="bigger" href="{U_RESEND_ACTIVATION}">{L_RESEND_ACTIVATION}</a><!-- ENDIF -->
+				<!-- ENDIF -->
 			</td>
 		</tr>
 		<!-- IF S_DISPLAY_FULL_LOGIN -->
@@ -60,6 +47,18 @@
 		<!-- ENDIF -->
 		</table>
 	</td>
+	<!-- IF not S_ADMIN_AUTH and S_REGISTER_ENABLED -->
+		<td class="bg2">
+			<table align="center">
+			<tr>
+				<td class="bigger">
+					{L_LOGIN_INFO}<br /><br />
+					<div align="center"><a href="{U_TERMS_USE}">{L_TERMS_USE}</a> | <a href="{U_PRIVACY}">{L_PRIVACY}</a><br /><br /><a href="{U_REGISTER}">{L_REGISTER}</a></div>
+				</td>
+			</tr>
+			</table>
+		</td>
+	<!-- ENDIF -->
 </tr>
 
 <!-- IF CAPTCHA_TEMPLATE and S_CONFIRM_CODE -->
@@ -78,7 +77,15 @@
 </form>
 
 <script type="text/javascript"><!--
-	if (typeof getStuff == 'function') {getStuff("<!-- IF USERNAME eq '' -->focus_username<!-- ELSE -->focus_password<!-- ENDIF -->").focus();}
+	for (var f = 0; f < document.forms.length; f++) {
+		for (var j = 0; j < document.forms[f].elements.length; j++) {
+			if (document.forms[f].elements[j].name == "<!-- IF USERNAME eq '' -->{USERNAME_CREDENTIAL}<!-- ELSE -->{PASSWORD_CREDENTIAL}<!-- ENDIF -->") {
+				document.forms[f].elements[j].focus();
+				f = document.forms.length;
+				break;
+			}
+		}
+	}
 //--></script>
 
 <!-- INCLUDE overall_footer.html -->

@@ -17,12 +17,12 @@
 		<!-- EVENT forumlist_body_forum_row_before -->
 		<tr>
 			<!-- EVENT forumlist_body_forum_row_prepend -->
-			<td class="bg1" width="2%" align="center"><!-- IF forumrow.S_UNREAD_FORUM --><a href="{forumrow.U_VIEWFORUM}"><!-- ENDIF --><img src="{T_THEME_PATH}/images/{forumrow.FORUM_IMG_STYLE}.gif" width="46" height="25" alt="<!-- IF forumrow.S_UNREAD_FORUM -->+" border="0<!-- ENDIF -->" title="<!-- IF forumrow.S_UNREAD_FORUM -->{L_UNREAD_POSTS}<!-- ELSE -->{forumrow.FORUM_FOLDER_IMG_ALT}<!-- ENDIF -->" /><!-- IF forumrow.S_UNREAD_FORUM --></a><!-- ENDIF --></td>
+			<td class="bg1" width="2%" align="center"><!-- IF forumrow.S_UNREAD_FORUM --><a href="{forumrow.U_VIEWFORUM}"><!-- ENDIF --><img src="{T_THEME_PATH}/images/{forumrow.FORUM_IMG_STYLE}.gif" width="46" height="25" alt="<!-- IF forumrow.S_UNREAD_FORUM -->+" border="0<!-- ENDIF -->" title="<!-- IF forumrow.S_IS_LINK -->{L_FORUM_LINK}<!-- ELSEIF forumrow.S_UNREAD_FORUM -->{L_UNREAD_POSTS}<!-- ELSE -->{forumrow.FORUM_FOLDER_IMG_ALT}<!-- ENDIF -->" /><!-- IF forumrow.S_UNREAD_FORUM --></a><!-- ENDIF --></td>
 			<td class="bg1">
 				<!-- IF forumrow.FORUM_IMAGE -->
-					<table cellspacing="1"><tr><td><!-- EVENT forumlist_body_forum_image_before --> <!-- EVENT forumlist_body_forum_image_prepend -->{forumrow.FORUM_IMAGE}<!-- EVENT forumlist_body_forum_image_append --> <!-- EVENT forumlist_body_forum_image_after --></td><td>
+					<table cellspacing="1"><tr><td nowrap="nowrap"><!-- EVENT forumlist_body_forum_image_before --> <div><!-- EVENT forumlist_body_forum_image_prepend -->{forumrow.FORUM_IMAGE}<!-- EVENT forumlist_body_forum_image_append --></div> <!-- EVENT forumlist_body_forum_image_after --></td><td width="100%">
 				<!-- ENDIF -->
-				<a class="forumtitle" href="{forumrow.U_VIEWFORUM}" title="<!-- IF forumrow.S_UNREAD_FORUM -->{L_UNREAD_POSTS}<!-- ELSE -->{forumrow.FORUM_FOLDER_IMG_ALT}<!-- ENDIF -->">{forumrow.FORUM_NAME}</a>
+				<a class="forumtitle" href="{forumrow.U_VIEWFORUM}" title="<!-- IF forumrow.S_IS_LINK -->{L_FORUM_LINK}<!-- ELSEIF forumrow.S_UNREAD_FORUM -->{L_UNREAD_POSTS}<!-- ELSE -->{forumrow.FORUM_FOLDER_IMG_ALT}<!-- ENDIF -->">{forumrow.FORUM_NAME}</a>
 				<!-- IF forumrow.FORUM_DESC -->
 					<br /><span class="forumdesc">{forumrow.FORUM_DESC}</span>	
 				<!-- ENDIF -->
@@ -33,7 +33,7 @@
 					<!-- EVENT forumlist_body_subforums_before -->
 					<br /><span class="forumdesc"><b>{forumrow.L_SUBFORUM_STR}{L_COLON}</b>
 					<!-- BEGIN subforum -->
-						<!-- EVENT forumlist_body_subforum_link_prepend --><a href="{forumrow.subforum.U_SUBFORUM}" title="<!-- IF forumrow.subforum.S_UNREAD -->{L_UNREAD_POSTS}<!-- ELSE -->{L_NO_UNREAD_POSTS}<!-- ENDIF -->"><img src="{T_THEME_PATH}/images/icon_post_target<!-- IF forumrow.subforum.S_UNREAD -->_unread<!-- ENDIF -->.gif" width="12" height="9" alt="<!-- IF forumrow.subforum.S_UNREAD -->+ <!-- ENDIF -->" border="0" title="<!-- IF forumrow.subforum.S_UNREAD -->{L_UNREAD_POSTS}<!-- ELSE -->{L_NO_UNREAD_POSTS}<!-- ENDIF -->" />{forumrow.subforum.SUBFORUM_NAME}</a><!-- IF not forumrow.subforum.S_LAST_ROW -->{L_COMMA_SEPARATOR}<!-- ENDIF --><!-- EVENT forumlist_body_subforum_link_append -->
+						<!-- EVENT forumlist_body_subforum_link_prepend --><a href="{forumrow.subforum.U_SUBFORUM}" title="<!-- IF forumrow.subforum.IS_LINK -->{L_FORUM_LINK}<!-- ELSEIF forumrow.subforum.S_UNREAD -->{L_UNREAD_POSTS}<!-- ELSE -->{L_NO_UNREAD_POSTS}<!-- ENDIF -->"><img src="{T_THEME_PATH}/images/icon_post_target<!-- IF forumrow.subforum.S_UNREAD -->_unread<!-- ENDIF -->.gif" width="12" height="9" alt="<!-- IF forumrow.subforum.S_UNREAD -->+ <!-- ENDIF -->" border="0" title="<!-- IF forumrow.subforum.IS_LINK -->{L_FORUM_LINK}<!-- ELSEIF forumrow.subforum.S_UNREAD -->{L_UNREAD_POSTS}<!-- ELSE -->{L_NO_UNREAD_POSTS}<!-- ENDIF -->" />{forumrow.subforum.SUBFORUM_NAME}</a><!-- IF not forumrow.subforum.S_LAST_ROW -->{L_COMMA_SEPARATOR}<!-- ENDIF --><!-- EVENT forumlist_body_subforum_link_append -->
 					<!-- END subforum -->
 					</span>
 					<!-- EVENT forumlist_body_subforums_after -->

@@ -22,7 +22,7 @@
 		</tr>
 		<tr>
 			<td class="bg2">
-				<table cellspacing="2" width="100%">
+				<table cellspacing="2" align="center">
 					<!-- INCLUDE {PROVIDER_TEMPLATE_FILE} -->
 				</table>
 			</td>
@@ -80,10 +80,11 @@
 <!-- INCLUDE timezone_option.html -->
 
 <!-- EVENT ucp_register_profile_fields_before -->
-<!-- IF .profile_fields -->
+<!-- IF PROFILE_FIELDS_REQUIRED -->
 	<tr>
 		<td class="bg1" colspan="2"><b class="bigger">{L_ITEMS_REQUIRED}</b></td>
 	</tr>
+<!-- ENDIF -->
 <!-- BEGIN profile_fields -->
 	<tr>
 		<td class="bg1">
@@ -95,7 +96,6 @@
 	</tr>
 
 <!-- END profile_fields -->
-<!-- ENDIF -->
 <!-- EVENT ucp_register_profile_fields_after -->
 
 <!-- IF CAPTCHA_TEMPLATE -->
