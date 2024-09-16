@@ -179,7 +179,7 @@
 			<tr>
 				<td>
 					<table cellspacing="0"><tr>
-						<!-- IF postrow.POST_ICON_IMG --><td><img src="{T_ICONS_PATH}{postrow.POST_ICON_IMG}" width="{postrow.POST_ICON_IMG_WIDTH}" height="{postrow.POST_ICON_IMG_HEIGHT}" alt="" title="{postrow.POST_ICON_IMG_ALT}" /></td><!-- ENDIF --><td class="bigger"><b>{L_POST_SUBJECT}{L_COLON}</b> <a href="{postrow.U_MINI_POST}">{postrow.POST_SUBJECT}</a></td>
+						<!-- IF postrow.POST_ICON_IMG --><td><img src="{T_ICONS_PATH}{postrow.POST_ICON_IMG}" width="{postrow.POST_ICON_IMG_WIDTH}" height="{postrow.POST_ICON_IMG_HEIGHT}" alt="" title="{postrow.POST_ICON_IMG_ALT}" /></td><!-- ENDIF --><td class="bigger"><b>{L_POST_SUBJECT}{L_COLON}</b> <!-- IF not S_IS_BOT --><a href="{postrow.U_MINI_POST}"><!-- ENDIF -->{postrow.POST_SUBJECT}<!-- IF not S_IS_BOT --></a><!-- ENDIF --></td>
 					</tr></table>
 				</td>
 				<td align="{S_CONTENT_FLOW_END}" class="bigger"><!-- EVENT viewtopic_body_postrow_post_details_before -->
@@ -463,5 +463,7 @@
 	</tr>
 	</table>
 <!-- ENDIF -->
+
+<!-- EVENT viewtopic_body_online_list_after -->
 
 <!-- INCLUDE overall_footer.html -->

@@ -232,5 +232,12 @@
 				<td class="bg1"><input type="text" class="inputbox" name="edit_reason" size="50" value="{EDIT_REASON}" /></td>
 			</tr>
 		<!-- ENDIF -->
+
+		<tr class="big">
+			<td class="cat" colspan="2" align="center">
+				{S_HIDDEN_ADDRESS_FIELD} {S_HIDDEN_FIELDS} <!-- EVENT posting_editor_submit_buttons -->
+				<!-- IF S_HAS_DRAFTS and not S_SHOW_DRAFTS --><input class="button2" type="submit" tabindex="8" name="load" value="{L_LOAD_DRAFT}" /> &nbsp;<!-- ENDIF --><!-- IF S_SAVE_ALLOWED --><input class="button2" type="submit" tabindex="7" name="save" value="{L_SAVE_DRAFT}" /> &nbsp;<!-- ENDIF --><input class="button2" type="submit" tabindex="5" name="preview" value="{L_PREVIEW}" /> &nbsp;<input class="button1" type="submit" accesskey="s" tabindex="6" name="post" value="{L_SUBMIT}" />
+			</td>
+		</tr>
 	<!-- ENDIF -->
 <!-- ENDIF -->

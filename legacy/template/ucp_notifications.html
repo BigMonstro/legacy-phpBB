@@ -1,11 +1,16 @@
 <!-- INCLUDE ucp_header.html -->
 
+{% EVENT ucp_notifications_form_before %}
+
 <form name="ucp" id="ucp" method="post" action="{S_UCP_ACTION}"{S_FORM_ENCTYPE}>
 
 <table class="main" width="100%" cellspacing="1">
 <tr>
 	<th colspan="<!-- IF MODE == 'notification_options' -->{NOTIFICATION_TYPES_COLS}<!-- ELSE -->2<!-- ENDIF -->">{TITLE}</th>
 </tr>
+
+{% EVENT ucp_notifications_content_before %}
+
 <tr class="bigger">
 	<td align="center" class="bg1" colspan="<!-- IF MODE == 'notification_options' -->{NOTIFICATION_TYPES_COLS}<!-- ELSE -->2<!-- ENDIF -->">{TITLE_EXPLAIN}</td>
 </tr>
@@ -34,16 +39,6 @@
 			</tr>
 		<!-- ENDIF -->
 	<!-- END notification_types -->
-	</table>
-	<table cellspacing="0" width="100%">
-	<tr>
-		<td class="cat" align="center">
-			<input type="hidden" name="form_time" value="{FORM_TIME}" />
-			{S_HIDDEN_FIELDS}
-			<input class="button1" type="submit" name="submit" value="{L_SUBMIT}" />
-			{S_FORM_TOKEN}
-		</td>
-	</tr>
 <!-- ELSE -->
 	<!-- IF .notification_list -->
 		<tr>
@@ -67,25 +62,26 @@
 				<input type="checkbox" name="mark[]" value="{notification_list.NOTIFICATION_ID}"<!-- IF not notification_list.UNREAD --> disabled="disabled"<!-- ENDIF --> />
 			</td>
 		</tr>
+	<!-- BEGINELSE -->
+		<tr><td align="center" class="bg1" colspan="2">
+			<b class="bigger">{L_NO_NOTIFICATIONS}</b>
+		</td></tr>
 	<!-- END notification_list -->
-		<!-- IF .notification_list -->
-			</table>
-			<table cellspacing="0" width="100%"><tr>
-			<td class="cat" align="{S_CONTENT_FLOW_END}">
-				<input type="hidden" name="form_time" value="{FORM_TIME}" />
-				{S_HIDDEN_FIELDS}
-				<input class="button1" type="submit" name="submit" value="{L_MARK_READ}" />
-				{S_FORM_TOKEN}
-			</td></tr>
-		<!-- ELSE -->
-			<tr><td align="center" class="bg1" colspan="2">
-				<b class="bigger">{L_NO_NOTIFICATIONS}</b>
-			</td></tr>
-		<!-- ENDIF -->
 <!-- ENDIF -->
 </table>
 
+{% EVENT ucp_notifications_content_after %}
+
 <!-- IF .notification_list or MODE == 'notification_options' -->
+	<table width="100%" cellspacing="0"><tr>
+		<td class="cat" align="<!-- IF MODE == 'notification_options' -->center<!-- ELSE -->{S_CONTENT_FLOW_END}<!-- ENDIF -->">
+			<input type="hidden" name="form_time" value="{FORM_TIME}" />
+			{S_HIDDEN_FIELDS}
+			<input class="button1" type="submit" name="submit" value="<!-- IF MODE == 'notification_options' -->{L_SUBMIT}<!-- ELSE -->{L_MARK_READ}<!-- ENDIF -->" />
+			{S_FORM_TOKEN}
+		</td>
+	</tr></table>
+
 	<table width="100%" cellspacing="1"><tr>
 		<!-- IF MODE != 'notification_options' --><td nowrap="nowrap"><b>{PAGE_NUMBER}</b> &nbsp;[ {TOTAL_COUNT} {L_NOTIFICATIONS} ]</td><!-- ENDIF -->
 		<td align="{S_CONTENT_FLOW_END}" nowrap="nowrap"><b><a href="#" onclick="marklist('ucp', '', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('ucp', '', false); return false;">{L_UNMARK_ALL}</a></b></td>
@@ -94,5 +90,7 @@
 <!-- ENDIF -->
 
 </form>
+
+{% EVENT ucp_notifications_form_after %}
 
 <!-- INCLUDE ucp_footer.html -->

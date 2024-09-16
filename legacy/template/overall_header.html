@@ -108,10 +108,12 @@
 							<p align="{S_CONTENT_FLOW_END}" class="small">{notifications.TIME}</p>
 							<!-- IF not notifications.URL and notifications.UNREAD --><a href="{notifications.U_MARK_READ}">{L_MARK_READ}</a><!-- ENDIF -->
 						</div>
-						<!-- IF notifications.S_LAST_ROW --></div><div align="center" style="overflow: hidden; padding: 4px"><a href="{U_VIEW_ALL_NOTIFICATIONS}">{L_SEE_ALL}</a></div><!-- ENDIF -->
-					<!-- BEGINELSE -->
-						<div align="center" style="overflow: hidden; padding: 8px">{L_NO_NOTIFICATIONS}</div>
-					<!-- END notifications --></div>
+						<!-- IF notifications.S_LAST_ROW --></div><!-- ENDIF -->
+					<!-- END notifications -->
+					{% EVENT notification_dropdown_footer_before %}
+					<div align="center" style="overflow: hidden; padding: 4px"><!-- IF .notifications --><a href="{U_VIEW_ALL_NOTIFICATIONS}">{L_SEE_ALL}</a><!-- ELSE -->{L_NO_NOTIFICATIONS}<!-- ENDIF --></div>
+					{% EVENT notification_dropdown_footer_after %}
+					</div>
 				--></div>
 			<!-- ENDIF -->
 
