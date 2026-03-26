@@ -13,11 +13,11 @@ function popup(u, w, h, n) {
 	}
 
 	if (document.all && !window.XMLHttpRequest) {
-		if (screen.availHeight - 30 < h) {h = screen.availHeight - 30;}
+		if (screen.availHeight - 60 < h) {h = screen.availHeight - 60;}
 		if (screen.availWidth - 10 < w) {w = screen.availWidth - 10;}
 	}
 
-	window.open(u.replace(/&amp;/g, '&'), n, 'height=' + h + ',resizable=yes,scrollbars=yes,width=' + w);
+	window.open(u.replace(/&amp;/g, '&'), n, 'height=' + h + ',location=yes,resizable=yes,scrollbars=yes,width=' + w);
 	return false;
 }
 

@@ -20,10 +20,12 @@
 	<td class="bg1"><b class="bigger">{L_DEFAULT_SMILIES}{L_COLON}</b></td>
 	<td class="bg1"><input type="radio" name="smilies" value="1"<!-- IF S_SMILIES --> checked="checked"<!-- ENDIF --> /> <span class="bigger">{L_YES}</span> &nbsp;<input type="radio" name="smilies" value="0"<!-- IF not S_SMILIES --> checked="checked"<!-- ENDIF --> /> <span class="bigger">{L_NO}</span></td>
 </tr>
-<tr>
-	<td class="bg1"><b class="bigger">{L_DEFAULT_ADD_SIG}{L_COLON}</b></td>
-	<td class="bg1"><input type="radio" name="sig" value="1"<!-- IF S_SIG --> checked="checked"<!-- ENDIF --> /> <span class="bigger">{L_YES}</span> &nbsp;<input type="radio" name="sig" value="0"<!-- IF not S_SIG --> checked="checked"<!-- ENDIF --> /> <span class="bigger">{L_NO}</span></td>
-</tr>
+<!-- IF S_SIG_ALLOWED -->
+	<tr>
+		<td class="bg1"><b class="bigger">{L_DEFAULT_ADD_SIG}{L_COLON}</b></td>
+		<td class="bg1"><input type="radio" name="sig" value="1"<!-- IF S_SIG --> checked="checked"<!-- ENDIF --> /> <span class="bigger">{L_YES}</span> &nbsp;<input type="radio" name="sig" value="0"<!-- IF not S_SIG --> checked="checked"<!-- ENDIF --> /> <span class="bigger">{L_NO}</span></td>
+	</tr>
+<!-- ENDIF -->
 <tr>
 	<td class="bg1"><b class="bigger">{L_DEFAULT_NOTIFY}{L_COLON}</b></td>
 	<td class="bg1"><input type="radio" name="notify" value="1"<!-- IF S_NOTIFY --> checked="checked"<!-- ENDIF --> /> <span class="bigger">{L_YES}</span> &nbsp;<input type="radio" name="notify" value="0"<!-- IF not S_NOTIFY --> checked="checked"<!-- ENDIF --> /> <span class="bigger">{L_NO}</span></td>

@@ -1,17 +1,15 @@
 <!-- INCLUDE mcp_header.html -->
 
-<table width="100%" cellspacing="1">
-<tr>
-	<td class="bigger"><b><a href="{U_RETURN_POST}">{L_RETURN_POST}</a></b></td>
-</tr>
-</table>
-
-<table class="main" width="100%" cellspacing="1">
+<table class="main" width="100%" cellspacing="1" style="table-layout: fixed">
 <tr>
 	<th>{L_WHOIS}</th>
 </tr>
-<tr>
-	<td class="bg1"><pre class="bigger">{WHOIS}</pre></td>
+<tr class="bigger">
+	<td class="bg1">
+		<b><a href="{U_RETURN_POST}">{L_RETURN_POST}</a></b><br /><br />
+		<div style="overflow: auto; width: 100%"><pre>{WHOIS}</pre></div><br />
+		<b><a href="{U_RETURN_POST}">{L_RETURN_POST}</a></b>
+	</td>
 </tr>
 </table>
 

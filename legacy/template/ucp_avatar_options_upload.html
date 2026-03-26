@@ -1,7 +1,7 @@
 <table width="100%" cellspacing="0">
 	<tr>
 		<td class="bg1" width="35%"><b class="bigger">{L_UPLOAD_AVATAR_FILE}{L_COLON}</b></td>
-		<td class="bg1"><input type="hidden" name="MAX_FILE_SIZE" value="{AVATAR_UPLOAD_SIZE}" /><input type="file" class="inputbox" name="avatar_upload_file" /></td>
+		<td class="bg1"><input type="hidden" name="MAX_FILE_SIZE" value="{AVATAR_UPLOAD_SIZE}" /><input type="file" class="inputbox" name="avatar_upload_file" accept="{{ AVATAR_ALLOWED_EXTENSIONS }}" /></td>
 	</tr>
 <!-- IF S_UPLOAD_AVATAR_URL -->
 	<tr>
