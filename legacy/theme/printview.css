@@ -1,0 +1,68 @@
+/* Print Style Sheet
+ ----------------- */
+body {
+	font: 10pt Verdana, Geneva, Arial, sans-serif;
+	margin: 0 5px;
+	padding: 0 30px;
+	color: #000000;
+}
+
+a:link, a:visited {
+	text-decoration: none;
+	color: #000000;
+}
+
+big {
+	font: 14pt Arial, Helvetica, sans-serif;
+}
+
+big big {
+	font-size: 18pt;
+}
+
+code, kbd, pre, samp {
+	font-family: "Courier New", Courier, monospace;
+}
+
+img {
+	border-width: 0;
+}
+
+small, table.mini {
+	font-size: 8pt;
+}
+
+table {
+	font-size: 10pt;
+}
+
+.codecontent pre {
+	direction: ltr;
+}
+
+.codetitle {
+	display: none;
+}
+
+.emoji {
+	min-height: 18px;
+	min-width: 18px;
+	height: 1em;
+	width: 1em;
+}
+
+.printable-content {
+	line-height: 1.5;
+	overflow: hidden;
+	width: 100%;
+}
+
+.quotetitle .cite, .quotetitle .date {
+	font-style: italic;
+	font-weight: bold;
+}
+
+.rtl a {
+	direction: rtl;
+	unicode-bidi: embed;
+}

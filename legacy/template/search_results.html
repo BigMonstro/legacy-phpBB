@@ -165,7 +165,9 @@
 		<td class="bg1" align="center">{L_NO_SEARCH_RESULTS}</td>
 	</tr>
 	</table>
-<!-- ELSEIF S_SELECT_SORT_DAYS or S_SELECT_SORT_KEY -->
+<!-- ENDIF -->
+
+<!-- IF S_SELECT_SORT_DAYS or S_SELECT_SORT_KEY -->
 	<table cellspacing="0" width="100%">
 	<tr>
 		<td class="cat" align="center"><form method="post" action="{S_SEARCH_ACTION}"><!-- INCLUDE display_options.html --></form></td>
